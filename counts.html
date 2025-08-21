@@ -8,7 +8,7 @@
 
 <meta name="description" content="Count Matrices">
 
-<title>Expression Data – MOSAiC Genome Portal</title>
+<title>Expression Values – MOSAiC Genome Portal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,10 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7bb47dc7ee7c0875cb958a07fadba111.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1dd1c3079445e9292f047f008f609fb3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-09141908ef43cb928e0903ba3ecbdcec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-1dd1c3079445e9292f047f008f609fb3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,7 +111,169 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -129,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data.html"> 
+    <a class="nav-link" href="./data.qmd"> 
 <span class="menu-text">Data Files</span></a>
   </li>  
   <li class="nav-item">
@@ -139,6 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -147,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html">Data Files</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.qmd">Data Files</a></li><li class="breadcrumb-item"><a href="./counts.html">Expression Values</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -176,12 +343,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Home</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./data.html" class="sidebar-item-text sidebar-link active">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./data.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Files</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./counts.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Expression Values</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Different Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://gannet.fish.washington.edu/e5-mosaic" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JBrowse</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://gannet.fish.washington.edu/e5-mosaic" class="sidebar-item-text sidebar-link">
@@ -194,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -218,9 +408,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.qmd">Data Files</a></li><li class="breadcrumb-item"><a href="./counts.html">Expression Values</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Expression Data</h1>
+<h1 class="title">Expression Values</h1>
 </div>
 
 <div>
@@ -252,23 +443,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="wzxxtuvuts" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wzxxtuvuts table {
+<div id="zdpsploevh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zdpsploevh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wzxxtuvuts thead, #wzxxtuvuts tbody, #wzxxtuvuts tfoot, #wzxxtuvuts tr, #wzxxtuvuts td, #wzxxtuvuts th {
+#zdpsploevh thead, #zdpsploevh tbody, #zdpsploevh tfoot, #zdpsploevh tr, #zdpsploevh td, #zdpsploevh th {
   border-style: none;
 }
 
-#wzxxtuvuts p {
+#zdpsploevh p {
   margin: 0;
   padding: 0;
 }
 
-#wzxxtuvuts .gt_table {
+#zdpsploevh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -294,12 +485,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#wzxxtuvuts .gt_caption {
+#zdpsploevh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wzxxtuvuts .gt_title {
+#zdpsploevh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -311,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#wzxxtuvuts .gt_subtitle {
+#zdpsploevh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -323,7 +514,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#wzxxtuvuts .gt_heading {
+#zdpsploevh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -335,13 +526,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wzxxtuvuts .gt_bottom_border {
+#zdpsploevh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wzxxtuvuts .gt_col_headings {
+#zdpsploevh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -356,7 +547,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wzxxtuvuts .gt_col_heading {
+#zdpsploevh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -376,7 +567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#wzxxtuvuts .gt_column_spanner_outer {
+#zdpsploevh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -388,15 +579,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#wzxxtuvuts .gt_column_spanner_outer:first-child {
+#zdpsploevh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wzxxtuvuts .gt_column_spanner_outer:last-child {
+#zdpsploevh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wzxxtuvuts .gt_column_spanner {
+#zdpsploevh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -408,11 +599,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#wzxxtuvuts .gt_spanner_row {
+#zdpsploevh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wzxxtuvuts .gt_group_heading {
+#zdpsploevh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -438,7 +629,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#wzxxtuvuts .gt_empty_group_heading {
+#zdpsploevh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -453,15 +644,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#wzxxtuvuts .gt_from_md > :first-child {
+#zdpsploevh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wzxxtuvuts .gt_from_md > :last-child {
+#zdpsploevh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wzxxtuvuts .gt_row {
+#zdpsploevh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -480,7 +671,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#wzxxtuvuts .gt_stub {
+#zdpsploevh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -493,7 +684,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wzxxtuvuts .gt_stub_row_group {
+#zdpsploevh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -507,15 +698,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#wzxxtuvuts .gt_row_group_first td {
+#zdpsploevh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wzxxtuvuts .gt_row_group_first th {
+#zdpsploevh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wzxxtuvuts .gt_summary_row {
+#zdpsploevh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -525,16 +716,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wzxxtuvuts .gt_first_summary_row {
+#zdpsploevh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wzxxtuvuts .gt_first_summary_row.thick {
+#zdpsploevh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wzxxtuvuts .gt_last_summary_row {
+#zdpsploevh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -544,7 +735,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#wzxxtuvuts .gt_grand_summary_row {
+#zdpsploevh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -554,7 +745,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wzxxtuvuts .gt_first_grand_summary_row {
+#zdpsploevh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -564,7 +755,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#wzxxtuvuts .gt_last_grand_summary_row_top {
+#zdpsploevh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -574,11 +765,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#wzxxtuvuts .gt_striped {
+#zdpsploevh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wzxxtuvuts .gt_table_body {
+#zdpsploevh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -587,7 +778,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#wzxxtuvuts .gt_footnotes {
+#zdpsploevh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -601,7 +792,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wzxxtuvuts .gt_footnote {
+#zdpsploevh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -610,7 +801,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wzxxtuvuts .gt_sourcenotes {
+#zdpsploevh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -624,7 +815,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wzxxtuvuts .gt_sourcenote {
+#zdpsploevh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -632,72 +823,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wzxxtuvuts .gt_left {
+#zdpsploevh .gt_left {
   text-align: left;
 }
 
-#wzxxtuvuts .gt_center {
+#zdpsploevh .gt_center {
   text-align: center;
 }
 
-#wzxxtuvuts .gt_right {
+#zdpsploevh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wzxxtuvuts .gt_font_normal {
+#zdpsploevh .gt_font_normal {
   font-weight: normal;
 }
 
-#wzxxtuvuts .gt_font_bold {
+#zdpsploevh .gt_font_bold {
   font-weight: bold;
 }
 
-#wzxxtuvuts .gt_font_italic {
+#zdpsploevh .gt_font_italic {
   font-style: italic;
 }
 
-#wzxxtuvuts .gt_super {
+#zdpsploevh .gt_super {
   font-size: 65%;
 }
 
-#wzxxtuvuts .gt_footnote_marks {
+#zdpsploevh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wzxxtuvuts .gt_asterisk {
+#zdpsploevh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wzxxtuvuts .gt_indent_1 {
+#zdpsploevh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wzxxtuvuts .gt_indent_2 {
+#zdpsploevh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wzxxtuvuts .gt_indent_3 {
+#zdpsploevh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wzxxtuvuts .gt_indent_4 {
+#zdpsploevh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wzxxtuvuts .gt_indent_5 {
+#zdpsploevh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wzxxtuvuts .katex-display {
+#zdpsploevh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wzxxtuvuts div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zdpsploevh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1139,23 +1330,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="zuvdebsksd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zuvdebsksd table {
+<div id="qebbdmoprb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qebbdmoprb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zuvdebsksd thead, #zuvdebsksd tbody, #zuvdebsksd tfoot, #zuvdebsksd tr, #zuvdebsksd td, #zuvdebsksd th {
+#qebbdmoprb thead, #qebbdmoprb tbody, #qebbdmoprb tfoot, #qebbdmoprb tr, #qebbdmoprb td, #qebbdmoprb th {
   border-style: none;
 }
 
-#zuvdebsksd p {
+#qebbdmoprb p {
   margin: 0;
   padding: 0;
 }
 
-#zuvdebsksd .gt_table {
+#qebbdmoprb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1181,12 +1372,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#zuvdebsksd .gt_caption {
+#qebbdmoprb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zuvdebsksd .gt_title {
+#qebbdmoprb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1198,7 +1389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#zuvdebsksd .gt_subtitle {
+#qebbdmoprb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1210,7 +1401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#zuvdebsksd .gt_heading {
+#qebbdmoprb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1222,13 +1413,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zuvdebsksd .gt_bottom_border {
+#qebbdmoprb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zuvdebsksd .gt_col_headings {
+#qebbdmoprb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1243,7 +1434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zuvdebsksd .gt_col_heading {
+#qebbdmoprb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1263,7 +1454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zuvdebsksd .gt_column_spanner_outer {
+#qebbdmoprb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1275,15 +1466,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#zuvdebsksd .gt_column_spanner_outer:first-child {
+#qebbdmoprb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zuvdebsksd .gt_column_spanner_outer:last-child {
+#qebbdmoprb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zuvdebsksd .gt_column_spanner {
+#qebbdmoprb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1295,11 +1486,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#zuvdebsksd .gt_spanner_row {
+#qebbdmoprb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zuvdebsksd .gt_group_heading {
+#qebbdmoprb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1325,7 +1516,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#zuvdebsksd .gt_empty_group_heading {
+#qebbdmoprb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1340,15 +1531,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#zuvdebsksd .gt_from_md > :first-child {
+#qebbdmoprb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zuvdebsksd .gt_from_md > :last-child {
+#qebbdmoprb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zuvdebsksd .gt_row {
+#qebbdmoprb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1367,7 +1558,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zuvdebsksd .gt_stub {
+#qebbdmoprb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1380,7 +1571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zuvdebsksd .gt_stub_row_group {
+#qebbdmoprb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1394,15 +1585,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#zuvdebsksd .gt_row_group_first td {
+#qebbdmoprb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zuvdebsksd .gt_row_group_first th {
+#qebbdmoprb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zuvdebsksd .gt_summary_row {
+#qebbdmoprb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1412,16 +1603,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zuvdebsksd .gt_first_summary_row {
+#qebbdmoprb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zuvdebsksd .gt_first_summary_row.thick {
+#qebbdmoprb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zuvdebsksd .gt_last_summary_row {
+#qebbdmoprb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1431,7 +1622,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zuvdebsksd .gt_grand_summary_row {
+#qebbdmoprb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1441,7 +1632,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zuvdebsksd .gt_first_grand_summary_row {
+#qebbdmoprb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1451,7 +1642,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#zuvdebsksd .gt_last_grand_summary_row_top {
+#qebbdmoprb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1461,11 +1652,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zuvdebsksd .gt_striped {
+#qebbdmoprb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zuvdebsksd .gt_table_body {
+#qebbdmoprb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1474,7 +1665,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zuvdebsksd .gt_footnotes {
+#qebbdmoprb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1488,7 +1679,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zuvdebsksd .gt_footnote {
+#qebbdmoprb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1497,7 +1688,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zuvdebsksd .gt_sourcenotes {
+#qebbdmoprb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1511,7 +1702,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zuvdebsksd .gt_sourcenote {
+#qebbdmoprb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1519,72 +1710,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zuvdebsksd .gt_left {
+#qebbdmoprb .gt_left {
   text-align: left;
 }
 
-#zuvdebsksd .gt_center {
+#qebbdmoprb .gt_center {
   text-align: center;
 }
 
-#zuvdebsksd .gt_right {
+#qebbdmoprb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zuvdebsksd .gt_font_normal {
+#qebbdmoprb .gt_font_normal {
   font-weight: normal;
 }
 
-#zuvdebsksd .gt_font_bold {
+#qebbdmoprb .gt_font_bold {
   font-weight: bold;
 }
 
-#zuvdebsksd .gt_font_italic {
+#qebbdmoprb .gt_font_italic {
   font-style: italic;
 }
 
-#zuvdebsksd .gt_super {
+#qebbdmoprb .gt_super {
   font-size: 65%;
 }
 
-#zuvdebsksd .gt_footnote_marks {
+#qebbdmoprb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zuvdebsksd .gt_asterisk {
+#qebbdmoprb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zuvdebsksd .gt_indent_1 {
+#qebbdmoprb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zuvdebsksd .gt_indent_2 {
+#qebbdmoprb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zuvdebsksd .gt_indent_3 {
+#qebbdmoprb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zuvdebsksd .gt_indent_4 {
+#qebbdmoprb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zuvdebsksd .gt_indent_5 {
+#qebbdmoprb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zuvdebsksd .katex-display {
+#qebbdmoprb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zuvdebsksd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qebbdmoprb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1826,23 +2017,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-tbl-cap="Apul_lncRNA (first 10 rows with row numbers)">
 <div class="cell-output-display">
-<div id="evykgpjnpf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#evykgpjnpf table {
+<div id="qukiuprply" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qukiuprply table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#evykgpjnpf thead, #evykgpjnpf tbody, #evykgpjnpf tfoot, #evykgpjnpf tr, #evykgpjnpf td, #evykgpjnpf th {
+#qukiuprply thead, #qukiuprply tbody, #qukiuprply tfoot, #qukiuprply tr, #qukiuprply td, #qukiuprply th {
   border-style: none;
 }
 
-#evykgpjnpf p {
+#qukiuprply p {
   margin: 0;
   padding: 0;
 }
 
-#evykgpjnpf .gt_table {
+#qukiuprply .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1868,12 +2059,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#evykgpjnpf .gt_caption {
+#qukiuprply .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#evykgpjnpf .gt_title {
+#qukiuprply .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1885,7 +2076,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#evykgpjnpf .gt_subtitle {
+#qukiuprply .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1897,7 +2088,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#evykgpjnpf .gt_heading {
+#qukiuprply .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1909,13 +2100,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#evykgpjnpf .gt_bottom_border {
+#qukiuprply .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#evykgpjnpf .gt_col_headings {
+#qukiuprply .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1930,7 +2121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#evykgpjnpf .gt_col_heading {
+#qukiuprply .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1950,7 +2141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#evykgpjnpf .gt_column_spanner_outer {
+#qukiuprply .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1962,15 +2153,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#evykgpjnpf .gt_column_spanner_outer:first-child {
+#qukiuprply .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#evykgpjnpf .gt_column_spanner_outer:last-child {
+#qukiuprply .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#evykgpjnpf .gt_column_spanner {
+#qukiuprply .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1982,11 +2173,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#evykgpjnpf .gt_spanner_row {
+#qukiuprply .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#evykgpjnpf .gt_group_heading {
+#qukiuprply .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2012,7 +2203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#evykgpjnpf .gt_empty_group_heading {
+#qukiuprply .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2027,15 +2218,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#evykgpjnpf .gt_from_md > :first-child {
+#qukiuprply .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#evykgpjnpf .gt_from_md > :last-child {
+#qukiuprply .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#evykgpjnpf .gt_row {
+#qukiuprply .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2054,7 +2245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#evykgpjnpf .gt_stub {
+#qukiuprply .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2067,7 +2258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#evykgpjnpf .gt_stub_row_group {
+#qukiuprply .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2081,15 +2272,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#evykgpjnpf .gt_row_group_first td {
+#qukiuprply .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#evykgpjnpf .gt_row_group_first th {
+#qukiuprply .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#evykgpjnpf .gt_summary_row {
+#qukiuprply .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2099,16 +2290,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#evykgpjnpf .gt_first_summary_row {
+#qukiuprply .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#evykgpjnpf .gt_first_summary_row.thick {
+#qukiuprply .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#evykgpjnpf .gt_last_summary_row {
+#qukiuprply .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2118,7 +2309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#evykgpjnpf .gt_grand_summary_row {
+#qukiuprply .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2128,7 +2319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#evykgpjnpf .gt_first_grand_summary_row {
+#qukiuprply .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2138,7 +2329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#evykgpjnpf .gt_last_grand_summary_row_top {
+#qukiuprply .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2148,11 +2339,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#evykgpjnpf .gt_striped {
+#qukiuprply .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#evykgpjnpf .gt_table_body {
+#qukiuprply .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2161,7 +2352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#evykgpjnpf .gt_footnotes {
+#qukiuprply .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2175,7 +2366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#evykgpjnpf .gt_footnote {
+#qukiuprply .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2184,7 +2375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#evykgpjnpf .gt_sourcenotes {
+#qukiuprply .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2198,7 +2389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#evykgpjnpf .gt_sourcenote {
+#qukiuprply .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2206,72 +2397,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#evykgpjnpf .gt_left {
+#qukiuprply .gt_left {
   text-align: left;
 }
 
-#evykgpjnpf .gt_center {
+#qukiuprply .gt_center {
   text-align: center;
 }
 
-#evykgpjnpf .gt_right {
+#qukiuprply .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#evykgpjnpf .gt_font_normal {
+#qukiuprply .gt_font_normal {
   font-weight: normal;
 }
 
-#evykgpjnpf .gt_font_bold {
+#qukiuprply .gt_font_bold {
   font-weight: bold;
 }
 
-#evykgpjnpf .gt_font_italic {
+#qukiuprply .gt_font_italic {
   font-style: italic;
 }
 
-#evykgpjnpf .gt_super {
+#qukiuprply .gt_super {
   font-size: 65%;
 }
 
-#evykgpjnpf .gt_footnote_marks {
+#qukiuprply .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#evykgpjnpf .gt_asterisk {
+#qukiuprply .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#evykgpjnpf .gt_indent_1 {
+#qukiuprply .gt_indent_1 {
   text-indent: 5px;
 }
 
-#evykgpjnpf .gt_indent_2 {
+#qukiuprply .gt_indent_2 {
   text-indent: 10px;
 }
 
-#evykgpjnpf .gt_indent_3 {
+#qukiuprply .gt_indent_3 {
   text-indent: 15px;
 }
 
-#evykgpjnpf .gt_indent_4 {
+#qukiuprply .gt_indent_4 {
   text-indent: 20px;
 }
 
-#evykgpjnpf .gt_indent_5 {
+#qukiuprply .gt_indent_5 {
   text-indent: 25px;
 }
 
-#evykgpjnpf .katex-display {
+#qukiuprply .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#evykgpjnpf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qukiuprply div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2539,23 +2730,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/22.5-Apul-multiomic-SR/Apul-filtered-WGBS-CpG-counts.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-tbl-cap="Apul_mCpG (first 10 rows with row numbers)">
 <div class="cell-output-display">
-<div id="ogkjxmzcmp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ogkjxmzcmp table {
+<div id="wioiyhiatb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wioiyhiatb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ogkjxmzcmp thead, #ogkjxmzcmp tbody, #ogkjxmzcmp tfoot, #ogkjxmzcmp tr, #ogkjxmzcmp td, #ogkjxmzcmp th {
+#wioiyhiatb thead, #wioiyhiatb tbody, #wioiyhiatb tfoot, #wioiyhiatb tr, #wioiyhiatb td, #wioiyhiatb th {
   border-style: none;
 }
 
-#ogkjxmzcmp p {
+#wioiyhiatb p {
   margin: 0;
   padding: 0;
 }
 
-#ogkjxmzcmp .gt_table {
+#wioiyhiatb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2581,12 +2772,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#ogkjxmzcmp .gt_caption {
+#wioiyhiatb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ogkjxmzcmp .gt_title {
+#wioiyhiatb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2598,7 +2789,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#ogkjxmzcmp .gt_subtitle {
+#wioiyhiatb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2610,7 +2801,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#ogkjxmzcmp .gt_heading {
+#wioiyhiatb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2622,13 +2813,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ogkjxmzcmp .gt_bottom_border {
+#wioiyhiatb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ogkjxmzcmp .gt_col_headings {
+#wioiyhiatb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2643,7 +2834,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ogkjxmzcmp .gt_col_heading {
+#wioiyhiatb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2663,7 +2854,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ogkjxmzcmp .gt_column_spanner_outer {
+#wioiyhiatb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2675,15 +2866,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#ogkjxmzcmp .gt_column_spanner_outer:first-child {
+#wioiyhiatb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ogkjxmzcmp .gt_column_spanner_outer:last-child {
+#wioiyhiatb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ogkjxmzcmp .gt_column_spanner {
+#wioiyhiatb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2695,11 +2886,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#ogkjxmzcmp .gt_spanner_row {
+#wioiyhiatb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ogkjxmzcmp .gt_group_heading {
+#wioiyhiatb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2725,7 +2916,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#ogkjxmzcmp .gt_empty_group_heading {
+#wioiyhiatb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2740,15 +2931,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#ogkjxmzcmp .gt_from_md > :first-child {
+#wioiyhiatb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ogkjxmzcmp .gt_from_md > :last-child {
+#wioiyhiatb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ogkjxmzcmp .gt_row {
+#wioiyhiatb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2767,7 +2958,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ogkjxmzcmp .gt_stub {
+#wioiyhiatb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2780,7 +2971,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ogkjxmzcmp .gt_stub_row_group {
+#wioiyhiatb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2794,15 +2985,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#ogkjxmzcmp .gt_row_group_first td {
+#wioiyhiatb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ogkjxmzcmp .gt_row_group_first th {
+#wioiyhiatb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ogkjxmzcmp .gt_summary_row {
+#wioiyhiatb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2812,16 +3003,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ogkjxmzcmp .gt_first_summary_row {
+#wioiyhiatb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ogkjxmzcmp .gt_first_summary_row.thick {
+#wioiyhiatb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ogkjxmzcmp .gt_last_summary_row {
+#wioiyhiatb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2831,7 +3022,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ogkjxmzcmp .gt_grand_summary_row {
+#wioiyhiatb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2841,7 +3032,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ogkjxmzcmp .gt_first_grand_summary_row {
+#wioiyhiatb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2851,7 +3042,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#ogkjxmzcmp .gt_last_grand_summary_row_top {
+#wioiyhiatb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2861,11 +3052,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ogkjxmzcmp .gt_striped {
+#wioiyhiatb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ogkjxmzcmp .gt_table_body {
+#wioiyhiatb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2874,7 +3065,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ogkjxmzcmp .gt_footnotes {
+#wioiyhiatb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2888,7 +3079,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ogkjxmzcmp .gt_footnote {
+#wioiyhiatb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2897,7 +3088,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ogkjxmzcmp .gt_sourcenotes {
+#wioiyhiatb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2911,7 +3102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ogkjxmzcmp .gt_sourcenote {
+#wioiyhiatb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2919,72 +3110,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ogkjxmzcmp .gt_left {
+#wioiyhiatb .gt_left {
   text-align: left;
 }
 
-#ogkjxmzcmp .gt_center {
+#wioiyhiatb .gt_center {
   text-align: center;
 }
 
-#ogkjxmzcmp .gt_right {
+#wioiyhiatb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ogkjxmzcmp .gt_font_normal {
+#wioiyhiatb .gt_font_normal {
   font-weight: normal;
 }
 
-#ogkjxmzcmp .gt_font_bold {
+#wioiyhiatb .gt_font_bold {
   font-weight: bold;
 }
 
-#ogkjxmzcmp .gt_font_italic {
+#wioiyhiatb .gt_font_italic {
   font-style: italic;
 }
 
-#ogkjxmzcmp .gt_super {
+#wioiyhiatb .gt_super {
   font-size: 65%;
 }
 
-#ogkjxmzcmp .gt_footnote_marks {
+#wioiyhiatb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ogkjxmzcmp .gt_asterisk {
+#wioiyhiatb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ogkjxmzcmp .gt_indent_1 {
+#wioiyhiatb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ogkjxmzcmp .gt_indent_2 {
+#wioiyhiatb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ogkjxmzcmp .gt_indent_3 {
+#wioiyhiatb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ogkjxmzcmp .gt_indent_4 {
+#wioiyhiatb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ogkjxmzcmp .gt_indent_5 {
+#wioiyhiatb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ogkjxmzcmp .katex-display {
+#wioiyhiatb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ogkjxmzcmp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wioiyhiatb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3225,23 +3416,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="olgftxtncc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#olgftxtncc table {
+<div id="alghwrcmls" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#alghwrcmls table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#olgftxtncc thead, #olgftxtncc tbody, #olgftxtncc tfoot, #olgftxtncc tr, #olgftxtncc td, #olgftxtncc th {
+#alghwrcmls thead, #alghwrcmls tbody, #alghwrcmls tfoot, #alghwrcmls tr, #alghwrcmls td, #alghwrcmls th {
   border-style: none;
 }
 
-#olgftxtncc p {
+#alghwrcmls p {
   margin: 0;
   padding: 0;
 }
 
-#olgftxtncc .gt_table {
+#alghwrcmls .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3267,12 +3458,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#olgftxtncc .gt_caption {
+#alghwrcmls .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#olgftxtncc .gt_title {
+#alghwrcmls .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3284,7 +3475,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#olgftxtncc .gt_subtitle {
+#alghwrcmls .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3296,7 +3487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#olgftxtncc .gt_heading {
+#alghwrcmls .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3308,13 +3499,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#olgftxtncc .gt_bottom_border {
+#alghwrcmls .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#olgftxtncc .gt_col_headings {
+#alghwrcmls .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3329,7 +3520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#olgftxtncc .gt_col_heading {
+#alghwrcmls .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3349,7 +3540,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#olgftxtncc .gt_column_spanner_outer {
+#alghwrcmls .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3361,15 +3552,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#olgftxtncc .gt_column_spanner_outer:first-child {
+#alghwrcmls .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#olgftxtncc .gt_column_spanner_outer:last-child {
+#alghwrcmls .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#olgftxtncc .gt_column_spanner {
+#alghwrcmls .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3381,11 +3572,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#olgftxtncc .gt_spanner_row {
+#alghwrcmls .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#olgftxtncc .gt_group_heading {
+#alghwrcmls .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3411,7 +3602,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#olgftxtncc .gt_empty_group_heading {
+#alghwrcmls .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3426,15 +3617,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#olgftxtncc .gt_from_md > :first-child {
+#alghwrcmls .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#olgftxtncc .gt_from_md > :last-child {
+#alghwrcmls .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#olgftxtncc .gt_row {
+#alghwrcmls .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3453,7 +3644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#olgftxtncc .gt_stub {
+#alghwrcmls .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3466,7 +3657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#olgftxtncc .gt_stub_row_group {
+#alghwrcmls .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3480,15 +3671,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#olgftxtncc .gt_row_group_first td {
+#alghwrcmls .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#olgftxtncc .gt_row_group_first th {
+#alghwrcmls .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#olgftxtncc .gt_summary_row {
+#alghwrcmls .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3498,16 +3689,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#olgftxtncc .gt_first_summary_row {
+#alghwrcmls .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#olgftxtncc .gt_first_summary_row.thick {
+#alghwrcmls .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#olgftxtncc .gt_last_summary_row {
+#alghwrcmls .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3517,7 +3708,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#olgftxtncc .gt_grand_summary_row {
+#alghwrcmls .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3527,7 +3718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#olgftxtncc .gt_first_grand_summary_row {
+#alghwrcmls .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3537,7 +3728,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#olgftxtncc .gt_last_grand_summary_row_top {
+#alghwrcmls .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3547,11 +3738,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#olgftxtncc .gt_striped {
+#alghwrcmls .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#olgftxtncc .gt_table_body {
+#alghwrcmls .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3560,7 +3751,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#olgftxtncc .gt_footnotes {
+#alghwrcmls .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3574,7 +3765,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#olgftxtncc .gt_footnote {
+#alghwrcmls .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3583,7 +3774,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#olgftxtncc .gt_sourcenotes {
+#alghwrcmls .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3597,7 +3788,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#olgftxtncc .gt_sourcenote {
+#alghwrcmls .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3605,72 +3796,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#olgftxtncc .gt_left {
+#alghwrcmls .gt_left {
   text-align: left;
 }
 
-#olgftxtncc .gt_center {
+#alghwrcmls .gt_center {
   text-align: center;
 }
 
-#olgftxtncc .gt_right {
+#alghwrcmls .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#olgftxtncc .gt_font_normal {
+#alghwrcmls .gt_font_normal {
   font-weight: normal;
 }
 
-#olgftxtncc .gt_font_bold {
+#alghwrcmls .gt_font_bold {
   font-weight: bold;
 }
 
-#olgftxtncc .gt_font_italic {
+#alghwrcmls .gt_font_italic {
   font-style: italic;
 }
 
-#olgftxtncc .gt_super {
+#alghwrcmls .gt_super {
   font-size: 65%;
 }
 
-#olgftxtncc .gt_footnote_marks {
+#alghwrcmls .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#olgftxtncc .gt_asterisk {
+#alghwrcmls .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#olgftxtncc .gt_indent_1 {
+#alghwrcmls .gt_indent_1 {
   text-indent: 5px;
 }
 
-#olgftxtncc .gt_indent_2 {
+#alghwrcmls .gt_indent_2 {
   text-indent: 10px;
 }
 
-#olgftxtncc .gt_indent_3 {
+#alghwrcmls .gt_indent_3 {
   text-indent: 15px;
 }
 
-#olgftxtncc .gt_indent_4 {
+#alghwrcmls .gt_indent_4 {
   text-indent: 20px;
 }
 
-#olgftxtncc .gt_indent_5 {
+#alghwrcmls .gt_indent_5 {
   text-indent: 25px;
 }
 
-#olgftxtncc .katex-display {
+#alghwrcmls .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#olgftxtncc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#alghwrcmls div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3902,23 +4093,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="wkqdwuomfo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wkqdwuomfo table {
+<div id="xhsceheeyg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xhsceheeyg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wkqdwuomfo thead, #wkqdwuomfo tbody, #wkqdwuomfo tfoot, #wkqdwuomfo tr, #wkqdwuomfo td, #wkqdwuomfo th {
+#xhsceheeyg thead, #xhsceheeyg tbody, #xhsceheeyg tfoot, #xhsceheeyg tr, #xhsceheeyg td, #xhsceheeyg th {
   border-style: none;
 }
 
-#wkqdwuomfo p {
+#xhsceheeyg p {
   margin: 0;
   padding: 0;
 }
 
-#wkqdwuomfo .gt_table {
+#xhsceheeyg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3944,12 +4135,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#wkqdwuomfo .gt_caption {
+#xhsceheeyg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wkqdwuomfo .gt_title {
+#xhsceheeyg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3961,7 +4152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#wkqdwuomfo .gt_subtitle {
+#xhsceheeyg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3973,7 +4164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#wkqdwuomfo .gt_heading {
+#xhsceheeyg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3985,13 +4176,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wkqdwuomfo .gt_bottom_border {
+#xhsceheeyg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wkqdwuomfo .gt_col_headings {
+#xhsceheeyg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4006,7 +4197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wkqdwuomfo .gt_col_heading {
+#xhsceheeyg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4026,7 +4217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#wkqdwuomfo .gt_column_spanner_outer {
+#xhsceheeyg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4038,15 +4229,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#wkqdwuomfo .gt_column_spanner_outer:first-child {
+#xhsceheeyg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wkqdwuomfo .gt_column_spanner_outer:last-child {
+#xhsceheeyg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wkqdwuomfo .gt_column_spanner {
+#xhsceheeyg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4058,11 +4249,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#wkqdwuomfo .gt_spanner_row {
+#xhsceheeyg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wkqdwuomfo .gt_group_heading {
+#xhsceheeyg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4088,7 +4279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#wkqdwuomfo .gt_empty_group_heading {
+#xhsceheeyg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4103,15 +4294,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#wkqdwuomfo .gt_from_md > :first-child {
+#xhsceheeyg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wkqdwuomfo .gt_from_md > :last-child {
+#xhsceheeyg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wkqdwuomfo .gt_row {
+#xhsceheeyg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4130,7 +4321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#wkqdwuomfo .gt_stub {
+#xhsceheeyg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4143,7 +4334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wkqdwuomfo .gt_stub_row_group {
+#xhsceheeyg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4157,15 +4348,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#wkqdwuomfo .gt_row_group_first td {
+#xhsceheeyg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wkqdwuomfo .gt_row_group_first th {
+#xhsceheeyg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wkqdwuomfo .gt_summary_row {
+#xhsceheeyg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4175,16 +4366,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wkqdwuomfo .gt_first_summary_row {
+#xhsceheeyg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wkqdwuomfo .gt_first_summary_row.thick {
+#xhsceheeyg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wkqdwuomfo .gt_last_summary_row {
+#xhsceheeyg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4194,7 +4385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#wkqdwuomfo .gt_grand_summary_row {
+#xhsceheeyg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4204,7 +4395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wkqdwuomfo .gt_first_grand_summary_row {
+#xhsceheeyg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4214,7 +4405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#wkqdwuomfo .gt_last_grand_summary_row_top {
+#xhsceheeyg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4224,11 +4415,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#wkqdwuomfo .gt_striped {
+#xhsceheeyg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wkqdwuomfo .gt_table_body {
+#xhsceheeyg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4237,7 +4428,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#wkqdwuomfo .gt_footnotes {
+#xhsceheeyg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4251,7 +4442,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wkqdwuomfo .gt_footnote {
+#xhsceheeyg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4260,7 +4451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wkqdwuomfo .gt_sourcenotes {
+#xhsceheeyg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4274,7 +4465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wkqdwuomfo .gt_sourcenote {
+#xhsceheeyg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4282,72 +4473,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wkqdwuomfo .gt_left {
+#xhsceheeyg .gt_left {
   text-align: left;
 }
 
-#wkqdwuomfo .gt_center {
+#xhsceheeyg .gt_center {
   text-align: center;
 }
 
-#wkqdwuomfo .gt_right {
+#xhsceheeyg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wkqdwuomfo .gt_font_normal {
+#xhsceheeyg .gt_font_normal {
   font-weight: normal;
 }
 
-#wkqdwuomfo .gt_font_bold {
+#xhsceheeyg .gt_font_bold {
   font-weight: bold;
 }
 
-#wkqdwuomfo .gt_font_italic {
+#xhsceheeyg .gt_font_italic {
   font-style: italic;
 }
 
-#wkqdwuomfo .gt_super {
+#xhsceheeyg .gt_super {
   font-size: 65%;
 }
 
-#wkqdwuomfo .gt_footnote_marks {
+#xhsceheeyg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wkqdwuomfo .gt_asterisk {
+#xhsceheeyg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wkqdwuomfo .gt_indent_1 {
+#xhsceheeyg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wkqdwuomfo .gt_indent_2 {
+#xhsceheeyg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wkqdwuomfo .gt_indent_3 {
+#xhsceheeyg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wkqdwuomfo .gt_indent_4 {
+#xhsceheeyg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wkqdwuomfo .gt_indent_5 {
+#xhsceheeyg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wkqdwuomfo .katex-display {
+#xhsceheeyg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wkqdwuomfo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xhsceheeyg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4574,23 +4765,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-tbl-cap="Peve_lncRNA (first 10 rows with row numbers)">
 <div class="cell-output-display">
-<div id="jfixifpklw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jfixifpklw table {
+<div id="zstduqrsdb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zstduqrsdb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jfixifpklw thead, #jfixifpklw tbody, #jfixifpklw tfoot, #jfixifpklw tr, #jfixifpklw td, #jfixifpklw th {
+#zstduqrsdb thead, #zstduqrsdb tbody, #zstduqrsdb tfoot, #zstduqrsdb tr, #zstduqrsdb td, #zstduqrsdb th {
   border-style: none;
 }
 
-#jfixifpklw p {
+#zstduqrsdb p {
   margin: 0;
   padding: 0;
 }
 
-#jfixifpklw .gt_table {
+#zstduqrsdb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4616,12 +4807,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#jfixifpklw .gt_caption {
+#zstduqrsdb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jfixifpklw .gt_title {
+#zstduqrsdb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4633,7 +4824,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#jfixifpklw .gt_subtitle {
+#zstduqrsdb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4645,7 +4836,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#jfixifpklw .gt_heading {
+#zstduqrsdb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4657,13 +4848,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#jfixifpklw .gt_bottom_border {
+#zstduqrsdb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jfixifpklw .gt_col_headings {
+#zstduqrsdb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4678,7 +4869,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#jfixifpklw .gt_col_heading {
+#zstduqrsdb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4698,7 +4889,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#jfixifpklw .gt_column_spanner_outer {
+#zstduqrsdb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4710,15 +4901,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#jfixifpklw .gt_column_spanner_outer:first-child {
+#zstduqrsdb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jfixifpklw .gt_column_spanner_outer:last-child {
+#zstduqrsdb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jfixifpklw .gt_column_spanner {
+#zstduqrsdb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4730,11 +4921,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#jfixifpklw .gt_spanner_row {
+#zstduqrsdb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jfixifpklw .gt_group_heading {
+#zstduqrsdb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4760,7 +4951,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#jfixifpklw .gt_empty_group_heading {
+#zstduqrsdb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4775,15 +4966,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#jfixifpklw .gt_from_md > :first-child {
+#zstduqrsdb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jfixifpklw .gt_from_md > :last-child {
+#zstduqrsdb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jfixifpklw .gt_row {
+#zstduqrsdb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4802,7 +4993,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#jfixifpklw .gt_stub {
+#zstduqrsdb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4815,7 +5006,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#jfixifpklw .gt_stub_row_group {
+#zstduqrsdb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4829,15 +5020,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#jfixifpklw .gt_row_group_first td {
+#zstduqrsdb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jfixifpklw .gt_row_group_first th {
+#zstduqrsdb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jfixifpklw .gt_summary_row {
+#zstduqrsdb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4847,16 +5038,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#jfixifpklw .gt_first_summary_row {
+#zstduqrsdb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jfixifpklw .gt_first_summary_row.thick {
+#zstduqrsdb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jfixifpklw .gt_last_summary_row {
+#zstduqrsdb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4866,7 +5057,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#jfixifpklw .gt_grand_summary_row {
+#zstduqrsdb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4876,7 +5067,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#jfixifpklw .gt_first_grand_summary_row {
+#zstduqrsdb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4886,7 +5077,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#jfixifpklw .gt_last_grand_summary_row_top {
+#zstduqrsdb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4896,11 +5087,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#jfixifpklw .gt_striped {
+#zstduqrsdb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jfixifpklw .gt_table_body {
+#zstduqrsdb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4909,7 +5100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#jfixifpklw .gt_footnotes {
+#zstduqrsdb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4923,7 +5114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#jfixifpklw .gt_footnote {
+#zstduqrsdb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4932,7 +5123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#jfixifpklw .gt_sourcenotes {
+#zstduqrsdb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4946,7 +5137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#jfixifpklw .gt_sourcenote {
+#zstduqrsdb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4954,72 +5145,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#jfixifpklw .gt_left {
+#zstduqrsdb .gt_left {
   text-align: left;
 }
 
-#jfixifpklw .gt_center {
+#zstduqrsdb .gt_center {
   text-align: center;
 }
 
-#jfixifpklw .gt_right {
+#zstduqrsdb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jfixifpklw .gt_font_normal {
+#zstduqrsdb .gt_font_normal {
   font-weight: normal;
 }
 
-#jfixifpklw .gt_font_bold {
+#zstduqrsdb .gt_font_bold {
   font-weight: bold;
 }
 
-#jfixifpklw .gt_font_italic {
+#zstduqrsdb .gt_font_italic {
   font-style: italic;
 }
 
-#jfixifpklw .gt_super {
+#zstduqrsdb .gt_super {
   font-size: 65%;
 }
 
-#jfixifpklw .gt_footnote_marks {
+#zstduqrsdb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jfixifpklw .gt_asterisk {
+#zstduqrsdb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jfixifpklw .gt_indent_1 {
+#zstduqrsdb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jfixifpklw .gt_indent_2 {
+#zstduqrsdb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jfixifpklw .gt_indent_3 {
+#zstduqrsdb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jfixifpklw .gt_indent_4 {
+#zstduqrsdb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jfixifpklw .gt_indent_5 {
+#zstduqrsdb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jfixifpklw .katex-display {
+#zstduqrsdb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jfixifpklw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zstduqrsdb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5281,6 +5472,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
