@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Portal combining JBrowse genome browser with downloadable annotation tables.">
+<meta name="description" content="E5 Monitoring of Species Across Intervals &amp; Colonies">
 
-<title>MOSAiC – MOSAiC Genome Portal</title>
+<title>E5-MOSAiC – MOSAiC Genome Portal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-960cc9eac5395d1658253b679c30d018.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -107,10 +107,56 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+        <div class="sidebar-tools-collapse">
+    <a href="https://github.com/urol-e5/MOSAiC" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Files</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JBrowse</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -128,12 +174,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MOSAiC</h1>
+<h1 class="title">E5-MOSAiC</h1>
 </div>
 
 <div>
   <div class="description">
-    Portal combining JBrowse genome browser with downloadable annotation tables.
+    E5 Monitoring of Species Across Intervals &amp; Colonies
   </div>
 </div>
 
@@ -150,13 +196,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to the MOSAiC resource portal.</p>
-<p>This repository now serves complementary purposes of direct data delivery and an user-friendly JBrowse genome browser.</p>
+<p>This platform serves complementary purposes of direct data delivery and an user-friendly JBrowse genome browser.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/logo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+</figure>
+</div>
 <section id="jbrowse" class="level2">
 <h2 class="anchored" data-anchor-id="jbrowse">JBrowse</h2>
-<p>Open the genome browser directly: <a href="../index.html" target="_blank">Open JBrowse</a>.</p>
+<p>Open the genome browser directly: <a href="https://gannet.fish.washington.edu/e5-mosaic" target="_blank">Open JBrowse</a>.</p>
 <p>Embedded view below:</p>
-<iframe src="../index.html" style="width:100%;height:700px;border:1px solid #ccc;border-radius:4px;" title="JBrowse">
+<iframe src="https://gannet.fish.washington.edu/e5-mosaic" style="width:100%;height:700px;border:1px solid #ccc;border-radius:4px;" title="JBrowse">
 </iframe>
 </section>
 <section id="data-files" class="level2">
