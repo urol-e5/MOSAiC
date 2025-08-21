@@ -2,10 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://urol-e5.github.io/MOSAiC/counts.html</loc>
-    <lastmod>2025-08-21T20:24:24.607Z</lastmod>
+    <lastmod>2025-08-21T21:05:34.650Z</lastmod>
+  </url>
+  <url>
+    <loc>https://urol-e5.github.io/MOSAiC/jbrowse.html</loc>
+    <lastmod>2025-08-21T21:01:34.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://urol-e5.github.io/MOSAiC/features.html</loc>
+    <lastmod>2025-08-21T21:03:29.283Z</lastmod>
   </url>
   <url>
     <loc>https://urol-e5.github.io/MOSAiC/index.html</loc>
-    <lastmod>2025-08-21T20:39:58.808Z</lastmod>
+    <lastmod>2025-08-21T21:04:52.350Z</lastmod>
   </url>
 </urlset>

@@ -99,21 +99,32 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "E5-MOSAiC",
+    "objectID": "jbrowse.html",
+    "href": "jbrowse.html",
+    "title": "JBrowse",
     "section": "",
-    "text": "This platform serves complementary purposes of direct data delivery and an user-friendly JBrowse genome browser.",
+    "text": "Open the genome browser directly: Open JBrowse.\nEmbedded view below:",
     "crumbs": [
-      "Home"
+      "JBrowse"
     ]
   },
   {
-    "objectID": "index.html#jbrowse",
-    "href": "index.html#jbrowse",
-    "title": "E5-MOSAiC",
-    "section": "JBrowse",
-    "text": "JBrowse\nOpen the genome browser directly: Open JBrowse.\nEmbedded view below:",
+    "objectID": "features.html",
+    "href": "features.html",
+    "title": "Genome Feature",
+    "section": "",
+    "text": "Acropora pulchra - we have data on 44371 genes, 51 miRNAs, 15900 lncRNAs, and 96785 mCpGs.\nPorites evermanni - we have data on 40389 genes, 48 miRNAs, 8319 lncRNAs,, and nrow(Peve_mCpG) mCpGs.\n\nAcropora pulchra",
+    "crumbs": [
+      "Data Files",
+      "Genome Features"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "E5 Monitoring of Species Across Intervals & Colonies",
+    "section": "",
+    "text": "This platform serves complementary purposes of direct data delivery and an user-friendly JBrowse genome browser.",
     "crumbs": [
       "Home"
     ]
