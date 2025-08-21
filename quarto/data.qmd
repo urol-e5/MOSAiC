@@ -21,9 +21,8 @@ library(dplyr)
 library(tibble)
 library(knitr)
 library(gt)
+library(htmltools)
 ```
-
-
 
 ```{r, include=FALSE}
 
@@ -32,9 +31,20 @@ library(gt)
 
 
 Apul_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv"
+
 Apul_mirna_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt"
+
 Apul_lncRNA_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt"
+
 Apul_mCpG_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/22.5-Apul-multiomic-SR/Apul-filtered-WGBS-CpG-counts.csv"
+
+
+
+
+
+
+
+
 
 
 # read in 
@@ -63,11 +73,6 @@ lines_mCpG   <- count_lines(Apul_mCpG_url)
 # )
 ```
 
-
-# Apul
-
-
-
 ```{r}
 
 # Build summary tibble
@@ -81,93 +86,121 @@ summary_tbl <- tibble(
 summary_tbl %>%
   gt() %>%
   tab_header(
-    title = "Summary of Apul Data Files",
-    subtitle = "Counts of rows, and columns"
+    title = "Summary of Data Files",
   )
 ```
 
+# Apul
 
+## Gene Counts
 
 ```{r}
+#| echo: false
 #| results: asis
-# (YAML already has format: html: code-copy: true)
 
-labs <- c("Apul gene counts", "Apul miRNA counts", "Apul lncRNA counts", "Apul mCpG counts")
-urls <- c(Apul_gene_url, Apul_mirna_url, Apul_lncRNA_url, Apul_mCpG_url)
 
-for (i in seq_along(urls)) {
-  cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
+cat(as.character(
+  tags$a(
+    href = Apul_gene_url,
+    class = "btn btn-primary",
+    target = "_blank",
+    download = "Apul_gene_count_matrix.csv",
+    "Download Gene Counts"
+  )
+))
 ```
 
-
 ```{r}
 #| results: asis
 # (YAML already has format: html: code-copy: true)
 
-labs <- c("Apul gene counts")
+#labs <- c("direct url")
 urls <- c(Apul_gene_url)
 
 for (i in seq_along(urls)) {
-  cat("**", labs[i], "**\n\n", sep = "")
+  #cat("**", labs[i], "**\n\n", sep = "")
   # Use bash so Quarto shows a copy button for each block
   cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
 }
 ```
 
-
-
-
-
-
-# Apul Gene Counts
-
 ```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-labs <- c("direct url")
-urls <- c(Apul_gene_url)
-
-for (i in seq_along(urls)) {
-  cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-```{r}
-Apul_gene |>
-  rowid_to_column("Row") |>
-  slice_head(n = 4) |>
-  gt() |>
-  tab_caption("Preview")  # caption shown above the table
-```
-
-
-```{r}
-#| tbl-cap: "Preview"
-
 Apul_gene |>
   rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
 
-
-# Apul miRNA Counts
+## miRNA Counts
 
 ```{r}
-#| tbl-cap: "Apul_miRNA (first 10 rows with row numbers)"
+#| echo: false
+#| results: asis
+
+
+cat(as.character(
+  tags$a(
+    href = Apul_mirna_url,
+    class = "btn btn-primary",
+    target = "_blank",
+    download = "Apul_gene_count_matrix.csv",
+    "Download miRNA Counts"
+  )
+))
+```
+
+```{r}
+#| results: asis
+# (YAML already has format: html: code-copy: true)
+
+#labs <- c("direct url")
+urls <- c(Apul_mirna_url)
+
+for (i in seq_along(urls)) {
+  #cat("**", labs[i], "**\n\n", sep = "")
+  # Use bash so Quarto shows a copy button for each block
+  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+}
+```
+
+```{r}
 Apul_mirna |>
   rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
 
+## lncRNA Counts
 
-# Apul lncRNA Counts
+```{r}
+#| echo: false
+#| results: asis
+
+
+cat(as.character(
+  tags$a(
+    href = Apul_lncRNA_url,
+    class = "btn btn-primary",
+    target = "_blank",
+    download = "Apul_gene_count_matrix.csv",
+    "Download lncRNA Counts"
+  )
+))
+```
+
+```{r}
+#| results: asis
+# (YAML already has format: html: code-copy: true)
+
+#labs <- c("direct url")
+urls <- c(Apul_lncRNA_url)
+
+for (i in seq_along(urls)) {
+  #cat("**", labs[i], "**\n\n", sep = "")
+  # Use bash so Quarto shows a copy button for each block
+  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+}
+```
 
 ```{r}
 #| tbl-cap: "Apul_lncRNA (first 10 rows with row numbers)"
@@ -177,7 +210,37 @@ Apul_lncRNA |>
   gt()
 ```
 
-# Apul mCpG Counts
+## mCpG Percentage
+
+```{r}
+#| echo: false
+#| results: asis
+
+
+cat(as.character(
+  tags$a(
+    href = Apul_mCpG_url,
+    class = "btn btn-primary",
+    target = "_blank",
+    download = "Apul_gene_count_matrix.csv",
+    "Download MCpG Percentage"
+  )
+))
+```
+
+```{r}
+#| results: asis
+# (YAML already has format: html: code-copy: true)
+
+#labs <- c("direct url")
+urls <- c(Apul_mCpG_url)
+
+for (i in seq_along(urls)) {
+  #cat("**", labs[i], "**\n\n", sep = "")
+  # Use bash so Quarto shows a copy button for each block
+  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+}
+```
 
 ```{r}
 #| tbl-cap: "Apul_mCpG (first 10 rows with row numbers)"
