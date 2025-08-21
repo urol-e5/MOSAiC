@@ -4,6 +4,8 @@ project:
 
 website:
   title: "MOSAiC Genome Portal"
+  site-url: https://urol-e5.github.io/MOSAiC/
+  base-url: /MOSAiC/
   navbar:
     left:
       - text: Home

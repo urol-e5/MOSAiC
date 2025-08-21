@@ -63,81 +63,9 @@ lines_mCpG   <- count_lines(Apul_mCpG_url)
 # )
 ```
 
-```{r}
-urls <- c(
-  Apul_gene_url,
-  Apul_mirna_url,
-  Apul_lncRNA_url,
-  Apul_mCpG_url
-)
-
-for (u in urls) {
-  cat("```text\n", u, "\n```\n\n", sep = "")
-}
-
-```
-
-
-``` bash
-https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv
-```
-
-```{r}
-urls <- c(
-  Apul_gene_url,
-  Apul_mirna_url,
-  Apul_lncRNA_url,
-  Apul_mCpG_url
-)
-
-cat(paste0("```\n", paste(urls, collapse = "\n"), "\n```"))
-
-```
-
-```{r}
-urls <- c(
-  Apul_gene_url,
-  Apul_mirna_url,
-  Apul_lncRNA_url,
-  Apul_mCpG_url
-)
-
-cat(paste0("```\n", paste(urls, collapse = "\n"), "\n```"))
-
-```
-
-```{r}
-cat("``` bash",
-    Apul_gene_url,
-    "```\n\n",
-    "```",
-    Apul_mirna_url,
-    "```\n\n",
-    "```",
-    Apul_lncRNA_url,
-    "```\n\n",
-    "```",
-    Apul_mCpG_url,
-    "```",
-    sep = "\n")
-
-```
-
 
 # Apul
 
-```{r download_links, echo=FALSE, results='asis'}
-# Build a small data.frame of link labels and URLs
-download_items <- data.frame(
-  Label = c("Apul Gene Counts", "Apul miRNA Counts", "Apul lncRNA Counts", "Apul mCpG (WGBS) Counts"),
-  URL   = c(Apul_gene_url, Apul_mirna_url, Apul_lncRNA_url, Apul_mCpG_url),
-  stringsAsFactors = FALSE
-)
-
-# Emit markdown bullet list with direct download attribute
-links_md <- sprintf("- <a href=\"%s\" download=\"%s\">%s</a>", download_items$URL, basename(download_items$URL), download_items$Label)
-cat(paste(links_md, collapse = "\n"))
-```
 
 
 ```{r}
@@ -160,27 +88,67 @@ summary_tbl %>%
 
 
 
+```{r}
+#| results: asis
+# (YAML already has format: html: code-copy: true)
+
+labs <- c("Apul gene counts", "Apul miRNA counts", "Apul lncRNA counts", "Apul mCpG counts")
+urls <- c(Apul_gene_url, Apul_mirna_url, Apul_lncRNA_url, Apul_mCpG_url)
+
+for (i in seq_along(urls)) {
+  cat("**", labs[i], "**\n\n", sep = "")
+  # Use bash so Quarto shows a copy button for each block
+  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+}
+```
+
+
+```{r}
+#| results: asis
+# (YAML already has format: html: code-copy: true)
+
+labs <- c("Apul gene counts")
+urls <- c(Apul_gene_url)
+
+for (i in seq_along(urls)) {
+  cat("**", labs[i], "**\n\n", sep = "")
+  # Use bash so Quarto shows a copy button for each block
+  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+}
+```
+
+
+
+
 
 
 # Apul Gene Counts
 
-```{r, echo=FALSE}
-# Display as an interactive datatable
-datatable(
-  head(Apul_gene, n = 100),  # Use head function to subset the data
-  extensions = 'Buttons',
-  options = list(
-    dom = 'Bfrtip',  # Include 't' for table display
-    buttons = c('copy'),
-    pageLength = 5  # Optionally set a smaller default page length if needed
-  ),
-  filter = "top",
-  rownames = FALSE
-)
+```{r}
+#| results: asis
+# (YAML already has format: html: code-copy: true)
+
+labs <- c("direct url")
+urls <- c(Apul_gene_url)
+
+for (i in seq_along(urls)) {
+  cat("**", labs[i], "**\n\n", sep = "")
+  # Use bash so Quarto shows a copy button for each block
+  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+}
+```
+```{r}
+Apul_gene |>
+  rowid_to_column("Row") |>
+  slice_head(n = 4) |>
+  gt() |>
+  tab_caption("Preview")  # caption shown above the table
 ```
 
+
 ```{r}
-#| tbl-cap: "Apul_gene (first 10 rows with row numbers)"
+#| tbl-cap: "Preview"
+
 Apul_gene |>
   rowid_to_column("Row") |>
   slice_head(n = 4) |>
@@ -189,22 +157,6 @@ Apul_gene |>
 
 
 # Apul miRNA Counts
-
-```{r, echo=FALSE}
-# Display as an interactive datatable
-datatable(
-  Apul_mirna,  # Use head function to subset the data
-  extensions = 'Buttons',
-  options = list(
-    dom = 'Bfrtip',  # Include 't' for table display
-    buttons = c('copy', 'csv', 'excel', 'pdf'),
-    pageLength = 5  # Optionally set a smaller default page length if needed
-  ),
-  filter = "top",
-  rownames = FALSE
-)
-
-```
 
 ```{r}
 #| tbl-cap: "Apul_miRNA (first 10 rows with row numbers)"
@@ -217,22 +169,6 @@ Apul_mirna |>
 
 # Apul lncRNA Counts
 
-```{r, echo=FALSE}
-# Display as an interactive datatable
-datatable(
-  head(Apul_lncRNA, n = 100),  # Use head function to subset the data
-  extensions = 'Buttons',
-  options = list(
-    dom = 'Bfrtip',  # Include 't' for table display
-    buttons = c('copy'),
-    pageLength = 5  # Optionally set a smaller default page length if needed
-  ),
-  filter = "top",
-  rownames = FALSE
-)
-
-```
-
 ```{r}
 #| tbl-cap: "Apul_lncRNA (first 10 rows with row numbers)"
 Apul_lncRNA |>
@@ -242,22 +178,6 @@ Apul_lncRNA |>
 ```
 
 # Apul mCpG Counts
-
-```{r, echo=FALSE}
-# Display as an interactive datatable
-datatable(
-  head(Apul_mCpG, n = 100),  # Use head function to subset the data
-  extensions = 'Buttons',
-  options = list(
-    dom = 'Bfrtip',  # Include 't' for table display
-    buttons = c('copy'),
-    pageLength = 5  # Optionally set a smaller default page length if needed
-  ),
-  filter = "top",
-  rownames = FALSE
-)
-
-```
 
 ```{r}
 #| tbl-cap: "Apul_mCpG (first 10 rows with row numbers)"
