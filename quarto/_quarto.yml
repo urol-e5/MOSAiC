@@ -3,25 +3,49 @@ project:
   output-dir: _site
 
 website:
-  title: "MOSAiC Genome Portal"
+  title: "MOSAiC"
   site-url: https://urol-e5.github.io/MOSAiC/
   navbar:
-    left:
+    logo: img/sm_logo.png
+  #   left:
+  #     - text: Home
+  #       href: index.qmd
+  #     - text: Data Files
+  #       href: data.qmd
+  #     - text: JBrowse
+  #       href: https://gannet.fish.washington.edu/e5-mosaic
+        
+        
+  sidebar:
+    style: "docked"        # or "floating"
+    search: true
+    collapse-level: 2
+    contents:
       - text: Home
-        href: index.qmd
-      - text: Data Files
-        href: data.qmd
-      - text: JBrowse
-        href: ../index.html
+        file: index.qmd
+      - section: "Data Files"
+        contents:
+          - text: "Expression Values"
+            href: counts.qmd
+          - text: "Genome Features"
+            href: features.qmd
+      - text: JBrowse 
+        file: jbrowse.qmd
+
+    tools:
+      - icon: github
+        href: https://github.com/urol-e5/MOSAiC
+        
+        
   page-footer:
     left: "© 2025 MOSAiC"
     right: "Built with Quarto"
 
 format:
   html:
-    theme: cosmo
-    toc: true
-    code-fold: true
+    theme:
+      light: flatly
+      dark: cyborg
 
 filters:
   - filters/list-data.lua

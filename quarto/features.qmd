@@ -1,0 +1,88 @@
+---
+title: "Genome Feature"
+description: "Beds and such"
+format:
+  html:
+    code-copy: true
+    toc: true
+    toc-location: right
+    toc-expand: true
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(DT)
+library(readxl)
+library(plotly)
+library(readr)
+library(dplyr)
+library(tibble)
+library(knitr)
+library(gt)
+library(htmltools)
+```
+
+```{r, include=FALSE}
+
+
+# Define key paths and tool directories
+
+
+Apul_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv"
+
+Apul_mirna_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt"
+
+Apul_lncRNA_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt"
+
+Apul_mCpG_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/22.5-Apul-multiomic-SR/Apul-filtered-WGBS-CpG-counts.csv"
+
+
+Peve_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv"
+
+Peve_mirna_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt"
+
+Peve_lncRNA_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt"
+
+#Peve_mCpG_url <- "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250728_meth_Peve/merged-WGBS-CpG-counts.csv"
+
+
+Ptuh_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv"
+
+Ptuh_mirna_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptua_miRNA_counts_formatted.txt"
+
+#Peve_lncRNA_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt"
+
+#Peve_mCpG_url <- "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250728_meth_Peve/merged-WGBS-CpG-counts.csv"
+
+
+
+# read in 
+
+
+Apul_gene <- read_csv(Apul_gene_url)
+Apul_mirna <- read_delim(Apul_mirna_url, delim = "\t", col_names = TRUE)
+Apul_lncRNA <- read_delim(Apul_lncRNA_url, delim = "\t", col_names = TRUE, skip = 7)
+Apul_mCpG <- read_csv(Apul_mCpG_url)
+
+
+Peve_gene <- read_csv(Peve_gene_url)
+Peve_mirna <- read_delim(Peve_mirna_url, delim = "\t", col_names = TRUE)
+Peve_lncRNA <- read_delim(Peve_lncRNA_url, delim = "\t", col_names = TRUE, skip = 7)
+#Peve_mCpG <- read_csv(Peve_mCpG_url)
+
+
+```
+
+
+*Acropora pulchra* - we have data on **`r nrow(Apul_gene)`** genes, **`r nrow(Apul_mirna)`** miRNAs, **`r nrow(Apul_lncRNA)`** lncRNAs, and **`r nrow(Apul_mCpG)`** mCpGs.
+
+*Porites evermanni* - we have data on **`r nrow(Peve_gene)`** genes, **`r nrow(Peve_mirna)`** miRNAs, **`r nrow(Peve_lncRNA)`** lncRNAs,, and **`nrow(Peve_mCpG)`** mCpGs.
+
+# *Acropora pulchra*
+
+
