@@ -1,0 +1,35 @@
+{
+  "assemblies": [
+    {
+      "name": "Apul",
+      "displayName": "Acropora pulchra",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "apul_refseq",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "data/Apul/Apulchra-genome.fa"
+          },
+          "faiLocation": {
+            "uri": "data/Apul/Apulchra-genome.fa.fai"
+          }
+        }
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "type": "FeatureTrack",
+      "trackId": "apul_gff3_plain",
+      "name": "Gene annotations (GFF3)",
+      "assemblyNames": ["Apul"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "data/Apul/Apulchra-genome.sorted.gff"
+        }
+      }
+    }
+  ]
+}
