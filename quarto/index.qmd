@@ -1,5 +1,5 @@
 ---
-title: "E5 Monitoring of Species Across Intervals & Colonies"
+title: "E5 - Monitoring of Species Across Intervals & Colonies"
 #description: "E5 Monitoring of Species Across Intervals & Colonies"
 ---
 
@@ -8,3 +8,16 @@ This platform serves complementary purposes of direct data delivery and an user-
 
 ![](img/logo.png){fig-align="center" width="400"}
 
+
+
+<div style="display: flex; align-items: center; gap: 1em;">
+
+<span style="font-size: 1.1em;">👉 <a href="jbrowse.html">Explore JBrowse Genome Browser</a></span>
+
+<a href="https://github.com/urol-e5/MOSAiC/releases">
+  <img src="https://img.shields.io/github/v/release/urol-e5/MOSAiC" style="height: 1.4em;" />
+</a>
+
+</div>
+
+For questions or feedback, [please submit an issue](https://github.com/urol-e5/MOSAiC/issues/new/choose) 🧬

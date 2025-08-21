@@ -23,6 +23,8 @@ website:
     contents:
       - text: Home
         file: index.qmd
+      - text: About
+        file: about.qmd        
       - section: "Data Files"
         contents:
           - text: "Expression Values"

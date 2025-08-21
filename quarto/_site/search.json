@@ -99,13 +99,13 @@
     ]
   },
   {
-    "objectID": "jbrowse.html",
-    "href": "jbrowse.html",
-    "title": "JBrowse",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "E5 Monitoring of Species Across Intervals & Colonies",
     "section": "",
-    "text": "Open the genome browser directly: Open JBrowse.\nEmbedded view below:",
+    "text": "This platform serves complementary purposes of direct data delivery and an user-friendly JBrowse genome browser.\n\n\n\n\n\n\n👉 Explore JBrowse Genome Browser\n  \n\nFor questions or feedback, please submit an issue 🧬",
     "crumbs": [
-      "JBrowse"
+      "Home"
     ]
   },
   {
@@ -120,13 +120,43 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "E5 Monitoring of Species Across Intervals & Colonies",
+    "objectID": "jbrowse.html",
+    "href": "jbrowse.html",
+    "title": "JBrowse",
     "section": "",
-    "text": "This platform serves complementary purposes of direct data delivery and an user-friendly JBrowse genome browser.",
+    "text": "Open the genome browser directly: Open JBrowse.\nEmbedded view below:",
     "crumbs": [
-      "Home"
+      "JBrowse"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#quarto",
+    "href": "about.html#quarto",
+    "title": "About",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#running-code",
+    "href": "about.html#running-code",
+    "title": "About",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "crumbs": [
+      "About"
     ]
   }
 ]

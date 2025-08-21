@@ -1,5 +1,5 @@
 ---
-title: "Genome Feature"
+title: "Genome Features"
 description: "Beds and such"
 format:
   html:
