@@ -1,14 +1,11 @@
 ---
-title: "MOSAiC Genome Resources"
-description: "Portal combining JBrowse genome browser with downloadable annotation tables."
+title: "E5-MOSAiC"
+description: "E5 Monitoring of Species Across Intervals & Colonies"
 ---
 
 Welcome to the MOSAiC resource portal.
 
-This repository now serves two complementary purposes:
-
-1. An interactive JBrowse instance (launch it via the JBrowse link in the navbar).
-2. A Quarto website (this site) documenting available genome feature / annotation tab-delimited files for download and reuse.
+This repository now serves complementary purposes of direct data delivery and an user-friendly JBrowse genome browser of data as part of E5.
 
 ## JBrowse
 
@@ -16,35 +13,12 @@ Open the genome browser directly: [Open JBrowse](../index.html){target="_blank"}
 
 Embedded view below:
 
-<iframe src="../index.html" style="width:100%;height:700px;border:1px solid #ccc;border-radius:4px;" title="JBrowse"></iframe>
+<iframe src="../index.html" style="width:100%;height:700px;border:1px solid #ccc;border-radius:4px;" title="JBrowse">
+
+</iframe>
 
 ## Data Files
 
 See the [Data Files](data.qmd) page for an automatically generated listing of resources placed in the `data/` directory.
 
-## Contributing Data
-
-Place additional tab-delimited files (e.g. BED, GFF3, TSV, CSV) into the top-level `data/` directory. Re-render this site (instructions in the root `README.md`) to update the listing.
-
-## Build
-
-You need the Quarto CLI installed locally.
-
-```
-quarto --version
-quarto render quarto/
-```
-
-Preview with live reload:
-
-```
-quarto preview quarto/
-```
-
-## Future Ideas
-
-- GitHub Action to auto-render on push.
-- Track configuration linking directly to files in `data/`.
-- Simple search across annotation files.
-
-Issues and PRs welcome.
+## 

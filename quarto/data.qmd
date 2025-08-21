@@ -1,30 +1,76 @@
 ---
 title: "Data Files"
 description: "Downloadable genome feature, annotation, and related tab-delimited files."
+format: html
+editor: visual
+execute:
+  echo: true
+  warning: false
+  message: false
 ---
 
-Automatically generated inventory of files in the repository root `data/` directory.
+```{r setup, include=FALSE}
+library(tidyverse)
+library(DT)
+library(readxl)
+library(plotly)
+library(readr)
+library(dplyr)
 
-> After adding or removing files, run `quarto render quarto/` to refresh.
-
-```{=html}
-<div class="callout callout-note"><strong>Tip:</strong> Right-click filenames to copy link address.</div>
 ```
 
-{{< data-file-table >}}
+# Genome Count Matrics
 
-## Adding New Files
+### Ge
 
-1. Drop files into `data/` (avoid spaces; prefer `.bed`, `.gff3`, `.tsv`, `.csv`).
-2. Commit & push.
-3. Re-render the site locally (or via CI once configured).
 
-Optional metadata sidecar: create `<filename>.yml` with e.g.:
+## Gene Count Matrix
 
-```yaml
-description: High-confidence gene models.
-organism: Example species
-source: Ensembl v110
+- [Download Apul Gene Counts (CSV)](https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv){download="apul-gene_count_matrix.csv"}
+
+```{r, echo=FALSE}
+
+# Read the CSV file
+nr_data <- read_csv("https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv")
+
+# Show only the first 5 rows
+nr_head <- head(nr_data, 40)
+
+datatable(
+  nr_data,
+  options = list(
+    dom = 't',
+    pageLength = 5
+  ),
+  rownames = TRUE
+)
 ```
 
-Descriptions appear in the table if provided.
+jj
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(readr)
+library(dplyr)
+library(DT)
+
+features <- read_tsv("../data/example_features.tsv", comment = "#", guess_max = 100000)
+
+# (Optional) select / rename columns
+features_small <- features %>%
+  select( seqid = 1, start = 4, end = 5, strand = 6, type = 3 )
+
+datatable(
+  features_small,
+  filter = "top",
+  extensions = c("Buttons","Scroller"),
+  options = list(
+    dom = "Bfrtip",
+    buttons = c("copy","csv"),
+    pageLength = 25,
+    deferRender = TRUE,
+    scrollY = 500,
+    scroller = TRUE
+  )
+)
+
+```
