@@ -4,7 +4,7 @@
     "href": "counts.html",
     "title": "Expression Values",
     "section": "",
-    "text": "Acropora pulchra - we have data on 44371 genes, 51 miRNAs, 15900 lncRNAs, and 96785 mCpGs.\nPorites evermanni - we have data on 40389 genes, 48 miRNAs, 8319 lncRNAs,, and nrow(Peve_mCpG) mCpGs.",
+    "text": "Acropora pulchra - we have data on 44371 genes, 51 miRNAs, 15900 lncRNAs, and 96772 mCpGs.\nPorites evermanni - we have data on 40389 genes, 48 miRNAs, 8319 lncRNAs,, and nrow(Peve_mCpG) mCpGs.",
     "crumbs": [
       "Data Files",
       "Expression Values"
@@ -48,7 +48,7 @@
     "href": "counts.html#mcpg-percentage",
     "title": "Expression Values",
     "section": "mCpG Percentage",
-    "text": "mCpG Percentage\nDownload MCpG Percentage\nhttps://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/22.5-Apul-multiomic-SR/Apul-filtered-WGBS-CpG-counts.csv\n\n\n\n\n\n\nApul_mCpG (first 10 rows with row numbers)\n\n\nRow\n...1\nACR-139-TP1\nACR-139-TP2\nACR-139-TP3\nACR-139-TP4\nACR-145-TP1\nACR-145-TP2\nACR-145-TP3\nACR-145-TP4\nACR-150-TP1\nACR-150-TP2\nACR-150-TP3\nACR-150-TP4\nACR-173-TP1\nACR-173-TP2\nACR-173-TP3\nACR-173-TP4\nACR-186-TP1\nACR-186-TP2\nACR-186-TP3\nACR-186-TP4\nACR-225-TP2\nACR-225-TP3\nACR-225-TP4\nACR-229-TP1\nACR-229-TP2\nACR-229-TP3\nACR-229-TP4\nACR-237-TP1\nACR-237-TP2\nACR-237-TP3\nACR-237-TP4\nACR-244-TP1\nACR-244-TP2\nACR-244-TP3\nACR-244-TP4\nACR-265-TP1\nACR-265-TP2\nACR-265-TP3\nACR-265-TP4\n\n\n\n\n1\nCpG_ntLink_1_22764\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0.000000\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n2\nCpG_ntLink_1_32896\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0.000000\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n3\nCpG_ntLink_1_32905\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0.000000\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n4\nCpG_ntLink_1_32917\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n4.166667\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0",
+    "text": "mCpG Percentage\nDownload MCpG Percentage\nhttps://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv\n\n\n\n\n\n\nApul_mCpG (first 10 rows with row numbers)\n\n\nRow\nCpG\nACR-145-TP3\nACR-265-TP4\nACR-139-TP3\nACR-244-TP1\nACR-237-TP1\nACR-265-TP3\nACR-186-TP4\nACR-186-TP2\nACR-244-TP4\nACR-225-TP3\nACR-139-TP2\nACR-186-TP1\nACR-145-TP1\nACR-145-TP4\nACR-225-TP4\nACR-173-TP3\nACR-150-TP4\nACR-173-TP1\nACR-173-TP2\nACR-237-TP3\nACR-265-TP1\nACR-186-TP3\nACR-229-TP1\nACR-229-TP2\nACR-150-TP3\nACR-173-TP4\nACR-225-TP2\nACR-244-TP2\nACR-150-TP2\nACR-237-TP2\nACR-265-TP2\nACR-229-TP4\nACR-244-TP3\nACR-150-TP1\nACR-139-TP1\nACR-145-TP2\nACR-139-TP4\nACR-229-TP3\nACR-237-TP4\n\n\n\n\n1\nCpG_ntLink_1_116302\n31.428571\n37.209302\n33.92857\n68.96552\n33.75000\n36.84210\n28.00000\n19.04762\n49.39759\n41.11111\n31.34328\n7.692308\n28.37838\n22.36842\n44.59459\n30.0000\n30.90909\n28.57143\n24.13793\n40.84507\n22.58065\n10.526316\n14.04959\n15.95745\n32.69231\n6.060606\n48.48485\n61.11111\n36.58537\n38.46154\n34.883721\n19.696970\n55.26316\n32.63158\n29.88506\n22.78481\n38.59649\n24.07407\n44.30380\n\n\n2\nCpG_ntLink_1_116382\n10.204082\n10.869565\n22.22222\n43.75000\n36.15385\n29.72973\n22.09302\n12.14953\n42.46575\n29.12088\n23.77049\n9.259259\n14.45087\n21.47651\n34.75610\n13.7931\n26.43678\n22.41379\n27.77778\n32.38095\n15.00000\n22.857143\n10.69519\n13.46154\n30.48781\n8.510638\n35.55556\n46.21849\n38.97059\n32.91139\n9.302326\n13.178295\n52.38095\n28.35821\n21.87500\n18.18182\n16.86747\n18.47826\n33.33333\n\n\n3\nCpG_ntLink_1_116388\n6.818182\n8.333333\n19.65812\n44.14414\n33.62832\n26.47059\n17.28395\n11.53846\n40.00000\n26.06061\n23.68421\n8.256881\n11.04294\n19.58042\n30.62500\n17.5000\n23.07692\n21.49533\n20.68965\n31.91489\n10.52632\n13.333333\n10.91954\n11.25828\n29.22078\n5.747126\n30.95238\n37.83784\n36.97479\n31.97279\n7.792208\n9.322034\n30.55556\n24.30939\n15.92920\n11.57025\n16.88312\n14.11765\n27.27273\n\n\n4\nCpG_ntLink_1_116391\n9.523810\n11.764706\n17.39130\n39.81482\n32.14286\n29.29293\n13.75000\n15.00000\n35.03650\n27.32919\n21.92983\n7.547170\n11.04294\n18.18182\n31.67702\n15.0000\n26.31579\n17.92453\n21.42857\n31.52174\n13.15789\n3.571429\n10.52632\n14.00000\n29.80132\n11.764706\n32.50000\n35.77982\n37.81513\n31.50685\n9.090909\n9.565217\n42.85714\n23.59551\n19.81982\n10.74380\n14.28571\n10.58823\n26.44628",
     "crumbs": [
       "Data Files",
       "Expression Values"
@@ -101,9 +101,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "E5 Monitoring of Species Across Intervals & Colonies",
+    "title": "E5 - Monitoring of Species Across Intervals & Colonies",
     "section": "",
-    "text": "This platform serves complementary purposes of direct data delivery and an user-friendly JBrowse genome browser.\n\n\n\n\n\n\n👉 Explore JBrowse Genome Browser\n  \n\nFor questions or feedback, please submit an issue 🧬",
+    "text": "This platform serves complementary purposes of direct data delivery and offering a user-friendly genome browser. This project encompasses a time-series study of three coral species— Acropora pulchra, Pocillopora tuahiniensis, and Porites evermanni —sampled from reef sites in French Polynesia.\n\n\n\n\n\nFor each species, five distinct colonies were selected at each site and sampling was conducted at two locations. Each colony was repeatedly sampled at four standardized intervals (TP1–TP4), capturing temporal variation within and across species.\nCollectively, the dataset provides a rich framework for investigating how environmental and biological factors shape marine invertebrate molecular responses through space and time, while controlling for genetic and ecological heterogeneity.\n\n\n👉 Explore JBrowse Genome Browser\n  \n\nFor questions or feedback, please submit an issue 🧬",
     "crumbs": [
       "Home"
     ]
@@ -111,7 +111,7 @@
   {
     "objectID": "features.html",
     "href": "features.html",
-    "title": "Genome Feature",
+    "title": "Genome Features",
     "section": "",
     "text": "Acropora pulchra - we have data on 44371 genes, 51 miRNAs, 15900 lncRNAs, and 96785 mCpGs.\nPorites evermanni - we have data on 40389 genes, 48 miRNAs, 8319 lncRNAs,, and nrow(Peve_mCpG) mCpGs.\n\nAcropora pulchra",
     "crumbs": [
@@ -157,6 +157,24 @@
     "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
     "crumbs": [
       "About"
+    ]
+  },
+  {
+    "objectID": "disclaimer.html",
+    "href": "disclaimer.html",
+    "title": "disclaimer",
+    "section": "",
+    "text": "NSF DISCLAIMER\nThis material is based upon work supported by the National Science Foundation under Grant No. [insert grant number, e.g., 1234567].\nAny opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation."
+  },
+  {
+    "objectID": "counts.html#processing-workflows",
+    "href": "counts.html#processing-workflows",
+    "title": "Expression Values",
+    "section": "Processing Workflows",
+    "text": "Processing Workflows\n\nGenesmiRNAlncRNAmCpG\n\n\nHisat and Sam\nfiltering?\n\n\nShortStack ? Kathleen\n\n\nHisat - custom Steven / Zach\nfiltering\n\n\nBismark filtering - Shelly",
+    "crumbs": [
+      "Data Files",
+      "Expression Values"
     ]
   }
 ]

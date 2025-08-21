@@ -3,11 +3,20 @@ title: "E5 - Monitoring of Species Across Intervals & Colonies"
 #description: "E5 Monitoring of Species Across Intervals & Colonies"
 ---
 
-This platform serves complementary purposes of direct data delivery and an user-friendly JBrowse genome browser.
+
+This platform serves complementary purposes of direct data delivery and offering a user-friendly genome browser. This project encompasses a time-series study of three coral species— _Acropora pulchra_, _Pocillopora tuahiniensis_, and _Porites evermanni_ —sampled from reef sites in French Polynesia.
 
 
 ![](img/logo.png){fig-align="center" width="400"}
 
+
+
+
+For each species, five distinct colonies were selected at each site and sampling was conducted at two locations. Each colony was repeatedly sampled at four standardized intervals (TP1–TP4), capturing temporal variation within and across species.
+
+Collectively, the dataset provides a rich framework for investigating how environmental and biological factors shape marine invertebrate molecular responses through space and time, while controlling for genetic and ecological heterogeneity.
+
+---
 
 
 <div style="display: flex; align-items: center; gap: 1em;">

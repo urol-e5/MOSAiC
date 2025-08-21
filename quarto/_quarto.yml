@@ -31,7 +31,7 @@ website:
             href: counts.qmd
           - text: "Genome Features"
             href: features.qmd
-      - text: JBrowse 
+      - text: Genome Browser
         file: jbrowse.qmd
 
     tools:
@@ -40,7 +40,7 @@ website:
         
         
   page-footer:
-    left: "© 2025 MOSAiC"
+    left: "Supported by NSF [disclaimer](disclaimer.qmd)"
     right: "Built with Quarto"
 
 format:
