@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "Data Files",
+    "section": "",
+    "text": "Automatically generated inventory of files in the repository root data/ directory."
+  },
+  {
+    "objectID": "data.html#adding-new-files",
+    "href": "data.html#adding-new-files",
+    "title": "Data Files",
+    "section": "Adding New Files",
+    "text": "Adding New Files\n\nDrop files into data/ (avoid spaces; prefer .bed, .gff3, .tsv, .csv).\nCommit & push.\nRe-render the site locally (or via CI once configured).\n\nOptional metadata sidecar: create &lt;filename&gt;.yml with e.g.:\ndescription: High-confidence gene models.\norganism: Example species\nsource: Ensembl v110\nDescriptions appear in the table if provided."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MOSAiC Genome Resources",
+    "section": "",
+    "text": "Welcome to the MOSAiC resource portal.\nThis repository now serves two complementary purposes:"
+  },
+  {
+    "objectID": "index.html#jbrowse",
+    "href": "index.html#jbrowse",
+    "title": "MOSAiC Genome Resources",
+    "section": "JBrowse",
+    "text": "JBrowse\nOpen the genome browser directly: Open JBrowse.\nEmbedded view below:"
+  },
+  {
+    "objectID": "index.html#data-files",
+    "href": "index.html#data-files",
+    "title": "MOSAiC Genome Resources",
+    "section": "Data Files",
+    "text": "Data Files\nSee the Data Files page for an automatically generated listing of resources placed in the data/ directory."
+  },
+  {
+    "objectID": "index.html#contributing-data",
+    "href": "index.html#contributing-data",
+    "title": "MOSAiC Genome Resources",
+    "section": "Contributing Data",
+    "text": "Contributing Data\nPlace additional tab-delimited files (e.g. BED, GFF3, TSV, CSV) into the top-level data/ directory. Re-render this site (instructions in the root README.md) to update the listing."
+  },
+  {
+    "objectID": "index.html#build",
+    "href": "index.html#build",
+    "title": "MOSAiC Genome Resources",
+    "section": "Build",
+    "text": "Build\nYou need the Quarto CLI installed locally.\nquarto --version\nquarto render quarto/\nPreview with live reload:\nquarto preview quarto/"
+  },
+  {
+    "objectID": "index.html#future-ideas",
+    "href": "index.html#future-ideas",
+    "title": "MOSAiC Genome Resources",
+    "section": "Future Ideas",
+    "text": "Future Ideas\n\nGitHub Action to auto-render on push.\nTrack configuration linking directly to files in data/.\nSimple search across annotation files.\n\nIssues and PRs welcome."
+  }
+]

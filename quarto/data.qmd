@@ -1,0 +1,30 @@
+---
+title: "Data Files"
+description: "Downloadable genome feature, annotation, and related tab-delimited files."
+---
+
+Automatically generated inventory of files in the repository root `data/` directory.
+
+> After adding or removing files, run `quarto render quarto/` to refresh.
+
+```{=html}
+<div class="callout callout-note"><strong>Tip:</strong> Right-click filenames to copy link address.</div>
+```
+
+{{< data-file-table >}}
+
+## Adding New Files
+
+1. Drop files into `data/` (avoid spaces; prefer `.bed`, `.gff3`, `.tsv`, `.csv`).
+2. Commit & push.
+3. Re-render the site locally (or via CI once configured).
+
+Optional metadata sidecar: create `<filename>.yml` with e.g.:
+
+```yaml
+description: High-confidence gene models.
+organism: Example species
+source: Ensembl v110
+```
+
+Descriptions appear in the table if provided.
