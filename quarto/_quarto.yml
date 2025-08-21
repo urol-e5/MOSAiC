@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "MOSAiC Genome Portal"
+  navbar:
+    left:
+      - text: Home
+        href: index.qmd
+      - text: Data Files
+        href: data.qmd
+      - text: JBrowse
+        href: ../index.html
+  page-footer:
+    left: "© 2025 MOSAiC"
+    right: "Built with Quarto"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+
+filters:
+  - filters/list-data.lua
+
+metadata:
+  repo-url: https://github.com/urol-e5/MOSAiC
+  repo-actions: [source]
