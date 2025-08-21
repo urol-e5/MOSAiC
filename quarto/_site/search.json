@@ -4,7 +4,7 @@
     "href": "data.html",
     "title": "Data Files",
     "section": "",
-    "text": "Automatically generated inventory of files in the repository root data/ directory."
+    "text": "Download Apul Gene Counts (CSV)\n\n\n\n\n\n\n\njj"
   },
   {
     "objectID": "data.html#adding-new-files",
@@ -16,21 +16,21 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "MOSAiC Genome Resources",
+    "title": "E5-MOSAiC",
     "section": "",
-    "text": "Welcome to the MOSAiC resource portal.\nThis repository now serves two complementary purposes:"
+    "text": "Welcome to the MOSAiC resource portal.\nThis repository now serves complementary purposes of direct data delivery and an user-friendly JBrowse genome browser of data as part of E5."
   },
   {
     "objectID": "index.html#jbrowse",
     "href": "index.html#jbrowse",
-    "title": "MOSAiC Genome Resources",
+    "title": "E5-MOSAiC",
     "section": "JBrowse",
     "text": "JBrowse\nOpen the genome browser directly: Open JBrowse.\nEmbedded view below:"
   },
   {
     "objectID": "index.html#data-files",
     "href": "index.html#data-files",
-    "title": "MOSAiC Genome Resources",
+    "title": "E5-MOSAiC",
     "section": "Data Files",
     "text": "Data Files\nSee the Data Files page for an automatically generated listing of resources placed in the data/ directory."
   },
@@ -54,5 +54,12 @@
     "title": "MOSAiC Genome Resources",
     "section": "Future Ideas",
     "text": "Future Ideas\n\nGitHub Action to auto-render on push.\nTrack configuration linking directly to files in data/.\nSimple search across annotation files.\n\nIssues and PRs welcome."
+  },
+  {
+    "objectID": "data.html#gene-count-matrix",
+    "href": "data.html#gene-count-matrix",
+    "title": "Data Files",
+    "section": "",
+    "text": "Download Apul Gene Counts (CSV)\n\n\n\n\n\n\n\njj"
   }
 ]
