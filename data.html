@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Downloadable genome feature, annotation, and related tab-delimited files.">
+<meta name="description" content="Count Matrices">
 
-<title>Data Files – MOSAiC Genome Portal</title>
+<title>Expression Data – MOSAiC Genome Portal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -133,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Data Files</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../index.html"> 
+    <a class="nav-link" href="https://gannet.fish.washington.edu/e5-mosaic"> 
 <span class="menu-text">JBrowse</span></a>
   </li>  
 </ul>
@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./../index.html" class="sidebar-item-text sidebar-link">
+  <a href="https://gannet.fish.washington.edu/e5-mosaic" class="sidebar-item-text sidebar-link">
  <span class="menu-text">JBrowse</span></a>
   </div>
 </li>
@@ -198,12 +198,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#apul" id="toc-apul" class="nav-link active" data-scroll-target="#apul">Apul</a>
+  <li><a href="#acropora-pulchra" id="toc-acropora-pulchra" class="nav-link active" data-scroll-target="#acropora-pulchra"><em>Acropora pulchra</em></a>
   <ul class="collapse">
   <li><a href="#gene-counts" id="toc-gene-counts" class="nav-link" data-scroll-target="#gene-counts">Gene Counts</a></li>
   <li><a href="#mirna-counts" id="toc-mirna-counts" class="nav-link" data-scroll-target="#mirna-counts">miRNA Counts</a></li>
   <li><a href="#lncrna-counts" id="toc-lncrna-counts" class="nav-link" data-scroll-target="#lncrna-counts">lncRNA Counts</a></li>
   <li><a href="#mcpg-percentage" id="toc-mcpg-percentage" class="nav-link" data-scroll-target="#mcpg-percentage">mCpG Percentage</a></li>
+  </ul></li>
+  <li><a href="#porites-evermanni" id="toc-porites-evermanni" class="nav-link" data-scroll-target="#porites-evermanni"><em>Porites evermanni</em></a>
+  <ul class="collapse">
+  <li><a href="#gene-counts-1" id="toc-gene-counts-1" class="nav-link" data-scroll-target="#gene-counts-1">Gene Counts</a></li>
+  <li><a href="#mirna-counts-1" id="toc-mirna-counts-1" class="nav-link" data-scroll-target="#mirna-counts-1">miRNA Counts</a></li>
+  <li><a href="#lncrna-counts-1" id="toc-lncrna-counts-1" class="nav-link" data-scroll-target="#lncrna-counts-1">lncRNA Counts</a></li>
+  <li><a href="#mcpg-percentages" id="toc-mcpg-percentages" class="nav-link" data-scroll-target="#mcpg-percentages">mCpG Percentages</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -213,12 +220,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Files</h1>
+<h1 class="title">Expression Data</h1>
 </div>
 
 <div>
   <div class="description">
-    Downloadable genome feature, annotation, and related tab-delimited files.
+    Count Matrices
   </div>
 </div>
 
@@ -235,521 +242,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<div class="cell-output-display">
-<div id="ogvdtxezdm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ogvdtxezdm table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#ogvdtxezdm thead, #ogvdtxezdm tbody, #ogvdtxezdm tfoot, #ogvdtxezdm tr, #ogvdtxezdm td, #ogvdtxezdm th {
-  border-style: none;
-}
-
-#ogvdtxezdm p {
-  margin: 0;
-  padding: 0;
-}
-
-#ogvdtxezdm .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#ogvdtxezdm .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#ogvdtxezdm .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#ogvdtxezdm .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#ogvdtxezdm .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#ogvdtxezdm .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ogvdtxezdm .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#ogvdtxezdm .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#ogvdtxezdm .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#ogvdtxezdm .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#ogvdtxezdm .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#ogvdtxezdm .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#ogvdtxezdm .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#ogvdtxezdm .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#ogvdtxezdm .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#ogvdtxezdm .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#ogvdtxezdm .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#ogvdtxezdm .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#ogvdtxezdm .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ogvdtxezdm .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#ogvdtxezdm .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#ogvdtxezdm .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#ogvdtxezdm .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ogvdtxezdm .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#ogvdtxezdm .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#ogvdtxezdm .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ogvdtxezdm .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ogvdtxezdm .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#ogvdtxezdm .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ogvdtxezdm .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#ogvdtxezdm .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ogvdtxezdm .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#ogvdtxezdm .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ogvdtxezdm .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#ogvdtxezdm .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ogvdtxezdm .gt_left {
-  text-align: left;
-}
-
-#ogvdtxezdm .gt_center {
-  text-align: center;
-}
-
-#ogvdtxezdm .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#ogvdtxezdm .gt_font_normal {
-  font-weight: normal;
-}
-
-#ogvdtxezdm .gt_font_bold {
-  font-weight: bold;
-}
-
-#ogvdtxezdm .gt_font_italic {
-  font-style: italic;
-}
-
-#ogvdtxezdm .gt_super {
-  font-size: 65%;
-}
-
-#ogvdtxezdm .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#ogvdtxezdm .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#ogvdtxezdm .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#ogvdtxezdm .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#ogvdtxezdm .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#ogvdtxezdm .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#ogvdtxezdm .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#ogvdtxezdm .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#ogvdtxezdm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="gt_heading header">
-<th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border">Summary of Data Files</th>
-</tr>
-<tr class="gt_col_headings even">
-<th id="File" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">File</th>
-<th id="Rows" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Rows</th>
-<th id="Cols" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Cols</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="File">Apul_gene</td>
-<td class="gt_row gt_right" headers="Rows">44371</td>
-<td class="gt_row gt_right" headers="Cols">81</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="File">Apul_mirna</td>
-<td class="gt_row gt_right" headers="Rows">51</td>
-<td class="gt_row gt_right" headers="Cols">41</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="File">Apul_lncRNA</td>
-<td class="gt_row gt_right" headers="Rows">15900</td>
-<td class="gt_row gt_right" headers="Cols">46</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="File">Apul_mCpG</td>
-<td class="gt_row gt_right" headers="Rows">96785</td>
-<td class="gt_row gt_right" headers="Cols">40</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<section id="apul" class="level1">
-<h1>Apul</h1>
+<p><em>Acropora pulchra</em> - we have data on <strong>44371</strong> genes, <strong>51</strong> miRNAs, <strong>15900</strong> lncRNAs, and <strong>96785</strong> mCpGs.</p>
+<p><em>Porites evermanni</em> - we have data on <strong>40389</strong> genes, <strong>48</strong> miRNAs, <strong>8319</strong> lncRNAs,, and <strong><code>nrow(Peve_mCpG)</code></strong> mCpGs.</p>
+<section id="acropora-pulchra" class="level1">
+<h1><em>Acropora pulchra</em></h1>
 <section id="gene-counts" class="level2">
 <h2 class="anchored" data-anchor-id="gene-counts">Gene Counts</h2>
 <p><a href="https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv" class="btn btn-primary" target="_blank" download="Apul_gene_count_matrix.csv">Download Gene Counts</a></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="wuaroqywbn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wuaroqywbn table {
+<div id="wzxxtuvuts" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wzxxtuvuts table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wuaroqywbn thead, #wuaroqywbn tbody, #wuaroqywbn tfoot, #wuaroqywbn tr, #wuaroqywbn td, #wuaroqywbn th {
+#wzxxtuvuts thead, #wzxxtuvuts tbody, #wzxxtuvuts tfoot, #wzxxtuvuts tr, #wzxxtuvuts td, #wzxxtuvuts th {
   border-style: none;
 }
 
-#wuaroqywbn p {
+#wzxxtuvuts p {
   margin: 0;
   padding: 0;
 }
 
-#wuaroqywbn .gt_table {
+#wzxxtuvuts .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -775,12 +294,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#wuaroqywbn .gt_caption {
+#wzxxtuvuts .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wuaroqywbn .gt_title {
+#wzxxtuvuts .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -792,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#wuaroqywbn .gt_subtitle {
+#wzxxtuvuts .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -804,7 +323,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#wuaroqywbn .gt_heading {
+#wzxxtuvuts .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -816,13 +335,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wuaroqywbn .gt_bottom_border {
+#wzxxtuvuts .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wuaroqywbn .gt_col_headings {
+#wzxxtuvuts .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -837,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wuaroqywbn .gt_col_heading {
+#wzxxtuvuts .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -857,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#wuaroqywbn .gt_column_spanner_outer {
+#wzxxtuvuts .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -869,15 +388,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#wuaroqywbn .gt_column_spanner_outer:first-child {
+#wzxxtuvuts .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wuaroqywbn .gt_column_spanner_outer:last-child {
+#wzxxtuvuts .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wuaroqywbn .gt_column_spanner {
+#wzxxtuvuts .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -889,11 +408,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#wuaroqywbn .gt_spanner_row {
+#wzxxtuvuts .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wuaroqywbn .gt_group_heading {
+#wzxxtuvuts .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -919,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#wuaroqywbn .gt_empty_group_heading {
+#wzxxtuvuts .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -934,15 +453,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#wuaroqywbn .gt_from_md > :first-child {
+#wzxxtuvuts .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wuaroqywbn .gt_from_md > :last-child {
+#wzxxtuvuts .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wuaroqywbn .gt_row {
+#wzxxtuvuts .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -961,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#wuaroqywbn .gt_stub {
+#wzxxtuvuts .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -974,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wuaroqywbn .gt_stub_row_group {
+#wzxxtuvuts .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -988,15 +507,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#wuaroqywbn .gt_row_group_first td {
+#wzxxtuvuts .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wuaroqywbn .gt_row_group_first th {
+#wzxxtuvuts .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wuaroqywbn .gt_summary_row {
+#wzxxtuvuts .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1006,16 +525,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wuaroqywbn .gt_first_summary_row {
+#wzxxtuvuts .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wuaroqywbn .gt_first_summary_row.thick {
+#wzxxtuvuts .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wuaroqywbn .gt_last_summary_row {
+#wzxxtuvuts .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1025,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#wuaroqywbn .gt_grand_summary_row {
+#wzxxtuvuts .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1035,7 +554,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wuaroqywbn .gt_first_grand_summary_row {
+#wzxxtuvuts .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1045,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#wuaroqywbn .gt_last_grand_summary_row_top {
+#wzxxtuvuts .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1055,11 +574,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#wuaroqywbn .gt_striped {
+#wzxxtuvuts .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wuaroqywbn .gt_table_body {
+#wzxxtuvuts .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1068,7 +587,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#wuaroqywbn .gt_footnotes {
+#wzxxtuvuts .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1082,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wuaroqywbn .gt_footnote {
+#wzxxtuvuts .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1091,7 +610,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wuaroqywbn .gt_sourcenotes {
+#wzxxtuvuts .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1105,7 +624,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#wuaroqywbn .gt_sourcenote {
+#wzxxtuvuts .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1113,72 +632,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#wuaroqywbn .gt_left {
+#wzxxtuvuts .gt_left {
   text-align: left;
 }
 
-#wuaroqywbn .gt_center {
+#wzxxtuvuts .gt_center {
   text-align: center;
 }
 
-#wuaroqywbn .gt_right {
+#wzxxtuvuts .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wuaroqywbn .gt_font_normal {
+#wzxxtuvuts .gt_font_normal {
   font-weight: normal;
 }
 
-#wuaroqywbn .gt_font_bold {
+#wzxxtuvuts .gt_font_bold {
   font-weight: bold;
 }
 
-#wuaroqywbn .gt_font_italic {
+#wzxxtuvuts .gt_font_italic {
   font-style: italic;
 }
 
-#wuaroqywbn .gt_super {
+#wzxxtuvuts .gt_super {
   font-size: 65%;
 }
 
-#wuaroqywbn .gt_footnote_marks {
+#wzxxtuvuts .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wuaroqywbn .gt_asterisk {
+#wzxxtuvuts .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wuaroqywbn .gt_indent_1 {
+#wzxxtuvuts .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wuaroqywbn .gt_indent_2 {
+#wzxxtuvuts .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wuaroqywbn .gt_indent_3 {
+#wzxxtuvuts .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wuaroqywbn .gt_indent_4 {
+#wzxxtuvuts .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wuaroqywbn .gt_indent_5 {
+#wzxxtuvuts .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wuaroqywbn .katex-display {
+#wzxxtuvuts .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wuaroqywbn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wzxxtuvuts div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1620,23 +1139,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="xmxkfzyyzt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xmxkfzyyzt table {
+<div id="zuvdebsksd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zuvdebsksd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xmxkfzyyzt thead, #xmxkfzyyzt tbody, #xmxkfzyyzt tfoot, #xmxkfzyyzt tr, #xmxkfzyyzt td, #xmxkfzyyzt th {
+#zuvdebsksd thead, #zuvdebsksd tbody, #zuvdebsksd tfoot, #zuvdebsksd tr, #zuvdebsksd td, #zuvdebsksd th {
   border-style: none;
 }
 
-#xmxkfzyyzt p {
+#zuvdebsksd p {
   margin: 0;
   padding: 0;
 }
 
-#xmxkfzyyzt .gt_table {
+#zuvdebsksd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1662,12 +1181,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#xmxkfzyyzt .gt_caption {
+#zuvdebsksd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xmxkfzyyzt .gt_title {
+#zuvdebsksd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1679,7 +1198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#xmxkfzyyzt .gt_subtitle {
+#zuvdebsksd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1691,7 +1210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#xmxkfzyyzt .gt_heading {
+#zuvdebsksd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1703,13 +1222,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#xmxkfzyyzt .gt_bottom_border {
+#zuvdebsksd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xmxkfzyyzt .gt_col_headings {
+#zuvdebsksd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1724,7 +1243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#xmxkfzyyzt .gt_col_heading {
+#zuvdebsksd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1744,7 +1263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#xmxkfzyyzt .gt_column_spanner_outer {
+#zuvdebsksd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1756,15 +1275,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#xmxkfzyyzt .gt_column_spanner_outer:first-child {
+#zuvdebsksd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xmxkfzyyzt .gt_column_spanner_outer:last-child {
+#zuvdebsksd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xmxkfzyyzt .gt_column_spanner {
+#zuvdebsksd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1776,11 +1295,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#xmxkfzyyzt .gt_spanner_row {
+#zuvdebsksd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xmxkfzyyzt .gt_group_heading {
+#zuvdebsksd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1806,7 +1325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#xmxkfzyyzt .gt_empty_group_heading {
+#zuvdebsksd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1821,15 +1340,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#xmxkfzyyzt .gt_from_md > :first-child {
+#zuvdebsksd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xmxkfzyyzt .gt_from_md > :last-child {
+#zuvdebsksd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xmxkfzyyzt .gt_row {
+#zuvdebsksd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1848,7 +1367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#xmxkfzyyzt .gt_stub {
+#zuvdebsksd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1861,7 +1380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#xmxkfzyyzt .gt_stub_row_group {
+#zuvdebsksd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1875,15 +1394,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#xmxkfzyyzt .gt_row_group_first td {
+#zuvdebsksd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xmxkfzyyzt .gt_row_group_first th {
+#zuvdebsksd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xmxkfzyyzt .gt_summary_row {
+#zuvdebsksd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1893,16 +1412,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#xmxkfzyyzt .gt_first_summary_row {
+#zuvdebsksd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xmxkfzyyzt .gt_first_summary_row.thick {
+#zuvdebsksd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xmxkfzyyzt .gt_last_summary_row {
+#zuvdebsksd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1912,7 +1431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#xmxkfzyyzt .gt_grand_summary_row {
+#zuvdebsksd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1922,7 +1441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#xmxkfzyyzt .gt_first_grand_summary_row {
+#zuvdebsksd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1932,7 +1451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#xmxkfzyyzt .gt_last_grand_summary_row_top {
+#zuvdebsksd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1942,11 +1461,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#xmxkfzyyzt .gt_striped {
+#zuvdebsksd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xmxkfzyyzt .gt_table_body {
+#zuvdebsksd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1955,7 +1474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#xmxkfzyyzt .gt_footnotes {
+#zuvdebsksd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1969,7 +1488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#xmxkfzyyzt .gt_footnote {
+#zuvdebsksd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1978,7 +1497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#xmxkfzyyzt .gt_sourcenotes {
+#zuvdebsksd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1992,7 +1511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#xmxkfzyyzt .gt_sourcenote {
+#zuvdebsksd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2000,72 +1519,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#xmxkfzyyzt .gt_left {
+#zuvdebsksd .gt_left {
   text-align: left;
 }
 
-#xmxkfzyyzt .gt_center {
+#zuvdebsksd .gt_center {
   text-align: center;
 }
 
-#xmxkfzyyzt .gt_right {
+#zuvdebsksd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xmxkfzyyzt .gt_font_normal {
+#zuvdebsksd .gt_font_normal {
   font-weight: normal;
 }
 
-#xmxkfzyyzt .gt_font_bold {
+#zuvdebsksd .gt_font_bold {
   font-weight: bold;
 }
 
-#xmxkfzyyzt .gt_font_italic {
+#zuvdebsksd .gt_font_italic {
   font-style: italic;
 }
 
-#xmxkfzyyzt .gt_super {
+#zuvdebsksd .gt_super {
   font-size: 65%;
 }
 
-#xmxkfzyyzt .gt_footnote_marks {
+#zuvdebsksd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xmxkfzyyzt .gt_asterisk {
+#zuvdebsksd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xmxkfzyyzt .gt_indent_1 {
+#zuvdebsksd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xmxkfzyyzt .gt_indent_2 {
+#zuvdebsksd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xmxkfzyyzt .gt_indent_3 {
+#zuvdebsksd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xmxkfzyyzt .gt_indent_4 {
+#zuvdebsksd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xmxkfzyyzt .gt_indent_5 {
+#zuvdebsksd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xmxkfzyyzt .katex-display {
+#zuvdebsksd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xmxkfzyyzt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zuvdebsksd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2307,23 +1826,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-tbl-cap="Apul_lncRNA (first 10 rows with row numbers)">
 <div class="cell-output-display">
-<div id="oejcobbelj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oejcobbelj table {
+<div id="evykgpjnpf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#evykgpjnpf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#oejcobbelj thead, #oejcobbelj tbody, #oejcobbelj tfoot, #oejcobbelj tr, #oejcobbelj td, #oejcobbelj th {
+#evykgpjnpf thead, #evykgpjnpf tbody, #evykgpjnpf tfoot, #evykgpjnpf tr, #evykgpjnpf td, #evykgpjnpf th {
   border-style: none;
 }
 
-#oejcobbelj p {
+#evykgpjnpf p {
   margin: 0;
   padding: 0;
 }
 
-#oejcobbelj .gt_table {
+#evykgpjnpf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2349,12 +1868,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#oejcobbelj .gt_caption {
+#evykgpjnpf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oejcobbelj .gt_title {
+#evykgpjnpf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2366,7 +1885,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#oejcobbelj .gt_subtitle {
+#evykgpjnpf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2378,7 +1897,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#oejcobbelj .gt_heading {
+#evykgpjnpf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2390,13 +1909,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#oejcobbelj .gt_bottom_border {
+#evykgpjnpf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oejcobbelj .gt_col_headings {
+#evykgpjnpf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2411,7 +1930,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#oejcobbelj .gt_col_heading {
+#evykgpjnpf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2431,7 +1950,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#oejcobbelj .gt_column_spanner_outer {
+#evykgpjnpf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2443,15 +1962,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#oejcobbelj .gt_column_spanner_outer:first-child {
+#evykgpjnpf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oejcobbelj .gt_column_spanner_outer:last-child {
+#evykgpjnpf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oejcobbelj .gt_column_spanner {
+#evykgpjnpf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2463,11 +1982,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#oejcobbelj .gt_spanner_row {
+#evykgpjnpf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#oejcobbelj .gt_group_heading {
+#evykgpjnpf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2493,7 +2012,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#oejcobbelj .gt_empty_group_heading {
+#evykgpjnpf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2508,15 +2027,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#oejcobbelj .gt_from_md > :first-child {
+#evykgpjnpf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oejcobbelj .gt_from_md > :last-child {
+#evykgpjnpf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oejcobbelj .gt_row {
+#evykgpjnpf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2535,7 +2054,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#oejcobbelj .gt_stub {
+#evykgpjnpf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2548,7 +2067,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#oejcobbelj .gt_stub_row_group {
+#evykgpjnpf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2562,15 +2081,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#oejcobbelj .gt_row_group_first td {
+#evykgpjnpf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oejcobbelj .gt_row_group_first th {
+#evykgpjnpf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#oejcobbelj .gt_summary_row {
+#evykgpjnpf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2580,16 +2099,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#oejcobbelj .gt_first_summary_row {
+#evykgpjnpf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oejcobbelj .gt_first_summary_row.thick {
+#evykgpjnpf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oejcobbelj .gt_last_summary_row {
+#evykgpjnpf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2599,7 +2118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#oejcobbelj .gt_grand_summary_row {
+#evykgpjnpf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2609,7 +2128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#oejcobbelj .gt_first_grand_summary_row {
+#evykgpjnpf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2619,7 +2138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#oejcobbelj .gt_last_grand_summary_row_top {
+#evykgpjnpf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2629,11 +2148,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#oejcobbelj .gt_striped {
+#evykgpjnpf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oejcobbelj .gt_table_body {
+#evykgpjnpf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2642,7 +2161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#oejcobbelj .gt_footnotes {
+#evykgpjnpf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2656,7 +2175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#oejcobbelj .gt_footnote {
+#evykgpjnpf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2665,7 +2184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#oejcobbelj .gt_sourcenotes {
+#evykgpjnpf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2679,7 +2198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#oejcobbelj .gt_sourcenote {
+#evykgpjnpf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2687,72 +2206,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#oejcobbelj .gt_left {
+#evykgpjnpf .gt_left {
   text-align: left;
 }
 
-#oejcobbelj .gt_center {
+#evykgpjnpf .gt_center {
   text-align: center;
 }
 
-#oejcobbelj .gt_right {
+#evykgpjnpf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oejcobbelj .gt_font_normal {
+#evykgpjnpf .gt_font_normal {
   font-weight: normal;
 }
 
-#oejcobbelj .gt_font_bold {
+#evykgpjnpf .gt_font_bold {
   font-weight: bold;
 }
 
-#oejcobbelj .gt_font_italic {
+#evykgpjnpf .gt_font_italic {
   font-style: italic;
 }
 
-#oejcobbelj .gt_super {
+#evykgpjnpf .gt_super {
   font-size: 65%;
 }
 
-#oejcobbelj .gt_footnote_marks {
+#evykgpjnpf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#oejcobbelj .gt_asterisk {
+#evykgpjnpf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oejcobbelj .gt_indent_1 {
+#evykgpjnpf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oejcobbelj .gt_indent_2 {
+#evykgpjnpf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oejcobbelj .gt_indent_3 {
+#evykgpjnpf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oejcobbelj .gt_indent_4 {
+#evykgpjnpf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oejcobbelj .gt_indent_5 {
+#evykgpjnpf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#oejcobbelj .katex-display {
+#evykgpjnpf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#oejcobbelj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#evykgpjnpf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3020,23 +2539,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/22.5-Apul-multiomic-SR/Apul-filtered-WGBS-CpG-counts.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-tbl-cap="Apul_mCpG (first 10 rows with row numbers)">
 <div class="cell-output-display">
-<div id="rckjbpznnw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rckjbpznnw table {
+<div id="ogkjxmzcmp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ogkjxmzcmp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rckjbpznnw thead, #rckjbpznnw tbody, #rckjbpznnw tfoot, #rckjbpznnw tr, #rckjbpznnw td, #rckjbpznnw th {
+#ogkjxmzcmp thead, #ogkjxmzcmp tbody, #ogkjxmzcmp tfoot, #ogkjxmzcmp tr, #ogkjxmzcmp td, #ogkjxmzcmp th {
   border-style: none;
 }
 
-#rckjbpznnw p {
+#ogkjxmzcmp p {
   margin: 0;
   padding: 0;
 }
 
-#rckjbpznnw .gt_table {
+#ogkjxmzcmp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3062,12 +2581,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#rckjbpznnw .gt_caption {
+#ogkjxmzcmp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rckjbpznnw .gt_title {
+#ogkjxmzcmp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3079,7 +2598,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#rckjbpznnw .gt_subtitle {
+#ogkjxmzcmp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3091,7 +2610,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#rckjbpznnw .gt_heading {
+#ogkjxmzcmp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3103,13 +2622,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rckjbpznnw .gt_bottom_border {
+#ogkjxmzcmp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rckjbpznnw .gt_col_headings {
+#ogkjxmzcmp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3124,7 +2643,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rckjbpznnw .gt_col_heading {
+#ogkjxmzcmp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3144,7 +2663,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#rckjbpznnw .gt_column_spanner_outer {
+#ogkjxmzcmp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3156,15 +2675,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#rckjbpznnw .gt_column_spanner_outer:first-child {
+#ogkjxmzcmp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rckjbpznnw .gt_column_spanner_outer:last-child {
+#ogkjxmzcmp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rckjbpznnw .gt_column_spanner {
+#ogkjxmzcmp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3176,11 +2695,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#rckjbpznnw .gt_spanner_row {
+#ogkjxmzcmp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rckjbpznnw .gt_group_heading {
+#ogkjxmzcmp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3206,7 +2725,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#rckjbpznnw .gt_empty_group_heading {
+#ogkjxmzcmp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3221,15 +2740,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#rckjbpznnw .gt_from_md > :first-child {
+#ogkjxmzcmp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rckjbpznnw .gt_from_md > :last-child {
+#ogkjxmzcmp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rckjbpznnw .gt_row {
+#ogkjxmzcmp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3248,7 +2767,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#rckjbpznnw .gt_stub {
+#ogkjxmzcmp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3261,7 +2780,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rckjbpznnw .gt_stub_row_group {
+#ogkjxmzcmp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3275,15 +2794,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#rckjbpznnw .gt_row_group_first td {
+#ogkjxmzcmp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rckjbpznnw .gt_row_group_first th {
+#ogkjxmzcmp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rckjbpznnw .gt_summary_row {
+#ogkjxmzcmp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3293,16 +2812,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rckjbpznnw .gt_first_summary_row {
+#ogkjxmzcmp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rckjbpznnw .gt_first_summary_row.thick {
+#ogkjxmzcmp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rckjbpznnw .gt_last_summary_row {
+#ogkjxmzcmp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3312,7 +2831,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rckjbpznnw .gt_grand_summary_row {
+#ogkjxmzcmp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3322,7 +2841,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rckjbpznnw .gt_first_grand_summary_row {
+#ogkjxmzcmp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3332,7 +2851,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#rckjbpznnw .gt_last_grand_summary_row_top {
+#ogkjxmzcmp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3342,11 +2861,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rckjbpznnw .gt_striped {
+#ogkjxmzcmp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rckjbpznnw .gt_table_body {
+#ogkjxmzcmp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3355,7 +2874,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rckjbpznnw .gt_footnotes {
+#ogkjxmzcmp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3369,7 +2888,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rckjbpznnw .gt_footnote {
+#ogkjxmzcmp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3378,7 +2897,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rckjbpznnw .gt_sourcenotes {
+#ogkjxmzcmp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3392,7 +2911,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rckjbpznnw .gt_sourcenote {
+#ogkjxmzcmp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3400,72 +2919,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rckjbpznnw .gt_left {
+#ogkjxmzcmp .gt_left {
   text-align: left;
 }
 
-#rckjbpznnw .gt_center {
+#ogkjxmzcmp .gt_center {
   text-align: center;
 }
 
-#rckjbpznnw .gt_right {
+#ogkjxmzcmp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rckjbpznnw .gt_font_normal {
+#ogkjxmzcmp .gt_font_normal {
   font-weight: normal;
 }
 
-#rckjbpznnw .gt_font_bold {
+#ogkjxmzcmp .gt_font_bold {
   font-weight: bold;
 }
 
-#rckjbpznnw .gt_font_italic {
+#ogkjxmzcmp .gt_font_italic {
   font-style: italic;
 }
 
-#rckjbpznnw .gt_super {
+#ogkjxmzcmp .gt_super {
   font-size: 65%;
 }
 
-#rckjbpznnw .gt_footnote_marks {
+#ogkjxmzcmp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rckjbpznnw .gt_asterisk {
+#ogkjxmzcmp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rckjbpznnw .gt_indent_1 {
+#ogkjxmzcmp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rckjbpznnw .gt_indent_2 {
+#ogkjxmzcmp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rckjbpznnw .gt_indent_3 {
+#ogkjxmzcmp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rckjbpznnw .gt_indent_4 {
+#ogkjxmzcmp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rckjbpznnw .gt_indent_5 {
+#ogkjxmzcmp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rckjbpznnw .katex-display {
+#ogkjxmzcmp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rckjbpznnw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ogkjxmzcmp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3696,6 +3215,2064 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="porites-evermanni" class="level1">
+<h1><em>Porites evermanni</em></h1>
+<section id="gene-counts-1" class="level2">
+<h2 class="anchored" data-anchor-id="gene-counts-1">Gene Counts</h2>
+<p><a href="https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv" class="btn btn-primary" target="_blank" download="Peve_gene_count_matrix.csv">Download Gene Counts</a></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="olgftxtncc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#olgftxtncc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#olgftxtncc thead, #olgftxtncc tbody, #olgftxtncc tfoot, #olgftxtncc tr, #olgftxtncc td, #olgftxtncc th {
+  border-style: none;
+}
+
+#olgftxtncc p {
+  margin: 0;
+  padding: 0;
+}
+
+#olgftxtncc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#olgftxtncc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#olgftxtncc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#olgftxtncc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#olgftxtncc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#olgftxtncc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#olgftxtncc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#olgftxtncc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#olgftxtncc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#olgftxtncc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#olgftxtncc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#olgftxtncc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#olgftxtncc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#olgftxtncc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#olgftxtncc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#olgftxtncc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#olgftxtncc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#olgftxtncc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#olgftxtncc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#olgftxtncc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#olgftxtncc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#olgftxtncc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#olgftxtncc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#olgftxtncc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#olgftxtncc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#olgftxtncc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#olgftxtncc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#olgftxtncc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#olgftxtncc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#olgftxtncc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#olgftxtncc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#olgftxtncc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#olgftxtncc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#olgftxtncc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#olgftxtncc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#olgftxtncc .gt_left {
+  text-align: left;
+}
+
+#olgftxtncc .gt_center {
+  text-align: center;
+}
+
+#olgftxtncc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#olgftxtncc .gt_font_normal {
+  font-weight: normal;
+}
+
+#olgftxtncc .gt_font_bold {
+  font-weight: bold;
+}
+
+#olgftxtncc .gt_font_italic {
+  font-style: italic;
+}
+
+#olgftxtncc .gt_super {
+  font-size: 65%;
+}
+
+#olgftxtncc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#olgftxtncc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#olgftxtncc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#olgftxtncc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#olgftxtncc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#olgftxtncc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#olgftxtncc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#olgftxtncc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#olgftxtncc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Row" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Row</th>
+<th id="gene_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">gene_id</th>
+<th id="POR-216-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP1</th>
+<th id="POR-216-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP2</th>
+<th id="POR-216-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP3</th>
+<th id="POR-216-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP4</th>
+<th id="POR-236-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-236-TP1</th>
+<th id="POR-236-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-236-TP2</th>
+<th id="POR-245-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP1</th>
+<th id="POR-245-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP2</th>
+<th id="POR-245-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP3</th>
+<th id="POR-245-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP4</th>
+<th id="POR-260-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP1</th>
+<th id="POR-260-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP2</th>
+<th id="POR-260-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP3</th>
+<th id="POR-260-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP4</th>
+<th id="POR-262-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP1</th>
+<th id="POR-262-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP2</th>
+<th id="POR-262-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP3</th>
+<th id="POR-262-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP4</th>
+<th id="POR-69-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP1</th>
+<th id="POR-69-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP2</th>
+<th id="POR-69-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP3</th>
+<th id="POR-69-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP4</th>
+<th id="POR-72-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP1</th>
+<th id="POR-72-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP2</th>
+<th id="POR-72-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP3</th>
+<th id="POR-72-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP4</th>
+<th id="POR-73-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-73-TP1</th>
+<th id="POR-73-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-73-TP2</th>
+<th id="POR-73-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-73-TP3</th>
+<th id="POR-73-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-73-TP4</th>
+<th id="POR-74-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP1</th>
+<th id="POR-74-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP2</th>
+<th id="POR-74-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP3</th>
+<th id="POR-74-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP4</th>
+<th id="POR-83-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP1</th>
+<th id="POR-83-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP2</th>
+<th id="POR-83-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP3</th>
+<th id="POR-83-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP4</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">1</td>
+<td class="gt_row gt_left" headers="gene_id">gene-Peve_00000032</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">29</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">75</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">63</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">25</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">82</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">39</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">25</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">23</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">7</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">44</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">42</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">20</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">13</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">28</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">35</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">78</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">108</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">67</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">43</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">25</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">30</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">19</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">38</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">30</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">34</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">65</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">21</td>
+<td class="gt_row gt_right" headers="POR-73-TP2">9</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">23</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">27</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">14</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">28</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">15</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">9</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">63</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">11</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">33</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">27</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">2</td>
+<td class="gt_row gt_left" headers="gene_id">gene-Peve_00000122</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">1</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">1</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">1</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">1</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">1</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">1</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">1</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">1</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">1</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">1</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">1</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-73-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">1</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">2</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">1</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">1</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">3</td>
+<td class="gt_row gt_left" headers="gene_id">gene-Peve_00000008</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">19</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">4</td>
+<td class="gt_row gt_right" headers="POR-73-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">4</td>
+<td class="gt_row gt_left" headers="gene_id">gene-Peve_00000117</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">13</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">13</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-73-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">2</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">0</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">0</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">0</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">5</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="mirna-counts-1" class="level2">
+<h2 class="anchored" data-anchor-id="mirna-counts-1">miRNA Counts</h2>
+<p><a href="https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt" class="btn btn-primary" target="_blank" download="Peve_gene_count_matrix.csv">Download miRNA Counts</a></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="wkqdwuomfo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wkqdwuomfo table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wkqdwuomfo thead, #wkqdwuomfo tbody, #wkqdwuomfo tfoot, #wkqdwuomfo tr, #wkqdwuomfo td, #wkqdwuomfo th {
+  border-style: none;
+}
+
+#wkqdwuomfo p {
+  margin: 0;
+  padding: 0;
+}
+
+#wkqdwuomfo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wkqdwuomfo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wkqdwuomfo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wkqdwuomfo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wkqdwuomfo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wkqdwuomfo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wkqdwuomfo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wkqdwuomfo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wkqdwuomfo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wkqdwuomfo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wkqdwuomfo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wkqdwuomfo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wkqdwuomfo .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wkqdwuomfo .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wkqdwuomfo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wkqdwuomfo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wkqdwuomfo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wkqdwuomfo .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wkqdwuomfo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wkqdwuomfo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wkqdwuomfo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wkqdwuomfo .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wkqdwuomfo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wkqdwuomfo .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wkqdwuomfo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wkqdwuomfo .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wkqdwuomfo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wkqdwuomfo .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wkqdwuomfo .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wkqdwuomfo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wkqdwuomfo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wkqdwuomfo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wkqdwuomfo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wkqdwuomfo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wkqdwuomfo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wkqdwuomfo .gt_left {
+  text-align: left;
+}
+
+#wkqdwuomfo .gt_center {
+  text-align: center;
+}
+
+#wkqdwuomfo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wkqdwuomfo .gt_font_normal {
+  font-weight: normal;
+}
+
+#wkqdwuomfo .gt_font_bold {
+  font-weight: bold;
+}
+
+#wkqdwuomfo .gt_font_italic {
+  font-style: italic;
+}
+
+#wkqdwuomfo .gt_super {
+  font-size: 65%;
+}
+
+#wkqdwuomfo .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wkqdwuomfo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wkqdwuomfo .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wkqdwuomfo .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wkqdwuomfo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wkqdwuomfo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wkqdwuomfo .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wkqdwuomfo .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wkqdwuomfo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Row" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Row</th>
+<th id="Name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Name</th>
+<th id="a1A11_POR-216_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1A11_POR-216_TP2</th>
+<th id="a1A7_POR-73_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1A7_POR-73_TP1</th>
+<th id="a1B3_POR-83_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1B3_POR-83_TP3</th>
+<th id="a1B4_POR-72_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1B4_POR-72_TP1</th>
+<th id="a1B6_POR-260_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1B6_POR-260_TP4</th>
+<th id="a1B7_POR-245_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1B7_POR-245_TP2</th>
+<th id="a1C11_POR-74_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1C11_POR-74_TP4</th>
+<th id="a1C12_POR-72_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1C12_POR-72_TP3</th>
+<th id="a1C5_POR-73_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1C5_POR-73_TP3</th>
+<th id="a1C6_POR-262_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1C6_POR-262_TP2</th>
+<th id="a1D12_POR-260_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1D12_POR-260_TP2</th>
+<th id="a1D1_POR-245_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1D1_POR-245_TP4</th>
+<th id="a1D2_POR-245_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1D2_POR-245_TP1</th>
+<th id="a1D5_POR-260_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1D5_POR-260_TP1</th>
+<th id="a1D7_POR-74_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1D7_POR-74_TP1</th>
+<th id="a1E7_POR-69_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1E7_POR-69_TP4</th>
+<th id="a1F10_POR-260_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1F10_POR-260_TP3</th>
+<th id="a1F12_POR-72_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1F12_POR-72_TP4</th>
+<th id="a1F1_POR-73_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1F1_POR-73_TP2</th>
+<th id="a1F3_POR-83_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1F3_POR-83_TP2</th>
+<th id="a1F6_POR-69_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1F6_POR-69_TP1</th>
+<th id="a1F7_POR-83_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1F7_POR-83_TP4</th>
+<th id="a1G10_POR-74_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1G10_POR-74_TP2</th>
+<th id="a1G1_POR-262_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1G1_POR-262_TP1</th>
+<th id="a1G3_POR-74_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1G3_POR-74_TP3</th>
+<th id="a1H1_POR-245_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1H1_POR-245_TP3</th>
+<th id="a1H2_POR-73_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1H2_POR-73_TP4</th>
+<th id="a1H3_POR-83_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1H3_POR-83_TP1</th>
+<th id="a2A3_POR-262_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2A3_POR-262_TP4</th>
+<th id="a2B1_POR-72_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2B1_POR-72_TP2</th>
+<th id="a2D1_POR-236_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2D1_POR-236_TP1</th>
+<th id="a2D3_POR-262_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2D3_POR-262_TP3</th>
+<th id="a2E1_POR-216_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2E1_POR-216_TP3</th>
+<th id="a2E3_POR-236_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2E3_POR-236_TP2</th>
+<th id="a2F2_POR-216_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2F2_POR-216_TP4</th>
+<th id="a2H1_POR-69_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2H1_POR-69_TP2</th>
+<th id="a2H2_POR-216_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2H2_POR-216_TP1</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">1</td>
+<td class="gt_row gt_left" headers="Name">Cluster_27</td>
+<td class="gt_row gt_right" headers="1A11_POR-216_TP2">456</td>
+<td class="gt_row gt_right" headers="1A7_POR-73_TP1">1436</td>
+<td class="gt_row gt_right" headers="1B3_POR-83_TP3">1</td>
+<td class="gt_row gt_right" headers="1B4_POR-72_TP1">301</td>
+<td class="gt_row gt_right" headers="1B6_POR-260_TP4">163</td>
+<td class="gt_row gt_right" headers="1B7_POR-245_TP2">21</td>
+<td class="gt_row gt_right" headers="1C11_POR-74_TP4">0</td>
+<td class="gt_row gt_right" headers="1C12_POR-72_TP3">95</td>
+<td class="gt_row gt_right" headers="1C5_POR-73_TP3">4904</td>
+<td class="gt_row gt_right" headers="1C6_POR-262_TP2">1</td>
+<td class="gt_row gt_right" headers="1D12_POR-260_TP2">70</td>
+<td class="gt_row gt_right" headers="1D1_POR-245_TP4">119</td>
+<td class="gt_row gt_right" headers="1D2_POR-245_TP1">2590</td>
+<td class="gt_row gt_right" headers="1D5_POR-260_TP1">1391</td>
+<td class="gt_row gt_right" headers="1D7_POR-74_TP1">759</td>
+<td class="gt_row gt_right" headers="1E7_POR-69_TP4">8</td>
+<td class="gt_row gt_right" headers="1F10_POR-260_TP3">484</td>
+<td class="gt_row gt_right" headers="1F12_POR-72_TP4">3162</td>
+<td class="gt_row gt_right" headers="1F1_POR-73_TP2">41</td>
+<td class="gt_row gt_right" headers="1F3_POR-83_TP2">5934</td>
+<td class="gt_row gt_right" headers="1F6_POR-69_TP1">3894</td>
+<td class="gt_row gt_right" headers="1F7_POR-83_TP4">285</td>
+<td class="gt_row gt_right" headers="1G10_POR-74_TP2">664</td>
+<td class="gt_row gt_right" headers="1G1_POR-262_TP1">3862</td>
+<td class="gt_row gt_right" headers="1G3_POR-74_TP3">37</td>
+<td class="gt_row gt_right" headers="1H1_POR-245_TP3">139</td>
+<td class="gt_row gt_right" headers="1H2_POR-73_TP4">31</td>
+<td class="gt_row gt_right" headers="1H3_POR-83_TP1">62</td>
+<td class="gt_row gt_right" headers="2A3_POR-262_TP4">0</td>
+<td class="gt_row gt_right" headers="2B1_POR-72_TP2">1125</td>
+<td class="gt_row gt_right" headers="2D1_POR-236_TP1">2249</td>
+<td class="gt_row gt_right" headers="2D3_POR-262_TP3">0</td>
+<td class="gt_row gt_right" headers="2E1_POR-216_TP3">990</td>
+<td class="gt_row gt_right" headers="2E3_POR-236_TP2">0</td>
+<td class="gt_row gt_right" headers="2F2_POR-216_TP4">1</td>
+<td class="gt_row gt_right" headers="2H1_POR-69_TP2">0</td>
+<td class="gt_row gt_right" headers="2H2_POR-216_TP1">1459</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">2</td>
+<td class="gt_row gt_left" headers="Name">Cluster_491</td>
+<td class="gt_row gt_right" headers="1A11_POR-216_TP2">90</td>
+<td class="gt_row gt_right" headers="1A7_POR-73_TP1">301</td>
+<td class="gt_row gt_right" headers="1B3_POR-83_TP3">0</td>
+<td class="gt_row gt_right" headers="1B4_POR-72_TP1">565</td>
+<td class="gt_row gt_right" headers="1B6_POR-260_TP4">50</td>
+<td class="gt_row gt_right" headers="1B7_POR-245_TP2">5</td>
+<td class="gt_row gt_right" headers="1C11_POR-74_TP4">0</td>
+<td class="gt_row gt_right" headers="1C12_POR-72_TP3">55</td>
+<td class="gt_row gt_right" headers="1C5_POR-73_TP3">1507</td>
+<td class="gt_row gt_right" headers="1C6_POR-262_TP2">0</td>
+<td class="gt_row gt_right" headers="1D12_POR-260_TP2">12</td>
+<td class="gt_row gt_right" headers="1D1_POR-245_TP4">124</td>
+<td class="gt_row gt_right" headers="1D2_POR-245_TP1">2370</td>
+<td class="gt_row gt_right" headers="1D5_POR-260_TP1">429</td>
+<td class="gt_row gt_right" headers="1D7_POR-74_TP1">660</td>
+<td class="gt_row gt_right" headers="1E7_POR-69_TP4">6</td>
+<td class="gt_row gt_right" headers="1F10_POR-260_TP3">300</td>
+<td class="gt_row gt_right" headers="1F12_POR-72_TP4">1416</td>
+<td class="gt_row gt_right" headers="1F1_POR-73_TP2">19</td>
+<td class="gt_row gt_right" headers="1F3_POR-83_TP2">1653</td>
+<td class="gt_row gt_right" headers="1F6_POR-69_TP1">869</td>
+<td class="gt_row gt_right" headers="1F7_POR-83_TP4">107</td>
+<td class="gt_row gt_right" headers="1G10_POR-74_TP2">264</td>
+<td class="gt_row gt_right" headers="1G1_POR-262_TP1">1452</td>
+<td class="gt_row gt_right" headers="1G3_POR-74_TP3">17</td>
+<td class="gt_row gt_right" headers="1H1_POR-245_TP3">86</td>
+<td class="gt_row gt_right" headers="1H2_POR-73_TP4">21</td>
+<td class="gt_row gt_right" headers="1H3_POR-83_TP1">45</td>
+<td class="gt_row gt_right" headers="2A3_POR-262_TP4">0</td>
+<td class="gt_row gt_right" headers="2B1_POR-72_TP2">1104</td>
+<td class="gt_row gt_right" headers="2D1_POR-236_TP1">766</td>
+<td class="gt_row gt_right" headers="2D3_POR-262_TP3">0</td>
+<td class="gt_row gt_right" headers="2E1_POR-216_TP3">1177</td>
+<td class="gt_row gt_right" headers="2E3_POR-236_TP2">0</td>
+<td class="gt_row gt_right" headers="2F2_POR-216_TP4">2</td>
+<td class="gt_row gt_right" headers="2H1_POR-69_TP2">0</td>
+<td class="gt_row gt_right" headers="2H2_POR-216_TP1">1243</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">3</td>
+<td class="gt_row gt_left" headers="Name">Cluster_661</td>
+<td class="gt_row gt_right" headers="1A11_POR-216_TP2">7577</td>
+<td class="gt_row gt_right" headers="1A7_POR-73_TP1">5129</td>
+<td class="gt_row gt_right" headers="1B3_POR-83_TP3">4</td>
+<td class="gt_row gt_right" headers="1B4_POR-72_TP1">4481</td>
+<td class="gt_row gt_right" headers="1B6_POR-260_TP4">1440</td>
+<td class="gt_row gt_right" headers="1B7_POR-245_TP2">113</td>
+<td class="gt_row gt_right" headers="1C11_POR-74_TP4">0</td>
+<td class="gt_row gt_right" headers="1C12_POR-72_TP3">3805</td>
+<td class="gt_row gt_right" headers="1C5_POR-73_TP3">72664</td>
+<td class="gt_row gt_right" headers="1C6_POR-262_TP2">5</td>
+<td class="gt_row gt_right" headers="1D12_POR-260_TP2">173</td>
+<td class="gt_row gt_right" headers="1D1_POR-245_TP4">239</td>
+<td class="gt_row gt_right" headers="1D2_POR-245_TP1">98732</td>
+<td class="gt_row gt_right" headers="1D5_POR-260_TP1">6002</td>
+<td class="gt_row gt_right" headers="1D7_POR-74_TP1">5436</td>
+<td class="gt_row gt_right" headers="1E7_POR-69_TP4">43</td>
+<td class="gt_row gt_right" headers="1F10_POR-260_TP3">9308</td>
+<td class="gt_row gt_right" headers="1F12_POR-72_TP4">194341</td>
+<td class="gt_row gt_right" headers="1F1_POR-73_TP2">388</td>
+<td class="gt_row gt_right" headers="1F3_POR-83_TP2">56469</td>
+<td class="gt_row gt_right" headers="1F6_POR-69_TP1">21428</td>
+<td class="gt_row gt_right" headers="1F7_POR-83_TP4">2500</td>
+<td class="gt_row gt_right" headers="1G10_POR-74_TP2">67803</td>
+<td class="gt_row gt_right" headers="1G1_POR-262_TP1">58565</td>
+<td class="gt_row gt_right" headers="1G3_POR-74_TP3">754</td>
+<td class="gt_row gt_right" headers="1H1_POR-245_TP3">2059</td>
+<td class="gt_row gt_right" headers="1H2_POR-73_TP4">712</td>
+<td class="gt_row gt_right" headers="1H3_POR-83_TP1">564</td>
+<td class="gt_row gt_right" headers="2A3_POR-262_TP4">1</td>
+<td class="gt_row gt_right" headers="2B1_POR-72_TP2">13887</td>
+<td class="gt_row gt_right" headers="2D1_POR-236_TP1">23588</td>
+<td class="gt_row gt_right" headers="2D3_POR-262_TP3">0</td>
+<td class="gt_row gt_right" headers="2E1_POR-216_TP3">6607</td>
+<td class="gt_row gt_right" headers="2E3_POR-236_TP2">0</td>
+<td class="gt_row gt_right" headers="2F2_POR-216_TP4">3</td>
+<td class="gt_row gt_right" headers="2H1_POR-69_TP2">0</td>
+<td class="gt_row gt_right" headers="2H2_POR-216_TP1">11450</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">4</td>
+<td class="gt_row gt_left" headers="Name">Cluster_670</td>
+<td class="gt_row gt_right" headers="1A11_POR-216_TP2">21</td>
+<td class="gt_row gt_right" headers="1A7_POR-73_TP1">0</td>
+<td class="gt_row gt_right" headers="1B3_POR-83_TP3">0</td>
+<td class="gt_row gt_right" headers="1B4_POR-72_TP1">0</td>
+<td class="gt_row gt_right" headers="1B6_POR-260_TP4">0</td>
+<td class="gt_row gt_right" headers="1B7_POR-245_TP2">0</td>
+<td class="gt_row gt_right" headers="1C11_POR-74_TP4">0</td>
+<td class="gt_row gt_right" headers="1C12_POR-72_TP3">7</td>
+<td class="gt_row gt_right" headers="1C5_POR-73_TP3">72</td>
+<td class="gt_row gt_right" headers="1C6_POR-262_TP2">0</td>
+<td class="gt_row gt_right" headers="1D12_POR-260_TP2">0</td>
+<td class="gt_row gt_right" headers="1D1_POR-245_TP4">0</td>
+<td class="gt_row gt_right" headers="1D2_POR-245_TP1">0</td>
+<td class="gt_row gt_right" headers="1D5_POR-260_TP1">3</td>
+<td class="gt_row gt_right" headers="1D7_POR-74_TP1">25</td>
+<td class="gt_row gt_right" headers="1E7_POR-69_TP4">0</td>
+<td class="gt_row gt_right" headers="1F10_POR-260_TP3">30</td>
+<td class="gt_row gt_right" headers="1F12_POR-72_TP4">0</td>
+<td class="gt_row gt_right" headers="1F1_POR-73_TP2">0</td>
+<td class="gt_row gt_right" headers="1F3_POR-83_TP2">354</td>
+<td class="gt_row gt_right" headers="1F6_POR-69_TP1">0</td>
+<td class="gt_row gt_right" headers="1F7_POR-83_TP4">2</td>
+<td class="gt_row gt_right" headers="1G10_POR-74_TP2">0</td>
+<td class="gt_row gt_right" headers="1G1_POR-262_TP1">178</td>
+<td class="gt_row gt_right" headers="1G3_POR-74_TP3">0</td>
+<td class="gt_row gt_right" headers="1H1_POR-245_TP3">16</td>
+<td class="gt_row gt_right" headers="1H2_POR-73_TP4">6</td>
+<td class="gt_row gt_right" headers="1H3_POR-83_TP1">10</td>
+<td class="gt_row gt_right" headers="2A3_POR-262_TP4">0</td>
+<td class="gt_row gt_right" headers="2B1_POR-72_TP2">21</td>
+<td class="gt_row gt_right" headers="2D1_POR-236_TP1">0</td>
+<td class="gt_row gt_right" headers="2D3_POR-262_TP3">0</td>
+<td class="gt_row gt_right" headers="2E1_POR-216_TP3">0</td>
+<td class="gt_row gt_right" headers="2E3_POR-236_TP2">0</td>
+<td class="gt_row gt_right" headers="2F2_POR-216_TP4">0</td>
+<td class="gt_row gt_right" headers="2H1_POR-69_TP2">0</td>
+<td class="gt_row gt_right" headers="2H2_POR-216_TP1">18</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="lncrna-counts-1" class="level2">
+<h2 class="anchored" data-anchor-id="lncrna-counts-1">lncRNA Counts</h2>
+<p><a href="https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt" class="btn btn-primary" target="_blank" download="Peve_gene_count_matrix.csv">Download lncRNA Counts</a></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tbl-cap="Peve_lncRNA (first 10 rows with row numbers)">
+<div class="cell-output-display">
+<div id="jfixifpklw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jfixifpklw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#jfixifpklw thead, #jfixifpklw tbody, #jfixifpklw tfoot, #jfixifpklw tr, #jfixifpklw td, #jfixifpklw th {
+  border-style: none;
+}
+
+#jfixifpklw p {
+  margin: 0;
+  padding: 0;
+}
+
+#jfixifpklw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jfixifpklw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#jfixifpklw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jfixifpklw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jfixifpklw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jfixifpklw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jfixifpklw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jfixifpklw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jfixifpklw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jfixifpklw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jfixifpklw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jfixifpklw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jfixifpklw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#jfixifpklw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#jfixifpklw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jfixifpklw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jfixifpklw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jfixifpklw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jfixifpklw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jfixifpklw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jfixifpklw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jfixifpklw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#jfixifpklw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jfixifpklw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jfixifpklw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jfixifpklw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jfixifpklw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jfixifpklw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jfixifpklw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jfixifpklw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jfixifpklw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jfixifpklw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jfixifpklw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jfixifpklw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jfixifpklw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jfixifpklw .gt_left {
+  text-align: left;
+}
+
+#jfixifpklw .gt_center {
+  text-align: center;
+}
+
+#jfixifpklw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jfixifpklw .gt_font_normal {
+  font-weight: normal;
+}
+
+#jfixifpklw .gt_font_bold {
+  font-weight: bold;
+}
+
+#jfixifpklw .gt_font_italic {
+  font-style: italic;
+}
+
+#jfixifpklw .gt_super {
+  font-size: 65%;
+}
+
+#jfixifpklw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#jfixifpklw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jfixifpklw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jfixifpklw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jfixifpklw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jfixifpklw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jfixifpklw .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#jfixifpklw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#jfixifpklw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<caption>Peve_lncRNA (first 10 rows with row numbers)</caption>
+<thead>
+<tr class="gt_col_headings header">
+<th id="Row" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Row</th>
+<th id="Geneid" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Geneid</th>
+<th id="Chr" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Chr</th>
+<th id="Start" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Start</th>
+<th id="End" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">End</th>
+<th id="Strand" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Strand</th>
+<th id="Length" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Length</th>
+<th id="POR-216-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP1</th>
+<th id="POR-216-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP2</th>
+<th id="POR-216-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP3</th>
+<th id="POR-216-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP4</th>
+<th id="POR-236-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-236-TP1</th>
+<th id="POR-236-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-236-TP2</th>
+<th id="POR-245-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP1</th>
+<th id="POR-245-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP2</th>
+<th id="POR-245-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP3</th>
+<th id="POR-245-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP4</th>
+<th id="POR-260-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP1</th>
+<th id="POR-260-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP2</th>
+<th id="POR-260-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP3</th>
+<th id="POR-260-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP4</th>
+<th id="POR-262-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP1</th>
+<th id="POR-262-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP2</th>
+<th id="POR-262-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP3</th>
+<th id="POR-262-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP4</th>
+<th id="POR-69-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP1</th>
+<th id="POR-69-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP2</th>
+<th id="POR-69-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP3</th>
+<th id="POR-69-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP4</th>
+<th id="POR-72-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP1</th>
+<th id="POR-72-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP2</th>
+<th id="POR-72-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP3</th>
+<th id="POR-72-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP4</th>
+<th id="POR-73-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-73-TP1</th>
+<th id="POR-73-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-73-TP2</th>
+<th id="POR-73-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-73-TP3</th>
+<th id="POR-73-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-73-TP4</th>
+<th id="POR-74-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP1</th>
+<th id="POR-74-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP2</th>
+<th id="POR-74-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP3</th>
+<th id="POR-74-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP4</th>
+<th id="POR-83-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP1</th>
+<th id="POR-83-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP2</th>
+<th id="POR-83-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP3</th>
+<th id="POR-83-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP4</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">1</td>
+<td class="gt_row gt_left" headers="Geneid">lncRNA_008</td>
+<td class="gt_row gt_left" headers="Chr">Porites_evermani_scaffold_1</td>
+<td class="gt_row gt_right" headers="Start">673926</td>
+<td class="gt_row gt_right" headers="End">676113</td>
+<td class="gt_row gt_right" headers="Strand">+</td>
+<td class="gt_row gt_right" headers="Length">2188</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">57</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">44.0</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">55</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">24</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">81</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">20</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">62.25</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">37.75</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">6.5</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">94.5</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">38.92</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">11.0</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">21.5</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">28.75</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">56.5</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">100.5</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">62.75</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">72.25</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">59.25</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">27.25</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">25.25</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">29.0</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">155.25</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">64.75</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">63.75</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">77.5</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">42</td>
+<td class="gt_row gt_right" headers="POR-73-TP2">27</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">14.5</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">22.75</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">34.33</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">15.0</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">31.75</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">14.75</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">101.5</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">13.25</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">21.75</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">48.75</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">2</td>
+<td class="gt_row gt_left" headers="Geneid">lncRNA_009</td>
+<td class="gt_row gt_left" headers="Chr">Porites_evermani_scaffold_1</td>
+<td class="gt_row gt_right" headers="Start">673941</td>
+<td class="gt_row gt_right" headers="End">676113</td>
+<td class="gt_row gt_right" headers="Strand">+</td>
+<td class="gt_row gt_right" headers="Length">2173</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">57</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">44.0</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">55</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">24</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">81</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">20</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">62.25</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">37.75</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">6.5</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">94.5</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">38.92</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">11.0</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">21.5</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">28.75</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">56.5</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">100.5</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">62.75</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">71.75</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">59.25</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">27.25</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">25.25</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">29.0</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">155.25</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">64.75</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">63.75</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">77.5</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">42</td>
+<td class="gt_row gt_right" headers="POR-73-TP2">27</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">14.5</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">22.75</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">34.33</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">15.0</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">31.75</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">14.75</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">101.5</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">13.25</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">21.75</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">48.75</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">3</td>
+<td class="gt_row gt_left" headers="Geneid">lncRNA_010</td>
+<td class="gt_row gt_left" headers="Chr">Porites_evermani_scaffold_1</td>
+<td class="gt_row gt_right" headers="Start">673950</td>
+<td class="gt_row gt_right" headers="End">676113</td>
+<td class="gt_row gt_right" headers="Strand">+</td>
+<td class="gt_row gt_right" headers="Length">2164</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">57</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">44.0</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">55</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">24</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">81</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">20</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">62.25</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">37.75</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">6.5</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">94.5</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">38.92</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">11.0</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">21.5</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">28.75</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">56.5</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">100.5</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">62.75</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">71.75</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">59.25</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">27.25</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">25.25</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">29.0</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">155.25</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">64.75</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">63.75</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">77.5</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">42</td>
+<td class="gt_row gt_right" headers="POR-73-TP2">27</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">14.5</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">22.75</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">34.33</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">15.0</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">31.75</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">14.75</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">101.5</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">13.25</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">21.75</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">48.75</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">4</td>
+<td class="gt_row gt_left" headers="Geneid">lncRNA_011</td>
+<td class="gt_row gt_left" headers="Chr">Porites_evermani_scaffold_1</td>
+<td class="gt_row gt_right" headers="Start">703501</td>
+<td class="gt_row gt_right" headers="End">725784</td>
+<td class="gt_row gt_right" headers="Strand">+</td>
+<td class="gt_row gt_right" headers="Length">22284</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">9435</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">1153.5</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">369</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">690</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">833</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">362</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">4372.50</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">346.50</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">249.5</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">306.0</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">2273.17</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">243.5</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">1397.0</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">1631.50</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">1419.0</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">596.5</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">852.00</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">682.00</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">5023.00</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">828.00</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">103.50</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">1254.5</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">973.00</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">4401.50</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">526.50</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">7395.0</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">74</td>
+<td class="gt_row gt_right" headers="POR-73-TP2">1307</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">203.5</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">3759.50</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">3442.83</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">1018.5</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">744.00</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">4214.50</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">995.5</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">8153.00</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">69.50</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">4554.50</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="mcpg-percentages" class="level2">
+<h2 class="anchored" data-anchor-id="mcpg-percentages">mCpG Percentages</h2>
 
 
 </section>
