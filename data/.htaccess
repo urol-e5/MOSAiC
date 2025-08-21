@@ -1,0 +1,7 @@
+<IfModule mod_headers.c>
+  <FilesMatch "\.(fa|fai|fna|gz|gzi|gff|gff3|bed|json|bam|bai|vcf|tbi|gtf)$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, OPTIONS"
+    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Range"
+  </FilesMatch>
+</IfModule>
