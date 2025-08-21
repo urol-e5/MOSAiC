@@ -24,29 +24,3 @@ See the [Data Files](data.qmd) page for an automatically generated listing of re
 ## 
 
 
-
-```{r}
-library(readr)
-library(dplyr)
-library(DT)
-
-features <- read_tsv("../data/example_features.tsv", comment = "#", guess_max = 100000)
-
-# (Optional) select / rename columns
-features_small <- features %>%
-  select( seqid = 1, start = 4, end = 5, strand = 7, type = 3 )
-
-datatable(
-  features_small,
-  filter = "top",
-  extensions = c("Buttons","Scroller"),
-  options = list(
-    dom = "Bfrtip",
-    buttons = c("copy","csv"),
-    pageLength = 25,
-    deferRender = TRUE,
-    scrollY = 500,
-    scroller = TRUE
-  )
-)
-```

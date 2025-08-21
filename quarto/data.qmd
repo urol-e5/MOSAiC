@@ -1,10 +1,12 @@
 ---
 title: "Data Files"
 description: "Downloadable genome feature, annotation, and related tab-delimited files."
-format: html
+format:
+  html:
+    code-copy: true
 editor: visual
 execute:
-  echo: true
+  echo: false
   warning: false
   message: false
 ---
@@ -16,61 +18,251 @@ library(readxl)
 library(plotly)
 library(readr)
 library(dplyr)
+library(tibble)
+library(knitr)
+library(gt)
+```
+
+
+
+```{r, include=FALSE}
+
+
+# Define key paths and tool directories
+
+
+Apul_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv"
+Apul_mirna_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt"
+Apul_lncRNA_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt"
+Apul_mCpG_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/22.5-Apul-multiomic-SR/Apul-filtered-WGBS-CpG-counts.csv"
+
+
+# read in 
+
+
+Apul_gene <- read_csv(Apul_gene_url)
+Apul_mirna <- read_delim(Apul_mirna_url, delim = "\t", col_names = TRUE)
+Apul_lncRNA <- read_delim(Apul_lncRNA_url, delim = "\t", col_names = TRUE, skip = 7)
+Apul_mCpG <- read_csv(Apul_mCpG_url)
+
+# helper to count physical lines (including header)
+count_lines <- function(url) length(readr::read_lines(url))
+
+# precompute line counts to reuse in inline code
+lines_gene   <- count_lines(Apul_gene_url)
+lines_mirna  <- count_lines(Apul_mirna_url)
+lines_lncRNA <- count_lines(Apul_lncRNA_url)
+lines_mCpG   <- count_lines(Apul_mCpG_url)
+
+# Export these as environment variables for bash chunks.
+# Sys.setenv(
+#   Apul_gene = Apul_gene,
+#   Apul_mirna = Apul_mirna,
+#   Apul_lncRNA = Apul_lncRNA,
+#   Apul_mCpG = Apul_mCpG
+# )
+```
+
+```{r}
+urls <- c(
+  Apul_gene_url,
+  Apul_mirna_url,
+  Apul_lncRNA_url,
+  Apul_mCpG_url
+)
+
+for (u in urls) {
+  cat("```text\n", u, "\n```\n\n", sep = "")
+}
 
 ```
 
-# Genome Count Matrics
 
-### Ge
+``` bash
+https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv
+```
+
+```{r}
+urls <- c(
+  Apul_gene_url,
+  Apul_mirna_url,
+  Apul_lncRNA_url,
+  Apul_mCpG_url
+)
+
+cat(paste0("```\n", paste(urls, collapse = "\n"), "\n```"))
+
+```
+
+```{r}
+urls <- c(
+  Apul_gene_url,
+  Apul_mirna_url,
+  Apul_lncRNA_url,
+  Apul_mCpG_url
+)
+
+cat(paste0("```\n", paste(urls, collapse = "\n"), "\n```"))
+
+```
+
+```{r}
+cat("``` bash",
+    Apul_gene_url,
+    "```\n\n",
+    "```",
+    Apul_mirna_url,
+    "```\n\n",
+    "```",
+    Apul_lncRNA_url,
+    "```\n\n",
+    "```",
+    Apul_mCpG_url,
+    "```",
+    sep = "\n")
+
+```
 
 
-## Gene Count Matrix
+# Apul
 
-- [Download Apul Gene Counts (CSV)](https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv){download="apul-gene_count_matrix.csv"}
+```{r download_links, echo=FALSE, results='asis'}
+# Build a small data.frame of link labels and URLs
+download_items <- data.frame(
+  Label = c("Apul Gene Counts", "Apul miRNA Counts", "Apul lncRNA Counts", "Apul mCpG (WGBS) Counts"),
+  URL   = c(Apul_gene_url, Apul_mirna_url, Apul_lncRNA_url, Apul_mCpG_url),
+  stringsAsFactors = FALSE
+)
+
+# Emit markdown bullet list with direct download attribute
+links_md <- sprintf("- <a href=\"%s\" download=\"%s\">%s</a>", download_items$URL, basename(download_items$URL), download_items$Label)
+cat(paste(links_md, collapse = "\n"))
+```
+
+
+```{r}
+
+# Build summary tibble
+summary_tbl <- tibble(
+  File   = c("Apul_gene", "Apul_mirna", "Apul_lncRNA", "Apul_mCpG"),
+  Rows   = c(nrow(Apul_gene), nrow(Apul_mirna), nrow(Apul_lncRNA), nrow(Apul_mCpG)),
+  Cols   = c(ncol(Apul_gene), ncol(Apul_mirna), ncol(Apul_lncRNA), ncol(Apul_mCpG))
+)
+
+# Display nicely with gt
+summary_tbl %>%
+  gt() %>%
+  tab_header(
+    title = "Summary of Apul Data Files",
+    subtitle = "Counts of rows, and columns"
+  )
+```
+
+
+
+
+
+# Apul Gene Counts
 
 ```{r, echo=FALSE}
-
-# Read the CSV file
-nr_data <- read_csv("https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv")
-
-# Show only the first 5 rows
-nr_head <- head(nr_data, 40)
-
+# Display as an interactive datatable
 datatable(
-  nr_data,
+  head(Apul_gene, n = 100),  # Use head function to subset the data
+  extensions = 'Buttons',
   options = list(
-    dom = 't',
-    pageLength = 5
+    dom = 'Bfrtip',  # Include 't' for table display
+    buttons = c('copy'),
+    pageLength = 5  # Optionally set a smaller default page length if needed
   ),
-  rownames = TRUE
+  filter = "top",
+  rownames = FALSE
 )
 ```
 
-jj
+```{r}
+#| tbl-cap: "Apul_gene (first 10 rows with row numbers)"
+Apul_gene |>
+  rowid_to_column("Row") |>
+  slice_head(n = 4) |>
+  gt()
+```
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-library(readr)
-library(dplyr)
-library(DT)
 
-features <- read_tsv("../data/example_features.tsv", comment = "#", guess_max = 100000)
+# Apul miRNA Counts
 
-# (Optional) select / rename columns
-features_small <- features %>%
-  select( seqid = 1, start = 4, end = 5, strand = 6, type = 3 )
-
+```{r, echo=FALSE}
+# Display as an interactive datatable
 datatable(
-  features_small,
-  filter = "top",
-  extensions = c("Buttons","Scroller"),
+  Apul_mirna,  # Use head function to subset the data
+  extensions = 'Buttons',
   options = list(
-    dom = "Bfrtip",
-    buttons = c("copy","csv"),
-    pageLength = 25,
-    deferRender = TRUE,
-    scrollY = 500,
-    scroller = TRUE
-  )
+    dom = 'Bfrtip',  # Include 't' for table display
+    buttons = c('copy', 'csv', 'excel', 'pdf'),
+    pageLength = 5  # Optionally set a smaller default page length if needed
+  ),
+  filter = "top",
+  rownames = FALSE
 )
 
+```
+
+```{r}
+#| tbl-cap: "Apul_miRNA (first 10 rows with row numbers)"
+Apul_mirna |>
+  rowid_to_column("Row") |>
+  slice_head(n = 4) |>
+  gt()
+```
+
+
+# Apul lncRNA Counts
+
+```{r, echo=FALSE}
+# Display as an interactive datatable
+datatable(
+  head(Apul_lncRNA, n = 100),  # Use head function to subset the data
+  extensions = 'Buttons',
+  options = list(
+    dom = 'Bfrtip',  # Include 't' for table display
+    buttons = c('copy'),
+    pageLength = 5  # Optionally set a smaller default page length if needed
+  ),
+  filter = "top",
+  rownames = FALSE
+)
+
+```
+
+```{r}
+#| tbl-cap: "Apul_lncRNA (first 10 rows with row numbers)"
+Apul_lncRNA |>
+  rowid_to_column("Row") |>
+  slice_head(n = 4) |>
+  gt()
+```
+
+# Apul mCpG Counts
+
+```{r, echo=FALSE}
+# Display as an interactive datatable
+datatable(
+  head(Apul_mCpG, n = 100),  # Use head function to subset the data
+  extensions = 'Buttons',
+  options = list(
+    dom = 'Bfrtip',  # Include 't' for table display
+    buttons = c('copy'),
+    pageLength = 5  # Optionally set a smaller default page length if needed
+  ),
+  filter = "top",
+  rownames = FALSE
+)
+
+```
+
+```{r}
+#| tbl-cap: "Apul_mCpG (first 10 rows with row numbers)"
+Apul_mCpG |>
+  rowid_to_column("Row") |>
+  slice_head(n = 4) |>
+  gt()
 ```
