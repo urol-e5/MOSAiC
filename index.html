@@ -245,33 +245,17 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./img/sm_logo.png" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">MOSAiC Genome Portal</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./data.qmd"> 
-<span class="menu-text">Data Files</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://gannet.fish.washington.edu/e5-mosaic"> 
-<span class="menu-text">JBrowse</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+        <div class="quarto-navbar-tools tools-end">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
@@ -310,7 +294,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./data.qmd" class="sidebar-item-text sidebar-link">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Data Files</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -325,14 +309,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./counts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Different Data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://gannet.fish.washington.edu/e5-mosaic" class="sidebar-item-text sidebar-link">
- <span class="menu-text">JBrowse</span></a>
   </div>
 </li>
       </ul>
@@ -340,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://gannet.fish.washington.edu/e5-mosaic" class="sidebar-item-text sidebar-link">
- <span class="menu-text">JBrowse</span></a>
+ <span class="menu-text">JBrowse (external)</span></a>
   </div>
 </li>
     </ul>
@@ -389,13 +367,6 @@ ul.task-list li input[type="checkbox"] {
 <p>Embedded view below:</p>
 <iframe src="https://gannet.fish.washington.edu/e5-mosaic" style="width:100%;height:700px;border:1px solid #ccc;border-radius:4px;" title="JBrowse">
 </iframe>
-</section>
-<section id="data-files" class="level2">
-<h2 class="anchored" data-anchor-id="data-files">Data Files</h2>
-<p>See the <a href="data.qmd">Data Files</a> page for an automatically generated listing of resources placed in the <code>data/</code> directory.</p>
-</section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
 
 
 </section>
