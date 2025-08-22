@@ -29,9 +29,7 @@ library(htmltools)
 
 ```{r, cache=TRUE, include=FALSE}
 
-
 # Define key paths and tool directories
-
 
 Apul_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv"
 
@@ -39,8 +37,7 @@ Apul_mirna_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecula
 
 Apul_lncRNA_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt"
 
-Apul_mCpG_url <- "https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv
-
+Apul_mCpG_url <- "https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv"
 
 
 Peve_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv"
@@ -83,7 +80,7 @@ Ptuh_mCpG <- read_csv(Ptuh_mCpG_url)
 
 ```
 
-As part of this amazing project we have data on **`r nrow(Apul_gene)`** genes, **`r nrow(Apul_mirna)`** miRNAs, **`r nrow(Apul_lncRNA)`** lncRNAs, and **`r nrow(Apul_mCpG)`** mCpGs for *Acropora pulchra*. We have data on **`r nrow(Peve_gene)`** genes, **`r nrow(Peve_mirna)`** miRNAs, **`r nrow(Peve_lncRNA)`** lncRNAs, and **`nrow(Peve_mCpG)`** mCpGs for *Porites evermanni*, and for *Ptuahiniensis* we have data on **`r nrow(Ptuh_gene)`** genes, **`r nrow(Ptuh_mirna)`** miRNAs, and **`r nrow(Ptuh_mCpG)`** mCpGs.
+As part of this amazing project we have expression data on **`r nrow(Apul_gene)`** genes, **`r nrow(Apul_mirna)`** miRNAs, **`r nrow(Apul_lncRNA)`** lncRNAs, and **`r nrow(Apul_mCpG)`** mCpGs for *Acropora pulchra*. We have data on **`r nrow(Peve_gene)`** genes, **`r nrow(Peve_mirna)`** miRNAs, **`r nrow(Peve_lncRNA)`** lncRNAs, and **`nrow(Peve_mCpG)`** mCpGs for *Porites evermanni*, and for *Ptuahiniensis* we have data on **`r nrow(Ptuh_gene)`** genes, **`r nrow(Ptuh_mirna)`** miRNAs, and **`r nrow(Ptuh_mCpG)`** mCpGs.
 
 ::: callout-tip
 ## ConTra
@@ -96,7 +93,7 @@ If you are exciting about analyzing this type of data in contextual manner check
 ::: panel-tabset
 ## Genes
 
-This workflow aligns trimmed *Acropora pulchra* RNA-seq reads to the reference genome using HISAT2, followed by transcript assembly and quantification with StringTie, and culminates in the generation of count matrices for downstream expression analysis. It begins by defining environment variables and downloading/verifying input FastQs, then loops through each sample to run HISAT2 alignments, process outputs with samtools (flagstat, sort, index), and assemble transcripts with StringTie while recording file provenance via checksums. Individual sample directories contain BAMs, indexes, GTFs, Ballgown-formatted tables, and alignment statistics, while a MultiQC report aggregates overall alignment quality. The workflow then merges sorted BAMs into a single dataset, compiles a unified transcript GTF from individual assemblies, and uses prepDE to produce gene- and transcript-level count matrices compatible with DESeq2. 
+This workflow aligns trimmed RNA-seq reads to a reference genome using HISAT2, followed by transcript assembly and quantification with StringTie, and culminates in the generation of count matrices for downstream expression analysis. Individual sample directories contain BAMs, indexes, GTFs, Ballgown-formatted tables, and alignment statistics, while a MultiQC report aggregates overall alignment quality. The workflow then merges sorted BAMs into a single dataset, compiles a unified transcript GTF from individual assemblies, and uses prepDE to produce gene- and transcript-level count matrices compatible with DESeq2. 
 
 ## miRNA
 
@@ -104,11 +101,11 @@ ShortStack ? Kathleen
 
 ## lncRNA
 
-Workflow downloads trimmed paired-end FASTQs and the reference genome/annotations, builds a splice-aware HISAT2 index from the GTF (exons + splice sites), and aligns all samples; SAM files are converted to sorted, indexed BAMs. Per-sample transcript assemblies are generated with StringTie and merged into a unified GTF, which is then annotated with gffcompare. Putative lncRNAs are filtered from the merged annotations by biotype/class codes (u/x/o/i) and minimum length (\>200 nt), sequences are extracted with bedtools, and coding potential is screened with CPC2 to retain noncoding transcripts. The surviving transcripts are converted into a clean BED/GTF set with unique lncRNA\_### IDs, deduplicated, sanity-checked (coordinates/lengths), and summarized. Finally, featureCounts quantifies lncRNA features across all BAMs, column names are cleaned, and a filtered count matrix is produced (removing rows with \<10 counts in \>50% of samples).
+Workflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites), and aligns all samples. Per-sample transcript assemblies are generated with StringTie and merged into a unified GTF, which is then annotated with gffcompare. Putative lncRNAs are filtered from the merged annotations by biotype/class codes (u/x/o/i) and minimum length (\>200 nt), sequences are extracted with bedtools, and coding potential is screened with CPC2 to retain noncoding transcripts. The surviving transcripts are converted into a clean BED/GTF set with unique lncRNA\_### IDs, deduplicated, sanity-checked (coordinates/lengths), and summarized. Finally, featureCounts quantifies lncRNA features across all BAMs, column names are cleaned, and a filtered count matrix is produced, removing features with \<10 counts in \>50% of samples.
 
 ## mCpG
 
-This workflow outlines bisulfite sequencing (WGBS) analysis pipeline that processes Bismark methylation coverage (.cov) files into unified CpG methylation matrices. First, .cov.gz are filterde for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column \_processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all \_processed.txt files into a single matrix (merged-WGBS-CpG-counts.csv), with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples is retained.
+For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filterd for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column \_processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all \_processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.
 :::
 
 ::: callout-warning

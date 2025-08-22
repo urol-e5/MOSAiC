@@ -3,13 +3,13 @@ title: "E5 - Monitoring of Species Across Intervals & Colonies"
 #description: "E5 Monitoring of Species Across Intervals & Colonies"
 ---
 
-This platform serves complementary purposes of direct data delivery and offering a user-friendly genome browser. This project encompasses a time-series study of three coral species— *Acropora pulchra*, *Pocillopora tuahiniensis*, and *Porites evermanni* —sampled from reef sites in French Polynesia.
+This portal serves complementary purposes of direct data delivery and offering a mutlit-specis genome browser. This project encompasses a time-series study of three coral species— *Acropora pulchra*, *Pocillopora tuahiniensis*, and *Porites evermanni* —sampled from reef sites in Moorea, French Polynesia.
 
 ![](img/logo.png){fig-align="center" width="400"}
 
-For each species, five distinct colonies were selected at each site and sampling was conducted at two locations. Each colony was repeatedly sampled at four standardized intervals (TP1–TP4), capturing temporal variation within and across species.
+For each species, five distinct colonies were selected at each site and sampling was conducted at two locations. Each colony was repeatedly sampled at four standardized intervals (TP1–TP4), capturing temporal variation within and across species. For each species we have 40 samples.
 
-Collectively, the dataset provides a rich framework for investigating how environmental and biological factors shape marine invertebrate molecular responses through space and time, while controlling for genetic and ecological heterogeneity.
+Collectively, the dataset provide a rich framework for investigating how environmental and biological factors shape marine invertebrate responses through space and time, while controlling for genetic and ecological heterogeneity.
 
 ------------------------------------------------------------------------
 

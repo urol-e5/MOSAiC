@@ -4,7 +4,7 @@
     "href": "counts.html",
     "title": "Expression Values",
     "section": "",
-    "text": "As part of this amazing project we have data on 44371 genes, 51 miRNAs, 15900 lncRNAs, and 96772 mCpGs for Acropora pulchra. We have data on 40389 genes, 48 miRNAs, 8319 lncRNAs, and nrow(Peve_mCpG) mCpGs for Porites evermanni, and for Ptuahiniensis we have data on 31840 genes, 40 miRNAs, and 1991606 mCpGs.",
+    "text": "As part of this amazing project we have expression data on 44371 genes, 51 miRNAs, 15900 lncRNAs, and 96772 mCpGs for Acropora pulchra. We have data on 40389 genes, 48 miRNAs, 8319 lncRNAs, and nrow(Peve_mCpG) mCpGs for Porites evermanni, and for Ptuahiniensis we have data on 31840 genes, 40 miRNAs, and 1991606 mCpGs.",
     "crumbs": [
       "Data Files",
       "Genomic Expression Values"
@@ -15,7 +15,7 @@
     "href": "counts.html#about-computational-pipelines",
     "title": "Expression Values",
     "section": "About Computational Pipelines",
-    "text": "About Computational Pipelines\n\nGenesmiRNAlncRNAmCpG\n\n\nThis workflow aligns trimmed Acropora pulchra RNA-seq reads to the reference genome using HISAT2, followed by transcript assembly and quantification with StringTie, and culminates in the generation of count matrices for downstream expression analysis. It begins by defining environment variables and downloading/verifying input FastQs, then loops through each sample to run HISAT2 alignments, process outputs with samtools (flagstat, sort, index), and assemble transcripts with StringTie while recording file provenance via checksums. Individual sample directories contain BAMs, indexes, GTFs, Ballgown-formatted tables, and alignment statistics, while a MultiQC report aggregates overall alignment quality. The workflow then merges sorted BAMs into a single dataset, compiles a unified transcript GTF from individual assemblies, and uses prepDE to produce gene- and transcript-level count matrices compatible with DESeq2. \n\n\nShortStack ? Kathleen\n\n\nWorkflow downloads trimmed paired-end FASTQs and the reference genome/annotations, builds a splice-aware HISAT2 index from the GTF (exons + splice sites), and aligns all samples; SAM files are converted to sorted, indexed BAMs. Per-sample transcript assemblies are generated with StringTie and merged into a unified GTF, which is then annotated with gffcompare. Putative lncRNAs are filtered from the merged annotations by biotype/class codes (u/x/o/i) and minimum length (&gt;200 nt), sequences are extracted with bedtools, and coding potential is screened with CPC2 to retain noncoding transcripts. The surviving transcripts are converted into a clean BED/GTF set with unique lncRNA_### IDs, deduplicated, sanity-checked (coordinates/lengths), and summarized. Finally, featureCounts quantifies lncRNA features across all BAMs, column names are cleaned, and a filtered count matrix is produced (removing rows with &lt;10 counts in &gt;50% of samples).\n\n\nThis workflow outlines bisulfite sequencing (WGBS) analysis pipeline that processes Bismark methylation coverage (.cov) files into unified CpG methylation matrices. First, .cov.gz are filterde for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column _processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all _processed.txt files into a single matrix (merged-WGBS-CpG-counts.csv), with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples is retained.\n\n\n\n\n\n\n\n\n\nSample ID formatting\n\n\n\nNote currently we have some inconsistency in sample IDs across data types.",
+    "text": "About Computational Pipelines\n\nGenesmiRNAlncRNAmCpG\n\n\nThis workflow aligns trimmed RNA-seq reads to a reference genome using HISAT2, followed by transcript assembly and quantification with StringTie, and culminates in the generation of count matrices for downstream expression analysis. Individual sample directories contain BAMs, indexes, GTFs, Ballgown-formatted tables, and alignment statistics, while a MultiQC report aggregates overall alignment quality. The workflow then merges sorted BAMs into a single dataset, compiles a unified transcript GTF from individual assemblies, and uses prepDE to produce gene- and transcript-level count matrices compatible with DESeq2. \n\n\nShortStack ? Kathleen\n\n\nWorkflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites), and aligns all samples. Per-sample transcript assemblies are generated with StringTie and merged into a unified GTF, which is then annotated with gffcompare. Putative lncRNAs are filtered from the merged annotations by biotype/class codes (u/x/o/i) and minimum length (&gt;200 nt), sequences are extracted with bedtools, and coding potential is screened with CPC2 to retain noncoding transcripts. The surviving transcripts are converted into a clean BED/GTF set with unique lncRNA_### IDs, deduplicated, sanity-checked (coordinates/lengths), and summarized. Finally, featureCounts quantifies lncRNA features across all BAMs, column names are cleaned, and a filtered count matrix is produced, removing features with &lt;10 counts in &gt;50% of samples.\n\n\nFor EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filterd for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column _processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all _processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.\n\n\n\n\n\n\n\n\n\nSample ID formatting\n\n\n\nNote currently we have some inconsistency in sample IDs across data types.",
     "crumbs": [
       "Data Files",
       "Genomic Expression Values"
@@ -154,14 +154,71 @@
     ]
   },
   {
+    "objectID": "disclaimer.html",
+    "href": "disclaimer.html",
+    "title": "disclaimer",
+    "section": "",
+    "text": "NSF DISCLAIMER\nThis material is based upon work supported by the National Science Foundation under Grant No. [insert grant number, e.g., 1234567].\nAny opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation."
+  },
+  {
+    "objectID": "jbrowse.html",
+    "href": "jbrowse.html",
+    "title": "JBrowse",
+    "section": "",
+    "text": "Open the genome browser directly: Open JBrowse.\nEmbedded view below:",
+    "crumbs": [
+      "Genome Browser"
+    ]
+  },
+  {
     "objectID": "features.html",
     "href": "features.html",
     "title": "Genome Features",
     "section": "",
-    "text": "APul\nWe have 44371 genes, 56050 lncRNAs,\nGenes\nDownload Gene Counts\nhttps://github.com/urol-e5/deep-dive-expression/raw/refs/heads/main/D-Apul/data/Apulcra-genome.gff\n\n\n\n\n\n\n\n\nRow\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\n1\nntLink_0\nfunannotate\ngene\n1105\n7056\n.\n+\n.\nID=FUN_000001;\n\n\n2\nntLink_0\nfunannotate\ngene\n10215\n15286\n.\n+\n.\nID=FUN_000002;\n\n\n3\nntLink_0\nfunannotate\ngene\n32057\n33275\n.\n+\n.\nID=FUN_000003;\n\n\n4\nntLink_0\nfunannotate\ngene\n34824\n42794\n.\n+\n.\nID=FUN_000004;",
+    "text": "APul\nWe have 44371 genes, 56050 lncRNAs,\nGenes\nDownload Gene GFF\nhttps://raw.githubusercontent.com/urol-e5/MOSAiC/refs/heads/main/data/Apul/Apul_gene_only.gff\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nntLink_0\nfunannotate\ngene\n1105\n7056\n.\n+\n.\nID=FUN_000001;\n\n\nntLink_0\nfunannotate\ngene\n10215\n15286\n.\n+\n.\nID=FUN_000002;\n\n\nntLink_0\nfunannotate\ngene\n32057\n33275\n.\n+\n.\nID=FUN_000003;\n\n\nntLink_0\nfunannotate\ngene\n34824\n42794\n.\n+\n.\nID=FUN_000004;\n\n\n\n\n\n\n\nlncRNA\nDownload lncRNA GTF\nhttps://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31-Apul-lncRNA-discovery/lncRNA.gtf\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nntLink_0\n.\nlncRNA\n25230\n29895\n.\n+\n.\ngene_id \"lncRNA_001\";\n\n\nntLink_0\n.\nlncRNA\n25230\n31053\n.\n+\n.\ngene_id \"lncRNA_002\";\n\n\nntLink_0\n.\nlncRNA\n25236\n31053\n.\n+\n.\ngene_id \"lncRNA_003\";\n\n\nntLink_0\n.\nlncRNA\n25236\n31053\n.\n+\n.\ngene_id \"lncRNA_004\";",
     "crumbs": [
       "Data Files",
       "Genome Features"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "E5 - Monitoring of Species Across Intervals & Colonies",
+    "section": "",
+    "text": "This portal serves complementary purposes of direct data delivery and offering a mutlit-specis genome browser. This project encompasses a time-series study of three coral species— Acropora pulchra, Pocillopora tuahiniensis, and Porites evermanni —sampled from reef sites in Moorea, French Polynesia.\n\n\n\n\n\nFor each species, five distinct colonies were selected at each site and sampling was conducted at two locations. Each colony was repeatedly sampled at four standardized intervals (TP1–TP4), capturing temporal variation within and across species. For each species we have 40 samples.\nCollectively, the dataset provide a rich framework for investigating how environmental and biological factors shape marine invertebrate responses through space and time, while controlling for genetic and ecological heterogeneity.\n\n\n👉 Explore JBrowse Genome Browser\n  \n\nFor questions or feedback, please submit an issue 🧬",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#quarto",
+    "href": "about.html#quarto",
+    "title": "About",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#running-code",
+    "href": "about.html#running-code",
+    "title": "About",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "crumbs": [
+      "About"
     ]
   }
 ]

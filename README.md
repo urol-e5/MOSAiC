@@ -2,32 +2,38 @@
 
 This repository provides:
 
-1. Static JBrowse genome browser (`index.html` at repo root).
-2. A Quarto-based website in `quarto/` documenting and listing downloadable tab-delimited genome feature / annotation files stored in `data/`.
+1. JBrowse genome browser.
+2. A Quarto-based website in `quarto/` 
+
+
+## JBrowse Genome Browser. 
+
+Currently the Genome Browser is being coded in this repo and being mirrored (rsync) to gannet and hosted there. This is also where most large files are hosted. Within the quarto site the browser is embedded and there is also a link that takes you to the Genome Browser on gannet (https://gannet.fish.washington.edu/e5-mosaic).
+
+Currently on _A. pulchra_ genome is loaded. 
+
+
+## Contributing
+
+When developing the site content we recommend creating a new branch for the feature you are working on the using `pull request` to bring back into main branch. Do not publish site to gh-pages when in development on new branch.
+
+Please also use Issues to make suggestions and recommendations. 
+
 
 ## Quick Start
 
-Serve JBrowse (one option):
-
-```bash
-python3 -m http.server 8080
-```
-
-Then open <http://localhost:8080> in a browser.
-
-## Quarto Site
-
-Install Quarto (<https://quarto.org>). Verify:
-
-```bash
-quarto --version
-```
-
-Render site:
+To render site:
 
 ```bash
 quarto render quarto/
 ```
+
+To publish website to GitHub Pages:
+
+```bash
+quarto publish gh-pages quarto/
+```
+
 
 Preview with live reload (serves on a local port):
 
@@ -35,17 +41,8 @@ Preview with live reload (serves on a local port):
 quarto preview quarto/
 ```
 
-The generated site lives in `quarto/_site/`. It links back to JBrowse (`../index.html`).
+The generated site lives in `quarto/_site/`. 
 
-## Adding Data Files
-
-1. Place `.bed`, `.gff3`, `.tsv`, `.csv`, or similar tab-delimited files into `data/`.
-2. (Optional) Create `<filename>.yml` sidecar with `description:` and other metadata.
-3. Re-run `quarto render quarto/` to update the Data Files table.
-
-## Automation (Future)
-
-A GitHub Action can be added to auto-render Quarto on push and deploy the `_site` contents (e.g. to `gh-pages` or `docs/`). Not yet implemented.
 
 ## Notes
 

@@ -33,7 +33,7 @@ library(htmltools)
 # Define key paths and tool directories
 
 
-Apul_gff_url <- "https://github.com/urol-e5/deep-dive-expression/raw/refs/heads/main/D-Apul/data/Apulcra-genome.gff"
+Apul_gff_url <- "https://raw.githubusercontent.com/urol-e5/MOSAiC/refs/heads/main/data/Apul/Apul_gene_only.gff"
 
 
 Apul_lncRNAloc_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31-Apul-lncRNA-discovery/lncRNA.gtf"
@@ -41,14 +41,8 @@ Apul_lncRNAloc_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-git
 # read in 
 Apul_gff <- read_delim(
   Apul_gff_url,
-  delim = "\t",
-  col_names = c(
-    "seqid", "source", "type", "start", "end",
-    "score", "strand", "phase", "attributes"
-  ),
-  skip = 1
-) %>%
-  filter(type == "gene")
+  delim = "\t"
+)
 
 Apul_lncRNAloc <- read_delim(
   Apul_lncRNAloc_url,
@@ -78,8 +72,8 @@ cat(as.character(
     href = Apul_gff_url,
     class = "btn btn-primary",
     target = "_blank",
-    download = "Apul_gene_count_matrix.csv",
-    "Download Gene Counts"
+    download = "Apul_gene_only.gff",
+    "Download Gene GFF"
   )
 ))
 ```
@@ -100,11 +94,46 @@ for (i in seq_along(urls)) {
 
 ```{r}
 Apul_gff |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
 
+lncRNA
 
+```{r}
+#| echo: false
+#| results: asis
+
+
+cat(as.character(
+  tags$a(
+    href = Apul_lncRNAloc_url,
+    class = "btn btn-primary",
+    target = "_blank",
+    download = "Apul_lncRNA.gtf",
+    "Download lncRNA GTF"
+  )
+))
+```
+
+```{r}
+#| results: asis
+# (YAML already has format: html: code-copy: true)
+
+#labs <- c("direct url")
+urls <- c(Apul_lncRNAloc_url)
+
+for (i in seq_along(urls)) {
+  #cat("**", labs[i], "**\n\n", sep = "")
+  # Use bash so Quarto shows a copy button for each block
+  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+}
+```
+
+```{r}
+Apul_lncRNAloc |>
+  slice_head(n = 4) |>
+  gt()
+```
 
 
