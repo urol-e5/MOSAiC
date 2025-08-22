@@ -27,7 +27,7 @@ website:
         file: about.qmd        
       - section: "Data Files"
         contents:
-          - text: "Expression Values"
+          - text: "Genomic Expression Values"
             href: counts.qmd
           - text: "Genome Features"
             href: features.qmd

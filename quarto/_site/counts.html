@@ -132,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./counts.html">Data Files</a></li><li class="breadcrumb-item"><a href="./counts.html">Expression Values</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./counts.html">Data Files</a></li><li class="breadcrumb-item"><a href="./counts.html">Genomic Expression Values</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -179,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./counts.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Expression Values</span></a>
+ <span class="menu-text">Genomic Expression Values</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -221,13 +221,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#lncrna-counts-1" id="toc-lncrna-counts-1" class="nav-link" data-scroll-target="#lncrna-counts-1">lncRNA Counts</a></li>
   <li><a href="#mcpg-percentages" id="toc-mcpg-percentages" class="nav-link" data-scroll-target="#mcpg-percentages">mCpG Percentages</a></li>
   </ul></li>
+  <li><a href="#pocillopora-tuahiniensis" id="toc-pocillopora-tuahiniensis" class="nav-link" data-scroll-target="#pocillopora-tuahiniensis"><em>Pocillopora tuahiniensis</em></a>
+  <ul class="collapse">
+  <li><a href="#gene-counts-2" id="toc-gene-counts-2" class="nav-link" data-scroll-target="#gene-counts-2">Gene Counts</a></li>
+  <li><a href="#mirna-counts-2" id="toc-mirna-counts-2" class="nav-link" data-scroll-target="#mirna-counts-2">miRNA Counts</a></li>
+  <li><a href="#lncrna-counts-2" id="toc-lncrna-counts-2" class="nav-link" data-scroll-target="#lncrna-counts-2">lncRNA Counts</a></li>
+  <li><a href="#mcpg-percentage-1" id="toc-mcpg-percentage-1" class="nav-link" data-scroll-target="#mcpg-percentage-1">mCpG Percentage</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./counts.html">Data Files</a></li><li class="breadcrumb-item"><a href="./counts.html">Expression Values</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./counts.html">Data Files</a></li><li class="breadcrumb-item"><a href="./counts.html">Genomic Expression Values</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Expression Values</h1>
 </div>
@@ -251,8 +258,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><em>Acropora pulchra</em> - we have data on <strong>44371</strong> genes, <strong>51</strong> miRNAs, <strong>15900</strong> lncRNAs, and <strong>96772</strong> mCpGs.</p>
-<p><em>Porites evermanni</em> - we have data on <strong>40389</strong> genes, <strong>48</strong> miRNAs, <strong>8319</strong> lncRNAs,, and <strong><code>nrow(Peve_mCpG)</code></strong> mCpGs.</p>
+<p>As part of this amazing project we have data on <strong>44371</strong> genes, <strong>51</strong> miRNAs, <strong>15900</strong> lncRNAs, and <strong>96772</strong> mCpGs for <em>Acropora pulchra</em>. We have data on <strong>40389</strong> genes, <strong>48</strong> miRNAs, <strong>8319</strong> lncRNAs, and <strong><code>nrow(Peve_mCpG)</code></strong> mCpGs for <em>Porites evermanni</em>, and for <em>Ptuahiniensis</em> we have data on <strong>31840</strong> genes, <strong>40</strong> miRNAs, and <strong>1991606</strong> mCpGs.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ConTra
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are exciting about analyzing this type of data in contextual manner check out <a href="https://github.com/sr320/ConTra">ConTra -&nbsp;Contextual Transcriptome Regulation Analysis</a></p>
+</div>
+</div>
 <section id="about-computational-pipelines" class="level2">
 <h2 class="anchored" data-anchor-id="about-computational-pipelines">About Computational Pipelines</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -270,19 +289,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <p>This workflow outlines bisulfite sequencing (WGBS) analysis pipeline that processes Bismark methylation coverage (.cov) files into unified CpG methylation matrices. First, .cov.gz are filterde for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column _processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all _processed.txt files into a single matrix (merged-WGBS-CpG-counts.csv), with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples is retained.</p>
 </div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ConTra
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are exciting about analyzing this type of data in contextual manner check out <a href="https://github.com/sr320/ConTra">ConTra -&nbsp;Contextual Transcriptome Regulation Analysis</a></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -307,23 +313,23 @@ Sample ID formatting
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="firznmsknt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#firznmsknt table {
+<div id="uvvsrxngcy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uvvsrxngcy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#firznmsknt thead, #firznmsknt tbody, #firznmsknt tfoot, #firznmsknt tr, #firznmsknt td, #firznmsknt th {
+#uvvsrxngcy thead, #uvvsrxngcy tbody, #uvvsrxngcy tfoot, #uvvsrxngcy tr, #uvvsrxngcy td, #uvvsrxngcy th {
   border-style: none;
 }
 
-#firznmsknt p {
+#uvvsrxngcy p {
   margin: 0;
   padding: 0;
 }
 
-#firznmsknt .gt_table {
+#uvvsrxngcy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -349,12 +355,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#firznmsknt .gt_caption {
+#uvvsrxngcy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#firznmsknt .gt_title {
+#uvvsrxngcy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -366,7 +372,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#firznmsknt .gt_subtitle {
+#uvvsrxngcy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -378,7 +384,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#firznmsknt .gt_heading {
+#uvvsrxngcy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -390,13 +396,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#firznmsknt .gt_bottom_border {
+#uvvsrxngcy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#firznmsknt .gt_col_headings {
+#uvvsrxngcy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -411,7 +417,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#firznmsknt .gt_col_heading {
+#uvvsrxngcy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -431,7 +437,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#firznmsknt .gt_column_spanner_outer {
+#uvvsrxngcy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -443,15 +449,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#firznmsknt .gt_column_spanner_outer:first-child {
+#uvvsrxngcy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#firznmsknt .gt_column_spanner_outer:last-child {
+#uvvsrxngcy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#firznmsknt .gt_column_spanner {
+#uvvsrxngcy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -463,11 +469,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#firznmsknt .gt_spanner_row {
+#uvvsrxngcy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#firznmsknt .gt_group_heading {
+#uvvsrxngcy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -493,7 +499,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#firznmsknt .gt_empty_group_heading {
+#uvvsrxngcy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -508,15 +514,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#firznmsknt .gt_from_md > :first-child {
+#uvvsrxngcy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#firznmsknt .gt_from_md > :last-child {
+#uvvsrxngcy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#firznmsknt .gt_row {
+#uvvsrxngcy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -535,7 +541,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#firznmsknt .gt_stub {
+#uvvsrxngcy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -548,7 +554,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#firznmsknt .gt_stub_row_group {
+#uvvsrxngcy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -562,15 +568,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#firznmsknt .gt_row_group_first td {
+#uvvsrxngcy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#firznmsknt .gt_row_group_first th {
+#uvvsrxngcy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#firznmsknt .gt_summary_row {
+#uvvsrxngcy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -580,16 +586,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#firznmsknt .gt_first_summary_row {
+#uvvsrxngcy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#firznmsknt .gt_first_summary_row.thick {
+#uvvsrxngcy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#firznmsknt .gt_last_summary_row {
+#uvvsrxngcy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -599,7 +605,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#firznmsknt .gt_grand_summary_row {
+#uvvsrxngcy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -609,7 +615,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#firznmsknt .gt_first_grand_summary_row {
+#uvvsrxngcy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -619,7 +625,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#firznmsknt .gt_last_grand_summary_row_top {
+#uvvsrxngcy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -629,11 +635,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#firznmsknt .gt_striped {
+#uvvsrxngcy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#firznmsknt .gt_table_body {
+#uvvsrxngcy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -642,7 +648,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#firznmsknt .gt_footnotes {
+#uvvsrxngcy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -656,7 +662,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#firznmsknt .gt_footnote {
+#uvvsrxngcy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -665,7 +671,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#firznmsknt .gt_sourcenotes {
+#uvvsrxngcy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -679,7 +685,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#firznmsknt .gt_sourcenote {
+#uvvsrxngcy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -687,72 +693,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#firznmsknt .gt_left {
+#uvvsrxngcy .gt_left {
   text-align: left;
 }
 
-#firznmsknt .gt_center {
+#uvvsrxngcy .gt_center {
   text-align: center;
 }
 
-#firznmsknt .gt_right {
+#uvvsrxngcy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#firznmsknt .gt_font_normal {
+#uvvsrxngcy .gt_font_normal {
   font-weight: normal;
 }
 
-#firznmsknt .gt_font_bold {
+#uvvsrxngcy .gt_font_bold {
   font-weight: bold;
 }
 
-#firznmsknt .gt_font_italic {
+#uvvsrxngcy .gt_font_italic {
   font-style: italic;
 }
 
-#firznmsknt .gt_super {
+#uvvsrxngcy .gt_super {
   font-size: 65%;
 }
 
-#firznmsknt .gt_footnote_marks {
+#uvvsrxngcy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#firznmsknt .gt_asterisk {
+#uvvsrxngcy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#firznmsknt .gt_indent_1 {
+#uvvsrxngcy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#firznmsknt .gt_indent_2 {
+#uvvsrxngcy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#firznmsknt .gt_indent_3 {
+#uvvsrxngcy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#firznmsknt .gt_indent_4 {
+#uvvsrxngcy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#firznmsknt .gt_indent_5 {
+#uvvsrxngcy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#firznmsknt .katex-display {
+#uvvsrxngcy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#firznmsknt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#uvvsrxngcy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1194,23 +1200,23 @@ Sample ID formatting
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ojqrtngadr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ojqrtngadr table {
+<div id="fivnwrktss" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fivnwrktss table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ojqrtngadr thead, #ojqrtngadr tbody, #ojqrtngadr tfoot, #ojqrtngadr tr, #ojqrtngadr td, #ojqrtngadr th {
+#fivnwrktss thead, #fivnwrktss tbody, #fivnwrktss tfoot, #fivnwrktss tr, #fivnwrktss td, #fivnwrktss th {
   border-style: none;
 }
 
-#ojqrtngadr p {
+#fivnwrktss p {
   margin: 0;
   padding: 0;
 }
 
-#ojqrtngadr .gt_table {
+#fivnwrktss .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1236,12 +1242,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#ojqrtngadr .gt_caption {
+#fivnwrktss .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ojqrtngadr .gt_title {
+#fivnwrktss .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1253,7 +1259,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#ojqrtngadr .gt_subtitle {
+#fivnwrktss .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1265,7 +1271,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#ojqrtngadr .gt_heading {
+#fivnwrktss .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1277,13 +1283,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ojqrtngadr .gt_bottom_border {
+#fivnwrktss .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ojqrtngadr .gt_col_headings {
+#fivnwrktss .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1298,7 +1304,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ojqrtngadr .gt_col_heading {
+#fivnwrktss .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1318,7 +1324,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#ojqrtngadr .gt_column_spanner_outer {
+#fivnwrktss .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1330,15 +1336,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#ojqrtngadr .gt_column_spanner_outer:first-child {
+#fivnwrktss .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ojqrtngadr .gt_column_spanner_outer:last-child {
+#fivnwrktss .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ojqrtngadr .gt_column_spanner {
+#fivnwrktss .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1350,11 +1356,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#ojqrtngadr .gt_spanner_row {
+#fivnwrktss .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ojqrtngadr .gt_group_heading {
+#fivnwrktss .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1380,7 +1386,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#ojqrtngadr .gt_empty_group_heading {
+#fivnwrktss .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1395,15 +1401,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#ojqrtngadr .gt_from_md > :first-child {
+#fivnwrktss .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ojqrtngadr .gt_from_md > :last-child {
+#fivnwrktss .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ojqrtngadr .gt_row {
+#fivnwrktss .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1422,7 +1428,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#ojqrtngadr .gt_stub {
+#fivnwrktss .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1435,7 +1441,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ojqrtngadr .gt_stub_row_group {
+#fivnwrktss .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1449,15 +1455,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#ojqrtngadr .gt_row_group_first td {
+#fivnwrktss .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ojqrtngadr .gt_row_group_first th {
+#fivnwrktss .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ojqrtngadr .gt_summary_row {
+#fivnwrktss .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1467,16 +1473,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ojqrtngadr .gt_first_summary_row {
+#fivnwrktss .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ojqrtngadr .gt_first_summary_row.thick {
+#fivnwrktss .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ojqrtngadr .gt_last_summary_row {
+#fivnwrktss .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1486,7 +1492,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#ojqrtngadr .gt_grand_summary_row {
+#fivnwrktss .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1496,7 +1502,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ojqrtngadr .gt_first_grand_summary_row {
+#fivnwrktss .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1506,7 +1512,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#ojqrtngadr .gt_last_grand_summary_row_top {
+#fivnwrktss .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1516,11 +1522,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#ojqrtngadr .gt_striped {
+#fivnwrktss .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ojqrtngadr .gt_table_body {
+#fivnwrktss .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1529,7 +1535,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#ojqrtngadr .gt_footnotes {
+#fivnwrktss .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1543,7 +1549,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ojqrtngadr .gt_footnote {
+#fivnwrktss .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1552,7 +1558,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ojqrtngadr .gt_sourcenotes {
+#fivnwrktss .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1566,7 +1572,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ojqrtngadr .gt_sourcenote {
+#fivnwrktss .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1574,72 +1580,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ojqrtngadr .gt_left {
+#fivnwrktss .gt_left {
   text-align: left;
 }
 
-#ojqrtngadr .gt_center {
+#fivnwrktss .gt_center {
   text-align: center;
 }
 
-#ojqrtngadr .gt_right {
+#fivnwrktss .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ojqrtngadr .gt_font_normal {
+#fivnwrktss .gt_font_normal {
   font-weight: normal;
 }
 
-#ojqrtngadr .gt_font_bold {
+#fivnwrktss .gt_font_bold {
   font-weight: bold;
 }
 
-#ojqrtngadr .gt_font_italic {
+#fivnwrktss .gt_font_italic {
   font-style: italic;
 }
 
-#ojqrtngadr .gt_super {
+#fivnwrktss .gt_super {
   font-size: 65%;
 }
 
-#ojqrtngadr .gt_footnote_marks {
+#fivnwrktss .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ojqrtngadr .gt_asterisk {
+#fivnwrktss .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ojqrtngadr .gt_indent_1 {
+#fivnwrktss .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ojqrtngadr .gt_indent_2 {
+#fivnwrktss .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ojqrtngadr .gt_indent_3 {
+#fivnwrktss .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ojqrtngadr .gt_indent_4 {
+#fivnwrktss .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ojqrtngadr .gt_indent_5 {
+#fivnwrktss .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ojqrtngadr .katex-display {
+#fivnwrktss .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ojqrtngadr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fivnwrktss div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1881,23 +1887,23 @@ Sample ID formatting
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="kwkuvwuwvg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kwkuvwuwvg table {
+<div id="dmaupnbzyg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dmaupnbzyg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#kwkuvwuwvg thead, #kwkuvwuwvg tbody, #kwkuvwuwvg tfoot, #kwkuvwuwvg tr, #kwkuvwuwvg td, #kwkuvwuwvg th {
+#dmaupnbzyg thead, #dmaupnbzyg tbody, #dmaupnbzyg tfoot, #dmaupnbzyg tr, #dmaupnbzyg td, #dmaupnbzyg th {
   border-style: none;
 }
 
-#kwkuvwuwvg p {
+#dmaupnbzyg p {
   margin: 0;
   padding: 0;
 }
 
-#kwkuvwuwvg .gt_table {
+#dmaupnbzyg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1923,12 +1929,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#kwkuvwuwvg .gt_caption {
+#dmaupnbzyg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#kwkuvwuwvg .gt_title {
+#dmaupnbzyg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1940,7 +1946,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#kwkuvwuwvg .gt_subtitle {
+#dmaupnbzyg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1952,7 +1958,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#kwkuvwuwvg .gt_heading {
+#dmaupnbzyg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1964,13 +1970,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#kwkuvwuwvg .gt_bottom_border {
+#dmaupnbzyg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kwkuvwuwvg .gt_col_headings {
+#dmaupnbzyg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1985,7 +1991,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#kwkuvwuwvg .gt_col_heading {
+#dmaupnbzyg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2005,7 +2011,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#kwkuvwuwvg .gt_column_spanner_outer {
+#dmaupnbzyg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2017,15 +2023,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#kwkuvwuwvg .gt_column_spanner_outer:first-child {
+#dmaupnbzyg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kwkuvwuwvg .gt_column_spanner_outer:last-child {
+#dmaupnbzyg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kwkuvwuwvg .gt_column_spanner {
+#dmaupnbzyg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2037,11 +2043,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#kwkuvwuwvg .gt_spanner_row {
+#dmaupnbzyg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#kwkuvwuwvg .gt_group_heading {
+#dmaupnbzyg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2067,7 +2073,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#kwkuvwuwvg .gt_empty_group_heading {
+#dmaupnbzyg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2082,15 +2088,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#kwkuvwuwvg .gt_from_md > :first-child {
+#dmaupnbzyg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kwkuvwuwvg .gt_from_md > :last-child {
+#dmaupnbzyg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kwkuvwuwvg .gt_row {
+#dmaupnbzyg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2109,7 +2115,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#kwkuvwuwvg .gt_stub {
+#dmaupnbzyg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2122,7 +2128,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#kwkuvwuwvg .gt_stub_row_group {
+#dmaupnbzyg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2136,15 +2142,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#kwkuvwuwvg .gt_row_group_first td {
+#dmaupnbzyg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kwkuvwuwvg .gt_row_group_first th {
+#dmaupnbzyg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#kwkuvwuwvg .gt_summary_row {
+#dmaupnbzyg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2154,16 +2160,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#kwkuvwuwvg .gt_first_summary_row {
+#dmaupnbzyg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#kwkuvwuwvg .gt_first_summary_row.thick {
+#dmaupnbzyg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kwkuvwuwvg .gt_last_summary_row {
+#dmaupnbzyg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2173,7 +2179,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#kwkuvwuwvg .gt_grand_summary_row {
+#dmaupnbzyg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2183,7 +2189,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#kwkuvwuwvg .gt_first_grand_summary_row {
+#dmaupnbzyg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2193,7 +2199,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#kwkuvwuwvg .gt_last_grand_summary_row_top {
+#dmaupnbzyg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2203,11 +2209,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#kwkuvwuwvg .gt_striped {
+#dmaupnbzyg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kwkuvwuwvg .gt_table_body {
+#dmaupnbzyg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2216,7 +2222,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#kwkuvwuwvg .gt_footnotes {
+#dmaupnbzyg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2230,7 +2236,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#kwkuvwuwvg .gt_footnote {
+#dmaupnbzyg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2239,7 +2245,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#kwkuvwuwvg .gt_sourcenotes {
+#dmaupnbzyg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2253,7 +2259,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#kwkuvwuwvg .gt_sourcenote {
+#dmaupnbzyg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2261,72 +2267,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#kwkuvwuwvg .gt_left {
+#dmaupnbzyg .gt_left {
   text-align: left;
 }
 
-#kwkuvwuwvg .gt_center {
+#dmaupnbzyg .gt_center {
   text-align: center;
 }
 
-#kwkuvwuwvg .gt_right {
+#dmaupnbzyg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kwkuvwuwvg .gt_font_normal {
+#dmaupnbzyg .gt_font_normal {
   font-weight: normal;
 }
 
-#kwkuvwuwvg .gt_font_bold {
+#dmaupnbzyg .gt_font_bold {
   font-weight: bold;
 }
 
-#kwkuvwuwvg .gt_font_italic {
+#dmaupnbzyg .gt_font_italic {
   font-style: italic;
 }
 
-#kwkuvwuwvg .gt_super {
+#dmaupnbzyg .gt_super {
   font-size: 65%;
 }
 
-#kwkuvwuwvg .gt_footnote_marks {
+#dmaupnbzyg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#kwkuvwuwvg .gt_asterisk {
+#dmaupnbzyg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kwkuvwuwvg .gt_indent_1 {
+#dmaupnbzyg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kwkuvwuwvg .gt_indent_2 {
+#dmaupnbzyg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kwkuvwuwvg .gt_indent_3 {
+#dmaupnbzyg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kwkuvwuwvg .gt_indent_4 {
+#dmaupnbzyg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kwkuvwuwvg .gt_indent_5 {
+#dmaupnbzyg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#kwkuvwuwvg .katex-display {
+#dmaupnbzyg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#kwkuvwuwvg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dmaupnbzyg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2594,23 +2600,23 @@ Sample ID formatting
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ixxzmxhiml" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ixxzmxhiml table {
+<div id="eypgdsevog" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#eypgdsevog table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ixxzmxhiml thead, #ixxzmxhiml tbody, #ixxzmxhiml tfoot, #ixxzmxhiml tr, #ixxzmxhiml td, #ixxzmxhiml th {
+#eypgdsevog thead, #eypgdsevog tbody, #eypgdsevog tfoot, #eypgdsevog tr, #eypgdsevog td, #eypgdsevog th {
   border-style: none;
 }
 
-#ixxzmxhiml p {
+#eypgdsevog p {
   margin: 0;
   padding: 0;
 }
 
-#ixxzmxhiml .gt_table {
+#eypgdsevog .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2636,12 +2642,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#ixxzmxhiml .gt_caption {
+#eypgdsevog .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ixxzmxhiml .gt_title {
+#eypgdsevog .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2653,7 +2659,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#ixxzmxhiml .gt_subtitle {
+#eypgdsevog .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2665,7 +2671,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#ixxzmxhiml .gt_heading {
+#eypgdsevog .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2677,13 +2683,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ixxzmxhiml .gt_bottom_border {
+#eypgdsevog .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ixxzmxhiml .gt_col_headings {
+#eypgdsevog .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2698,7 +2704,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ixxzmxhiml .gt_col_heading {
+#eypgdsevog .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2718,7 +2724,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#ixxzmxhiml .gt_column_spanner_outer {
+#eypgdsevog .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2730,15 +2736,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#ixxzmxhiml .gt_column_spanner_outer:first-child {
+#eypgdsevog .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ixxzmxhiml .gt_column_spanner_outer:last-child {
+#eypgdsevog .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ixxzmxhiml .gt_column_spanner {
+#eypgdsevog .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2750,11 +2756,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#ixxzmxhiml .gt_spanner_row {
+#eypgdsevog .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ixxzmxhiml .gt_group_heading {
+#eypgdsevog .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2780,7 +2786,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#ixxzmxhiml .gt_empty_group_heading {
+#eypgdsevog .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2795,15 +2801,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#ixxzmxhiml .gt_from_md > :first-child {
+#eypgdsevog .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ixxzmxhiml .gt_from_md > :last-child {
+#eypgdsevog .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ixxzmxhiml .gt_row {
+#eypgdsevog .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2822,7 +2828,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#ixxzmxhiml .gt_stub {
+#eypgdsevog .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2835,7 +2841,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ixxzmxhiml .gt_stub_row_group {
+#eypgdsevog .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2849,15 +2855,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#ixxzmxhiml .gt_row_group_first td {
+#eypgdsevog .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ixxzmxhiml .gt_row_group_first th {
+#eypgdsevog .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ixxzmxhiml .gt_summary_row {
+#eypgdsevog .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2867,16 +2873,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ixxzmxhiml .gt_first_summary_row {
+#eypgdsevog .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ixxzmxhiml .gt_first_summary_row.thick {
+#eypgdsevog .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ixxzmxhiml .gt_last_summary_row {
+#eypgdsevog .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2886,7 +2892,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#ixxzmxhiml .gt_grand_summary_row {
+#eypgdsevog .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2896,7 +2902,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ixxzmxhiml .gt_first_grand_summary_row {
+#eypgdsevog .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2906,7 +2912,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#ixxzmxhiml .gt_last_grand_summary_row_top {
+#eypgdsevog .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2916,11 +2922,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#ixxzmxhiml .gt_striped {
+#eypgdsevog .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ixxzmxhiml .gt_table_body {
+#eypgdsevog .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2929,7 +2935,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#ixxzmxhiml .gt_footnotes {
+#eypgdsevog .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2943,7 +2949,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ixxzmxhiml .gt_footnote {
+#eypgdsevog .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2952,7 +2958,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ixxzmxhiml .gt_sourcenotes {
+#eypgdsevog .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2966,7 +2972,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ixxzmxhiml .gt_sourcenote {
+#eypgdsevog .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2974,72 +2980,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ixxzmxhiml .gt_left {
+#eypgdsevog .gt_left {
   text-align: left;
 }
 
-#ixxzmxhiml .gt_center {
+#eypgdsevog .gt_center {
   text-align: center;
 }
 
-#ixxzmxhiml .gt_right {
+#eypgdsevog .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ixxzmxhiml .gt_font_normal {
+#eypgdsevog .gt_font_normal {
   font-weight: normal;
 }
 
-#ixxzmxhiml .gt_font_bold {
+#eypgdsevog .gt_font_bold {
   font-weight: bold;
 }
 
-#ixxzmxhiml .gt_font_italic {
+#eypgdsevog .gt_font_italic {
   font-style: italic;
 }
 
-#ixxzmxhiml .gt_super {
+#eypgdsevog .gt_super {
   font-size: 65%;
 }
 
-#ixxzmxhiml .gt_footnote_marks {
+#eypgdsevog .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ixxzmxhiml .gt_asterisk {
+#eypgdsevog .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ixxzmxhiml .gt_indent_1 {
+#eypgdsevog .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ixxzmxhiml .gt_indent_2 {
+#eypgdsevog .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ixxzmxhiml .gt_indent_3 {
+#eypgdsevog .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ixxzmxhiml .gt_indent_4 {
+#eypgdsevog .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ixxzmxhiml .gt_indent_5 {
+#eypgdsevog .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ixxzmxhiml .katex-display {
+#eypgdsevog .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ixxzmxhiml div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#eypgdsevog div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3280,23 +3286,23 @@ Sample ID formatting
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="zjwgdrrtes" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zjwgdrrtes table {
+<div id="wbxlsvankd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wbxlsvankd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zjwgdrrtes thead, #zjwgdrrtes tbody, #zjwgdrrtes tfoot, #zjwgdrrtes tr, #zjwgdrrtes td, #zjwgdrrtes th {
+#wbxlsvankd thead, #wbxlsvankd tbody, #wbxlsvankd tfoot, #wbxlsvankd tr, #wbxlsvankd td, #wbxlsvankd th {
   border-style: none;
 }
 
-#zjwgdrrtes p {
+#wbxlsvankd p {
   margin: 0;
   padding: 0;
 }
 
-#zjwgdrrtes .gt_table {
+#wbxlsvankd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3322,12 +3328,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#zjwgdrrtes .gt_caption {
+#wbxlsvankd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zjwgdrrtes .gt_title {
+#wbxlsvankd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3339,7 +3345,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#zjwgdrrtes .gt_subtitle {
+#wbxlsvankd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3351,7 +3357,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#zjwgdrrtes .gt_heading {
+#wbxlsvankd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3363,13 +3369,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#zjwgdrrtes .gt_bottom_border {
+#wbxlsvankd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zjwgdrrtes .gt_col_headings {
+#wbxlsvankd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3384,7 +3390,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#zjwgdrrtes .gt_col_heading {
+#wbxlsvankd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3404,7 +3410,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#zjwgdrrtes .gt_column_spanner_outer {
+#wbxlsvankd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3416,15 +3422,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#zjwgdrrtes .gt_column_spanner_outer:first-child {
+#wbxlsvankd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zjwgdrrtes .gt_column_spanner_outer:last-child {
+#wbxlsvankd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zjwgdrrtes .gt_column_spanner {
+#wbxlsvankd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3436,11 +3442,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#zjwgdrrtes .gt_spanner_row {
+#wbxlsvankd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zjwgdrrtes .gt_group_heading {
+#wbxlsvankd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3466,7 +3472,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#zjwgdrrtes .gt_empty_group_heading {
+#wbxlsvankd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3481,15 +3487,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#zjwgdrrtes .gt_from_md > :first-child {
+#wbxlsvankd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zjwgdrrtes .gt_from_md > :last-child {
+#wbxlsvankd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zjwgdrrtes .gt_row {
+#wbxlsvankd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3508,7 +3514,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#zjwgdrrtes .gt_stub {
+#wbxlsvankd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3521,7 +3527,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#zjwgdrrtes .gt_stub_row_group {
+#wbxlsvankd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3535,15 +3541,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#zjwgdrrtes .gt_row_group_first td {
+#wbxlsvankd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zjwgdrrtes .gt_row_group_first th {
+#wbxlsvankd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zjwgdrrtes .gt_summary_row {
+#wbxlsvankd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3553,16 +3559,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#zjwgdrrtes .gt_first_summary_row {
+#wbxlsvankd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zjwgdrrtes .gt_first_summary_row.thick {
+#wbxlsvankd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zjwgdrrtes .gt_last_summary_row {
+#wbxlsvankd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3572,7 +3578,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#zjwgdrrtes .gt_grand_summary_row {
+#wbxlsvankd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3582,7 +3588,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#zjwgdrrtes .gt_first_grand_summary_row {
+#wbxlsvankd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3592,7 +3598,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#zjwgdrrtes .gt_last_grand_summary_row_top {
+#wbxlsvankd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3602,11 +3608,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#zjwgdrrtes .gt_striped {
+#wbxlsvankd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zjwgdrrtes .gt_table_body {
+#wbxlsvankd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3615,7 +3621,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#zjwgdrrtes .gt_footnotes {
+#wbxlsvankd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3629,7 +3635,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#zjwgdrrtes .gt_footnote {
+#wbxlsvankd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3638,7 +3644,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#zjwgdrrtes .gt_sourcenotes {
+#wbxlsvankd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3652,7 +3658,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#zjwgdrrtes .gt_sourcenote {
+#wbxlsvankd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3660,72 +3666,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#zjwgdrrtes .gt_left {
+#wbxlsvankd .gt_left {
   text-align: left;
 }
 
-#zjwgdrrtes .gt_center {
+#wbxlsvankd .gt_center {
   text-align: center;
 }
 
-#zjwgdrrtes .gt_right {
+#wbxlsvankd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zjwgdrrtes .gt_font_normal {
+#wbxlsvankd .gt_font_normal {
   font-weight: normal;
 }
 
-#zjwgdrrtes .gt_font_bold {
+#wbxlsvankd .gt_font_bold {
   font-weight: bold;
 }
 
-#zjwgdrrtes .gt_font_italic {
+#wbxlsvankd .gt_font_italic {
   font-style: italic;
 }
 
-#zjwgdrrtes .gt_super {
+#wbxlsvankd .gt_super {
   font-size: 65%;
 }
 
-#zjwgdrrtes .gt_footnote_marks {
+#wbxlsvankd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zjwgdrrtes .gt_asterisk {
+#wbxlsvankd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zjwgdrrtes .gt_indent_1 {
+#wbxlsvankd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zjwgdrrtes .gt_indent_2 {
+#wbxlsvankd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zjwgdrrtes .gt_indent_3 {
+#wbxlsvankd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zjwgdrrtes .gt_indent_4 {
+#wbxlsvankd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zjwgdrrtes .gt_indent_5 {
+#wbxlsvankd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zjwgdrrtes .katex-display {
+#wbxlsvankd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zjwgdrrtes div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wbxlsvankd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3957,23 +3963,23 @@ Sample ID formatting
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="rrhjhchltv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rrhjhchltv table {
+<div id="gcrxeqwicy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gcrxeqwicy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rrhjhchltv thead, #rrhjhchltv tbody, #rrhjhchltv tfoot, #rrhjhchltv tr, #rrhjhchltv td, #rrhjhchltv th {
+#gcrxeqwicy thead, #gcrxeqwicy tbody, #gcrxeqwicy tfoot, #gcrxeqwicy tr, #gcrxeqwicy td, #gcrxeqwicy th {
   border-style: none;
 }
 
-#rrhjhchltv p {
+#gcrxeqwicy p {
   margin: 0;
   padding: 0;
 }
 
-#rrhjhchltv .gt_table {
+#gcrxeqwicy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3999,12 +4005,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#rrhjhchltv .gt_caption {
+#gcrxeqwicy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rrhjhchltv .gt_title {
+#gcrxeqwicy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4016,7 +4022,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#rrhjhchltv .gt_subtitle {
+#gcrxeqwicy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4028,7 +4034,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#rrhjhchltv .gt_heading {
+#gcrxeqwicy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4040,13 +4046,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#rrhjhchltv .gt_bottom_border {
+#gcrxeqwicy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rrhjhchltv .gt_col_headings {
+#gcrxeqwicy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4061,7 +4067,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#rrhjhchltv .gt_col_heading {
+#gcrxeqwicy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4081,7 +4087,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#rrhjhchltv .gt_column_spanner_outer {
+#gcrxeqwicy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4093,15 +4099,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#rrhjhchltv .gt_column_spanner_outer:first-child {
+#gcrxeqwicy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rrhjhchltv .gt_column_spanner_outer:last-child {
+#gcrxeqwicy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rrhjhchltv .gt_column_spanner {
+#gcrxeqwicy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4113,11 +4119,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#rrhjhchltv .gt_spanner_row {
+#gcrxeqwicy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rrhjhchltv .gt_group_heading {
+#gcrxeqwicy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4143,7 +4149,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#rrhjhchltv .gt_empty_group_heading {
+#gcrxeqwicy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4158,15 +4164,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#rrhjhchltv .gt_from_md > :first-child {
+#gcrxeqwicy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rrhjhchltv .gt_from_md > :last-child {
+#gcrxeqwicy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rrhjhchltv .gt_row {
+#gcrxeqwicy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4185,7 +4191,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#rrhjhchltv .gt_stub {
+#gcrxeqwicy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4198,7 +4204,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#rrhjhchltv .gt_stub_row_group {
+#gcrxeqwicy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4212,15 +4218,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#rrhjhchltv .gt_row_group_first td {
+#gcrxeqwicy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rrhjhchltv .gt_row_group_first th {
+#gcrxeqwicy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rrhjhchltv .gt_summary_row {
+#gcrxeqwicy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4230,16 +4236,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#rrhjhchltv .gt_first_summary_row {
+#gcrxeqwicy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rrhjhchltv .gt_first_summary_row.thick {
+#gcrxeqwicy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rrhjhchltv .gt_last_summary_row {
+#gcrxeqwicy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4249,7 +4255,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#rrhjhchltv .gt_grand_summary_row {
+#gcrxeqwicy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4259,7 +4265,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#rrhjhchltv .gt_first_grand_summary_row {
+#gcrxeqwicy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4269,7 +4275,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#rrhjhchltv .gt_last_grand_summary_row_top {
+#gcrxeqwicy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4279,11 +4285,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#rrhjhchltv .gt_striped {
+#gcrxeqwicy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rrhjhchltv .gt_table_body {
+#gcrxeqwicy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4292,7 +4298,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#rrhjhchltv .gt_footnotes {
+#gcrxeqwicy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4306,7 +4312,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#rrhjhchltv .gt_footnote {
+#gcrxeqwicy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4315,7 +4321,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#rrhjhchltv .gt_sourcenotes {
+#gcrxeqwicy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4329,7 +4335,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#rrhjhchltv .gt_sourcenote {
+#gcrxeqwicy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4337,72 +4343,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#rrhjhchltv .gt_left {
+#gcrxeqwicy .gt_left {
   text-align: left;
 }
 
-#rrhjhchltv .gt_center {
+#gcrxeqwicy .gt_center {
   text-align: center;
 }
 
-#rrhjhchltv .gt_right {
+#gcrxeqwicy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rrhjhchltv .gt_font_normal {
+#gcrxeqwicy .gt_font_normal {
   font-weight: normal;
 }
 
-#rrhjhchltv .gt_font_bold {
+#gcrxeqwicy .gt_font_bold {
   font-weight: bold;
 }
 
-#rrhjhchltv .gt_font_italic {
+#gcrxeqwicy .gt_font_italic {
   font-style: italic;
 }
 
-#rrhjhchltv .gt_super {
+#gcrxeqwicy .gt_super {
   font-size: 65%;
 }
 
-#rrhjhchltv .gt_footnote_marks {
+#gcrxeqwicy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rrhjhchltv .gt_asterisk {
+#gcrxeqwicy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rrhjhchltv .gt_indent_1 {
+#gcrxeqwicy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rrhjhchltv .gt_indent_2 {
+#gcrxeqwicy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rrhjhchltv .gt_indent_3 {
+#gcrxeqwicy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rrhjhchltv .gt_indent_4 {
+#gcrxeqwicy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rrhjhchltv .gt_indent_5 {
+#gcrxeqwicy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rrhjhchltv .katex-display {
+#gcrxeqwicy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rrhjhchltv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#gcrxeqwicy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4629,23 +4635,23 @@ Sample ID formatting
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="lvivufxhug" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lvivufxhug table {
+<div id="upnwwkffgm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#upnwwkffgm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lvivufxhug thead, #lvivufxhug tbody, #lvivufxhug tfoot, #lvivufxhug tr, #lvivufxhug td, #lvivufxhug th {
+#upnwwkffgm thead, #upnwwkffgm tbody, #upnwwkffgm tfoot, #upnwwkffgm tr, #upnwwkffgm td, #upnwwkffgm th {
   border-style: none;
 }
 
-#lvivufxhug p {
+#upnwwkffgm p {
   margin: 0;
   padding: 0;
 }
 
-#lvivufxhug .gt_table {
+#upnwwkffgm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4671,12 +4677,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#lvivufxhug .gt_caption {
+#upnwwkffgm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lvivufxhug .gt_title {
+#upnwwkffgm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4688,7 +4694,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#lvivufxhug .gt_subtitle {
+#upnwwkffgm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4700,7 +4706,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#lvivufxhug .gt_heading {
+#upnwwkffgm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4712,13 +4718,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#lvivufxhug .gt_bottom_border {
+#upnwwkffgm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lvivufxhug .gt_col_headings {
+#upnwwkffgm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4733,7 +4739,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#lvivufxhug .gt_col_heading {
+#upnwwkffgm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4753,7 +4759,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#lvivufxhug .gt_column_spanner_outer {
+#upnwwkffgm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4765,15 +4771,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#lvivufxhug .gt_column_spanner_outer:first-child {
+#upnwwkffgm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lvivufxhug .gt_column_spanner_outer:last-child {
+#upnwwkffgm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lvivufxhug .gt_column_spanner {
+#upnwwkffgm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4785,11 +4791,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#lvivufxhug .gt_spanner_row {
+#upnwwkffgm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lvivufxhug .gt_group_heading {
+#upnwwkffgm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4815,7 +4821,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#lvivufxhug .gt_empty_group_heading {
+#upnwwkffgm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4830,15 +4836,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#lvivufxhug .gt_from_md > :first-child {
+#upnwwkffgm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lvivufxhug .gt_from_md > :last-child {
+#upnwwkffgm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lvivufxhug .gt_row {
+#upnwwkffgm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4857,7 +4863,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#lvivufxhug .gt_stub {
+#upnwwkffgm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4870,7 +4876,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#lvivufxhug .gt_stub_row_group {
+#upnwwkffgm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4884,15 +4890,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#lvivufxhug .gt_row_group_first td {
+#upnwwkffgm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lvivufxhug .gt_row_group_first th {
+#upnwwkffgm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lvivufxhug .gt_summary_row {
+#upnwwkffgm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4902,16 +4908,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#lvivufxhug .gt_first_summary_row {
+#upnwwkffgm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lvivufxhug .gt_first_summary_row.thick {
+#upnwwkffgm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lvivufxhug .gt_last_summary_row {
+#upnwwkffgm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4921,7 +4927,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#lvivufxhug .gt_grand_summary_row {
+#upnwwkffgm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4931,7 +4937,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#lvivufxhug .gt_first_grand_summary_row {
+#upnwwkffgm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4941,7 +4947,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#lvivufxhug .gt_last_grand_summary_row_top {
+#upnwwkffgm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4951,11 +4957,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#lvivufxhug .gt_striped {
+#upnwwkffgm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lvivufxhug .gt_table_body {
+#upnwwkffgm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4964,7 +4970,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#lvivufxhug .gt_footnotes {
+#upnwwkffgm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4978,7 +4984,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#lvivufxhug .gt_footnote {
+#upnwwkffgm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4987,7 +4993,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#lvivufxhug .gt_sourcenotes {
+#upnwwkffgm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5001,7 +5007,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#lvivufxhug .gt_sourcenote {
+#upnwwkffgm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5009,72 +5015,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#lvivufxhug .gt_left {
+#upnwwkffgm .gt_left {
   text-align: left;
 }
 
-#lvivufxhug .gt_center {
+#upnwwkffgm .gt_center {
   text-align: center;
 }
 
-#lvivufxhug .gt_right {
+#upnwwkffgm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lvivufxhug .gt_font_normal {
+#upnwwkffgm .gt_font_normal {
   font-weight: normal;
 }
 
-#lvivufxhug .gt_font_bold {
+#upnwwkffgm .gt_font_bold {
   font-weight: bold;
 }
 
-#lvivufxhug .gt_font_italic {
+#upnwwkffgm .gt_font_italic {
   font-style: italic;
 }
 
-#lvivufxhug .gt_super {
+#upnwwkffgm .gt_super {
   font-size: 65%;
 }
 
-#lvivufxhug .gt_footnote_marks {
+#upnwwkffgm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lvivufxhug .gt_asterisk {
+#upnwwkffgm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lvivufxhug .gt_indent_1 {
+#upnwwkffgm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lvivufxhug .gt_indent_2 {
+#upnwwkffgm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lvivufxhug .gt_indent_3 {
+#upnwwkffgm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lvivufxhug .gt_indent_4 {
+#upnwwkffgm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lvivufxhug .gt_indent_5 {
+#upnwwkffgm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lvivufxhug .katex-display {
+#upnwwkffgm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lvivufxhug div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#upnwwkffgm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5328,6 +5334,2734 @@ Sample ID formatting
 </section>
 <section id="mcpg-percentages" class="level2">
 <h2 class="anchored" data-anchor-id="mcpg-percentages">mCpG Percentages</h2>
+</section>
+</section>
+<section id="pocillopora-tuahiniensis" class="level1">
+<h1><em>Pocillopora tuahiniensis</em></h1>
+<section id="gene-counts-2" class="level2">
+<h2 class="anchored" data-anchor-id="gene-counts-2">Gene Counts</h2>
+<p><a href="https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv" class="btn btn-primary" target="_blank" download="Ptuh_gene_count_matrix.csv">Download Gene Counts</a></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="ftroocchkw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ftroocchkw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ftroocchkw thead, #ftroocchkw tbody, #ftroocchkw tfoot, #ftroocchkw tr, #ftroocchkw td, #ftroocchkw th {
+  border-style: none;
+}
+
+#ftroocchkw p {
+  margin: 0;
+  padding: 0;
+}
+
+#ftroocchkw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ftroocchkw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ftroocchkw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ftroocchkw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ftroocchkw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ftroocchkw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ftroocchkw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ftroocchkw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ftroocchkw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ftroocchkw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ftroocchkw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ftroocchkw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ftroocchkw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ftroocchkw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ftroocchkw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ftroocchkw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ftroocchkw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ftroocchkw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ftroocchkw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ftroocchkw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ftroocchkw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ftroocchkw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ftroocchkw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ftroocchkw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ftroocchkw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ftroocchkw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ftroocchkw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ftroocchkw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ftroocchkw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ftroocchkw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ftroocchkw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ftroocchkw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ftroocchkw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ftroocchkw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ftroocchkw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ftroocchkw .gt_left {
+  text-align: left;
+}
+
+#ftroocchkw .gt_center {
+  text-align: center;
+}
+
+#ftroocchkw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ftroocchkw .gt_font_normal {
+  font-weight: normal;
+}
+
+#ftroocchkw .gt_font_bold {
+  font-weight: bold;
+}
+
+#ftroocchkw .gt_font_italic {
+  font-style: italic;
+}
+
+#ftroocchkw .gt_super {
+  font-size: 65%;
+}
+
+#ftroocchkw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ftroocchkw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ftroocchkw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ftroocchkw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ftroocchkw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ftroocchkw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ftroocchkw .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ftroocchkw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ftroocchkw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Row" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Row</th>
+<th id="gene_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">gene_id</th>
+<th id="POC-201-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-201-TP1</th>
+<th id="POC-201-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-201-TP2</th>
+<th id="POC-201-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-201-TP3</th>
+<th id="POC-219-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-219-TP1</th>
+<th id="POC-219-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-219-TP2</th>
+<th id="POC-219-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-219-TP3</th>
+<th id="POC-219-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-219-TP4</th>
+<th id="POC-222-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-222-TP1</th>
+<th id="POC-222-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-222-TP2</th>
+<th id="POC-222-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-222-TP3</th>
+<th id="POC-222-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-222-TP4</th>
+<th id="POC-255-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-255-TP1</th>
+<th id="POC-255-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-255-TP2</th>
+<th id="POC-255-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-255-TP3</th>
+<th id="POC-255-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-255-TP4</th>
+<th id="POC-259-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-259-TP1</th>
+<th id="POC-259-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-259-TP2</th>
+<th id="POC-259-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-259-TP3</th>
+<th id="POC-259-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-259-TP4</th>
+<th id="POC-40-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-40-TP1</th>
+<th id="POC-40-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-40-TP2</th>
+<th id="POC-40-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-40-TP3</th>
+<th id="POC-40-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-40-TP4</th>
+<th id="POC-42-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-42-TP1</th>
+<th id="POC-42-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-42-TP2</th>
+<th id="POC-42-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-42-TP3</th>
+<th id="POC-42-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-42-TP4</th>
+<th id="POC-52-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-52-TP1</th>
+<th id="POC-52-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-52-TP2</th>
+<th id="POC-52-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-52-TP3</th>
+<th id="POC-52-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-52-TP4</th>
+<th id="POC-53-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-53-TP1</th>
+<th id="POC-53-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-53-TP2</th>
+<th id="POC-53-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-53-TP3</th>
+<th id="POC-53-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-53-TP4</th>
+<th id="POC-57-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-57-TP1</th>
+<th id="POC-57-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-57-TP2</th>
+<th id="POC-57-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-57-TP3</th>
+<th id="POC-57-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-57-TP4</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">1</td>
+<td class="gt_row gt_left" headers="gene_id">gene-Pocillopora_meandrina_HIv1___RNAseq.g20905.t1</td>
+<td class="gt_row gt_right" headers="POC-201-TP1">54</td>
+<td class="gt_row gt_right" headers="POC-201-TP2">170</td>
+<td class="gt_row gt_right" headers="POC-201-TP3">18</td>
+<td class="gt_row gt_right" headers="POC-219-TP1">168</td>
+<td class="gt_row gt_right" headers="POC-219-TP2">31</td>
+<td class="gt_row gt_right" headers="POC-219-TP3">11</td>
+<td class="gt_row gt_right" headers="POC-219-TP4">70</td>
+<td class="gt_row gt_right" headers="POC-222-TP1">296</td>
+<td class="gt_row gt_right" headers="POC-222-TP2">51</td>
+<td class="gt_row gt_right" headers="POC-222-TP3">388</td>
+<td class="gt_row gt_right" headers="POC-222-TP4">33</td>
+<td class="gt_row gt_right" headers="POC-255-TP1">72</td>
+<td class="gt_row gt_right" headers="POC-255-TP2">84</td>
+<td class="gt_row gt_right" headers="POC-255-TP3">36</td>
+<td class="gt_row gt_right" headers="POC-255-TP4">65</td>
+<td class="gt_row gt_right" headers="POC-259-TP1">294</td>
+<td class="gt_row gt_right" headers="POC-259-TP2">226</td>
+<td class="gt_row gt_right" headers="POC-259-TP3">47</td>
+<td class="gt_row gt_right" headers="POC-259-TP4">140</td>
+<td class="gt_row gt_right" headers="POC-40-TP1">60</td>
+<td class="gt_row gt_right" headers="POC-40-TP2">7</td>
+<td class="gt_row gt_right" headers="POC-40-TP3">56</td>
+<td class="gt_row gt_right" headers="POC-40-TP4">47</td>
+<td class="gt_row gt_right" headers="POC-42-TP1">42</td>
+<td class="gt_row gt_right" headers="POC-42-TP2">31</td>
+<td class="gt_row gt_right" headers="POC-42-TP3">28</td>
+<td class="gt_row gt_right" headers="POC-42-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP2">52</td>
+<td class="gt_row gt_right" headers="POC-52-TP3">99</td>
+<td class="gt_row gt_right" headers="POC-52-TP4">157</td>
+<td class="gt_row gt_right" headers="POC-53-TP1">84</td>
+<td class="gt_row gt_right" headers="POC-53-TP2">39</td>
+<td class="gt_row gt_right" headers="POC-53-TP3">162</td>
+<td class="gt_row gt_right" headers="POC-53-TP4">61</td>
+<td class="gt_row gt_right" headers="POC-57-TP1">17</td>
+<td class="gt_row gt_right" headers="POC-57-TP2">51</td>
+<td class="gt_row gt_right" headers="POC-57-TP3">177</td>
+<td class="gt_row gt_right" headers="POC-57-TP4">206</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">2</td>
+<td class="gt_row gt_left" headers="gene_id">gene-Pocillopora_meandrina_HIv1___RNAseq.g20902.t1</td>
+<td class="gt_row gt_right" headers="POC-201-TP1">957</td>
+<td class="gt_row gt_right" headers="POC-201-TP2">759</td>
+<td class="gt_row gt_right" headers="POC-201-TP3">143</td>
+<td class="gt_row gt_right" headers="POC-219-TP1">757</td>
+<td class="gt_row gt_right" headers="POC-219-TP2">446</td>
+<td class="gt_row gt_right" headers="POC-219-TP3">96</td>
+<td class="gt_row gt_right" headers="POC-219-TP4">399</td>
+<td class="gt_row gt_right" headers="POC-222-TP1">664</td>
+<td class="gt_row gt_right" headers="POC-222-TP2">304</td>
+<td class="gt_row gt_right" headers="POC-222-TP3">1627</td>
+<td class="gt_row gt_right" headers="POC-222-TP4">521</td>
+<td class="gt_row gt_right" headers="POC-255-TP1">385</td>
+<td class="gt_row gt_right" headers="POC-255-TP2">432</td>
+<td class="gt_row gt_right" headers="POC-255-TP3">248</td>
+<td class="gt_row gt_right" headers="POC-255-TP4">847</td>
+<td class="gt_row gt_right" headers="POC-259-TP1">722</td>
+<td class="gt_row gt_right" headers="POC-259-TP2">969</td>
+<td class="gt_row gt_right" headers="POC-259-TP3">559</td>
+<td class="gt_row gt_right" headers="POC-259-TP4">900</td>
+<td class="gt_row gt_right" headers="POC-40-TP1">384</td>
+<td class="gt_row gt_right" headers="POC-40-TP2">323</td>
+<td class="gt_row gt_right" headers="POC-40-TP3">715</td>
+<td class="gt_row gt_right" headers="POC-40-TP4">473</td>
+<td class="gt_row gt_right" headers="POC-42-TP1">537</td>
+<td class="gt_row gt_right" headers="POC-42-TP2">519</td>
+<td class="gt_row gt_right" headers="POC-42-TP3">338</td>
+<td class="gt_row gt_right" headers="POC-42-TP4">43</td>
+<td class="gt_row gt_right" headers="POC-52-TP1">61</td>
+<td class="gt_row gt_right" headers="POC-52-TP2">517</td>
+<td class="gt_row gt_right" headers="POC-52-TP3">835</td>
+<td class="gt_row gt_right" headers="POC-52-TP4">1374</td>
+<td class="gt_row gt_right" headers="POC-53-TP1">831</td>
+<td class="gt_row gt_right" headers="POC-53-TP2">439</td>
+<td class="gt_row gt_right" headers="POC-53-TP3">1084</td>
+<td class="gt_row gt_right" headers="POC-53-TP4">481</td>
+<td class="gt_row gt_right" headers="POC-57-TP1">545</td>
+<td class="gt_row gt_right" headers="POC-57-TP2">234</td>
+<td class="gt_row gt_right" headers="POC-57-TP3">921</td>
+<td class="gt_row gt_right" headers="POC-57-TP4">899</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">3</td>
+<td class="gt_row gt_left" headers="gene_id">gene-Pocillopora_meandrina_HIv1___RNAseq.g20903.t1</td>
+<td class="gt_row gt_right" headers="POC-201-TP1">249</td>
+<td class="gt_row gt_right" headers="POC-201-TP2">452</td>
+<td class="gt_row gt_right" headers="POC-201-TP3">381</td>
+<td class="gt_row gt_right" headers="POC-219-TP1">501</td>
+<td class="gt_row gt_right" headers="POC-219-TP2">218</td>
+<td class="gt_row gt_right" headers="POC-219-TP3">120</td>
+<td class="gt_row gt_right" headers="POC-219-TP4">289</td>
+<td class="gt_row gt_right" headers="POC-222-TP1">240</td>
+<td class="gt_row gt_right" headers="POC-222-TP2">229</td>
+<td class="gt_row gt_right" headers="POC-222-TP3">482</td>
+<td class="gt_row gt_right" headers="POC-222-TP4">223</td>
+<td class="gt_row gt_right" headers="POC-255-TP1">106</td>
+<td class="gt_row gt_right" headers="POC-255-TP2">250</td>
+<td class="gt_row gt_right" headers="POC-255-TP3">811</td>
+<td class="gt_row gt_right" headers="POC-255-TP4">506</td>
+<td class="gt_row gt_right" headers="POC-259-TP1">571</td>
+<td class="gt_row gt_right" headers="POC-259-TP2">341</td>
+<td class="gt_row gt_right" headers="POC-259-TP3">603</td>
+<td class="gt_row gt_right" headers="POC-259-TP4">446</td>
+<td class="gt_row gt_right" headers="POC-40-TP1">150</td>
+<td class="gt_row gt_right" headers="POC-40-TP2">120</td>
+<td class="gt_row gt_right" headers="POC-40-TP3">273</td>
+<td class="gt_row gt_right" headers="POC-40-TP4">166</td>
+<td class="gt_row gt_right" headers="POC-42-TP1">185</td>
+<td class="gt_row gt_right" headers="POC-42-TP2">107</td>
+<td class="gt_row gt_right" headers="POC-42-TP3">115</td>
+<td class="gt_row gt_right" headers="POC-42-TP4">249</td>
+<td class="gt_row gt_right" headers="POC-52-TP1">284</td>
+<td class="gt_row gt_right" headers="POC-52-TP2">167</td>
+<td class="gt_row gt_right" headers="POC-52-TP3">341</td>
+<td class="gt_row gt_right" headers="POC-52-TP4">467</td>
+<td class="gt_row gt_right" headers="POC-53-TP1">320</td>
+<td class="gt_row gt_right" headers="POC-53-TP2">154</td>
+<td class="gt_row gt_right" headers="POC-53-TP3">393</td>
+<td class="gt_row gt_right" headers="POC-53-TP4">209</td>
+<td class="gt_row gt_right" headers="POC-57-TP1">287</td>
+<td class="gt_row gt_right" headers="POC-57-TP2">235</td>
+<td class="gt_row gt_right" headers="POC-57-TP3">502</td>
+<td class="gt_row gt_right" headers="POC-57-TP4">415</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">4</td>
+<td class="gt_row gt_left" headers="gene_id">gene-Pocillopora_meandrina_HIv1___TS.g25664.t1</td>
+<td class="gt_row gt_right" headers="POC-201-TP1">365</td>
+<td class="gt_row gt_right" headers="POC-201-TP2">191</td>
+<td class="gt_row gt_right" headers="POC-201-TP3">13</td>
+<td class="gt_row gt_right" headers="POC-219-TP1">73</td>
+<td class="gt_row gt_right" headers="POC-219-TP2">64</td>
+<td class="gt_row gt_right" headers="POC-219-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP4">110</td>
+<td class="gt_row gt_right" headers="POC-222-TP1">719</td>
+<td class="gt_row gt_right" headers="POC-222-TP2">186</td>
+<td class="gt_row gt_right" headers="POC-222-TP3">215</td>
+<td class="gt_row gt_right" headers="POC-222-TP4">111</td>
+<td class="gt_row gt_right" headers="POC-255-TP1">489</td>
+<td class="gt_row gt_right" headers="POC-255-TP2">118</td>
+<td class="gt_row gt_right" headers="POC-255-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP4">98</td>
+<td class="gt_row gt_right" headers="POC-259-TP1">109</td>
+<td class="gt_row gt_right" headers="POC-259-TP2">287</td>
+<td class="gt_row gt_right" headers="POC-259-TP3">91</td>
+<td class="gt_row gt_right" headers="POC-259-TP4">109</td>
+<td class="gt_row gt_right" headers="POC-40-TP1">259</td>
+<td class="gt_row gt_right" headers="POC-40-TP2">215</td>
+<td class="gt_row gt_right" headers="POC-40-TP3">114</td>
+<td class="gt_row gt_right" headers="POC-40-TP4">420</td>
+<td class="gt_row gt_right" headers="POC-42-TP1">370</td>
+<td class="gt_row gt_right" headers="POC-42-TP2">521</td>
+<td class="gt_row gt_right" headers="POC-42-TP3">275</td>
+<td class="gt_row gt_right" headers="POC-42-TP4">23</td>
+<td class="gt_row gt_right" headers="POC-52-TP1">46</td>
+<td class="gt_row gt_right" headers="POC-52-TP2">216</td>
+<td class="gt_row gt_right" headers="POC-52-TP3">76</td>
+<td class="gt_row gt_right" headers="POC-52-TP4">100</td>
+<td class="gt_row gt_right" headers="POC-53-TP1">111</td>
+<td class="gt_row gt_right" headers="POC-53-TP2">180</td>
+<td class="gt_row gt_right" headers="POC-53-TP3">183</td>
+<td class="gt_row gt_right" headers="POC-53-TP4">139</td>
+<td class="gt_row gt_right" headers="POC-57-TP1">305</td>
+<td class="gt_row gt_right" headers="POC-57-TP2">96</td>
+<td class="gt_row gt_right" headers="POC-57-TP3">88</td>
+<td class="gt_row gt_right" headers="POC-57-TP4">274</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="mirna-counts-2" class="level2">
+<h2 class="anchored" data-anchor-id="mirna-counts-2">miRNA Counts</h2>
+<p><a href="https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt" class="btn btn-primary" target="_blank" download="Ptuh_gene_count_matrix.csv">Download miRNA Counts</a></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="nmjcxusgye" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nmjcxusgye table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#nmjcxusgye thead, #nmjcxusgye tbody, #nmjcxusgye tfoot, #nmjcxusgye tr, #nmjcxusgye td, #nmjcxusgye th {
+  border-style: none;
+}
+
+#nmjcxusgye p {
+  margin: 0;
+  padding: 0;
+}
+
+#nmjcxusgye .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nmjcxusgye .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#nmjcxusgye .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nmjcxusgye .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nmjcxusgye .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nmjcxusgye .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nmjcxusgye .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nmjcxusgye .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nmjcxusgye .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nmjcxusgye .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nmjcxusgye .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nmjcxusgye .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nmjcxusgye .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#nmjcxusgye .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#nmjcxusgye .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nmjcxusgye .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nmjcxusgye .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nmjcxusgye .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nmjcxusgye .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nmjcxusgye .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#nmjcxusgye .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#nmjcxusgye .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#nmjcxusgye .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nmjcxusgye .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#nmjcxusgye .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#nmjcxusgye .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nmjcxusgye .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nmjcxusgye .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#nmjcxusgye .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nmjcxusgye .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#nmjcxusgye .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nmjcxusgye .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nmjcxusgye .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nmjcxusgye .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nmjcxusgye .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nmjcxusgye .gt_left {
+  text-align: left;
+}
+
+#nmjcxusgye .gt_center {
+  text-align: center;
+}
+
+#nmjcxusgye .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nmjcxusgye .gt_font_normal {
+  font-weight: normal;
+}
+
+#nmjcxusgye .gt_font_bold {
+  font-weight: bold;
+}
+
+#nmjcxusgye .gt_font_italic {
+  font-style: italic;
+}
+
+#nmjcxusgye .gt_super {
+  font-size: 65%;
+}
+
+#nmjcxusgye .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#nmjcxusgye .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#nmjcxusgye .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#nmjcxusgye .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#nmjcxusgye .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#nmjcxusgye .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#nmjcxusgye .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#nmjcxusgye .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#nmjcxusgye div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Row" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Row</th>
+<th id="Name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Name</th>
+<th id="a1A3_POC-255_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1A3_POC-255_TP1</th>
+<th id="a1A4_POC-52_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1A4_POC-52_TP1</th>
+<th id="a1A5_POC-53_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1A5_POC-53_TP3</th>
+<th id="a1A6_POC-52_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1A6_POC-52_TP3</th>
+<th id="a1B11_POC-40_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1B11_POC-40_TP1</th>
+<th id="a1B12_POC-222_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1B12_POC-222_TP2</th>
+<th id="a1B8_POC-201_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1B8_POC-201_TP1</th>
+<th id="a1C1_POC-57_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1C1_POC-57_TP2</th>
+<th id="a1C2_POC-222_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1C2_POC-222_TP4</th>
+<th id="a1C3_POC-222_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1C3_POC-222_TP3</th>
+<th id="a1C7_POC-52_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1C7_POC-52_TP4</th>
+<th id="a1C8_POC-42_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1C8_POC-42_TP1</th>
+<th id="a1C9_POC-222_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1C9_POC-222_TP1</th>
+<th id="a1D11_POC-255_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1D11_POC-255_TP3</th>
+<th id="a1E10_POC-40_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1E10_POC-40_TP2</th>
+<th id="a1E11_POC-219_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1E11_POC-219_TP1</th>
+<th id="a1E12_POC-255_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1E12_POC-255_TP4</th>
+<th id="a1E4_POC-259_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1E4_POC-259_TP2</th>
+<th id="a1E6_POC-40_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1E6_POC-40_TP3</th>
+<th id="a1E8_POC-42_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1E8_POC-42_TP3</th>
+<th id="a1F2_POC-259_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1F2_POC-259_TP4</th>
+<th id="a1F5_POC-40_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1F5_POC-40_TP4</th>
+<th id="a1F9_POC-52_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1F9_POC-52_TP2</th>
+<th id="a1G11_POC-53_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1G11_POC-53_TP1</th>
+<th id="a1G12_POC-219_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1G12_POC-219_TP4</th>
+<th id="a1G2_POC-219_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1G2_POC-219_TP3</th>
+<th id="a1G4_POC-57_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1G4_POC-57_TP3</th>
+<th id="a1G6_POC-53_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1G6_POC-53_TP2</th>
+<th id="a1G7_POC-42_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1G7_POC-42_TP4</th>
+<th id="a1G8_POC-259_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1G8_POC-259_TP3</th>
+<th id="a1G9_POC-259_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1G9_POC-259_TP1</th>
+<th id="a1H10_POC-201_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1H10_POC-201_TP2</th>
+<th id="a1H4_POC-42_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1H4_POC-42_TP2</th>
+<th id="a1H5_POC-201_TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1H5_POC-201_TP3</th>
+<th id="a1H9_POC-53_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">1H9_POC-53_TP4</th>
+<th id="a2A1_POC-219_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2A1_POC-219_TP2</th>
+<th id="a2A2_POC-255_TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2A2_POC-255_TP2</th>
+<th id="a2C3_POC-57_TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2C3_POC-57_TP1</th>
+<th id="a2G2_POC-57_TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">2G2_POC-57_TP4</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">1</td>
+<td class="gt_row gt_left" headers="Name">Cluster_4</td>
+<td class="gt_row gt_right" headers="1A3_POC-255_TP1">337</td>
+<td class="gt_row gt_right" headers="1A4_POC-52_TP1">0</td>
+<td class="gt_row gt_right" headers="1A5_POC-53_TP3">7</td>
+<td class="gt_row gt_right" headers="1A6_POC-52_TP3">32</td>
+<td class="gt_row gt_right" headers="1B11_POC-40_TP1">45</td>
+<td class="gt_row gt_right" headers="1B12_POC-222_TP2">150</td>
+<td class="gt_row gt_right" headers="1B8_POC-201_TP1">20</td>
+<td class="gt_row gt_right" headers="1C1_POC-57_TP2">120</td>
+<td class="gt_row gt_right" headers="1C2_POC-222_TP4">6</td>
+<td class="gt_row gt_right" headers="1C3_POC-222_TP3">61</td>
+<td class="gt_row gt_right" headers="1C7_POC-52_TP4">27</td>
+<td class="gt_row gt_right" headers="1C8_POC-42_TP1">10</td>
+<td class="gt_row gt_right" headers="1C9_POC-222_TP1">110</td>
+<td class="gt_row gt_right" headers="1D11_POC-255_TP3">4</td>
+<td class="gt_row gt_right" headers="1E10_POC-40_TP2">202</td>
+<td class="gt_row gt_right" headers="1E11_POC-219_TP1">8</td>
+<td class="gt_row gt_right" headers="1E12_POC-255_TP4">26</td>
+<td class="gt_row gt_right" headers="1E4_POC-259_TP2">151</td>
+<td class="gt_row gt_right" headers="1E6_POC-40_TP3">84</td>
+<td class="gt_row gt_right" headers="1E8_POC-42_TP3">27</td>
+<td class="gt_row gt_right" headers="1F2_POC-259_TP4">93</td>
+<td class="gt_row gt_right" headers="1F5_POC-40_TP4">180</td>
+<td class="gt_row gt_right" headers="1F9_POC-52_TP2">164</td>
+<td class="gt_row gt_right" headers="1G11_POC-53_TP1">28</td>
+<td class="gt_row gt_right" headers="1G12_POC-219_TP4">2</td>
+<td class="gt_row gt_right" headers="1G2_POC-219_TP3">2</td>
+<td class="gt_row gt_right" headers="1G4_POC-57_TP3">43</td>
+<td class="gt_row gt_right" headers="1G6_POC-53_TP2">216</td>
+<td class="gt_row gt_right" headers="1G7_POC-42_TP4">111</td>
+<td class="gt_row gt_right" headers="1G8_POC-259_TP3">5</td>
+<td class="gt_row gt_right" headers="1G9_POC-259_TP1">99</td>
+<td class="gt_row gt_right" headers="1H10_POC-201_TP2">70</td>
+<td class="gt_row gt_right" headers="1H4_POC-42_TP2">101</td>
+<td class="gt_row gt_right" headers="1H5_POC-201_TP3">2</td>
+<td class="gt_row gt_right" headers="1H9_POC-53_TP4">3</td>
+<td class="gt_row gt_right" headers="2A1_POC-219_TP2">44</td>
+<td class="gt_row gt_right" headers="2A2_POC-255_TP2">177</td>
+<td class="gt_row gt_right" headers="2C3_POC-57_TP1">46</td>
+<td class="gt_row gt_right" headers="2G2_POC-57_TP4">13</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">2</td>
+<td class="gt_row gt_left" headers="Name">Cluster_20</td>
+<td class="gt_row gt_right" headers="1A3_POC-255_TP1">7176</td>
+<td class="gt_row gt_right" headers="1A4_POC-52_TP1">3</td>
+<td class="gt_row gt_right" headers="1A5_POC-53_TP3">236</td>
+<td class="gt_row gt_right" headers="1A6_POC-52_TP3">588</td>
+<td class="gt_row gt_right" headers="1B11_POC-40_TP1">273</td>
+<td class="gt_row gt_right" headers="1B12_POC-222_TP2">1068</td>
+<td class="gt_row gt_right" headers="1B8_POC-201_TP1">538</td>
+<td class="gt_row gt_right" headers="1C1_POC-57_TP2">279</td>
+<td class="gt_row gt_right" headers="1C2_POC-222_TP4">57</td>
+<td class="gt_row gt_right" headers="1C3_POC-222_TP3">283</td>
+<td class="gt_row gt_right" headers="1C7_POC-52_TP4">705</td>
+<td class="gt_row gt_right" headers="1C8_POC-42_TP1">158</td>
+<td class="gt_row gt_right" headers="1C9_POC-222_TP1">497</td>
+<td class="gt_row gt_right" headers="1D11_POC-255_TP3">74</td>
+<td class="gt_row gt_right" headers="1E10_POC-40_TP2">2069</td>
+<td class="gt_row gt_right" headers="1E11_POC-219_TP1">50</td>
+<td class="gt_row gt_right" headers="1E12_POC-255_TP4">526</td>
+<td class="gt_row gt_right" headers="1E4_POC-259_TP2">3183</td>
+<td class="gt_row gt_right" headers="1E6_POC-40_TP3">1046</td>
+<td class="gt_row gt_right" headers="1E8_POC-42_TP3">254</td>
+<td class="gt_row gt_right" headers="1F2_POC-259_TP4">1269</td>
+<td class="gt_row gt_right" headers="1F5_POC-40_TP4">2788</td>
+<td class="gt_row gt_right" headers="1F9_POC-52_TP2">2038</td>
+<td class="gt_row gt_right" headers="1G11_POC-53_TP1">134</td>
+<td class="gt_row gt_right" headers="1G12_POC-219_TP4">33</td>
+<td class="gt_row gt_right" headers="1G2_POC-219_TP3">10</td>
+<td class="gt_row gt_right" headers="1G4_POC-57_TP3">438</td>
+<td class="gt_row gt_right" headers="1G6_POC-53_TP2">1186</td>
+<td class="gt_row gt_right" headers="1G7_POC-42_TP4">804</td>
+<td class="gt_row gt_right" headers="1G8_POC-259_TP3">96</td>
+<td class="gt_row gt_right" headers="1G9_POC-259_TP1">2313</td>
+<td class="gt_row gt_right" headers="1H10_POC-201_TP2">1182</td>
+<td class="gt_row gt_right" headers="1H4_POC-42_TP2">743</td>
+<td class="gt_row gt_right" headers="1H5_POC-201_TP3">80</td>
+<td class="gt_row gt_right" headers="1H9_POC-53_TP4">48</td>
+<td class="gt_row gt_right" headers="2A1_POC-219_TP2">200</td>
+<td class="gt_row gt_right" headers="2A2_POC-255_TP2">2244</td>
+<td class="gt_row gt_right" headers="2C3_POC-57_TP1">453</td>
+<td class="gt_row gt_right" headers="2G2_POC-57_TP4">304</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">3</td>
+<td class="gt_row gt_left" headers="Name">Cluster_321</td>
+<td class="gt_row gt_right" headers="1A3_POC-255_TP1">5942</td>
+<td class="gt_row gt_right" headers="1A4_POC-52_TP1">2</td>
+<td class="gt_row gt_right" headers="1A5_POC-53_TP3">240</td>
+<td class="gt_row gt_right" headers="1A6_POC-52_TP3">1321</td>
+<td class="gt_row gt_right" headers="1B11_POC-40_TP1">363</td>
+<td class="gt_row gt_right" headers="1B12_POC-222_TP2">2868</td>
+<td class="gt_row gt_right" headers="1B8_POC-201_TP1">409</td>
+<td class="gt_row gt_right" headers="1C1_POC-57_TP2">241</td>
+<td class="gt_row gt_right" headers="1C2_POC-222_TP4">145</td>
+<td class="gt_row gt_right" headers="1C3_POC-222_TP3">1080</td>
+<td class="gt_row gt_right" headers="1C7_POC-52_TP4">1113</td>
+<td class="gt_row gt_right" headers="1C8_POC-42_TP1">540</td>
+<td class="gt_row gt_right" headers="1C9_POC-222_TP1">1101</td>
+<td class="gt_row gt_right" headers="1D11_POC-255_TP3">57</td>
+<td class="gt_row gt_right" headers="1E10_POC-40_TP2">2924</td>
+<td class="gt_row gt_right" headers="1E11_POC-219_TP1">26</td>
+<td class="gt_row gt_right" headers="1E12_POC-255_TP4">433</td>
+<td class="gt_row gt_right" headers="1E4_POC-259_TP2">2402</td>
+<td class="gt_row gt_right" headers="1E6_POC-40_TP3">1237</td>
+<td class="gt_row gt_right" headers="1E8_POC-42_TP3">1543</td>
+<td class="gt_row gt_right" headers="1F2_POC-259_TP4">1699</td>
+<td class="gt_row gt_right" headers="1F5_POC-40_TP4">3449</td>
+<td class="gt_row gt_right" headers="1F9_POC-52_TP2">2527</td>
+<td class="gt_row gt_right" headers="1G11_POC-53_TP1">131</td>
+<td class="gt_row gt_right" headers="1G12_POC-219_TP4">33</td>
+<td class="gt_row gt_right" headers="1G2_POC-219_TP3">8</td>
+<td class="gt_row gt_right" headers="1G4_POC-57_TP3">495</td>
+<td class="gt_row gt_right" headers="1G6_POC-53_TP2">1801</td>
+<td class="gt_row gt_right" headers="1G7_POC-42_TP4">2954</td>
+<td class="gt_row gt_right" headers="1G8_POC-259_TP3">43</td>
+<td class="gt_row gt_right" headers="1G9_POC-259_TP1">2438</td>
+<td class="gt_row gt_right" headers="1H10_POC-201_TP2">675</td>
+<td class="gt_row gt_right" headers="1H4_POC-42_TP2">2335</td>
+<td class="gt_row gt_right" headers="1H5_POC-201_TP3">112</td>
+<td class="gt_row gt_right" headers="1H9_POC-53_TP4">83</td>
+<td class="gt_row gt_right" headers="2A1_POC-219_TP2">133</td>
+<td class="gt_row gt_right" headers="2A2_POC-255_TP2">1611</td>
+<td class="gt_row gt_right" headers="2C3_POC-57_TP1">440</td>
+<td class="gt_row gt_right" headers="2G2_POC-57_TP4">336</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">4</td>
+<td class="gt_row gt_left" headers="Name">Cluster_372</td>
+<td class="gt_row gt_right" headers="1A3_POC-255_TP1">95668</td>
+<td class="gt_row gt_right" headers="1A4_POC-52_TP1">26</td>
+<td class="gt_row gt_right" headers="1A5_POC-53_TP3">1418</td>
+<td class="gt_row gt_right" headers="1A6_POC-52_TP3">10524</td>
+<td class="gt_row gt_right" headers="1B11_POC-40_TP1">3534</td>
+<td class="gt_row gt_right" headers="1B12_POC-222_TP2">25828</td>
+<td class="gt_row gt_right" headers="1B8_POC-201_TP1">3490</td>
+<td class="gt_row gt_right" headers="1C1_POC-57_TP2">1867</td>
+<td class="gt_row gt_right" headers="1C2_POC-222_TP4">1619</td>
+<td class="gt_row gt_right" headers="1C3_POC-222_TP3">7821</td>
+<td class="gt_row gt_right" headers="1C7_POC-52_TP4">9029</td>
+<td class="gt_row gt_right" headers="1C8_POC-42_TP1">4128</td>
+<td class="gt_row gt_right" headers="1C9_POC-222_TP1">20138</td>
+<td class="gt_row gt_right" headers="1D11_POC-255_TP3">474</td>
+<td class="gt_row gt_right" headers="1E10_POC-40_TP2">31324</td>
+<td class="gt_row gt_right" headers="1E11_POC-219_TP1">507</td>
+<td class="gt_row gt_right" headers="1E12_POC-255_TP4">5391</td>
+<td class="gt_row gt_right" headers="1E4_POC-259_TP2">20852</td>
+<td class="gt_row gt_right" headers="1E6_POC-40_TP3">12483</td>
+<td class="gt_row gt_right" headers="1E8_POC-42_TP3">6715</td>
+<td class="gt_row gt_right" headers="1F2_POC-259_TP4">8709</td>
+<td class="gt_row gt_right" headers="1F5_POC-40_TP4">46907</td>
+<td class="gt_row gt_right" headers="1F9_POC-52_TP2">22344</td>
+<td class="gt_row gt_right" headers="1G11_POC-53_TP1">2315</td>
+<td class="gt_row gt_right" headers="1G12_POC-219_TP4">186</td>
+<td class="gt_row gt_right" headers="1G2_POC-219_TP3">47</td>
+<td class="gt_row gt_right" headers="1G4_POC-57_TP3">5764</td>
+<td class="gt_row gt_right" headers="1G6_POC-53_TP2">8602</td>
+<td class="gt_row gt_right" headers="1G7_POC-42_TP4">34435</td>
+<td class="gt_row gt_right" headers="1G8_POC-259_TP3">576</td>
+<td class="gt_row gt_right" headers="1G9_POC-259_TP1">20214</td>
+<td class="gt_row gt_right" headers="1H10_POC-201_TP2">6451</td>
+<td class="gt_row gt_right" headers="1H4_POC-42_TP2">30983</td>
+<td class="gt_row gt_right" headers="1H5_POC-201_TP3">712</td>
+<td class="gt_row gt_right" headers="1H9_POC-53_TP4">293</td>
+<td class="gt_row gt_right" headers="2A1_POC-219_TP2">2291</td>
+<td class="gt_row gt_right" headers="2A2_POC-255_TP2">28434</td>
+<td class="gt_row gt_right" headers="2C3_POC-57_TP1">8040</td>
+<td class="gt_row gt_right" headers="2G2_POC-57_TP4">3467</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="lncrna-counts-2" class="level2">
+<h2 class="anchored" data-anchor-id="lncrna-counts-2">lncRNA Counts</h2>
+<p><a href="https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt" class="btn btn-primary" target="_blank" download="Ptuh_gene_count_matrix.csv">Download lncRNA Counts</a></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tlxwljxoug" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tlxwljxoug table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#tlxwljxoug thead, #tlxwljxoug tbody, #tlxwljxoug tfoot, #tlxwljxoug tr, #tlxwljxoug td, #tlxwljxoug th {
+  border-style: none;
+}
+
+#tlxwljxoug p {
+  margin: 0;
+  padding: 0;
+}
+
+#tlxwljxoug .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tlxwljxoug .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#tlxwljxoug .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tlxwljxoug .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tlxwljxoug .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tlxwljxoug .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tlxwljxoug .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tlxwljxoug .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tlxwljxoug .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tlxwljxoug .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tlxwljxoug .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tlxwljxoug .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tlxwljxoug .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#tlxwljxoug .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#tlxwljxoug .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tlxwljxoug .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tlxwljxoug .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tlxwljxoug .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tlxwljxoug .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tlxwljxoug .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#tlxwljxoug .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#tlxwljxoug .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#tlxwljxoug .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tlxwljxoug .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#tlxwljxoug .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#tlxwljxoug .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tlxwljxoug .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tlxwljxoug .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tlxwljxoug .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tlxwljxoug .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tlxwljxoug .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tlxwljxoug .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tlxwljxoug .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tlxwljxoug .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tlxwljxoug .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tlxwljxoug .gt_left {
+  text-align: left;
+}
+
+#tlxwljxoug .gt_center {
+  text-align: center;
+}
+
+#tlxwljxoug .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tlxwljxoug .gt_font_normal {
+  font-weight: normal;
+}
+
+#tlxwljxoug .gt_font_bold {
+  font-weight: bold;
+}
+
+#tlxwljxoug .gt_font_italic {
+  font-style: italic;
+}
+
+#tlxwljxoug .gt_super {
+  font-size: 65%;
+}
+
+#tlxwljxoug .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#tlxwljxoug .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#tlxwljxoug .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#tlxwljxoug .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#tlxwljxoug .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#tlxwljxoug .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#tlxwljxoug .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#tlxwljxoug .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#tlxwljxoug div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<caption>Ptuh_lncRNA (first 10 rows with row numbers)</caption>
+<thead>
+<tr class="gt_col_headings header">
+<th id="Row" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Row</th>
+<th id="Geneid" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Geneid</th>
+<th id="Chr" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Chr</th>
+<th id="Start" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Start</th>
+<th id="End" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">End</th>
+<th id="Strand" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Strand</th>
+<th id="Length" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Length</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-139-TP1.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-139-TP1.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-139-TP2.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-139-TP2.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-139-TP3.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-139-TP3.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-139-TP4.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-139-TP4.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-145-TP1.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-145-TP1.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-145-TP2.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-145-TP2.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-145-TP3.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-145-TP3.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-145-TP4.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-145-TP4.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-150-TP1.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-150-TP1.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-150-TP2.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-150-TP2.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-150-TP3.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-150-TP3.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-150-TP4.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-150-TP4.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-173-TP1.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-173-TP1.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-173-TP2.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-173-TP2.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-173-TP3.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-173-TP3.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-173-TP4.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-173-TP4.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-186-TP1.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-186-TP1.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-186-TP2.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-186-TP2.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-186-TP3.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-186-TP3.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-186-TP4.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-186-TP4.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-225-TP1.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-225-TP1.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-225-TP2.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-225-TP2.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-225-TP3.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-225-TP3.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-225-TP4.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-225-TP4.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-229-TP1.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-229-TP1.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-229-TP2.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-229-TP2.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-229-TP3.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-229-TP3.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-229-TP4.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-229-TP4.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-237-TP1.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-237-TP1.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-237-TP2.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-237-TP2.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-237-TP3.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-237-TP3.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-237-TP4.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-237-TP4.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-244-TP1.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-244-TP1.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-244-TP2.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-244-TP2.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-244-TP3.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-244-TP3.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-244-TP4.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-244-TP4.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-265-TP1.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-265-TP1.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-265-TP2.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-265-TP2.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-265-TP3.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-265-TP3.sorted.bam</th>
+<th id="a../output/31-Apul-lncRNA-discovery/ACR-265-TP4.sorted.bam" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">../output/31-Apul-lncRNA-discovery/ACR-265-TP4.sorted.bam</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">1</td>
+<td class="gt_row gt_left" headers="Geneid">lncRNA_015</td>
+<td class="gt_row gt_left" headers="Chr">ntLink_2</td>
+<td class="gt_row gt_right" headers="Start">327085</td>
+<td class="gt_row gt_right" headers="End">329262</td>
+<td class="gt_row gt_right" headers="Strand">+</td>
+<td class="gt_row gt_right" headers="Length">2178</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP1.sorted.bam">113.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP2.sorted.bam">2.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP3.sorted.bam">2.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP4.sorted.bam">114.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP1.sorted.bam">154.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP2.sorted.bam">20.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP3.sorted.bam">90.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP4.sorted.bam">106.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP1.sorted.bam">268.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP2.sorted.bam">37.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP3.sorted.bam">108.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP4.sorted.bam">26.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP1.sorted.bam">430.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP2.sorted.bam">36.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP3.sorted.bam">16.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP4.sorted.bam">99.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP1.sorted.bam">32.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP2.sorted.bam">7.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP3.sorted.bam">29.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP4.sorted.bam">37.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP1.sorted.bam">15.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP2.sorted.bam">267.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP3.sorted.bam">43.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP4.sorted.bam">8.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP1.sorted.bam">4.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP2.sorted.bam">45.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP3.sorted.bam">107.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP4.sorted.bam">66.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP1.sorted.bam">22.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP2.sorted.bam">58.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP3.sorted.bam">29.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP4.sorted.bam">104.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP1.sorted.bam">6.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP2.sorted.bam">32.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP3.sorted.bam">181.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP4.sorted.bam">38.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP1.sorted.bam">5.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP2.sorted.bam">76.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP3.sorted.bam">254.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP4.sorted.bam">43.00</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">2</td>
+<td class="gt_row gt_left" headers="Geneid">lncRNA_076</td>
+<td class="gt_row gt_left" headers="Chr">ntLink_6</td>
+<td class="gt_row gt_right" headers="Start">48576</td>
+<td class="gt_row gt_right" headers="End">50741</td>
+<td class="gt_row gt_right" headers="Strand">+</td>
+<td class="gt_row gt_right" headers="Length">2166</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP1.sorted.bam">48.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP2.sorted.bam">19.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP3.sorted.bam">23.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP4.sorted.bam">10.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP1.sorted.bam">50.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP2.sorted.bam">11.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP3.sorted.bam">49.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP4.sorted.bam">72.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP1.sorted.bam">33.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP2.sorted.bam">44.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP3.sorted.bam">19.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP4.sorted.bam">0.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP1.sorted.bam">13.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP2.sorted.bam">38.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP3.sorted.bam">24.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP4.sorted.bam">6.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP1.sorted.bam">54.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP2.sorted.bam">122.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP3.sorted.bam">40.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP4.sorted.bam">69.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP1.sorted.bam">66.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP2.sorted.bam">47.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP3.sorted.bam">26.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP4.sorted.bam">5.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP1.sorted.bam">59.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP2.sorted.bam">68.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP3.sorted.bam">96.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP4.sorted.bam">178.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP1.sorted.bam">42.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP2.sorted.bam">60.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP3.sorted.bam">23.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP4.sorted.bam">4.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP1.sorted.bam">116.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP2.sorted.bam">109.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP3.sorted.bam">58.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP4.sorted.bam">67.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP1.sorted.bam">147.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP2.sorted.bam">106.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP3.sorted.bam">109.00</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP4.sorted.bam">28.00</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">3</td>
+<td class="gt_row gt_left" headers="Geneid">lncRNA_077</td>
+<td class="gt_row gt_left" headers="Chr">ntLink_6</td>
+<td class="gt_row gt_right" headers="Start">191067</td>
+<td class="gt_row gt_right" headers="End">194203</td>
+<td class="gt_row gt_right" headers="Strand">+</td>
+<td class="gt_row gt_right" headers="Length">3137</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP1.sorted.bam">518.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP2.sorted.bam">555.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP3.sorted.bam">766.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP4.sorted.bam">611.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP1.sorted.bam">676.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP2.sorted.bam">390.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP3.sorted.bam">828.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP4.sorted.bam">467.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP1.sorted.bam">575.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP2.sorted.bam">472.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP3.sorted.bam">536.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP4.sorted.bam">671.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP1.sorted.bam">498.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP2.sorted.bam">334.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP3.sorted.bam">867.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP4.sorted.bam">678.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP1.sorted.bam">499.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP2.sorted.bam">745.84</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP3.sorted.bam">1060.38</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP4.sorted.bam">710.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP1.sorted.bam">696.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP2.sorted.bam">569.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP3.sorted.bam">758.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP4.sorted.bam">625.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP1.sorted.bam">743.39</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP2.sorted.bam">731.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP3.sorted.bam">669.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP4.sorted.bam">628.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP1.sorted.bam">848.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP2.sorted.bam">544.16</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP3.sorted.bam">538.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP4.sorted.bam">1061.98</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP1.sorted.bam">557.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP2.sorted.bam">667.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP3.sorted.bam">658.39</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP4.sorted.bam">906.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP1.sorted.bam">950.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP2.sorted.bam">649.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP3.sorted.bam">587.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP4.sorted.bam">785.79</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">4</td>
+<td class="gt_row gt_left" headers="Geneid">lncRNA_078</td>
+<td class="gt_row gt_left" headers="Chr">ntLink_6</td>
+<td class="gt_row gt_right" headers="Start">191226</td>
+<td class="gt_row gt_right" headers="End">194203</td>
+<td class="gt_row gt_right" headers="Strand">+</td>
+<td class="gt_row gt_right" headers="Length">2978</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP1.sorted.bam">518.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP2.sorted.bam">555.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP3.sorted.bam">766.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-139-TP4.sorted.bam">611.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP1.sorted.bam">676.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP2.sorted.bam">390.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP3.sorted.bam">828.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-145-TP4.sorted.bam">467.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP1.sorted.bam">575.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP2.sorted.bam">472.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP3.sorted.bam">536.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-150-TP4.sorted.bam">671.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP1.sorted.bam">498.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP2.sorted.bam">334.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP3.sorted.bam">867.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-173-TP4.sorted.bam">678.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP1.sorted.bam">499.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP2.sorted.bam">744.84</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP3.sorted.bam">1060.38</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-186-TP4.sorted.bam">710.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP1.sorted.bam">696.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP2.sorted.bam">569.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP3.sorted.bam">758.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-225-TP4.sorted.bam">625.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP1.sorted.bam">743.39</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP2.sorted.bam">731.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP3.sorted.bam">669.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-229-TP4.sorted.bam">628.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP1.sorted.bam">848.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP2.sorted.bam">544.16</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP3.sorted.bam">538.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-237-TP4.sorted.bam">1061.98</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP1.sorted.bam">557.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP2.sorted.bam">667.59</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP3.sorted.bam">658.39</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-244-TP4.sorted.bam">906.19</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP1.sorted.bam">950.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP2.sorted.bam">649.79</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP3.sorted.bam">587.99</td>
+<td class="gt_row gt_right" headers="../output/31-Apul-lncRNA-discovery/ACR-265-TP4.sorted.bam">785.79</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="mcpg-percentage-1" class="level2">
+<h2 class="anchored" data-anchor-id="mcpg-percentage-1">mCpG Percentage</h2>
+<p><a href="https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv" class="btn btn-primary" target="_blank" download="Ptuh_gene_count_matrix.csv">Download MCpG Percentage</a></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="xkhyjnzaas" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xkhyjnzaas table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#xkhyjnzaas thead, #xkhyjnzaas tbody, #xkhyjnzaas tfoot, #xkhyjnzaas tr, #xkhyjnzaas td, #xkhyjnzaas th {
+  border-style: none;
+}
+
+#xkhyjnzaas p {
+  margin: 0;
+  padding: 0;
+}
+
+#xkhyjnzaas .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xkhyjnzaas .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#xkhyjnzaas .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xkhyjnzaas .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xkhyjnzaas .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xkhyjnzaas .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xkhyjnzaas .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xkhyjnzaas .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xkhyjnzaas .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xkhyjnzaas .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xkhyjnzaas .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xkhyjnzaas .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xkhyjnzaas .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#xkhyjnzaas .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#xkhyjnzaas .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xkhyjnzaas .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xkhyjnzaas .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xkhyjnzaas .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xkhyjnzaas .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xkhyjnzaas .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#xkhyjnzaas .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#xkhyjnzaas .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#xkhyjnzaas .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xkhyjnzaas .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#xkhyjnzaas .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#xkhyjnzaas .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xkhyjnzaas .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xkhyjnzaas .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xkhyjnzaas .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xkhyjnzaas .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xkhyjnzaas .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xkhyjnzaas .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xkhyjnzaas .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xkhyjnzaas .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xkhyjnzaas .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xkhyjnzaas .gt_left {
+  text-align: left;
+}
+
+#xkhyjnzaas .gt_center {
+  text-align: center;
+}
+
+#xkhyjnzaas .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xkhyjnzaas .gt_font_normal {
+  font-weight: normal;
+}
+
+#xkhyjnzaas .gt_font_bold {
+  font-weight: bold;
+}
+
+#xkhyjnzaas .gt_font_italic {
+  font-style: italic;
+}
+
+#xkhyjnzaas .gt_super {
+  font-size: 65%;
+}
+
+#xkhyjnzaas .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#xkhyjnzaas .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#xkhyjnzaas .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#xkhyjnzaas .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#xkhyjnzaas .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xkhyjnzaas .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xkhyjnzaas .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#xkhyjnzaas .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#xkhyjnzaas div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<caption>Ptuh_mCpG (first 10 rows with row numbers)</caption>
+<thead>
+<tr class="gt_col_headings header">
+<th id="Row" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Row</th>
+<th id="CpG" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">CpG</th>
+<th id="POC-259-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-259-TP1</th>
+<th id="POC-53-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-53-TP1</th>
+<th id="POC-222-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-222-TP1</th>
+<th id="POC-42-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-42-TP2</th>
+<th id="POC-40-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-40-TP4</th>
+<th id="POC-52-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-52-TP4</th>
+<th id="POC-40-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-40-TP3</th>
+<th id="POC-53-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-53-TP3</th>
+<th id="POC-52-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-52-TP1</th>
+<th id="POC-219-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-219-TP3</th>
+<th id="POC-222-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-222-TP3</th>
+<th id="POC-219-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-219-TP4</th>
+<th id="POC-53-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-53-TP2</th>
+<th id="POC-222-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-222-TP4</th>
+<th id="POC-40-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-40-TP2</th>
+<th id="POC-57-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-57-TP3</th>
+<th id="POC-57-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-57-TP2</th>
+<th id="POC-40-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-40-TP1</th>
+<th id="POC-201-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-201-TP1</th>
+<th id="POC-42-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-42-TP4</th>
+<th id="POC-52-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-52-TP3</th>
+<th id="POC-52-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-52-TP2</th>
+<th id="POC-201-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-201-TP2</th>
+<th id="POC-255-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-255-TP1</th>
+<th id="POC-255-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-255-TP3</th>
+<th id="POC-259-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-259-TP2</th>
+<th id="POC-57-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-57-TP4</th>
+<th id="POC-255-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-255-TP2</th>
+<th id="POC-219-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-219-TP2</th>
+<th id="POC-219-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-219-TP1</th>
+<th id="POC-53-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-53-TP4</th>
+<th id="POC-57-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POC-57-TP1</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">1</td>
+<td class="gt_row gt_left" headers="CpG">CpG_Pocillopora_meandrina_HIv1___Sc0000000_10002826</td>
+<td class="gt_row gt_right" headers="POC-259-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP1">5.405405</td>
+<td class="gt_row gt_right" headers="POC-222-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-42-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP4">6.250000</td>
+<td class="gt_row gt_right" headers="POC-52-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP3">0.000000</td>
+<td class="gt_row gt_right" headers="POC-222-TP3">1.515152</td>
+<td class="gt_row gt_right" headers="POC-219-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-222-TP4">2.631579</td>
+<td class="gt_row gt_right" headers="POC-40-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-201-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-42-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-201-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-259-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP1">0.000000</td>
+<td class="gt_row gt_right" headers="POC-53-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP1">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">2</td>
+<td class="gt_row gt_left" headers="CpG">CpG_Pocillopora_meandrina_HIv1___Sc0000000_10002839</td>
+<td class="gt_row gt_right" headers="POC-259-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP1">5.128205</td>
+<td class="gt_row gt_right" headers="POC-222-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-42-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP4">5.882353</td>
+<td class="gt_row gt_right" headers="POC-52-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP3">2.439024</td>
+<td class="gt_row gt_right" headers="POC-222-TP3">1.492537</td>
+<td class="gt_row gt_right" headers="POC-219-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-222-TP4">2.083333</td>
+<td class="gt_row gt_right" headers="POC-40-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-201-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-42-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-201-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-259-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP1">0.000000</td>
+<td class="gt_row gt_right" headers="POC-53-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP1">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Row">3</td>
+<td class="gt_row gt_left" headers="CpG">CpG_Pocillopora_meandrina_HIv1___Sc0000000_10002847</td>
+<td class="gt_row gt_right" headers="POC-259-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP1">2.380952</td>
+<td class="gt_row gt_right" headers="POC-222-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-42-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP4">5.882353</td>
+<td class="gt_row gt_right" headers="POC-52-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP3">0.000000</td>
+<td class="gt_row gt_right" headers="POC-222-TP3">1.515152</td>
+<td class="gt_row gt_right" headers="POC-219-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-222-TP4">2.000000</td>
+<td class="gt_row gt_right" headers="POC-40-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-201-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-42-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-201-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-259-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP1">0.000000</td>
+<td class="gt_row gt_right" headers="POC-53-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP1">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Row">4</td>
+<td class="gt_row gt_left" headers="CpG">CpG_Pocillopora_meandrina_HIv1___Sc0000000_10002849</td>
+<td class="gt_row gt_right" headers="POC-259-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP1">2.500000</td>
+<td class="gt_row gt_right" headers="POC-222-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-42-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP4">6.250000</td>
+<td class="gt_row gt_right" headers="POC-52-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP3">0.000000</td>
+<td class="gt_row gt_right" headers="POC-222-TP3">1.587302</td>
+<td class="gt_row gt_right" headers="POC-219-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-53-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-222-TP4">1.960784</td>
+<td class="gt_row gt_right" headers="POC-40-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-40-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-201-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-42-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-52-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-201-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP1">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP3">0</td>
+<td class="gt_row gt_right" headers="POC-259-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-255-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP2">0</td>
+<td class="gt_row gt_right" headers="POC-219-TP1">2.857143</td>
+<td class="gt_row gt_right" headers="POC-53-TP4">0</td>
+<td class="gt_row gt_right" headers="POC-57-TP1">0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 
 
 </section>
