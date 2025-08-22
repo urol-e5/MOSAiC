@@ -82,13 +82,7 @@ Peve_lncRNA <- read_delim(Peve_lncRNA_url, delim = "\t", col_names = TRUE, skip 
 
 *Porites evermanni* - we have data on **`r nrow(Peve_gene)`** genes, **`r nrow(Peve_mirna)`** miRNAs, **`r nrow(Peve_lncRNA)`** lncRNAs,, and **`nrow(Peve_mCpG)`** mCpGs.
 
-::: callout-important
-## Just a feature test
-
-How could we use this?
-:::
-
-## Computational Pipelines
+## About Computational Pipelines
 
 ::: panel-tabset
 ## Genes
@@ -106,6 +100,18 @@ Workflow downloads trimmed paired-end FASTQs and the reference genome/annotation
 ## mCpG
 
 This workflow outlines bisulfite sequencing (WGBS) analysis pipeline that processes Bismark methylation coverage (.cov) files into unified CpG methylation matrices. First, .cov.gz are filterde for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column \_processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all \_processed.txt files into a single matrix (merged-WGBS-CpG-counts.csv), with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples is retained.
+:::
+
+::: callout-tip
+## ConTra
+
+If you are exciting about analyzing this type of data in contextual manner check out [ConTra - Contextual Transcriptome Regulation Analysis](https://github.com/sr320/ConTra)
+:::
+
+::: callout-warning
+## Sample ID formatting
+
+Note currently we have some inconsistency in sample IDs across data types.
 :::
 
 # *Acropora pulchra*
