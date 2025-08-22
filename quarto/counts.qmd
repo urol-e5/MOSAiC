@@ -40,20 +40,22 @@ Apul_lncRNA_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github
 Apul_mCpG_url <- "https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv"
 
 
+
 Peve_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv"
 
 Peve_mirna_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt"
 
 Peve_lncRNA_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt"
 
-#Peve_mCpG_url <- "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250728_meth_Peve/merged-WGBS-CpG-counts.csv"
+Peve_mCpG_url <- "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv"
+
 
 
 Ptuh_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv"
 
 Ptuh_mirna_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt"
 
-#Peve_lncRNA_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt"
+Ptuh_lncRNA_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt"
 
 Ptuh_mCpG_url <- "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv"
 
@@ -70,17 +72,24 @@ Apul_mCpG <- read_csv(Apul_mCpG_url)
 Peve_gene <- read_csv(Peve_gene_url)
 Peve_mirna <- read_delim(Peve_mirna_url, delim = "\t", col_names = TRUE)
 Peve_lncRNA <- read_delim(Peve_lncRNA_url, delim = "\t", col_names = TRUE, skip = 7)
-#Peve_mCpG <- read_csv(Peve_mCpG_url)
+Peve_mCpG <- read_csv(Peve_mCpG_url)
 
 Ptuh_gene <- read_csv(Ptuh_gene_url)
 Ptuh_mirna <- read_delim(Ptuh_mirna_url, delim = "\t", col_names = TRUE)
-#Ptuh_lncRNA <- read_delim(Ptuh_lncRNA_url, delim = "\t", col_names = TRUE, skip = 7)
+Ptuh_lncRNA <- read_delim(Ptuh_lncRNA_url, delim = "\t", col_names = TRUE)
 Ptuh_mCpG <- read_csv(Ptuh_mCpG_url)
 
 
 ```
 
-As part of this amazing project we have expression data on **`r nrow(Apul_gene)`** genes, **`r nrow(Apul_mirna)`** miRNAs, **`r nrow(Apul_lncRNA)`** lncRNAs, and **`r nrow(Apul_mCpG)`** mCpGs for *Acropora pulchra*. We have data on **`r nrow(Peve_gene)`** genes, **`r nrow(Peve_mirna)`** miRNAs, **`r nrow(Peve_lncRNA)`** lncRNAs, and **`nrow(Peve_mCpG)`** mCpGs for *Porites evermanni*, and for *Ptuahiniensis* we have data on **`r nrow(Ptuh_gene)`** genes, **`r nrow(Ptuh_mirna)`** miRNAs, and **`r nrow(Ptuh_mCpG)`** mCpGs.
+
+| Species | Gene | miRNA | lncRNA | mCpG |
+|---------------|---------------|---------------|---------------|---------------|
+| *Acropora pulchra* | **`r nrow(Apul_gene)`** | **`r nrow(Apul_mirna)`** | **`r nrow(Apul_lncRNA)`** | **`r nrow(Apul_mCpG)`** |
+|  *Porites evermanni* | **`r nrow(Peve_gene)`** | **`r nrow(Peve_mirna)`** | **`r nrow(Peve_lncRNA)`** | **`r nrow(Peve_mCpG)`** |
+| *Pocillopora tuahiniensis* | **`r nrow(Ptuh_gene)`** | **`r nrow(Ptuh_mirna)`** | **`r nrow(Ptuh_lncRNA)`** | **`r nrow(Ptuh_mCpG)`** |
+
+: Feature Counts
 
 ::: callout-tip
 ## ConTra
@@ -150,7 +159,6 @@ for (i in seq_along(urls)) {
 
 ```{r}
 Apul_gene |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
@@ -189,7 +197,6 @@ for (i in seq_along(urls)) {
 
 ```{r}
 Apul_mirna |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
@@ -229,7 +236,6 @@ for (i in seq_along(urls)) {
 ```{r}
 #| tbl-cap: "Apul_lncRNA (first 10 rows with row numbers)"
 Apul_lncRNA |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
@@ -269,7 +275,6 @@ for (i in seq_along(urls)) {
 ```{r}
 #| tbl-cap: "Apul_mCpG (first 10 rows with row numbers)"
 Apul_mCpG |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
@@ -310,7 +315,6 @@ for (i in seq_along(urls)) {
 
 ```{r}
 Peve_gene |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
@@ -349,7 +353,6 @@ for (i in seq_along(urls)) {
 
 ```{r}
 Peve_mirna |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
@@ -389,14 +392,13 @@ for (i in seq_along(urls)) {
 ```{r}
 #| tbl-cap: "Peve_lncRNA (first 10 rows with row numbers)"
 Peve_lncRNA |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
 
 ## mCpG Percentages
 
-```{r, eval=FALSE, include=FALSE}
+```{r, include=FALSE}
 #| results: asis
 
 
@@ -411,7 +413,7 @@ cat(as.character(
 ))
 ```
 
-```{r, eval=FALSE, include=FALSE}
+```{r, include=FALSE}
 #| results: asis
 # (YAML already has format: html: code-copy: true)
 
@@ -425,10 +427,9 @@ for (i in seq_along(urls)) {
 }
 ```
 
-```{r, eval=FALSE, include=FALSE}
+```{r, include=FALSE}
 #| tbl-cap: "Peve_mCpG (first 10 rows with row numbers)"
 Peve_mCpG |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
@@ -469,7 +470,6 @@ for (i in seq_along(urls)) {
 
 ```{r}
 Ptuh_gene |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
@@ -508,7 +508,6 @@ for (i in seq_along(urls)) {
 
 ```{r}
 Ptuh_mirna |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```
@@ -522,10 +521,10 @@ Ptuh_mirna |>
 
 cat(as.character(
   tags$a(
-    href = Apul_lncRNA_url,
+    href = Ptuh_lncRNA_url,
     class = "btn btn-primary",
     target = "_blank",
-    download = "Ptuh_gene_count_matrix.csv",
+    download = "Ptuh_lncRNA_count_matrix.csv",
     "Download lncRNA Counts"
   )
 ))
@@ -536,7 +535,7 @@ cat(as.character(
 # (YAML already has format: html: code-copy: true)
 
 #labs <- c("direct url")
-urls <- c(Apul_lncRNA_url)
+urls <- c(Ptuh_lncRNA_url)
 
 for (i in seq_along(urls)) {
   #cat("**", labs[i], "**\n\n", sep = "")
@@ -547,8 +546,7 @@ for (i in seq_along(urls)) {
 
 ```{r}
 #| tbl-cap: "Ptuh_lncRNA (first 10 rows with row numbers)"
-Apul_lncRNA |>
-  rowid_to_column("Row") |>
+Ptuh_lncRNA |>
   slice_head(n = 4) |>
   gt()
 ```
@@ -559,14 +557,13 @@ Apul_lncRNA |>
 #| echo: false
 #| results: asis
 
-
 cat(as.character(
   tags$a(
     href = Ptuh_mCpG_url,
     class = "btn btn-primary",
     target = "_blank",
-    download = "Ptuh_gene_count_matrix.csv",
-    "Download MCpG Percentage"
+    download = "Ptuh_mCpG_matrix.csv",
+    "Download mCpG Percentage"
   )
 ))
 ```
@@ -588,7 +585,6 @@ for (i in seq_along(urls)) {
 ```{r}
 #| tbl-cap: "Ptuh_mCpG (first 10 rows with row numbers)"
 Ptuh_mCpG |>
-  rowid_to_column("Row") |>
   slice_head(n = 4) |>
   gt()
 ```

@@ -38,6 +38,11 @@ Apul_gff_url <- "https://raw.githubusercontent.com/urol-e5/MOSAiC/refs/heads/mai
 
 Apul_lncRNAloc_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31-Apul-lncRNA-discovery/lncRNA.gtf"
 
+Ptuh_lncRNAloc_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA.filtered.gtf"
+
+
+
+
 # read in 
 Apul_gff <- read_delim(
   Apul_gff_url,
