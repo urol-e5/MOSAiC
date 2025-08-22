@@ -2,26 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://urol-e5.github.io/MOSAiC/counts.html</loc>
-    <lastmod>2025-08-22T00:14:21.318Z</lastmod>
+    <lastmod>2025-08-22T00:15:49.625Z</lastmod>
   </url>
   <url>
-    <loc>https://urol-e5.github.io/MOSAiC/index.html</loc>
-    <lastmod>2025-08-22T00:15:52.403Z</lastmod>
+    <loc>https://urol-e5.github.io/MOSAiC/disclaimer.html</loc>
+    <lastmod>2025-08-21T23:26:45.367Z</lastmod>
+  </url>
+  <url>
+    <loc>https://urol-e5.github.io/MOSAiC/jbrowse.html</loc>
+    <lastmod>2025-08-21T21:15:37.080Z</lastmod>
   </url>
   <url>
     <loc>https://urol-e5.github.io/MOSAiC/features.html</loc>
     <lastmod>2025-08-21T21:17:11.427Z</lastmod>
   </url>
   <url>
-    <loc>https://urol-e5.github.io/MOSAiC/jbrowse.html</loc>
-    <lastmod>2025-08-21T21:01:34.295Z</lastmod>
+    <loc>https://urol-e5.github.io/MOSAiC/index.html</loc>
+    <lastmod>2025-08-22T00:15:52.403Z</lastmod>
   </url>
   <url>
     <loc>https://urol-e5.github.io/MOSAiC/about.html</loc>
     <lastmod>2025-08-21T21:17:11.427Z</lastmod>
-  </url>
-  <url>
-    <loc>https://urol-e5.github.io/MOSAiC/disclaimer.html</loc>
-    <lastmod>2025-08-21T23:26:45.367Z</lastmod>
   </url>
 </urlset>
