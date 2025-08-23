@@ -94,7 +94,7 @@ Ptuh_mCpG <- read_csv(Ptuh_mCpG_url)
 ::: callout-tip
 ## ConTra
 
-If you are exciting about analyzing this type of data in contextual manner check out [ConTra - Contextual Transcriptome Regulation Analysis](https://github.com/sr320/ConTra)
+If you are excited about analyzing this type of data in contextual manner check out [ConTra - Contextual Transcriptome Regulation Analysis](https://github.com/sr320/ConTra)
 :::
 
 ## About Computational Pipelines
@@ -114,7 +114,7 @@ Workflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites),
 
 ## mCpG
 
-For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filterd for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column \_processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all \_processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.
+For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filtered for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column \_processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all \_processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.
 :::
 
 ::: callout-warning
@@ -175,7 +175,7 @@ cat(as.character(
     href = Apul_mirna_url,
     class = "btn btn-primary",
     target = "_blank",
-    download = "Apul_gene_count_matrix.csv",
+    download = "Apul_miRNA_counts.txt",
     "Download miRNA Counts"
   )
 ))
@@ -213,7 +213,7 @@ cat(as.character(
     href = Apul_lncRNA_url,
     class = "btn btn-primary",
     target = "_blank",
-    download = "Apul_gene_count_matrix.csv",
+    download = "Apul_lncRNA_counts.txt",
     "Download lncRNA Counts"
   )
 ))
@@ -252,8 +252,8 @@ cat(as.character(
     href = Apul_mCpG_url,
     class = "btn btn-primary",
     target = "_blank",
-    download = "Apul_gene_count_matrix.csv",
-    "Download MCpG Percentage"
+    download = "Apul_mCpG_counts.csv",
+    "Download mCpG Percentage"
   )
 ))
 ```
@@ -331,7 +331,7 @@ cat(as.character(
     href = Peve_mirna_url,
     class = "btn btn-primary",
     target = "_blank",
-    download = "Peve_gene_count_matrix.csv",
+    download = "Peve_miRNA_counts.txt",
     "Download miRNA Counts"
   )
 ))
@@ -369,7 +369,7 @@ cat(as.character(
     href = Peve_lncRNA_url,
     class = "btn btn-primary",
     target = "_blank",
-    download = "Peve_gene_count_matrix.csv",
+    download = "Peve_lncRNA_counts.txt",
     "Download lncRNA Counts"
   )
 ))
@@ -396,9 +396,10 @@ Peve_lncRNA |>
   gt()
 ```
 
-## mCpG Percentages
+## mCpG Percentage
 
-```{r, include=FALSE}
+```{r}
+#| echo: false
 #| results: asis
 
 
@@ -407,13 +408,13 @@ cat(as.character(
     href = Peve_mCpG_url,
     class = "btn btn-primary",
     target = "_blank",
-    download = "Peve_gene_count_matrix.csv",
+    download = "Peve_mCpG_counts.csv",
     "Download mCpG Percentage"
   )
 ))
 ```
 
-```{r, include=FALSE}
+```{r}
 #| results: asis
 # (YAML already has format: html: code-copy: true)
 
@@ -427,7 +428,7 @@ for (i in seq_along(urls)) {
 }
 ```
 
-```{r, include=FALSE}
+```{r}
 #| tbl-cap: "Peve_mCpG (first 10 rows with row numbers)"
 Peve_mCpG |>
   slice_head(n = 4) |>
@@ -486,7 +487,7 @@ cat(as.character(
     href = Ptuh_mirna_url,
     class = "btn btn-primary",
     target = "_blank",
-    download = "Ptuh_gene_count_matrix.csv",
+    download = "Ptuh_miRNA_counts.txt",
     "Download miRNA Counts"
   )
 ))
