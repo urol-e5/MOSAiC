@@ -15,85 +15,230 @@ execute:
 ---
 
 ```{r setup, include=FALSE}
-library(tidyverse)
-library(DT)
-library(readxl)
-library(plotly)
-library(readr)
-library(dplyr)
-library(tibble)
-library(knitr)
-library(gt)
-library(htmltools)
+# Check and load required packages
+required_packages <- c("tidyverse", "DT", "readxl", "plotly", "readr", "dplyr", "tibble", "knitr", "gt", "htmltools")
+
+# Function to safely load packages
+safe_load_package <- function(pkg) {
+  if (!require(pkg, character.only = TRUE, quietly = TRUE)) {
+    install.packages(pkg, dependencies = TRUE)
+    library(pkg, character.only = TRUE)
+  }
+}
+
+# Load all required packages
+for (pkg in required_packages) {
+  safe_load_package(pkg)
+}
 ```
 
-```{r, cache=TRUE, include=FALSE}
+```{r data-config, cache=TRUE, include=FALSE}
 
-# Define key paths and tool directories
+# =============================================================================
+# EXTERNAL DATA URLS CONFIGURATION
+# =============================================================================
+# All external URLs are centralized here for easy maintenance.
+# To update URLs, only modify this section.
 
-Apul_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv"
+data_urls <- list(
+  Apul = list(
+    species_name = "Acropora pulchra",
+    italic_name = "*Acropora pulchra*",
+    gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv",
+    mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt",
+    lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt",
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv"
+  ),
+  Peve = list(
+    species_name = "Porites evermanni",
+    italic_name = "*Porites evermanni*",
+    gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv",
+    mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt",
+    lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt",
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv"
+  ),
+  Ptuh = list(
+    species_name = "Pocillopora tuahiniensis",
+    italic_name = "*Pocillopora tuahiniensis*",
+    gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv",
+    mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt",
+    lncRNA = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv"
+  )
+)
 
-Apul_mirna_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt"
+# =============================================================================
+# HELPER FUNCTIONS
+# =============================================================================
 
-Apul_lncRNA_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt"
+# Function to validate URL
+validate_url <- function(url) {
+  if (is.null(url) || length(url) == 0 || !is.character(url)) {
+    return(FALSE)
+  }
+  if (grepl("^https?://", url)) {
+    return(TRUE)
+  }
+  return(FALSE)
+}
 
-Apul_mCpG_url <- "https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv"
+# Function to create download button with validation
+create_download_button <- function(url, filename, button_text) {
+  if (!validate_url(url)) {
+    warning(paste("Invalid URL provided:", url))
+    return("")
+  }
+  
+  if (is.null(filename) || length(filename) == 0) {
+    filename <- "download"
+  }
+  
+  if (is.null(button_text) || length(button_text) == 0) {
+    button_text <- "Download"
+  }
+  
+  # Return HTML as a string that can be directly output
+  paste0('<a href="', url, '" class="btn btn-primary" target="_blank" download="', filename, '">', button_text, '</a>')
+}
 
+# Function to safely get row count
+safe_nrow <- function(df) {
+  if (is.null(df) || !is.data.frame(df) || nrow(df) == 0) {
+    return(0)
+  }
+  return(nrow(df))
+}
 
+# Function to load data with appropriate parameters and better error handling
+load_data_file <- function(url, data_type, species_code) {
+  if (!validate_url(url)) {
+    warning(paste("Invalid URL for", data_type, "data in", species_code))
+    return(data.frame())
+  }
+  
+  tryCatch({
+    if (data_type == "gene" || data_type == "mCpG") {
+      result <- read_csv(url, show_col_types = FALSE)
+      if (nrow(result) == 0) {
+        warning(paste("Empty data loaded for", data_type, "in", species_code))
+      }
+      return(result)
+    } else if (data_type == "mirna") {
+      result <- read_delim(url, delim = "\t", col_names = TRUE, show_col_types = FALSE)
+      if (nrow(result) == 0) {
+        warning(paste("Empty data loaded for", data_type, "in", species_code))
+      }
+      return(result)
+    } else if (data_type == "lncRNA") {
+      if (species_code %in% c("Apul", "Peve")) {
+        result <- read_delim(url, delim = "\t", col_names = TRUE, skip = 7, show_col_types = FALSE)
+      } else {
+        result <- read_delim(url, delim = "\t", col_names = TRUE, show_col_types = FALSE)
+      }
+      if (nrow(result) == 0) {
+        warning(paste("Empty data loaded for", data_type, "in", species_code))
+      }
+      return(result)
+    } else {
+      warning(paste("Unknown data type:", data_type))
+      return(data.frame())
+    }
+  }, error = function(e) {
+    warning(paste("Failed to load", data_type, "data for", species_code, ":", e$message))
+    return(data.frame())
+  })
+}
 
-Peve_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv"
+# =============================================================================
+# DATA LOADING
+# =============================================================================
 
-Peve_mirna_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt"
+# Load all data files with error handling
+all_data <- list()
+data_loading_errors <- character()
 
-Peve_lncRNA_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt"
+for (species_code in names(data_urls)) {
+  all_data[[species_code]] <- list()
+  for (data_type in c("gene", "mirna", "lncRNA", "mCpG")) {
+    url <- data_urls[[species_code]][[data_type]]
+    data_result <- load_data_file(url, data_type, species_code)
+    
+    if (nrow(data_result) == 0) {
+      data_loading_errors <- c(data_loading_errors, 
+                               paste(species_code, data_type, "failed to load"))
+    }
+    
+    all_data[[species_code]][[data_type]] <- data_result
+  }
+}
 
-Peve_mCpG_url <- "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv"
-
-
-
-Ptuh_gene_url <- "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv"
-
-Ptuh_mirna_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt"
-
-Ptuh_lncRNA_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt"
-
-Ptuh_mCpG_url <- "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv"
-
-
-# read in 
-
-
-Apul_gene <- read_csv(Apul_gene_url)
-Apul_mirna <- read_delim(Apul_mirna_url, delim = "\t", col_names = TRUE)
-Apul_lncRNA <- read_delim(Apul_lncRNA_url, delim = "\t", col_names = TRUE, skip = 7)
-Apul_mCpG <- read_csv(Apul_mCpG_url)
-
-
-Peve_gene <- read_csv(Peve_gene_url)
-Peve_mirna <- read_delim(Peve_mirna_url, delim = "\t", col_names = TRUE)
-Peve_lncRNA <- read_delim(Peve_lncRNA_url, delim = "\t", col_names = TRUE, skip = 7)
-Peve_mCpG <- read_csv(Peve_mCpG_url)
-
-Ptuh_gene <- read_csv(Ptuh_gene_url)
-Ptuh_mirna <- read_delim(Ptuh_mirna_url, delim = "\t", col_names = TRUE)
-Ptuh_lncRNA <- read_delim(Ptuh_lncRNA_url, delim = "\t", col_names = TRUE)
-Ptuh_mCpG <- read_csv(Ptuh_mCpG_url)
-
-
+# Report any loading errors
+if (length(data_loading_errors) > 0) {
+  warning("Data loading errors occurred: ", paste(data_loading_errors, collapse = ", "))
+}
 ```
 
-| Species | Gene | miRNA | lncRNA | mCpG |
-|---------------|---------------|---------------|---------------|---------------|
-| *Acropora pulchra* | **`r nrow(Apul_gene)`** | **`r nrow(Apul_mirna)`** | **`r nrow(Apul_lncRNA)`** | **`r nrow(Apul_mCpG)`** |
-| *Porites evermanni* | **`r nrow(Peve_gene)`** | **`r nrow(Peve_mirna)`** | **`r nrow(Peve_lncRNA)`** | **`r nrow(Peve_mCpG)`** |
-| *Pocillopora tuahiniensis* | **`r nrow(Ptuh_gene)`** | **`r nrow(Ptuh_mirna)`** | **`r nrow(Ptuh_lncRNA)`** | **`r nrow(Ptuh_mCpG)`** |
+```{r feature-counts}
+#| echo: false
+# Generate feature counts table dynamically with error handling
+feature_counts <- data.frame(
+  Species = character(),
+  Gene = integer(),
+  miRNA = integer(),
+  lncRNA = integer(),
+  mCpG = integer(),
+  stringsAsFactors = FALSE
+)
 
-: Feature Counts
+for (species_code in names(data_urls)) {
+  # Safely get row counts with error handling
+  gene_count <- safe_nrow(all_data[[species_code]]$gene)
+  mirna_count <- safe_nrow(all_data[[species_code]]$mirna)
+  lncrna_count <- safe_nrow(all_data[[species_code]]$lncRNA)
+  mcpg_count <- safe_nrow(all_data[[species_code]]$mCpG)
+  
+  feature_counts <- rbind(feature_counts, data.frame(
+    Species = data_urls[[species_code]]$italic_name,
+    Gene = gene_count,
+    miRNA = mirna_count,
+    lncRNA = lncrna_count,
+    mCpG = mcpg_count,
+    stringsAsFactors = FALSE
+  ))
+}
+
+# Store the feature counts for use in the main content
+feature_counts_data <- feature_counts
+```
+
+
+## Summary of Available Data
+
+```{r}
+#| echo: false
+#| results: asis
+# Display the feature counts summary table
+if (nrow(feature_counts_data) > 0) {
+  feature_counts_data |>
+    gt() |>
+    tab_header(title = "Feature Counts") |>
+    fmt_number(columns = c("Gene", "miRNA", "lncRNA", "mCpG"), decimals = 0) |>
+    cols_align(align = "center", columns = c("Gene", "miRNA", "lncRNA", "mCpG")) |>
+    tab_style(
+      style = cell_text(weight = "bold"),
+      locations = cells_body(columns = c("Gene", "miRNA", "lncRNA", "mCpG"))
+    ) |>
+    print()
+} else {
+  cat("No feature count data available.")
+}
+```
+
 
 ::: callout-tip
 ## ConTra
 
-If you are excited about analyzing this type of data in contextual manner check out [ConTra - Contextual Transcriptome Regulation Analysis](https://github.com/sr320/ConTra)
+If you are excited about analyzing this type of data in contextual manner check out [ConTra - Contextual Transcriptome Regulation Analysis](https://github.com/sr320/ConTra)
 :::
 
 ## About Computational Pipelines
@@ -101,7 +246,7 @@ If you are excited about analyzing this type of data in contextual manner check 
 ::: panel-tabset
 ## Genes
 
-This workflow aligns trimmed RNA-seq reads to a reference genome using HISAT2, followed by transcript assembly and quantification with StringTie, and culminates in the generation of count matrices for downstream expression analysis. Individual sample directories contain BAMs, indexes, GTFs, Ballgown-formatted tables, and alignment statistics, while a MultiQC report aggregates overall alignment quality. The workflow then merges sorted BAMs into a single dataset, compiles a unified transcript GTF from individual assemblies, and uses prepDE to produce gene- and transcript-level count matrices compatible with DESeq2. 
+This workflow aligns trimmed RNA-seq reads to a reference genome using HISAT2, followed by transcript assembly and quantification with StringTie, and culminates in the generation of count matrices for downstream expression analysis. Individual sample directories contain BAMs, indexes, GTFs, Ballgown-formatted tables, and alignment statistics, while a MultiQC report aggregates overall alignment quality. The workflow then merges sorted BAMs into a single dataset, compiles a unified transcript GTF from individual assemblies, and uses prepDE to produce gene- and transcript-level count matrices compatible with DESeq2. 
 
 ## miRNA
 
@@ -109,11 +254,11 @@ ShortStack ? Kathleen
 
 ## lncRNA
 
-Workflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites), and aligns all samples. Per-sample transcript assemblies are generated with StringTie and merged into a unified GTF, which is then annotated with gffcompare. Putative lncRNAs are filtered from the merged annotations by biotype/class codes (u/x/o/i) and minimum length (\>200 nt), sequences are extracted with bedtools, and coding potential is screened with CPC2 to retain noncoding transcripts. The surviving transcripts are converted into a clean BED/GTF set with unique lncRNA\_### IDs, deduplicated, sanity-checked (coordinates/lengths), and summarized. Finally, featureCounts quantifies lncRNA features across all BAMs, column names are cleaned, and a filtered count matrix is produced, removing features with \<10 counts in \>50% of samples.
+Workflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites), and aligns all samples. Per-sample transcript assemblies are generated with StringTie and merged into a unified GTF, which is then annotated with gffcompare. Putative lncRNAs are filtered from the merged annotations by biotype/class codes (u/x/o/i) and minimum length (>200 nt), sequences are extracted with bedtools, and coding potential is screened with CPC2 to retain noncoding transcripts. The surviving transcripts are converted into a clean BED/GTF set with unique lncRNA_### IDs, deduplicated, sanity-checked (coordinates/lengths), and summarized. Finally, featureCounts quantifies lncRNA features across all BAMs, column names are cleaned, and a filtered count matrix is produced, removing features with <10 counts in >50% of samples.
 
 ## mCpG
 
-For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filtered for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column \_processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all \_processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.
+For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filtered for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column _processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all _processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.
 :::
 
 ::: callout-warning
@@ -122,469 +267,77 @@ For EM-seq analysis Bismark methylation coverage (.cov) files are unified into C
 Note currently we have some inconsistency in sample IDs across data types.
 :::
 
-# *Acropora pulchra*
-
-## Gene Counts
 
 ```{r}
 #| echo: false
 #| results: asis
-
-
-cat(as.character(
-  tags$a(
-    href = Apul_gene_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Apul_gene_count_matrix.csv",
-    "Download Gene Counts"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Apul_gene_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+# Generate all species sections with proper HTML rendering
+for (species_code in names(data_urls)) {
+  species_info <- data_urls[[species_code]]
+  
+  # Output species header
+  cat(paste0("# ", species_info$italic_name, "\n\n"))
+  
+  # Generate each data type section
+  for (data_type in c("gene", "mirna", "lncRNA", "mCpG")) {
+    url <- species_info[[data_type]]
+    df <- all_data[[species_code]][[data_type]]
+    
+    # Check if data was loaded successfully
+    if (is.null(df) || nrow(df) == 0) {
+      data_type_display <- switch(data_type,
+        "gene"  = "Gene",
+        "mirna" = "miRNA",
+        "lncRNA"= "lncRNA",
+        "mCpG"  = "mCpG Percentage",
+        data_type
+      )
+      cat(paste0("## ", data_type_display, " - Data Not Available\n\n"))
+      cat("Data could not be loaded for this section.\n\n")
+      next
+    }
+    
+    # Label for section
+    data_type_display <- switch(data_type,
+      "gene"  = "Gene",
+      "mirna" = "miRNA",
+      "lncRNA"= "lncRNA",
+      "mCpG"  = "mCpG Percentage",
+      data_type
+    )
+    
+    # File name
+    file_extension <- if (data_type %in% c("gene","mCpG")) ".csv" else ".txt"
+    filename <- paste0(species_code, "_", data_type, "_counts", file_extension)
+    
+    # Section header
+    cat(paste0("## ", data_type_display, "\n\n"))
+    
+    # Download button - use HTML directly as a string
+    download_btn <- create_download_button(url, filename, paste0("Download ", data_type_display))
+    if (download_btn != "") {
+      cat(download_btn, "\n\n")
+    }
+    
+    # URL display
+    cat("``` bash\n", url, "\n```\n\n")
+    
+    # Table caption
+    cat(paste0("**", species_code, "_", data_type, " (first 4 rows)**\n\n"))
+    
+    # Display table
+    tryCatch({
+      df |>
+        slice_head(n = 4) |>
+        gt() |> 
+        print()
+    }, error = function(e) {
+      cat("Error displaying table:", e$message, "\n")
+    })
+    
+    cat("\n\n")
+  }
 }
 ```
 
-```{r}
-Apul_gene |>
-  slice_head(n = 4) |>
-  gt()
-```
 
-## miRNA Counts
-
-```{r}
-#| echo: false
-#| results: asis
-
-
-cat(as.character(
-  tags$a(
-    href = Apul_mirna_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Apul_miRNA_counts.txt",
-    "Download miRNA Counts"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Apul_mirna_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-
-```{r}
-Apul_mirna |>
-  slice_head(n = 4) |>
-  gt()
-```
-
-## lncRNA Counts
-
-```{r}
-#| echo: false
-#| results: asis
-
-
-cat(as.character(
-  tags$a(
-    href = Apul_lncRNA_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Apul_lncRNA_counts.txt",
-    "Download lncRNA Counts"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Apul_lncRNA_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-
-```{r}
-#| tbl-cap: "Apul_lncRNA (first 10 rows with row numbers)"
-Apul_lncRNA |>
-  slice_head(n = 4) |>
-  gt()
-```
-
-## mCpG Percentage
-
-```{r}
-#| echo: false
-#| results: asis
-
-
-cat(as.character(
-  tags$a(
-    href = Apul_mCpG_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Apul_mCpG_counts.csv",
-    "Download mCpG Percentage"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Apul_mCpG_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-
-```{r}
-#| tbl-cap: "Apul_mCpG (first 10 rows with row numbers)"
-Apul_mCpG |>
-  slice_head(n = 4) |>
-  gt()
-```
-
-# *Porites evermanni*
-
-## Gene Counts
-
-```{r}
-#| echo: false
-#| results: asis
-
-
-cat(as.character(
-  tags$a(
-    href = Peve_gene_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Peve_gene_count_matrix.csv",
-    "Download Gene Counts"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Peve_gene_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-
-```{r}
-Peve_gene |>
-  slice_head(n = 4) |>
-  gt()
-```
-
-## miRNA Counts
-
-```{r}
-#| echo: false
-#| results: asis
-
-
-cat(as.character(
-  tags$a(
-    href = Peve_mirna_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Peve_miRNA_counts.txt",
-    "Download miRNA Counts"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Peve_mirna_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-
-```{r}
-Peve_mirna |>
-  slice_head(n = 4) |>
-  gt()
-```
-
-## lncRNA Counts
-
-```{r}
-#| echo: false
-#| results: asis
-
-
-cat(as.character(
-  tags$a(
-    href = Peve_lncRNA_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Peve_lncRNA_counts.txt",
-    "Download lncRNA Counts"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Peve_lncRNA_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-
-```{r}
-#| tbl-cap: "Peve_lncRNA (first 10 rows with row numbers)"
-Peve_lncRNA |>
-  slice_head(n = 4) |>
-  gt()
-```
-
-## mCpG Percentage
-
-```{r}
-#| echo: false
-#| results: asis
-
-
-cat(as.character(
-  tags$a(
-    href = Peve_mCpG_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Peve_mCpG_counts.csv",
-    "Download mCpG Percentage"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Peve_mCpG_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-
-```{r}
-#| tbl-cap: "Peve_mCpG (first 10 rows with row numbers)"
-Peve_mCpG |>
-  slice_head(n = 4) |>
-  gt()
-```
-
-# *Pocillopora tuahiniensis*
-
-## Gene Counts
-
-```{r}
-#| echo: false
-#| results: asis
-
-
-cat(as.character(
-  tags$a(
-    href = Ptuh_gene_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Ptuh_gene_count_matrix.csv",
-    "Download Gene Counts"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Ptuh_gene_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-
-```{r}
-Ptuh_gene |>
-  slice_head(n = 4) |>
-  gt()
-```
-
-## miRNA Counts
-
-```{r}
-#| echo: false
-#| results: asis
-
-
-cat(as.character(
-  tags$a(
-    href = Ptuh_mirna_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Ptuh_miRNA_counts.txt",
-    "Download miRNA Counts"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Ptuh_mirna_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-
-```{r}
-Ptuh_mirna |>
-  slice_head(n = 4) |>
-  gt()
-```
-
-## lncRNA Counts
-
-```{r}
-#| echo: false
-#| results: asis
-
-
-cat(as.character(
-  tags$a(
-    href = Ptuh_lncRNA_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Ptuh_lncRNA_count_matrix.csv",
-    "Download lncRNA Counts"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Ptuh_lncRNA_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-
-```{r}
-#| tbl-cap: "Ptuh_lncRNA (first 10 rows with row numbers)"
-Ptuh_lncRNA |>
-  slice_head(n = 4) |>
-  gt()
-```
-
-## mCpG Percentage
-
-```{r}
-#| echo: false
-#| results: asis
-
-cat(as.character(
-  tags$a(
-    href = Ptuh_mCpG_url,
-    class = "btn btn-primary",
-    target = "_blank",
-    download = "Ptuh_mCpG_matrix.csv",
-    "Download mCpG Percentage"
-  )
-))
-```
-
-```{r}
-#| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
-urls <- c(Ptuh_mCpG_url)
-
-for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
-  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
-}
-```
-
-```{r}
-#| tbl-cap: "Ptuh_mCpG (first 10 rows with row numbers)"
-Ptuh_mCpG |>
-  slice_head(n = 4) |>
-  gt()
-```
