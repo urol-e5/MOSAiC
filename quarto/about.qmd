@@ -4,23 +4,11 @@ format: html
 editor: visual
 ---
 
-## Quarto
+E5 Coral is a team formed by six research labs from top public U.S. universities that work together to predict phenotypic and eco-evolutionary consequences of environmental energetic epigenetic linkages.
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+This project uses symbiotic, metabolically complex reef-building corals as a model system to test the connections between physiological, epigenetic, and metabolic states, and predict how population and community dynamics are influenced by epigenetically-modulated phenotypes.
 
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
-```
-
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
+<video width="100%" autoplay muted>
+  <source src="https://e5coral.org/wp-content/uploads/2020/11/e5_coral_reef_homepage_720p.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>

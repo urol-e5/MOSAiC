@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,9 +22,8 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -66,20 +65,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1dd1c3079445e9292f047f008f609fb3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-09141908ef43cb928e0903ba3ecbdcec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-1dd1c3079445e9292f047f008f609fb3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e7a07c0c7b8918235151f415d7e0f4aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-7833f855aca2ffd86103414ce00af485.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -111,169 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
-        }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
-        });
-      }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -385,21 +219,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#gene-counts-1" id="toc-gene-counts-1" class="nav-link" data-scroll-target="#gene-counts-1">Gene Counts</a></li>
   <li><a href="#mirna-counts-1" id="toc-mirna-counts-1" class="nav-link" data-scroll-target="#mirna-counts-1">miRNA Counts</a></li>
   <li><a href="#lncrna-counts-1" id="toc-lncrna-counts-1" class="nav-link" data-scroll-target="#lncrna-counts-1">lncRNA Counts</a></li>
-  <li><a href="#mcpg-percentages" id="toc-mcpg-percentages" class="nav-link" data-scroll-target="#mcpg-percentages">mCpG Percentages</a></li>
+  <li><a href="#mcpg-percentage-1" id="toc-mcpg-percentage-1" class="nav-link" data-scroll-target="#mcpg-percentage-1">mCpG Percentage</a></li>
   </ul></li>
   <li><a href="#pocillopora-tuahiniensis" id="toc-pocillopora-tuahiniensis" class="nav-link" data-scroll-target="#pocillopora-tuahiniensis"><em>Pocillopora tuahiniensis</em></a>
   <ul class="collapse">
   <li><a href="#gene-counts-2" id="toc-gene-counts-2" class="nav-link" data-scroll-target="#gene-counts-2">Gene Counts</a></li>
   <li><a href="#mirna-counts-2" id="toc-mirna-counts-2" class="nav-link" data-scroll-target="#mirna-counts-2">miRNA Counts</a></li>
   <li><a href="#lncrna-counts-2" id="toc-lncrna-counts-2" class="nav-link" data-scroll-target="#lncrna-counts-2">lncRNA Counts</a></li>
-  <li><a href="#mcpg-percentage-1" id="toc-mcpg-percentage-1" class="nav-link" data-scroll-target="#mcpg-percentage-1">mCpG Percentage</a></li>
+  <li><a href="#mcpg-percentage-2" id="toc-mcpg-percentage-2" class="nav-link" data-scroll-target="#mcpg-percentage-2">mCpG Percentage</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./counts.html">Data Files</a></li><li class="breadcrumb-item"><a href="./counts.html">Genomic Expression Values</a></li></ol></nav>
 <div class="quarto-title">
@@ -477,7 +310,7 @@ ConTra
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you are exciting about analyzing this type of data in contextual manner check out <a href="https://github.com/sr320/ConTra">ConTra -&nbsp;Contextual Transcriptome Regulation Analysis</a></p>
+<p>If you are excited about analyzing this type of data in contextual manner check out <a href="https://github.com/sr320/ConTra">ConTra -&nbsp;Contextual Transcriptome Regulation Analysis</a></p>
 </div>
 </div>
 <section id="about-computational-pipelines" class="level2">
@@ -495,7 +328,7 @@ ConTra
 <p>Workflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites), and aligns all samples. Per-sample transcript assemblies are generated with StringTie and merged into a unified GTF, which is then annotated with gffcompare. Putative lncRNAs are filtered from the merged annotations by biotype/class codes (u/x/o/i) and minimum length (&gt;200 nt), sequences are extracted with bedtools, and coding potential is screened with CPC2 to retain noncoding transcripts. The surviving transcripts are converted into a clean BED/GTF set with unique lncRNA_### IDs, deduplicated, sanity-checked (coordinates/lengths), and summarized. Finally, featureCounts quantifies lncRNA features across all BAMs, column names are cleaned, and a filtered count matrix is produced, removing features with &lt;10 counts in &gt;50% of samples.</p>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<p>For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filterd for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column _processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all _processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.</p>
+<p>For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filtered for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column _processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all _processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.</p>
 </div>
 </div>
 </div>
@@ -521,23 +354,23 @@ Sample ID formatting
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ofkmhqovhn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ofkmhqovhn table {
+<div id="zduiisbgar" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zduiisbgar table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ofkmhqovhn thead, #ofkmhqovhn tbody, #ofkmhqovhn tfoot, #ofkmhqovhn tr, #ofkmhqovhn td, #ofkmhqovhn th {
+#zduiisbgar thead, #zduiisbgar tbody, #zduiisbgar tfoot, #zduiisbgar tr, #zduiisbgar td, #zduiisbgar th {
   border-style: none;
 }
 
-#ofkmhqovhn p {
+#zduiisbgar p {
   margin: 0;
   padding: 0;
 }
 
-#ofkmhqovhn .gt_table {
+#zduiisbgar .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -563,12 +396,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#ofkmhqovhn .gt_caption {
+#zduiisbgar .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ofkmhqovhn .gt_title {
+#zduiisbgar .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -580,7 +413,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#ofkmhqovhn .gt_subtitle {
+#zduiisbgar .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -592,7 +425,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#ofkmhqovhn .gt_heading {
+#zduiisbgar .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -604,13 +437,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ofkmhqovhn .gt_bottom_border {
+#zduiisbgar .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ofkmhqovhn .gt_col_headings {
+#zduiisbgar .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -625,7 +458,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ofkmhqovhn .gt_col_heading {
+#zduiisbgar .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -645,7 +478,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#ofkmhqovhn .gt_column_spanner_outer {
+#zduiisbgar .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -657,15 +490,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#ofkmhqovhn .gt_column_spanner_outer:first-child {
+#zduiisbgar .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ofkmhqovhn .gt_column_spanner_outer:last-child {
+#zduiisbgar .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ofkmhqovhn .gt_column_spanner {
+#zduiisbgar .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -677,11 +510,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#ofkmhqovhn .gt_spanner_row {
+#zduiisbgar .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ofkmhqovhn .gt_group_heading {
+#zduiisbgar .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -707,7 +540,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#ofkmhqovhn .gt_empty_group_heading {
+#zduiisbgar .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -722,15 +555,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#ofkmhqovhn .gt_from_md > :first-child {
+#zduiisbgar .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ofkmhqovhn .gt_from_md > :last-child {
+#zduiisbgar .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ofkmhqovhn .gt_row {
+#zduiisbgar .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -749,7 +582,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#ofkmhqovhn .gt_stub {
+#zduiisbgar .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -762,7 +595,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ofkmhqovhn .gt_stub_row_group {
+#zduiisbgar .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -776,15 +609,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#ofkmhqovhn .gt_row_group_first td {
+#zduiisbgar .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ofkmhqovhn .gt_row_group_first th {
+#zduiisbgar .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ofkmhqovhn .gt_summary_row {
+#zduiisbgar .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -794,16 +627,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ofkmhqovhn .gt_first_summary_row {
+#zduiisbgar .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ofkmhqovhn .gt_first_summary_row.thick {
+#zduiisbgar .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ofkmhqovhn .gt_last_summary_row {
+#zduiisbgar .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -813,7 +646,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#ofkmhqovhn .gt_grand_summary_row {
+#zduiisbgar .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -823,7 +656,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ofkmhqovhn .gt_first_grand_summary_row {
+#zduiisbgar .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -833,7 +666,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#ofkmhqovhn .gt_last_grand_summary_row_top {
+#zduiisbgar .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -843,11 +676,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#ofkmhqovhn .gt_striped {
+#zduiisbgar .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ofkmhqovhn .gt_table_body {
+#zduiisbgar .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -856,7 +689,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#ofkmhqovhn .gt_footnotes {
+#zduiisbgar .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -870,7 +703,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ofkmhqovhn .gt_footnote {
+#zduiisbgar .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -879,7 +712,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ofkmhqovhn .gt_sourcenotes {
+#zduiisbgar .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -893,7 +726,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#ofkmhqovhn .gt_sourcenote {
+#zduiisbgar .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -901,72 +734,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#ofkmhqovhn .gt_left {
+#zduiisbgar .gt_left {
   text-align: left;
 }
 
-#ofkmhqovhn .gt_center {
+#zduiisbgar .gt_center {
   text-align: center;
 }
 
-#ofkmhqovhn .gt_right {
+#zduiisbgar .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ofkmhqovhn .gt_font_normal {
+#zduiisbgar .gt_font_normal {
   font-weight: normal;
 }
 
-#ofkmhqovhn .gt_font_bold {
+#zduiisbgar .gt_font_bold {
   font-weight: bold;
 }
 
-#ofkmhqovhn .gt_font_italic {
+#zduiisbgar .gt_font_italic {
   font-style: italic;
 }
 
-#ofkmhqovhn .gt_super {
+#zduiisbgar .gt_super {
   font-size: 65%;
 }
 
-#ofkmhqovhn .gt_footnote_marks {
+#zduiisbgar .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ofkmhqovhn .gt_asterisk {
+#zduiisbgar .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ofkmhqovhn .gt_indent_1 {
+#zduiisbgar .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ofkmhqovhn .gt_indent_2 {
+#zduiisbgar .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ofkmhqovhn .gt_indent_3 {
+#zduiisbgar .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ofkmhqovhn .gt_indent_4 {
+#zduiisbgar .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ofkmhqovhn .gt_indent_5 {
+#zduiisbgar .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ofkmhqovhn .katex-display {
+#zduiisbgar .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ofkmhqovhn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zduiisbgar div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1399,27 +1232,27 @@ Sample ID formatting
 </section>
 <section id="mirna-counts" class="level2">
 <h2 class="anchored" data-anchor-id="mirna-counts">miRNA Counts</h2>
-<p><a href="https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt" class="btn btn-primary" target="_blank" download="Apul_gene_count_matrix.csv">Download miRNA Counts</a></p>
+<p><a href="https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt" class="btn btn-primary" target="_blank" download="Apul_miRNA_counts.txt">Download miRNA Counts</a></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="cvpnvnhdwb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cvpnvnhdwb table {
+<div id="wzxivddssi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wzxivddssi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cvpnvnhdwb thead, #cvpnvnhdwb tbody, #cvpnvnhdwb tfoot, #cvpnvnhdwb tr, #cvpnvnhdwb td, #cvpnvnhdwb th {
+#wzxivddssi thead, #wzxivddssi tbody, #wzxivddssi tfoot, #wzxivddssi tr, #wzxivddssi td, #wzxivddssi th {
   border-style: none;
 }
 
-#cvpnvnhdwb p {
+#wzxivddssi p {
   margin: 0;
   padding: 0;
 }
 
-#cvpnvnhdwb .gt_table {
+#wzxivddssi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1445,12 +1278,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#cvpnvnhdwb .gt_caption {
+#wzxivddssi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cvpnvnhdwb .gt_title {
+#wzxivddssi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1462,7 +1295,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#cvpnvnhdwb .gt_subtitle {
+#wzxivddssi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1474,7 +1307,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#cvpnvnhdwb .gt_heading {
+#wzxivddssi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1486,13 +1319,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#cvpnvnhdwb .gt_bottom_border {
+#wzxivddssi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cvpnvnhdwb .gt_col_headings {
+#wzxivddssi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1507,7 +1340,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#cvpnvnhdwb .gt_col_heading {
+#wzxivddssi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1527,7 +1360,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#cvpnvnhdwb .gt_column_spanner_outer {
+#wzxivddssi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1539,15 +1372,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#cvpnvnhdwb .gt_column_spanner_outer:first-child {
+#wzxivddssi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cvpnvnhdwb .gt_column_spanner_outer:last-child {
+#wzxivddssi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cvpnvnhdwb .gt_column_spanner {
+#wzxivddssi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1559,11 +1392,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#cvpnvnhdwb .gt_spanner_row {
+#wzxivddssi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cvpnvnhdwb .gt_group_heading {
+#wzxivddssi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1589,7 +1422,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#cvpnvnhdwb .gt_empty_group_heading {
+#wzxivddssi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1604,15 +1437,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#cvpnvnhdwb .gt_from_md > :first-child {
+#wzxivddssi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cvpnvnhdwb .gt_from_md > :last-child {
+#wzxivddssi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cvpnvnhdwb .gt_row {
+#wzxivddssi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1631,7 +1464,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#cvpnvnhdwb .gt_stub {
+#wzxivddssi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1644,7 +1477,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#cvpnvnhdwb .gt_stub_row_group {
+#wzxivddssi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1658,15 +1491,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#cvpnvnhdwb .gt_row_group_first td {
+#wzxivddssi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cvpnvnhdwb .gt_row_group_first th {
+#wzxivddssi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cvpnvnhdwb .gt_summary_row {
+#wzxivddssi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1676,16 +1509,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#cvpnvnhdwb .gt_first_summary_row {
+#wzxivddssi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cvpnvnhdwb .gt_first_summary_row.thick {
+#wzxivddssi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cvpnvnhdwb .gt_last_summary_row {
+#wzxivddssi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1695,7 +1528,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#cvpnvnhdwb .gt_grand_summary_row {
+#wzxivddssi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1705,7 +1538,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#cvpnvnhdwb .gt_first_grand_summary_row {
+#wzxivddssi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1715,7 +1548,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#cvpnvnhdwb .gt_last_grand_summary_row_top {
+#wzxivddssi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1725,11 +1558,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#cvpnvnhdwb .gt_striped {
+#wzxivddssi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cvpnvnhdwb .gt_table_body {
+#wzxivddssi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1738,7 +1571,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#cvpnvnhdwb .gt_footnotes {
+#wzxivddssi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1752,7 +1585,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#cvpnvnhdwb .gt_footnote {
+#wzxivddssi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1761,7 +1594,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#cvpnvnhdwb .gt_sourcenotes {
+#wzxivddssi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1775,7 +1608,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#cvpnvnhdwb .gt_sourcenote {
+#wzxivddssi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1783,72 +1616,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#cvpnvnhdwb .gt_left {
+#wzxivddssi .gt_left {
   text-align: left;
 }
 
-#cvpnvnhdwb .gt_center {
+#wzxivddssi .gt_center {
   text-align: center;
 }
 
-#cvpnvnhdwb .gt_right {
+#wzxivddssi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cvpnvnhdwb .gt_font_normal {
+#wzxivddssi .gt_font_normal {
   font-weight: normal;
 }
 
-#cvpnvnhdwb .gt_font_bold {
+#wzxivddssi .gt_font_bold {
   font-weight: bold;
 }
 
-#cvpnvnhdwb .gt_font_italic {
+#wzxivddssi .gt_font_italic {
   font-style: italic;
 }
 
-#cvpnvnhdwb .gt_super {
+#wzxivddssi .gt_super {
   font-size: 65%;
 }
 
-#cvpnvnhdwb .gt_footnote_marks {
+#wzxivddssi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cvpnvnhdwb .gt_asterisk {
+#wzxivddssi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cvpnvnhdwb .gt_indent_1 {
+#wzxivddssi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cvpnvnhdwb .gt_indent_2 {
+#wzxivddssi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cvpnvnhdwb .gt_indent_3 {
+#wzxivddssi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cvpnvnhdwb .gt_indent_4 {
+#wzxivddssi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cvpnvnhdwb .gt_indent_5 {
+#wzxivddssi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cvpnvnhdwb .katex-display {
+#wzxivddssi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cvpnvnhdwb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wzxivddssi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2081,27 +1914,27 @@ Sample ID formatting
 </section>
 <section id="lncrna-counts" class="level2">
 <h2 class="anchored" data-anchor-id="lncrna-counts">lncRNA Counts</h2>
-<p><a href="https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt" class="btn btn-primary" target="_blank" download="Apul_gene_count_matrix.csv">Download lncRNA Counts</a></p>
+<p><a href="https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt" class="btn btn-primary" target="_blank" download="Apul_lncRNA_counts.txt">Download lncRNA Counts</a></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-tbl-cap="Apul_lncRNA (first 10 rows with row numbers)">
+<div class="cell">
 <div class="cell-output-display">
-<div id="gpxkxuewth" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gpxkxuewth table {
+<div id="kyzodcpkfu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kyzodcpkfu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gpxkxuewth thead, #gpxkxuewth tbody, #gpxkxuewth tfoot, #gpxkxuewth tr, #gpxkxuewth td, #gpxkxuewth th {
+#kyzodcpkfu thead, #kyzodcpkfu tbody, #kyzodcpkfu tfoot, #kyzodcpkfu tr, #kyzodcpkfu td, #kyzodcpkfu th {
   border-style: none;
 }
 
-#gpxkxuewth p {
+#kyzodcpkfu p {
   margin: 0;
   padding: 0;
 }
 
-#gpxkxuewth .gt_table {
+#kyzodcpkfu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2127,12 +1960,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#gpxkxuewth .gt_caption {
+#kyzodcpkfu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gpxkxuewth .gt_title {
+#kyzodcpkfu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2144,7 +1977,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#gpxkxuewth .gt_subtitle {
+#kyzodcpkfu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2156,7 +1989,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#gpxkxuewth .gt_heading {
+#kyzodcpkfu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2168,13 +2001,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#gpxkxuewth .gt_bottom_border {
+#kyzodcpkfu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gpxkxuewth .gt_col_headings {
+#kyzodcpkfu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2189,7 +2022,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#gpxkxuewth .gt_col_heading {
+#kyzodcpkfu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2209,7 +2042,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#gpxkxuewth .gt_column_spanner_outer {
+#kyzodcpkfu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2221,15 +2054,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#gpxkxuewth .gt_column_spanner_outer:first-child {
+#kyzodcpkfu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gpxkxuewth .gt_column_spanner_outer:last-child {
+#kyzodcpkfu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gpxkxuewth .gt_column_spanner {
+#kyzodcpkfu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2241,11 +2074,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#gpxkxuewth .gt_spanner_row {
+#kyzodcpkfu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gpxkxuewth .gt_group_heading {
+#kyzodcpkfu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2271,7 +2104,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#gpxkxuewth .gt_empty_group_heading {
+#kyzodcpkfu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2286,15 +2119,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#gpxkxuewth .gt_from_md > :first-child {
+#kyzodcpkfu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gpxkxuewth .gt_from_md > :last-child {
+#kyzodcpkfu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gpxkxuewth .gt_row {
+#kyzodcpkfu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2313,7 +2146,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#gpxkxuewth .gt_stub {
+#kyzodcpkfu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2326,7 +2159,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#gpxkxuewth .gt_stub_row_group {
+#kyzodcpkfu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2340,15 +2173,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#gpxkxuewth .gt_row_group_first td {
+#kyzodcpkfu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gpxkxuewth .gt_row_group_first th {
+#kyzodcpkfu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gpxkxuewth .gt_summary_row {
+#kyzodcpkfu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2358,16 +2191,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#gpxkxuewth .gt_first_summary_row {
+#kyzodcpkfu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gpxkxuewth .gt_first_summary_row.thick {
+#kyzodcpkfu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gpxkxuewth .gt_last_summary_row {
+#kyzodcpkfu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2377,7 +2210,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#gpxkxuewth .gt_grand_summary_row {
+#kyzodcpkfu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2387,7 +2220,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#gpxkxuewth .gt_first_grand_summary_row {
+#kyzodcpkfu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2397,7 +2230,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#gpxkxuewth .gt_last_grand_summary_row_top {
+#kyzodcpkfu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2407,11 +2240,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#gpxkxuewth .gt_striped {
+#kyzodcpkfu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gpxkxuewth .gt_table_body {
+#kyzodcpkfu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2420,7 +2253,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#gpxkxuewth .gt_footnotes {
+#kyzodcpkfu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2434,7 +2267,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#gpxkxuewth .gt_footnote {
+#kyzodcpkfu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2443,7 +2276,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#gpxkxuewth .gt_sourcenotes {
+#kyzodcpkfu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2457,7 +2290,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#gpxkxuewth .gt_sourcenote {
+#kyzodcpkfu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2465,72 +2298,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#gpxkxuewth .gt_left {
+#kyzodcpkfu .gt_left {
   text-align: left;
 }
 
-#gpxkxuewth .gt_center {
+#kyzodcpkfu .gt_center {
   text-align: center;
 }
 
-#gpxkxuewth .gt_right {
+#kyzodcpkfu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gpxkxuewth .gt_font_normal {
+#kyzodcpkfu .gt_font_normal {
   font-weight: normal;
 }
 
-#gpxkxuewth .gt_font_bold {
+#kyzodcpkfu .gt_font_bold {
   font-weight: bold;
 }
 
-#gpxkxuewth .gt_font_italic {
+#kyzodcpkfu .gt_font_italic {
   font-style: italic;
 }
 
-#gpxkxuewth .gt_super {
+#kyzodcpkfu .gt_super {
   font-size: 65%;
 }
 
-#gpxkxuewth .gt_footnote_marks {
+#kyzodcpkfu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gpxkxuewth .gt_asterisk {
+#kyzodcpkfu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gpxkxuewth .gt_indent_1 {
+#kyzodcpkfu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gpxkxuewth .gt_indent_2 {
+#kyzodcpkfu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gpxkxuewth .gt_indent_3 {
+#kyzodcpkfu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gpxkxuewth .gt_indent_4 {
+#kyzodcpkfu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gpxkxuewth .gt_indent_5 {
+#kyzodcpkfu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gpxkxuewth .katex-display {
+#kyzodcpkfu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gpxkxuewth div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kyzodcpkfu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2789,27 +2622,27 @@ Sample ID formatting
 </section>
 <section id="mcpg-percentage" class="level2">
 <h2 class="anchored" data-anchor-id="mcpg-percentage">mCpG Percentage</h2>
-<p><a href="https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv" class="btn btn-primary" target="_blank" download="Apul_gene_count_matrix.csv">Download MCpG Percentage</a></p>
+<p><a href="https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv" class="btn btn-primary" target="_blank" download="Apul_mCpG_counts.csv">Download mCpG Percentage</a></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-tbl-cap="Apul_mCpG (first 10 rows with row numbers)">
+<div class="cell">
 <div class="cell-output-display">
-<div id="pprdxkbpze" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pprdxkbpze table {
+<div id="pihzklkdeg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pihzklkdeg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pprdxkbpze thead, #pprdxkbpze tbody, #pprdxkbpze tfoot, #pprdxkbpze tr, #pprdxkbpze td, #pprdxkbpze th {
+#pihzklkdeg thead, #pihzklkdeg tbody, #pihzklkdeg tfoot, #pihzklkdeg tr, #pihzklkdeg td, #pihzklkdeg th {
   border-style: none;
 }
 
-#pprdxkbpze p {
+#pihzklkdeg p {
   margin: 0;
   padding: 0;
 }
 
-#pprdxkbpze .gt_table {
+#pihzklkdeg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2835,12 +2668,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#pprdxkbpze .gt_caption {
+#pihzklkdeg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pprdxkbpze .gt_title {
+#pihzklkdeg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2852,7 +2685,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#pprdxkbpze .gt_subtitle {
+#pihzklkdeg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2864,7 +2697,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#pprdxkbpze .gt_heading {
+#pihzklkdeg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2876,13 +2709,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#pprdxkbpze .gt_bottom_border {
+#pihzklkdeg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pprdxkbpze .gt_col_headings {
+#pihzklkdeg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2897,7 +2730,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#pprdxkbpze .gt_col_heading {
+#pihzklkdeg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2917,7 +2750,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#pprdxkbpze .gt_column_spanner_outer {
+#pihzklkdeg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2929,15 +2762,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#pprdxkbpze .gt_column_spanner_outer:first-child {
+#pihzklkdeg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pprdxkbpze .gt_column_spanner_outer:last-child {
+#pihzklkdeg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pprdxkbpze .gt_column_spanner {
+#pihzklkdeg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2949,11 +2782,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#pprdxkbpze .gt_spanner_row {
+#pihzklkdeg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pprdxkbpze .gt_group_heading {
+#pihzklkdeg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2979,7 +2812,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#pprdxkbpze .gt_empty_group_heading {
+#pihzklkdeg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2994,15 +2827,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#pprdxkbpze .gt_from_md > :first-child {
+#pihzklkdeg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pprdxkbpze .gt_from_md > :last-child {
+#pihzklkdeg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pprdxkbpze .gt_row {
+#pihzklkdeg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3021,7 +2854,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#pprdxkbpze .gt_stub {
+#pihzklkdeg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3034,7 +2867,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#pprdxkbpze .gt_stub_row_group {
+#pihzklkdeg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3048,15 +2881,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#pprdxkbpze .gt_row_group_first td {
+#pihzklkdeg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pprdxkbpze .gt_row_group_first th {
+#pihzklkdeg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pprdxkbpze .gt_summary_row {
+#pihzklkdeg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3066,16 +2899,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#pprdxkbpze .gt_first_summary_row {
+#pihzklkdeg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pprdxkbpze .gt_first_summary_row.thick {
+#pihzklkdeg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pprdxkbpze .gt_last_summary_row {
+#pihzklkdeg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3085,7 +2918,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#pprdxkbpze .gt_grand_summary_row {
+#pihzklkdeg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3095,7 +2928,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#pprdxkbpze .gt_first_grand_summary_row {
+#pihzklkdeg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3105,7 +2938,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#pprdxkbpze .gt_last_grand_summary_row_top {
+#pihzklkdeg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3115,11 +2948,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#pprdxkbpze .gt_striped {
+#pihzklkdeg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pprdxkbpze .gt_table_body {
+#pihzklkdeg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3128,7 +2961,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#pprdxkbpze .gt_footnotes {
+#pihzklkdeg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3142,7 +2975,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#pprdxkbpze .gt_footnote {
+#pihzklkdeg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3151,7 +2984,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#pprdxkbpze .gt_sourcenotes {
+#pihzklkdeg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3165,7 +2998,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#pprdxkbpze .gt_sourcenote {
+#pihzklkdeg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3173,72 +3006,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#pprdxkbpze .gt_left {
+#pihzklkdeg .gt_left {
   text-align: left;
 }
 
-#pprdxkbpze .gt_center {
+#pihzklkdeg .gt_center {
   text-align: center;
 }
 
-#pprdxkbpze .gt_right {
+#pihzklkdeg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pprdxkbpze .gt_font_normal {
+#pihzklkdeg .gt_font_normal {
   font-weight: normal;
 }
 
-#pprdxkbpze .gt_font_bold {
+#pihzklkdeg .gt_font_bold {
   font-weight: bold;
 }
 
-#pprdxkbpze .gt_font_italic {
+#pihzklkdeg .gt_font_italic {
   font-style: italic;
 }
 
-#pprdxkbpze .gt_super {
+#pihzklkdeg .gt_super {
   font-size: 65%;
 }
 
-#pprdxkbpze .gt_footnote_marks {
+#pihzklkdeg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pprdxkbpze .gt_asterisk {
+#pihzklkdeg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pprdxkbpze .gt_indent_1 {
+#pihzklkdeg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pprdxkbpze .gt_indent_2 {
+#pihzklkdeg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pprdxkbpze .gt_indent_3 {
+#pihzklkdeg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pprdxkbpze .gt_indent_4 {
+#pihzklkdeg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pprdxkbpze .gt_indent_5 {
+#pihzklkdeg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pprdxkbpze .katex-display {
+#pihzklkdeg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pprdxkbpze div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pihzklkdeg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3474,23 +3307,23 @@ Sample ID formatting
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="levrbanojw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#levrbanojw table {
+<div id="czgwudrhoc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#czgwudrhoc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#levrbanojw thead, #levrbanojw tbody, #levrbanojw tfoot, #levrbanojw tr, #levrbanojw td, #levrbanojw th {
+#czgwudrhoc thead, #czgwudrhoc tbody, #czgwudrhoc tfoot, #czgwudrhoc tr, #czgwudrhoc td, #czgwudrhoc th {
   border-style: none;
 }
 
-#levrbanojw p {
+#czgwudrhoc p {
   margin: 0;
   padding: 0;
 }
 
-#levrbanojw .gt_table {
+#czgwudrhoc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3516,12 +3349,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#levrbanojw .gt_caption {
+#czgwudrhoc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#levrbanojw .gt_title {
+#czgwudrhoc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3533,7 +3366,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#levrbanojw .gt_subtitle {
+#czgwudrhoc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3545,7 +3378,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#levrbanojw .gt_heading {
+#czgwudrhoc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3557,13 +3390,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#levrbanojw .gt_bottom_border {
+#czgwudrhoc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#levrbanojw .gt_col_headings {
+#czgwudrhoc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3578,7 +3411,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#levrbanojw .gt_col_heading {
+#czgwudrhoc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3598,7 +3431,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#levrbanojw .gt_column_spanner_outer {
+#czgwudrhoc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3610,15 +3443,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#levrbanojw .gt_column_spanner_outer:first-child {
+#czgwudrhoc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#levrbanojw .gt_column_spanner_outer:last-child {
+#czgwudrhoc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#levrbanojw .gt_column_spanner {
+#czgwudrhoc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3630,11 +3463,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#levrbanojw .gt_spanner_row {
+#czgwudrhoc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#levrbanojw .gt_group_heading {
+#czgwudrhoc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3660,7 +3493,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#levrbanojw .gt_empty_group_heading {
+#czgwudrhoc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3675,15 +3508,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#levrbanojw .gt_from_md > :first-child {
+#czgwudrhoc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#levrbanojw .gt_from_md > :last-child {
+#czgwudrhoc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#levrbanojw .gt_row {
+#czgwudrhoc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3702,7 +3535,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#levrbanojw .gt_stub {
+#czgwudrhoc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3715,7 +3548,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#levrbanojw .gt_stub_row_group {
+#czgwudrhoc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3729,15 +3562,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#levrbanojw .gt_row_group_first td {
+#czgwudrhoc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#levrbanojw .gt_row_group_first th {
+#czgwudrhoc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#levrbanojw .gt_summary_row {
+#czgwudrhoc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3747,16 +3580,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#levrbanojw .gt_first_summary_row {
+#czgwudrhoc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#levrbanojw .gt_first_summary_row.thick {
+#czgwudrhoc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#levrbanojw .gt_last_summary_row {
+#czgwudrhoc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3766,7 +3599,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#levrbanojw .gt_grand_summary_row {
+#czgwudrhoc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3776,7 +3609,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#levrbanojw .gt_first_grand_summary_row {
+#czgwudrhoc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3786,7 +3619,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#levrbanojw .gt_last_grand_summary_row_top {
+#czgwudrhoc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3796,11 +3629,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#levrbanojw .gt_striped {
+#czgwudrhoc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#levrbanojw .gt_table_body {
+#czgwudrhoc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3809,7 +3642,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#levrbanojw .gt_footnotes {
+#czgwudrhoc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3823,7 +3656,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#levrbanojw .gt_footnote {
+#czgwudrhoc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3832,7 +3665,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#levrbanojw .gt_sourcenotes {
+#czgwudrhoc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3846,7 +3679,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#levrbanojw .gt_sourcenote {
+#czgwudrhoc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3854,72 +3687,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#levrbanojw .gt_left {
+#czgwudrhoc .gt_left {
   text-align: left;
 }
 
-#levrbanojw .gt_center {
+#czgwudrhoc .gt_center {
   text-align: center;
 }
 
-#levrbanojw .gt_right {
+#czgwudrhoc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#levrbanojw .gt_font_normal {
+#czgwudrhoc .gt_font_normal {
   font-weight: normal;
 }
 
-#levrbanojw .gt_font_bold {
+#czgwudrhoc .gt_font_bold {
   font-weight: bold;
 }
 
-#levrbanojw .gt_font_italic {
+#czgwudrhoc .gt_font_italic {
   font-style: italic;
 }
 
-#levrbanojw .gt_super {
+#czgwudrhoc .gt_super {
   font-size: 65%;
 }
 
-#levrbanojw .gt_footnote_marks {
+#czgwudrhoc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#levrbanojw .gt_asterisk {
+#czgwudrhoc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#levrbanojw .gt_indent_1 {
+#czgwudrhoc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#levrbanojw .gt_indent_2 {
+#czgwudrhoc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#levrbanojw .gt_indent_3 {
+#czgwudrhoc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#levrbanojw .gt_indent_4 {
+#czgwudrhoc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#levrbanojw .gt_indent_5 {
+#czgwudrhoc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#levrbanojw .katex-display {
+#czgwudrhoc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#levrbanojw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#czgwudrhoc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4142,27 +3975,27 @@ Sample ID formatting
 </section>
 <section id="mirna-counts-1" class="level2">
 <h2 class="anchored" data-anchor-id="mirna-counts-1">miRNA Counts</h2>
-<p><a href="https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt" class="btn btn-primary" target="_blank" download="Peve_gene_count_matrix.csv">Download miRNA Counts</a></p>
+<p><a href="https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt" class="btn btn-primary" target="_blank" download="Peve_miRNA_counts.txt">Download miRNA Counts</a></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="imeoushqxg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#imeoushqxg table {
+<div id="ruqvtmnnww" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ruqvtmnnww table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#imeoushqxg thead, #imeoushqxg tbody, #imeoushqxg tfoot, #imeoushqxg tr, #imeoushqxg td, #imeoushqxg th {
+#ruqvtmnnww thead, #ruqvtmnnww tbody, #ruqvtmnnww tfoot, #ruqvtmnnww tr, #ruqvtmnnww td, #ruqvtmnnww th {
   border-style: none;
 }
 
-#imeoushqxg p {
+#ruqvtmnnww p {
   margin: 0;
   padding: 0;
 }
 
-#imeoushqxg .gt_table {
+#ruqvtmnnww .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4188,12 +4021,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#imeoushqxg .gt_caption {
+#ruqvtmnnww .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#imeoushqxg .gt_title {
+#ruqvtmnnww .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4205,7 +4038,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#imeoushqxg .gt_subtitle {
+#ruqvtmnnww .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4217,7 +4050,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#imeoushqxg .gt_heading {
+#ruqvtmnnww .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4229,13 +4062,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#imeoushqxg .gt_bottom_border {
+#ruqvtmnnww .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#imeoushqxg .gt_col_headings {
+#ruqvtmnnww .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4250,7 +4083,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#imeoushqxg .gt_col_heading {
+#ruqvtmnnww .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4270,7 +4103,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#imeoushqxg .gt_column_spanner_outer {
+#ruqvtmnnww .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4282,15 +4115,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#imeoushqxg .gt_column_spanner_outer:first-child {
+#ruqvtmnnww .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#imeoushqxg .gt_column_spanner_outer:last-child {
+#ruqvtmnnww .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#imeoushqxg .gt_column_spanner {
+#ruqvtmnnww .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4302,11 +4135,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#imeoushqxg .gt_spanner_row {
+#ruqvtmnnww .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#imeoushqxg .gt_group_heading {
+#ruqvtmnnww .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4332,7 +4165,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#imeoushqxg .gt_empty_group_heading {
+#ruqvtmnnww .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4347,15 +4180,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#imeoushqxg .gt_from_md > :first-child {
+#ruqvtmnnww .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#imeoushqxg .gt_from_md > :last-child {
+#ruqvtmnnww .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#imeoushqxg .gt_row {
+#ruqvtmnnww .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4374,7 +4207,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#imeoushqxg .gt_stub {
+#ruqvtmnnww .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4387,7 +4220,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#imeoushqxg .gt_stub_row_group {
+#ruqvtmnnww .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4401,15 +4234,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#imeoushqxg .gt_row_group_first td {
+#ruqvtmnnww .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#imeoushqxg .gt_row_group_first th {
+#ruqvtmnnww .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#imeoushqxg .gt_summary_row {
+#ruqvtmnnww .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4419,16 +4252,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#imeoushqxg .gt_first_summary_row {
+#ruqvtmnnww .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#imeoushqxg .gt_first_summary_row.thick {
+#ruqvtmnnww .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#imeoushqxg .gt_last_summary_row {
+#ruqvtmnnww .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4438,7 +4271,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#imeoushqxg .gt_grand_summary_row {
+#ruqvtmnnww .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4448,7 +4281,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#imeoushqxg .gt_first_grand_summary_row {
+#ruqvtmnnww .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4458,7 +4291,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#imeoushqxg .gt_last_grand_summary_row_top {
+#ruqvtmnnww .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4468,11 +4301,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#imeoushqxg .gt_striped {
+#ruqvtmnnww .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#imeoushqxg .gt_table_body {
+#ruqvtmnnww .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4481,7 +4314,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#imeoushqxg .gt_footnotes {
+#ruqvtmnnww .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4495,7 +4328,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#imeoushqxg .gt_footnote {
+#ruqvtmnnww .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4504,7 +4337,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#imeoushqxg .gt_sourcenotes {
+#ruqvtmnnww .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4518,7 +4351,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#imeoushqxg .gt_sourcenote {
+#ruqvtmnnww .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4526,72 +4359,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#imeoushqxg .gt_left {
+#ruqvtmnnww .gt_left {
   text-align: left;
 }
 
-#imeoushqxg .gt_center {
+#ruqvtmnnww .gt_center {
   text-align: center;
 }
 
-#imeoushqxg .gt_right {
+#ruqvtmnnww .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#imeoushqxg .gt_font_normal {
+#ruqvtmnnww .gt_font_normal {
   font-weight: normal;
 }
 
-#imeoushqxg .gt_font_bold {
+#ruqvtmnnww .gt_font_bold {
   font-weight: bold;
 }
 
-#imeoushqxg .gt_font_italic {
+#ruqvtmnnww .gt_font_italic {
   font-style: italic;
 }
 
-#imeoushqxg .gt_super {
+#ruqvtmnnww .gt_super {
   font-size: 65%;
 }
 
-#imeoushqxg .gt_footnote_marks {
+#ruqvtmnnww .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#imeoushqxg .gt_asterisk {
+#ruqvtmnnww .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#imeoushqxg .gt_indent_1 {
+#ruqvtmnnww .gt_indent_1 {
   text-indent: 5px;
 }
 
-#imeoushqxg .gt_indent_2 {
+#ruqvtmnnww .gt_indent_2 {
   text-indent: 10px;
 }
 
-#imeoushqxg .gt_indent_3 {
+#ruqvtmnnww .gt_indent_3 {
   text-indent: 15px;
 }
 
-#imeoushqxg .gt_indent_4 {
+#ruqvtmnnww .gt_indent_4 {
   text-indent: 20px;
 }
 
-#imeoushqxg .gt_indent_5 {
+#ruqvtmnnww .gt_indent_5 {
   text-indent: 25px;
 }
 
-#imeoushqxg .katex-display {
+#ruqvtmnnww .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#imeoushqxg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ruqvtmnnww div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4809,27 +4642,27 @@ Sample ID formatting
 </section>
 <section id="lncrna-counts-1" class="level2">
 <h2 class="anchored" data-anchor-id="lncrna-counts-1">lncRNA Counts</h2>
-<p><a href="https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt" class="btn btn-primary" target="_blank" download="Peve_gene_count_matrix.csv">Download lncRNA Counts</a></p>
+<p><a href="https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt" class="btn btn-primary" target="_blank" download="Peve_lncRNA_counts.txt">Download lncRNA Counts</a></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-tbl-cap="Peve_lncRNA (first 10 rows with row numbers)">
+<div class="cell">
 <div class="cell-output-display">
-<div id="cgvudwuhcw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cgvudwuhcw table {
+<div id="nqmunxmomz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nqmunxmomz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cgvudwuhcw thead, #cgvudwuhcw tbody, #cgvudwuhcw tfoot, #cgvudwuhcw tr, #cgvudwuhcw td, #cgvudwuhcw th {
+#nqmunxmomz thead, #nqmunxmomz tbody, #nqmunxmomz tfoot, #nqmunxmomz tr, #nqmunxmomz td, #nqmunxmomz th {
   border-style: none;
 }
 
-#cgvudwuhcw p {
+#nqmunxmomz p {
   margin: 0;
   padding: 0;
 }
 
-#cgvudwuhcw .gt_table {
+#nqmunxmomz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4855,12 +4688,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#cgvudwuhcw .gt_caption {
+#nqmunxmomz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cgvudwuhcw .gt_title {
+#nqmunxmomz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4872,7 +4705,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#cgvudwuhcw .gt_subtitle {
+#nqmunxmomz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4884,7 +4717,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#cgvudwuhcw .gt_heading {
+#nqmunxmomz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4896,13 +4729,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#cgvudwuhcw .gt_bottom_border {
+#nqmunxmomz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cgvudwuhcw .gt_col_headings {
+#nqmunxmomz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4917,7 +4750,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#cgvudwuhcw .gt_col_heading {
+#nqmunxmomz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4937,7 +4770,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#cgvudwuhcw .gt_column_spanner_outer {
+#nqmunxmomz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4949,15 +4782,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#cgvudwuhcw .gt_column_spanner_outer:first-child {
+#nqmunxmomz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cgvudwuhcw .gt_column_spanner_outer:last-child {
+#nqmunxmomz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cgvudwuhcw .gt_column_spanner {
+#nqmunxmomz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4969,11 +4802,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#cgvudwuhcw .gt_spanner_row {
+#nqmunxmomz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cgvudwuhcw .gt_group_heading {
+#nqmunxmomz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4999,7 +4832,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#cgvudwuhcw .gt_empty_group_heading {
+#nqmunxmomz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5014,15 +4847,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#cgvudwuhcw .gt_from_md > :first-child {
+#nqmunxmomz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cgvudwuhcw .gt_from_md > :last-child {
+#nqmunxmomz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cgvudwuhcw .gt_row {
+#nqmunxmomz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5041,7 +4874,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#cgvudwuhcw .gt_stub {
+#nqmunxmomz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5054,7 +4887,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#cgvudwuhcw .gt_stub_row_group {
+#nqmunxmomz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5068,15 +4901,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#cgvudwuhcw .gt_row_group_first td {
+#nqmunxmomz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cgvudwuhcw .gt_row_group_first th {
+#nqmunxmomz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cgvudwuhcw .gt_summary_row {
+#nqmunxmomz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5086,16 +4919,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#cgvudwuhcw .gt_first_summary_row {
+#nqmunxmomz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cgvudwuhcw .gt_first_summary_row.thick {
+#nqmunxmomz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cgvudwuhcw .gt_last_summary_row {
+#nqmunxmomz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5105,7 +4938,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#cgvudwuhcw .gt_grand_summary_row {
+#nqmunxmomz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5115,7 +4948,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#cgvudwuhcw .gt_first_grand_summary_row {
+#nqmunxmomz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5125,7 +4958,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#cgvudwuhcw .gt_last_grand_summary_row_top {
+#nqmunxmomz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5135,11 +4968,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#cgvudwuhcw .gt_striped {
+#nqmunxmomz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cgvudwuhcw .gt_table_body {
+#nqmunxmomz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5148,7 +4981,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#cgvudwuhcw .gt_footnotes {
+#nqmunxmomz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5162,7 +4995,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#cgvudwuhcw .gt_footnote {
+#nqmunxmomz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5171,7 +5004,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#cgvudwuhcw .gt_sourcenotes {
+#nqmunxmomz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5185,7 +5018,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#cgvudwuhcw .gt_sourcenote {
+#nqmunxmomz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5193,72 +5026,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#cgvudwuhcw .gt_left {
+#nqmunxmomz .gt_left {
   text-align: left;
 }
 
-#cgvudwuhcw .gt_center {
+#nqmunxmomz .gt_center {
   text-align: center;
 }
 
-#cgvudwuhcw .gt_right {
+#nqmunxmomz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cgvudwuhcw .gt_font_normal {
+#nqmunxmomz .gt_font_normal {
   font-weight: normal;
 }
 
-#cgvudwuhcw .gt_font_bold {
+#nqmunxmomz .gt_font_bold {
   font-weight: bold;
 }
 
-#cgvudwuhcw .gt_font_italic {
+#nqmunxmomz .gt_font_italic {
   font-style: italic;
 }
 
-#cgvudwuhcw .gt_super {
+#nqmunxmomz .gt_super {
   font-size: 65%;
 }
 
-#cgvudwuhcw .gt_footnote_marks {
+#nqmunxmomz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cgvudwuhcw .gt_asterisk {
+#nqmunxmomz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cgvudwuhcw .gt_indent_1 {
+#nqmunxmomz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cgvudwuhcw .gt_indent_2 {
+#nqmunxmomz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cgvudwuhcw .gt_indent_3 {
+#nqmunxmomz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cgvudwuhcw .gt_indent_4 {
+#nqmunxmomz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cgvudwuhcw .gt_indent_5 {
+#nqmunxmomz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cgvudwuhcw .katex-display {
+#nqmunxmomz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cgvudwuhcw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nqmunxmomz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5505,35 +5338,29 @@ Sample ID formatting
 </div>
 </div>
 </section>
-<section id="mcpg-percentages" class="level2">
-<h2 class="anchored" data-anchor-id="mcpg-percentages">mCpG Percentages</h2>
-</section>
-</section>
-<section id="pocillopora-tuahiniensis" class="level1">
-<h1><em>Pocillopora tuahiniensis</em></h1>
-<section id="gene-counts-2" class="level2">
-<h2 class="anchored" data-anchor-id="gene-counts-2">Gene Counts</h2>
-<p><a href="https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv" class="btn btn-primary" target="_blank" download="Ptuh_gene_count_matrix.csv">Download Gene Counts</a></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="mcpg-percentage-1" class="level2">
+<h2 class="anchored" data-anchor-id="mcpg-percentage-1">mCpG Percentage</h2>
+<p><a href="https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv" class="btn btn-primary" target="_blank" download="Peve_mCpG_counts.csv">Download mCpG Percentage</a></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="dxdcgddwrv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dxdcgddwrv table {
+<div id="ilapqppllt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ilapqppllt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dxdcgddwrv thead, #dxdcgddwrv tbody, #dxdcgddwrv tfoot, #dxdcgddwrv tr, #dxdcgddwrv td, #dxdcgddwrv th {
+#ilapqppllt thead, #ilapqppllt tbody, #ilapqppllt tfoot, #ilapqppllt tr, #ilapqppllt td, #ilapqppllt th {
   border-style: none;
 }
 
-#dxdcgddwrv p {
+#ilapqppllt p {
   margin: 0;
   padding: 0;
 }
 
-#dxdcgddwrv .gt_table {
+#ilapqppllt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5559,12 +5386,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#dxdcgddwrv .gt_caption {
+#ilapqppllt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dxdcgddwrv .gt_title {
+#ilapqppllt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5576,7 +5403,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#dxdcgddwrv .gt_subtitle {
+#ilapqppllt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5588,7 +5415,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#dxdcgddwrv .gt_heading {
+#ilapqppllt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5600,13 +5427,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dxdcgddwrv .gt_bottom_border {
+#ilapqppllt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dxdcgddwrv .gt_col_headings {
+#ilapqppllt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5621,7 +5448,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dxdcgddwrv .gt_col_heading {
+#ilapqppllt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5641,7 +5468,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#dxdcgddwrv .gt_column_spanner_outer {
+#ilapqppllt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5653,15 +5480,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#dxdcgddwrv .gt_column_spanner_outer:first-child {
+#ilapqppllt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dxdcgddwrv .gt_column_spanner_outer:last-child {
+#ilapqppllt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dxdcgddwrv .gt_column_spanner {
+#ilapqppllt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5673,11 +5500,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#dxdcgddwrv .gt_spanner_row {
+#ilapqppllt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dxdcgddwrv .gt_group_heading {
+#ilapqppllt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5703,7 +5530,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#dxdcgddwrv .gt_empty_group_heading {
+#ilapqppllt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5718,15 +5545,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#dxdcgddwrv .gt_from_md > :first-child {
+#ilapqppllt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dxdcgddwrv .gt_from_md > :last-child {
+#ilapqppllt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dxdcgddwrv .gt_row {
+#ilapqppllt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5745,7 +5572,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#dxdcgddwrv .gt_stub {
+#ilapqppllt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5758,7 +5585,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dxdcgddwrv .gt_stub_row_group {
+#ilapqppllt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5772,15 +5599,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#dxdcgddwrv .gt_row_group_first td {
+#ilapqppllt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dxdcgddwrv .gt_row_group_first th {
+#ilapqppllt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dxdcgddwrv .gt_summary_row {
+#ilapqppllt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5790,16 +5617,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dxdcgddwrv .gt_first_summary_row {
+#ilapqppllt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dxdcgddwrv .gt_first_summary_row.thick {
+#ilapqppllt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dxdcgddwrv .gt_last_summary_row {
+#ilapqppllt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5809,7 +5636,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#dxdcgddwrv .gt_grand_summary_row {
+#ilapqppllt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5819,7 +5646,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dxdcgddwrv .gt_first_grand_summary_row {
+#ilapqppllt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5829,7 +5656,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#dxdcgddwrv .gt_last_grand_summary_row_top {
+#ilapqppllt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5839,11 +5666,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#dxdcgddwrv .gt_striped {
+#ilapqppllt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dxdcgddwrv .gt_table_body {
+#ilapqppllt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5852,7 +5679,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#dxdcgddwrv .gt_footnotes {
+#ilapqppllt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5866,7 +5693,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dxdcgddwrv .gt_footnote {
+#ilapqppllt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5875,7 +5702,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dxdcgddwrv .gt_sourcenotes {
+#ilapqppllt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5889,7 +5716,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dxdcgddwrv .gt_sourcenote {
+#ilapqppllt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5897,72 +5724,743 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dxdcgddwrv .gt_left {
+#ilapqppllt .gt_left {
   text-align: left;
 }
 
-#dxdcgddwrv .gt_center {
+#ilapqppllt .gt_center {
   text-align: center;
 }
 
-#dxdcgddwrv .gt_right {
+#ilapqppllt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dxdcgddwrv .gt_font_normal {
+#ilapqppllt .gt_font_normal {
   font-weight: normal;
 }
 
-#dxdcgddwrv .gt_font_bold {
+#ilapqppllt .gt_font_bold {
   font-weight: bold;
 }
 
-#dxdcgddwrv .gt_font_italic {
+#ilapqppllt .gt_font_italic {
   font-style: italic;
 }
 
-#dxdcgddwrv .gt_super {
+#ilapqppllt .gt_super {
   font-size: 65%;
 }
 
-#dxdcgddwrv .gt_footnote_marks {
+#ilapqppllt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dxdcgddwrv .gt_asterisk {
+#ilapqppllt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dxdcgddwrv .gt_indent_1 {
+#ilapqppllt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dxdcgddwrv .gt_indent_2 {
+#ilapqppllt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dxdcgddwrv .gt_indent_3 {
+#ilapqppllt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dxdcgddwrv .gt_indent_4 {
+#ilapqppllt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dxdcgddwrv .gt_indent_5 {
+#ilapqppllt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dxdcgddwrv .katex-display {
+#ilapqppllt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dxdcgddwrv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ilapqppllt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<caption>Peve_mCpG (first 10 rows with row numbers)</caption>
+<thead>
+<tr class="gt_col_headings header">
+<th id="CpG" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">CpG</th>
+<th id="POR-216-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP4</th>
+<th id="POR-245-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP2</th>
+<th id="POR-73-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-73-TP3</th>
+<th id="POR-69-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP1</th>
+<th id="POR-216-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP3</th>
+<th id="POR-74-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP3</th>
+<th id="POR-69-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP2</th>
+<th id="POR-83-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP2</th>
+<th id="POR-73-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-73-TP4</th>
+<th id="POR-260-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP2</th>
+<th id="POR-216-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP2</th>
+<th id="POR-72-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP2</th>
+<th id="POR-236-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-236-TP2</th>
+<th id="POR-260-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP3</th>
+<th id="POR-72-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP1</th>
+<th id="POR-262-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP2</th>
+<th id="POR-236-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-236-TP1</th>
+<th id="POR-72-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP4</th>
+<th id="POR-262-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP1</th>
+<th id="POR-245-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP1</th>
+<th id="POR-69-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP4</th>
+<th id="POR-83-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP4</th>
+<th id="POR-83-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP3</th>
+<th id="POR-216-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-216-TP1</th>
+<th id="POR-72-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-72-TP3</th>
+<th id="POR-245-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP3</th>
+<th id="POR-260-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP4</th>
+<th id="POR-74-TP2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP2</th>
+<th id="POR-260-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-260-TP1</th>
+<th id="POR-74-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP4</th>
+<th id="POR-245-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-245-TP4</th>
+<th id="POR-69-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-69-TP3</th>
+<th id="POR-74-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-74-TP1</th>
+<th id="POR-73-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-73-TP1</th>
+<th id="POR-83-TP1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-83-TP1</th>
+<th id="POR-262-TP3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP3</th>
+<th id="POR-262-TP4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">POR-262-TP4</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="CpG">CpG_Porites_evermani_scaffold_1000_19265</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">47.72727</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">31.25000</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">36.363636</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">33.33333</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">59.090909</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">40.909091</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">37.5</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">40.000000</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">54.761905</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">55</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">62.96296</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">60.869565</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">47.058824</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">52.380952</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">50.00000</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">62.96296</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">58.33333</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">67.647059</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">47.826087</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">58.82353</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">47.61905</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">50.000000</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">54.54545</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">50.00000</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">51.724138</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">45.00000</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">54.54545</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">55.555556</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">64.285714</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">20.000000</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">58.333333</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">43.24324</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">61.111111</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">57.692308</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">48.484848</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">69.696970</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">60.00000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CpG">CpG_Porites_evermani_scaffold_1000_19482</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">48.00000</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">40.00000</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">29.166667</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">62.50000</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">52.631579</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">10.000000</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">50.0</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">33.333333</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">32.500000</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">20</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">17.64706</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">62.500000</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">41.176471</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">30.769231</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">33.33333</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">60.00000</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">60.00000</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">28.000000</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">46.666667</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">30.43478</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">57.14286</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">43.750000</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">47.82609</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">46.15385</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">42.105263</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">44.44444</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">25.00000</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">50.000000</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">45.833333</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">45.454545</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">32.142857</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">45.16129</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">30.769231</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">29.166667</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">50.000000</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">48.484848</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">46.42857</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CpG">CpG_Porites_evermani_scaffold_1000_62732</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">0.00000</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">0.00000</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">0.000000</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">0.00000</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">0.000000</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">0.000000</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">0.0</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">0.000000</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">0.000000</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">0</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">0.00000</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">0.000000</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">0.000000</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">5.555556</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">0.00000</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">0.00000</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">0.00000</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">3.333333</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">2.941176</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">0.00000</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">0.00000</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">3.571429</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">0.00000</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">0.00000</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">0.000000</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">0.00000</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">0.00000</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">4.166667</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">0.000000</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">3.571429</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">6.666667</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">0.00000</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">5.263158</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">0.000000</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">0.000000</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">0.000000</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">0.00000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CpG">CpG_Porites_evermani_scaffold_1000_62767</td>
+<td class="gt_row gt_right" headers="POR-216-TP4">10.20408</td>
+<td class="gt_row gt_right" headers="POR-245-TP2">10.52632</td>
+<td class="gt_row gt_right" headers="POR-73-TP3">5.882353</td>
+<td class="gt_row gt_right" headers="POR-69-TP1">0.00000</td>
+<td class="gt_row gt_right" headers="POR-216-TP3">2.222222</td>
+<td class="gt_row gt_right" headers="POR-74-TP3">5.714286</td>
+<td class="gt_row gt_right" headers="POR-69-TP2">0.0</td>
+<td class="gt_row gt_right" headers="POR-83-TP2">6.818182</td>
+<td class="gt_row gt_right" headers="POR-73-TP4">2.631579</td>
+<td class="gt_row gt_right" headers="POR-260-TP2">4</td>
+<td class="gt_row gt_right" headers="POR-216-TP2">5.00000</td>
+<td class="gt_row gt_right" headers="POR-72-TP2">2.631579</td>
+<td class="gt_row gt_right" headers="POR-236-TP2">5.714286</td>
+<td class="gt_row gt_right" headers="POR-260-TP3">0.000000</td>
+<td class="gt_row gt_right" headers="POR-72-TP1">6.25000</td>
+<td class="gt_row gt_right" headers="POR-262-TP2">0.00000</td>
+<td class="gt_row gt_right" headers="POR-236-TP1">21.73913</td>
+<td class="gt_row gt_right" headers="POR-72-TP4">5.555556</td>
+<td class="gt_row gt_right" headers="POR-262-TP1">5.263158</td>
+<td class="gt_row gt_right" headers="POR-245-TP1">11.11111</td>
+<td class="gt_row gt_right" headers="POR-69-TP4">0.00000</td>
+<td class="gt_row gt_right" headers="POR-83-TP4">2.777778</td>
+<td class="gt_row gt_right" headers="POR-83-TP3">7.50000</td>
+<td class="gt_row gt_right" headers="POR-216-TP1">13.51351</td>
+<td class="gt_row gt_right" headers="POR-72-TP3">8.571429</td>
+<td class="gt_row gt_right" headers="POR-245-TP3">13.63636</td>
+<td class="gt_row gt_right" headers="POR-260-TP4">12.12121</td>
+<td class="gt_row gt_right" headers="POR-74-TP2">4.166667</td>
+<td class="gt_row gt_right" headers="POR-260-TP1">5.405405</td>
+<td class="gt_row gt_right" headers="POR-74-TP4">3.225806</td>
+<td class="gt_row gt_right" headers="POR-245-TP4">0.000000</td>
+<td class="gt_row gt_right" headers="POR-69-TP3">0.00000</td>
+<td class="gt_row gt_right" headers="POR-74-TP1">8.695652</td>
+<td class="gt_row gt_right" headers="POR-73-TP1">8.695652</td>
+<td class="gt_row gt_right" headers="POR-83-TP1">6.666667</td>
+<td class="gt_row gt_right" headers="POR-262-TP3">9.302326</td>
+<td class="gt_row gt_right" headers="POR-262-TP4">0.00000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="pocillopora-tuahiniensis" class="level1">
+<h1><em>Pocillopora tuahiniensis</em></h1>
+<section id="gene-counts-2" class="level2">
+<h2 class="anchored" data-anchor-id="gene-counts-2">Gene Counts</h2>
+<p><a href="https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv" class="btn btn-primary" target="_blank" download="Ptuh_gene_count_matrix.csv">Download Gene Counts</a></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="sopyinyplt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sopyinyplt table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#sopyinyplt thead, #sopyinyplt tbody, #sopyinyplt tfoot, #sopyinyplt tr, #sopyinyplt td, #sopyinyplt th {
+  border-style: none;
+}
+
+#sopyinyplt p {
+  margin: 0;
+  padding: 0;
+}
+
+#sopyinyplt .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#sopyinyplt .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#sopyinyplt .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#sopyinyplt .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#sopyinyplt .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sopyinyplt .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sopyinyplt .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sopyinyplt .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#sopyinyplt .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#sopyinyplt .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#sopyinyplt .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#sopyinyplt .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#sopyinyplt .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#sopyinyplt .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#sopyinyplt .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#sopyinyplt .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#sopyinyplt .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#sopyinyplt .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#sopyinyplt .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sopyinyplt .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#sopyinyplt .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#sopyinyplt .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#sopyinyplt .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sopyinyplt .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#sopyinyplt .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#sopyinyplt .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sopyinyplt .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sopyinyplt .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#sopyinyplt .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sopyinyplt .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#sopyinyplt .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sopyinyplt .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sopyinyplt .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sopyinyplt .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sopyinyplt .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sopyinyplt .gt_left {
+  text-align: left;
+}
+
+#sopyinyplt .gt_center {
+  text-align: center;
+}
+
+#sopyinyplt .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#sopyinyplt .gt_font_normal {
+  font-weight: normal;
+}
+
+#sopyinyplt .gt_font_bold {
+  font-weight: bold;
+}
+
+#sopyinyplt .gt_font_italic {
+  font-style: italic;
+}
+
+#sopyinyplt .gt_super {
+  font-size: 65%;
+}
+
+#sopyinyplt .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#sopyinyplt .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#sopyinyplt .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#sopyinyplt .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#sopyinyplt .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#sopyinyplt .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#sopyinyplt .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#sopyinyplt .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#sopyinyplt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -6190,27 +6688,27 @@ Sample ID formatting
 </section>
 <section id="mirna-counts-2" class="level2">
 <h2 class="anchored" data-anchor-id="mirna-counts-2">miRNA Counts</h2>
-<p><a href="https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt" class="btn btn-primary" target="_blank" download="Ptuh_gene_count_matrix.csv">Download miRNA Counts</a></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt" class="btn btn-primary" target="_blank" download="Ptuh_miRNA_counts.txt">Download miRNA Counts</a></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="dupispoxaf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dupispoxaf table {
+<div id="wwhthjbjdv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wwhthjbjdv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dupispoxaf thead, #dupispoxaf tbody, #dupispoxaf tfoot, #dupispoxaf tr, #dupispoxaf td, #dupispoxaf th {
+#wwhthjbjdv thead, #wwhthjbjdv tbody, #wwhthjbjdv tfoot, #wwhthjbjdv tr, #wwhthjbjdv td, #wwhthjbjdv th {
   border-style: none;
 }
 
-#dupispoxaf p {
+#wwhthjbjdv p {
   margin: 0;
   padding: 0;
 }
 
-#dupispoxaf .gt_table {
+#wwhthjbjdv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -6236,12 +6734,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#dupispoxaf .gt_caption {
+#wwhthjbjdv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dupispoxaf .gt_title {
+#wwhthjbjdv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -6253,7 +6751,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#dupispoxaf .gt_subtitle {
+#wwhthjbjdv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -6265,7 +6763,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#dupispoxaf .gt_heading {
+#wwhthjbjdv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -6277,13 +6775,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dupispoxaf .gt_bottom_border {
+#wwhthjbjdv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dupispoxaf .gt_col_headings {
+#wwhthjbjdv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6298,7 +6796,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dupispoxaf .gt_col_heading {
+#wwhthjbjdv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6318,7 +6816,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#dupispoxaf .gt_column_spanner_outer {
+#wwhthjbjdv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6330,15 +6828,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#dupispoxaf .gt_column_spanner_outer:first-child {
+#wwhthjbjdv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dupispoxaf .gt_column_spanner_outer:last-child {
+#wwhthjbjdv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dupispoxaf .gt_column_spanner {
+#wwhthjbjdv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -6350,11 +6848,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#dupispoxaf .gt_spanner_row {
+#wwhthjbjdv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dupispoxaf .gt_group_heading {
+#wwhthjbjdv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6380,7 +6878,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#dupispoxaf .gt_empty_group_heading {
+#wwhthjbjdv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -6395,15 +6893,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#dupispoxaf .gt_from_md > :first-child {
+#wwhthjbjdv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dupispoxaf .gt_from_md > :last-child {
+#wwhthjbjdv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dupispoxaf .gt_row {
+#wwhthjbjdv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6422,7 +6920,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#dupispoxaf .gt_stub {
+#wwhthjbjdv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6435,7 +6933,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dupispoxaf .gt_stub_row_group {
+#wwhthjbjdv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6449,15 +6947,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#dupispoxaf .gt_row_group_first td {
+#wwhthjbjdv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dupispoxaf .gt_row_group_first th {
+#wwhthjbjdv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dupispoxaf .gt_summary_row {
+#wwhthjbjdv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6467,16 +6965,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dupispoxaf .gt_first_summary_row {
+#wwhthjbjdv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dupispoxaf .gt_first_summary_row.thick {
+#wwhthjbjdv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dupispoxaf .gt_last_summary_row {
+#wwhthjbjdv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6486,7 +6984,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#dupispoxaf .gt_grand_summary_row {
+#wwhthjbjdv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6496,7 +6994,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dupispoxaf .gt_first_grand_summary_row {
+#wwhthjbjdv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6506,7 +7004,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#dupispoxaf .gt_last_grand_summary_row_top {
+#wwhthjbjdv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6516,11 +7014,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#dupispoxaf .gt_striped {
+#wwhthjbjdv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dupispoxaf .gt_table_body {
+#wwhthjbjdv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6529,7 +7027,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#dupispoxaf .gt_footnotes {
+#wwhthjbjdv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6543,7 +7041,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dupispoxaf .gt_footnote {
+#wwhthjbjdv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -6552,7 +7050,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dupispoxaf .gt_sourcenotes {
+#wwhthjbjdv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6566,7 +7064,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dupispoxaf .gt_sourcenote {
+#wwhthjbjdv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -6574,72 +7072,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dupispoxaf .gt_left {
+#wwhthjbjdv .gt_left {
   text-align: left;
 }
 
-#dupispoxaf .gt_center {
+#wwhthjbjdv .gt_center {
   text-align: center;
 }
 
-#dupispoxaf .gt_right {
+#wwhthjbjdv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dupispoxaf .gt_font_normal {
+#wwhthjbjdv .gt_font_normal {
   font-weight: normal;
 }
 
-#dupispoxaf .gt_font_bold {
+#wwhthjbjdv .gt_font_bold {
   font-weight: bold;
 }
 
-#dupispoxaf .gt_font_italic {
+#wwhthjbjdv .gt_font_italic {
   font-style: italic;
 }
 
-#dupispoxaf .gt_super {
+#wwhthjbjdv .gt_super {
   font-size: 65%;
 }
 
-#dupispoxaf .gt_footnote_marks {
+#wwhthjbjdv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dupispoxaf .gt_asterisk {
+#wwhthjbjdv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dupispoxaf .gt_indent_1 {
+#wwhthjbjdv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dupispoxaf .gt_indent_2 {
+#wwhthjbjdv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dupispoxaf .gt_indent_3 {
+#wwhthjbjdv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dupispoxaf .gt_indent_4 {
+#wwhthjbjdv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dupispoxaf .gt_indent_5 {
+#wwhthjbjdv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dupispoxaf .katex-display {
+#wwhthjbjdv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dupispoxaf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wwhthjbjdv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -6868,26 +7366,26 @@ Sample ID formatting
 <section id="lncrna-counts-2" class="level2">
 <h2 class="anchored" data-anchor-id="lncrna-counts-2">lncRNA Counts</h2>
 <p><a href="https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt" class="btn btn-primary" target="_blank" download="Ptuh_lncRNA_count_matrix.csv">Download lncRNA Counts</a></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-tbl-cap="Ptuh_lncRNA (first 10 rows with row numbers)">
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
 <div class="cell-output-display">
-<div id="xozhgyxowe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xozhgyxowe table {
+<div id="bnmrxghhjd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bnmrxghhjd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xozhgyxowe thead, #xozhgyxowe tbody, #xozhgyxowe tfoot, #xozhgyxowe tr, #xozhgyxowe td, #xozhgyxowe th {
+#bnmrxghhjd thead, #bnmrxghhjd tbody, #bnmrxghhjd tfoot, #bnmrxghhjd tr, #bnmrxghhjd td, #bnmrxghhjd th {
   border-style: none;
 }
 
-#xozhgyxowe p {
+#bnmrxghhjd p {
   margin: 0;
   padding: 0;
 }
 
-#xozhgyxowe .gt_table {
+#bnmrxghhjd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -6913,12 +7411,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#xozhgyxowe .gt_caption {
+#bnmrxghhjd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xozhgyxowe .gt_title {
+#bnmrxghhjd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -6930,7 +7428,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#xozhgyxowe .gt_subtitle {
+#bnmrxghhjd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -6942,7 +7440,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#xozhgyxowe .gt_heading {
+#bnmrxghhjd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -6954,13 +7452,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#xozhgyxowe .gt_bottom_border {
+#bnmrxghhjd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xozhgyxowe .gt_col_headings {
+#bnmrxghhjd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6975,7 +7473,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#xozhgyxowe .gt_col_heading {
+#bnmrxghhjd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6995,7 +7493,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#xozhgyxowe .gt_column_spanner_outer {
+#bnmrxghhjd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7007,15 +7505,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#xozhgyxowe .gt_column_spanner_outer:first-child {
+#bnmrxghhjd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xozhgyxowe .gt_column_spanner_outer:last-child {
+#bnmrxghhjd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xozhgyxowe .gt_column_spanner {
+#bnmrxghhjd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -7027,11 +7525,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#xozhgyxowe .gt_spanner_row {
+#bnmrxghhjd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xozhgyxowe .gt_group_heading {
+#bnmrxghhjd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7057,7 +7555,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#xozhgyxowe .gt_empty_group_heading {
+#bnmrxghhjd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -7072,15 +7570,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#xozhgyxowe .gt_from_md > :first-child {
+#bnmrxghhjd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xozhgyxowe .gt_from_md > :last-child {
+#bnmrxghhjd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xozhgyxowe .gt_row {
+#bnmrxghhjd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7099,7 +7597,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#xozhgyxowe .gt_stub {
+#bnmrxghhjd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7112,7 +7610,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#xozhgyxowe .gt_stub_row_group {
+#bnmrxghhjd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7126,15 +7624,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#xozhgyxowe .gt_row_group_first td {
+#bnmrxghhjd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xozhgyxowe .gt_row_group_first th {
+#bnmrxghhjd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xozhgyxowe .gt_summary_row {
+#bnmrxghhjd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7144,16 +7642,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#xozhgyxowe .gt_first_summary_row {
+#bnmrxghhjd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xozhgyxowe .gt_first_summary_row.thick {
+#bnmrxghhjd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xozhgyxowe .gt_last_summary_row {
+#bnmrxghhjd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7163,7 +7661,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#xozhgyxowe .gt_grand_summary_row {
+#bnmrxghhjd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7173,7 +7671,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#xozhgyxowe .gt_first_grand_summary_row {
+#bnmrxghhjd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7183,7 +7681,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#xozhgyxowe .gt_last_grand_summary_row_top {
+#bnmrxghhjd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7193,11 +7691,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#xozhgyxowe .gt_striped {
+#bnmrxghhjd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xozhgyxowe .gt_table_body {
+#bnmrxghhjd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7206,7 +7704,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#xozhgyxowe .gt_footnotes {
+#bnmrxghhjd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7220,7 +7718,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#xozhgyxowe .gt_footnote {
+#bnmrxghhjd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -7229,7 +7727,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#xozhgyxowe .gt_sourcenotes {
+#bnmrxghhjd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7243,7 +7741,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#xozhgyxowe .gt_sourcenote {
+#bnmrxghhjd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -7251,72 +7749,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#xozhgyxowe .gt_left {
+#bnmrxghhjd .gt_left {
   text-align: left;
 }
 
-#xozhgyxowe .gt_center {
+#bnmrxghhjd .gt_center {
   text-align: center;
 }
 
-#xozhgyxowe .gt_right {
+#bnmrxghhjd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xozhgyxowe .gt_font_normal {
+#bnmrxghhjd .gt_font_normal {
   font-weight: normal;
 }
 
-#xozhgyxowe .gt_font_bold {
+#bnmrxghhjd .gt_font_bold {
   font-weight: bold;
 }
 
-#xozhgyxowe .gt_font_italic {
+#bnmrxghhjd .gt_font_italic {
   font-style: italic;
 }
 
-#xozhgyxowe .gt_super {
+#bnmrxghhjd .gt_super {
   font-size: 65%;
 }
 
-#xozhgyxowe .gt_footnote_marks {
+#bnmrxghhjd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xozhgyxowe .gt_asterisk {
+#bnmrxghhjd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xozhgyxowe .gt_indent_1 {
+#bnmrxghhjd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xozhgyxowe .gt_indent_2 {
+#bnmrxghhjd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xozhgyxowe .gt_indent_3 {
+#bnmrxghhjd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xozhgyxowe .gt_indent_4 {
+#bnmrxghhjd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xozhgyxowe .gt_indent_5 {
+#bnmrxghhjd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xozhgyxowe .katex-display {
+#bnmrxghhjd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xozhgyxowe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bnmrxghhjd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -7568,29 +8066,29 @@ Sample ID formatting
 </div>
 </div>
 </section>
-<section id="mcpg-percentage-1" class="level2">
-<h2 class="anchored" data-anchor-id="mcpg-percentage-1">mCpG Percentage</h2>
+<section id="mcpg-percentage-2" class="level2">
+<h2 class="anchored" data-anchor-id="mcpg-percentage-2">mCpG Percentage</h2>
 <p><a href="https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv" class="btn btn-primary" target="_blank" download="Ptuh_mCpG_matrix.csv">Download mCpG Percentage</a></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-tbl-cap="Ptuh_mCpG (first 10 rows with row numbers)">
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
 <div class="cell-output-display">
-<div id="dqtgpcccrv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dqtgpcccrv table {
+<div id="wqbyeofdes" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wqbyeofdes table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dqtgpcccrv thead, #dqtgpcccrv tbody, #dqtgpcccrv tfoot, #dqtgpcccrv tr, #dqtgpcccrv td, #dqtgpcccrv th {
+#wqbyeofdes thead, #wqbyeofdes tbody, #wqbyeofdes tfoot, #wqbyeofdes tr, #wqbyeofdes td, #wqbyeofdes th {
   border-style: none;
 }
 
-#dqtgpcccrv p {
+#wqbyeofdes p {
   margin: 0;
   padding: 0;
 }
 
-#dqtgpcccrv .gt_table {
+#wqbyeofdes .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -7616,12 +8114,12 @@ Sample ID formatting
   border-left-color: #D3D3D3;
 }
 
-#dqtgpcccrv .gt_caption {
+#wqbyeofdes .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dqtgpcccrv .gt_title {
+#wqbyeofdes .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -7633,7 +8131,7 @@ Sample ID formatting
   border-bottom-width: 0;
 }
 
-#dqtgpcccrv .gt_subtitle {
+#wqbyeofdes .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -7645,7 +8143,7 @@ Sample ID formatting
   border-top-width: 0;
 }
 
-#dqtgpcccrv .gt_heading {
+#wqbyeofdes .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -7657,13 +8155,13 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dqtgpcccrv .gt_bottom_border {
+#wqbyeofdes .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dqtgpcccrv .gt_col_headings {
+#wqbyeofdes .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7678,7 +8176,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dqtgpcccrv .gt_col_heading {
+#wqbyeofdes .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7698,7 +8196,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#dqtgpcccrv .gt_column_spanner_outer {
+#wqbyeofdes .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7710,15 +8208,15 @@ Sample ID formatting
   padding-right: 4px;
 }
 
-#dqtgpcccrv .gt_column_spanner_outer:first-child {
+#wqbyeofdes .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dqtgpcccrv .gt_column_spanner_outer:last-child {
+#wqbyeofdes .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dqtgpcccrv .gt_column_spanner {
+#wqbyeofdes .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -7730,11 +8228,11 @@ Sample ID formatting
   width: 100%;
 }
 
-#dqtgpcccrv .gt_spanner_row {
+#wqbyeofdes .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dqtgpcccrv .gt_group_heading {
+#wqbyeofdes .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7760,7 +8258,7 @@ Sample ID formatting
   text-align: left;
 }
 
-#dqtgpcccrv .gt_empty_group_heading {
+#wqbyeofdes .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -7775,15 +8273,15 @@ Sample ID formatting
   vertical-align: middle;
 }
 
-#dqtgpcccrv .gt_from_md > :first-child {
+#wqbyeofdes .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dqtgpcccrv .gt_from_md > :last-child {
+#wqbyeofdes .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dqtgpcccrv .gt_row {
+#wqbyeofdes .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7802,7 +8300,7 @@ Sample ID formatting
   overflow-x: hidden;
 }
 
-#dqtgpcccrv .gt_stub {
+#wqbyeofdes .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7815,7 +8313,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dqtgpcccrv .gt_stub_row_group {
+#wqbyeofdes .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7829,15 +8327,15 @@ Sample ID formatting
   vertical-align: top;
 }
 
-#dqtgpcccrv .gt_row_group_first td {
+#wqbyeofdes .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dqtgpcccrv .gt_row_group_first th {
+#wqbyeofdes .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dqtgpcccrv .gt_summary_row {
+#wqbyeofdes .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7847,16 +8345,16 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dqtgpcccrv .gt_first_summary_row {
+#wqbyeofdes .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dqtgpcccrv .gt_first_summary_row.thick {
+#wqbyeofdes .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dqtgpcccrv .gt_last_summary_row {
+#wqbyeofdes .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7866,7 +8364,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#dqtgpcccrv .gt_grand_summary_row {
+#wqbyeofdes .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7876,7 +8374,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dqtgpcccrv .gt_first_grand_summary_row {
+#wqbyeofdes .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7886,7 +8384,7 @@ Sample ID formatting
   border-top-color: #D3D3D3;
 }
 
-#dqtgpcccrv .gt_last_grand_summary_row_top {
+#wqbyeofdes .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7896,11 +8394,11 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#dqtgpcccrv .gt_striped {
+#wqbyeofdes .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dqtgpcccrv .gt_table_body {
+#wqbyeofdes .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7909,7 +8407,7 @@ Sample ID formatting
   border-bottom-color: #D3D3D3;
 }
 
-#dqtgpcccrv .gt_footnotes {
+#wqbyeofdes .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7923,7 +8421,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dqtgpcccrv .gt_footnote {
+#wqbyeofdes .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -7932,7 +8430,7 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dqtgpcccrv .gt_sourcenotes {
+#wqbyeofdes .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7946,7 +8444,7 @@ Sample ID formatting
   border-right-color: #D3D3D3;
 }
 
-#dqtgpcccrv .gt_sourcenote {
+#wqbyeofdes .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -7954,72 +8452,72 @@ Sample ID formatting
   padding-right: 5px;
 }
 
-#dqtgpcccrv .gt_left {
+#wqbyeofdes .gt_left {
   text-align: left;
 }
 
-#dqtgpcccrv .gt_center {
+#wqbyeofdes .gt_center {
   text-align: center;
 }
 
-#dqtgpcccrv .gt_right {
+#wqbyeofdes .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dqtgpcccrv .gt_font_normal {
+#wqbyeofdes .gt_font_normal {
   font-weight: normal;
 }
 
-#dqtgpcccrv .gt_font_bold {
+#wqbyeofdes .gt_font_bold {
   font-weight: bold;
 }
 
-#dqtgpcccrv .gt_font_italic {
+#wqbyeofdes .gt_font_italic {
   font-style: italic;
 }
 
-#dqtgpcccrv .gt_super {
+#wqbyeofdes .gt_super {
   font-size: 65%;
 }
 
-#dqtgpcccrv .gt_footnote_marks {
+#wqbyeofdes .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dqtgpcccrv .gt_asterisk {
+#wqbyeofdes .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dqtgpcccrv .gt_indent_1 {
+#wqbyeofdes .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dqtgpcccrv .gt_indent_2 {
+#wqbyeofdes .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dqtgpcccrv .gt_indent_3 {
+#wqbyeofdes .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dqtgpcccrv .gt_indent_4 {
+#wqbyeofdes .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dqtgpcccrv .gt_indent_5 {
+#wqbyeofdes .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dqtgpcccrv .katex-display {
+#wqbyeofdes .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dqtgpcccrv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wqbyeofdes div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -8217,255 +8715,380 @@ Sample ID formatting
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
         }
       }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
       return false;
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
       }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
     }
-    const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
-        }
-        return codeEl.innerText;
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
     }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/urol-e5\.github\.io\/MOSAiC\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/urol-e5\.github\.io\/MOSAiC\/");
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -8473,161 +9096,185 @@ Sample ID formatting
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
