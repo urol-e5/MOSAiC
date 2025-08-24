@@ -589,3 +589,283 @@ Ptuh_mCpG |>
   slice_head(n = 4) |>
   gt()
 ```
+
+# Quality Control Visualizations
+
+## Sample Count Variation Analysis
+
+This section provides visual quality control analysis showing sample count variation across species and feature types, as well as outlier detection within each count matrix.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Create sample count summary for visualization
+sample_summary <- data.frame(
+  Species = rep(c("Acropora pulchra", "Porites evermanni", "Pocillopora tuahiniensis"), each = 4),
+  Feature_Type = rep(c("Gene", "miRNA", "lncRNA", "mCpG"), 3),
+  Sample_Count = c(
+    ncol(Apul_gene) - 1, ncol(Apul_mirna) - 1, ncol(Apul_lncRNA) - 1, ncol(Apul_mCpG) - 1,
+    ncol(Peve_gene) - 1, ncol(Peve_mirna) - 1, ncol(Peve_lncRNA) - 1, ncol(Peve_mCpG) - 1,
+    ncol(Ptuh_gene) - 1, ncol(Ptuh_mirna) - 1, ncol(Ptuh_lncRNA) - 1, ncol(Ptuh_mCpG) - 1
+  )
+)
+
+# Convert to factors for better plotting
+sample_summary$Species <- factor(sample_summary$Species, 
+                                levels = c("Acropora pulchra", "Porites evermanni", "Pocillopora tuahiniensis"))
+sample_summary$Feature_Type <- factor(sample_summary$Feature_Type, 
+                                     levels = c("Gene", "miRNA", "lncRNA", "mCpG"))
+```
+
+### Sample Count Distribution Across Species and Feature Types
+
+```{r}
+#| fig-cap: "Sample counts vary significantly across species and feature types. Gene expression matrices consistently have the highest sample representation, while mCpG methylation data shows the most variation between species."
+#| fig-width: 10
+#| fig-height: 6
+
+library(ggplot2)
+
+# Create a grouped bar plot
+p1 <- ggplot(sample_summary, aes(x = Feature_Type, y = Sample_Count, fill = Species)) +
+  geom_bar(stat = "identity", position = "dodge", alpha = 0.8) +
+  geom_text(aes(label = Sample_Count), 
+            position = position_dodge(width = 0.9), 
+            vjust = -0.3, size = 3) +
+  scale_fill_manual(values = c("#E31A1C", "#1F78B4", "#33A02C")) +
+  labs(
+    title = "Sample Count Variation Across Species and Feature Types",
+    subtitle = "Showing number of samples in each count matrix",
+    x = "Feature Type",
+    y = "Number of Samples",
+    fill = "Species"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12),
+    axis.title = element_text(size = 11),
+    legend.position = "bottom",
+    panel.grid.minor = element_blank()
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+print(p1)
+```
+
+### Sample Count Summary Table
+
+```{r}
+#| tbl-cap: "Summary of sample counts across all matrices"
+
+# Create a pivot table for better display
+sample_pivot <- sample_summary %>%
+  tidyr::pivot_wider(names_from = Feature_Type, values_from = Sample_Count) %>%
+  mutate(Total = Gene + miRNA + lncRNA + mCpG)
+
+knitr::kable(sample_pivot, 
+             caption = "Sample Counts by Species and Feature Type",
+             col.names = c("Species", "Gene", "miRNA", "lncRNA", "mCpG", "Total"))
+```
+
+## Feature Outlier Detection
+
+This analysis identifies features (genes, miRNAs, lncRNAs, or CpG sites) that show unusual count patterns compared to the rest of the features in each matrix.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Function to detect outliers using IQR method
+detect_outliers <- function(data_matrix, matrix_name) {
+  # Calculate row sums (total counts per feature)
+  feature_totals <- rowSums(data_matrix[, -1], na.rm = TRUE)
+  
+  # Calculate quartiles and IQR
+  Q1 <- quantile(feature_totals, 0.25, na.rm = TRUE)
+  Q3 <- quantile(feature_totals, 0.75, na.rm = TRUE)
+  IQR <- Q3 - Q1
+  
+  # Define outlier thresholds
+  lower_threshold <- Q1 - 1.5 * IQR
+  upper_threshold <- Q3 + 1.5 * IQR
+  
+  # Identify outliers
+  outlier_indices <- which(feature_totals < lower_threshold | feature_totals > upper_threshold)
+  
+  # Create summary
+  outlier_summary <- data.frame(
+    Matrix = matrix_name,
+    Total_Features = nrow(data_matrix),
+    Low_Outliers = sum(feature_totals < lower_threshold, na.rm = TRUE),
+    High_Outliers = sum(feature_totals > upper_threshold, na.rm = TRUE),
+    Outlier_Percentage = round((length(outlier_indices) / nrow(data_matrix)) * 100, 2),
+    Median_Count = round(median(feature_totals, na.rm = TRUE), 2),
+    Q1_Count = round(Q1, 2),
+    Q3_Count = round(Q3, 2)
+  )
+  
+  return(list(
+    summary = outlier_summary,
+    feature_totals = feature_totals,
+    outlier_indices = outlier_indices,
+    thresholds = c(lower = lower_threshold, upper = upper_threshold)
+  ))
+}
+
+# Analyze all matrices
+matrices_list <- list(
+  "Apul_Gene" = Apul_gene,
+  "Apul_miRNA" = Apul_mirna,
+  "Apul_lncRNA" = Apul_lncRNA,
+  "Apul_mCpG" = Apul_mCpG,
+  "Peve_Gene" = Peve_gene,
+  "Peve_miRNA" = Peve_mirna,
+  "Peve_lncRNA" = Peve_lncRNA,
+  "Peve_mCpG" = Peve_mCpG,
+  "Ptuh_Gene" = Ptuh_gene,
+  "Ptuh_miRNA" = Ptuh_mirna,
+  "Ptuh_lncRNA" = Ptuh_lncRNA,
+  "Ptuh_mCpG" = Ptuh_mCpG
+)
+
+# Perform outlier analysis for each matrix
+outlier_results <- lapply(names(matrices_list), function(name) {
+  detect_outliers(matrices_list[[name]], name)
+})
+names(outlier_results) <- names(matrices_list)
+
+# Combine all summaries
+all_outlier_summaries <- do.call(rbind, lapply(outlier_results, function(x) x$summary))
+```
+
+### Outlier Detection Summary
+
+```{r}
+#| tbl-cap: "Outlier features detected in each count matrix using IQR method (1.5×IQR beyond Q1/Q3)"
+
+knitr::kable(all_outlier_summaries, 
+             caption = "Feature Outlier Detection Results",
+             col.names = c("Count Matrix", "Total Features", "Low Outliers", "High Outliers", 
+                          "Outlier %", "Median Count", "Q1", "Q3"),
+             digits = c(0, 0, 0, 0, 1, 0, 0, 0))
+```
+
+### Distribution of Feature Counts
+
+```{r}
+#| fig-cap: "Distribution of total counts per feature across all matrices. Red points show outliers detected using the IQR method."
+#| fig-width: 12
+#| fig-height: 8
+
+# Prepare data for plotting
+plot_data <- data.frame()
+for (name in names(outlier_results)) {
+  matrix_data <- data.frame(
+    Matrix = name,
+    Feature_Total = outlier_results[[name]]$feature_totals,
+    Is_Outlier = seq_along(outlier_results[[name]]$feature_totals) %in% outlier_results[[name]]$outlier_indices
+  )
+  plot_data <- rbind(plot_data, matrix_data)
+}
+
+# Add species and feature type for better grouping
+plot_data$Species <- case_when(
+  grepl("Apul", plot_data$Matrix) ~ "Acropora pulchra",
+  grepl("Peve", plot_data$Matrix) ~ "Porites evermanni", 
+  grepl("Ptuh", plot_data$Matrix) ~ "Pocillopora tuahiniensis"
+)
+
+plot_data$Feature_Type <- case_when(
+  grepl("Gene", plot_data$Matrix) ~ "Gene",
+  grepl("miRNA", plot_data$Matrix) ~ "miRNA",
+  grepl("lncRNA", plot_data$Matrix) ~ "lncRNA",
+  grepl("mCpG", plot_data$Matrix) ~ "mCpG"
+)
+
+# Create the plot
+p2 <- ggplot(plot_data, aes(x = Feature_Type, y = log10(Feature_Total + 1))) +
+  geom_boxplot(aes(fill = Species), alpha = 0.7, outlier.shape = NA) +
+  geom_point(data = plot_data[plot_data$Is_Outlier, ], 
+             color = "red", 
+             position = position_jitter(width = 0.2),
+             size = 0.8, alpha = 0.6) +
+  scale_fill_manual(values = c("#E31A1C", "#1F78B4", "#33A02C")) +
+  facet_wrap(~ Species, scales = "free_y") +
+  labs(
+    title = "Distribution of Feature Counts with Outlier Detection",
+    subtitle = "Log10-transformed total counts per feature across samples",
+    x = "Feature Type",
+    y = "Log10(Total Count + 1)",
+    fill = "Species"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12),
+    strip.text = element_text(size = 11, face = "bold"),
+    axis.title = element_text(size = 11),
+    legend.position = "bottom",
+    panel.grid.minor = element_blank()
+  )
+
+print(p2)
+```
+
+::: callout-note
+## Quality Control Interpretation
+
+**Sample Count Variation**: The visualizations reveal significant variation in sample sizes across matrices, with gene expression consistently having the most samples and methylation data showing the greatest between-species variation.
+
+**Outlier Features**: Features identified as outliers may represent:
+- **High outliers**: Highly expressed genes, abundant miRNAs, or hypermethylated regions
+- **Low outliers**: Lowly expressed features that may be technical artifacts or rare biological events
+
+Consider filtering extreme outliers in downstream analyses, but retain biologically relevant high-abundance features.
+:::
+
+### Feature Count Summary by Matrix
+
+```{r}
+#| fig-cap: "Summary statistics for feature counts across all count matrices showing median and quartile ranges."
+#| fig-width: 10
+#| fig-height: 6
+
+# Create summary statistics plot
+summary_stats <- plot_data %>%
+  group_by(Matrix, Species, Feature_Type) %>%
+  summarise(
+    Median = median(Feature_Total, na.rm = TRUE),
+    Q1 = quantile(Feature_Total, 0.25, na.rm = TRUE),
+    Q3 = quantile(Feature_Total, 0.75, na.rm = TRUE),
+    Outliers = sum(Is_Outlier),
+    .groups = 'drop'
+  )
+
+p3 <- ggplot(summary_stats, aes(x = Feature_Type, y = log10(Median + 1), fill = Species)) +
+  geom_col(position = "dodge", alpha = 0.8) +
+  geom_text(aes(label = paste0("n=", Outliers)), 
+            position = position_dodge(width = 0.9), 
+            vjust = -0.3, size = 3) +
+  scale_fill_manual(values = c("#E31A1C", "#1F78B4", "#33A02C")) +
+  labs(
+    title = "Median Feature Counts and Outlier Numbers by Matrix",
+    subtitle = "Numbers above bars show count of outlier features",
+    x = "Feature Type",
+    y = "Log10(Median Count + 1)",
+    fill = "Species"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12),
+    axis.title = element_text(size = 11),
+    legend.position = "bottom",
+    panel.grid.minor = element_blank()
+  )
+
+print(p3)
+```
