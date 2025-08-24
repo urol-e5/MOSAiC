@@ -158,7 +158,7 @@
     "href": "disclaimer.html",
     "title": "disclaimer",
     "section": "",
-    "text": "NSF DISCLAIMER\nThis material is based upon work supported by the National Science Foundation under Grant No. [insert grant number, e.g., 1234567].\nAny opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation."
+    "text": "NSF DISCLAIMER\nThis material is based upon work supported by the National Science Foundation under Grant No. [insert grant number, e.g., 1234567].\n1921465, 1921149, 1921425, 1921356, 1921402\nAny opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation."
   },
   {
     "objectID": "jbrowse.html",
@@ -196,27 +196,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#quarto",
-    "href": "about.html#quarto",
-    "title": "About",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#running-code",
-    "href": "about.html#running-code",
-    "title": "About",
-    "section": "Running Code",
-    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "text": "E5 Coral is a team formed by six research labs from top public U.S. universities that work together to predict phenotypic and eco-evolutionary consequences of environmental energetic epigenetic linkages.\nThis project uses symbiotic, metabolically complex reef-building corals as a model system to test the connections between physiological, epigenetic, and metabolic states, and predict how population and community dynamics are influenced by epigenetically-modulated phenotypes.\n\n\nYour browser does not support the video tag.",
     "crumbs": [
       "About"
     ]
