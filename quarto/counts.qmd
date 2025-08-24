@@ -82,11 +82,10 @@ Ptuh_mCpG <- read_csv(Ptuh_mCpG_url)
 
 ```
 
-
 | Species | Gene | miRNA | lncRNA | mCpG |
 |---------------|---------------|---------------|---------------|---------------|
 | *Acropora pulchra* | **`r nrow(Apul_gene)`** | **`r nrow(Apul_mirna)`** | **`r nrow(Apul_lncRNA)`** | **`r nrow(Apul_mCpG)`** |
-|  *Porites evermanni* | **`r nrow(Peve_gene)`** | **`r nrow(Peve_mirna)`** | **`r nrow(Peve_lncRNA)`** | **`r nrow(Peve_mCpG)`** |
+| *Porites evermanni* | **`r nrow(Peve_gene)`** | **`r nrow(Peve_mirna)`** | **`r nrow(Peve_lncRNA)`** | **`r nrow(Peve_mCpG)`** |
 | *Pocillopora tuahiniensis* | **`r nrow(Ptuh_gene)`** | **`r nrow(Ptuh_mirna)`** | **`r nrow(Ptuh_lncRNA)`** | **`r nrow(Ptuh_mCpG)`** |
 
 : Feature Counts

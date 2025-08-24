@@ -29,14 +29,27 @@ library(htmltools)
 
 ```{r, include=FALSE}
 
-
 # Define key paths and tool directories
 
 
 Apul_gff_url <- "https://raw.githubusercontent.com/urol-e5/MOSAiC/refs/heads/main/data/Apul/Apul_gene_only.gff"
 
 
+
 Apul_lncRNAloc_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31-Apul-lncRNA-discovery/lncRNA.gtf"
+
+
+Peve_gff_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/E-Peve/output/00.01-Peve-gene-gff/Peve_gene_only.gff3"
+
+
+
+Peve_lncRNAloc_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA.gtf"
+
+
+
+Ptuh_gff_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/00.01-Ptua-gene-gff/Pmea_gene_only.gff3"
+
+
 
 Ptuh_lncRNAloc_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA.filtered.gtf"
 
@@ -57,20 +70,56 @@ Apul_lncRNAloc <- read_delim(
     "score", "strand", "phase", "attributes"
   ))
 
+Peve_gff <- read_delim(
+  Peve_gff_url,
+  delim = "\t",
+  col_names = c(
+    "seqid", "source", "type", "start", "end",
+    "score", "strand", "phase", "attributes"
+  ))
+
+Peve_lncRNAloc <- read_delim(
+  Peve_lncRNAloc_url,
+  delim = "\t",
+  col_names = c(
+    "seqid", "source", "type", "start", "end",
+    "score", "strand", "phase", "attributes"
+  ))
+
+Ptuh_gff <- read_delim(
+  Ptuh_gff_url,
+  delim = "\t",
+  col_names = c(
+    "seqid", "source", "type", "start", "end",
+    "score", "strand", "phase", "attributes"
+  ))
+
+Ptuh_lncRNAloc <- read_delim(
+  Ptuh_lncRNAloc_url,
+  delim = "\t",
+  col_names = c(
+    "seqid", "source", "type", "start", "end",
+    "score", "strand", "phase", "attributes"
+  ))
+
+
 ```
 
+| Species | Gene | miRNA | lncRNA | mCpG |
+|---------------|---------------|---------------|---------------|---------------|
+| *Acropora pulchra* | **`r nrow(Apul_gff)`** |  | **`r nrow(Apul_lncRNAloc)`** |  |
+| *Porites evermanni* | **`r nrow(Peve_gff)`** |  | **`r nrow(Peve_lncRNAloc)`** |  |
+| *Pocillopora tuahiniensis* | **`r nrow(Ptuh_gff)`** |  | **`r nrow(Ptuh_lncRNAloc)`** |  |
 
-# APul 
-
-We have **`r nrow(Apul_gff)`** genes, **`r nrow(Apul_lncRNAloc)`** lncRNAs,
 
 
-Genes 
+# *Acropora pulchra*
+
+Genes
 
 ```{r}
 #| echo: false
 #| results: asis
-
 
 cat(as.character(
   tags$a(
@@ -85,14 +134,9 @@ cat(as.character(
 
 ```{r}
 #| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
 urls <- c(Apul_gff_url)
 
 for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
   cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
 }
 ```
@@ -103,12 +147,11 @@ Apul_gff |>
   gt()
 ```
 
-lncRNA
+lncRNAs
 
 ```{r}
 #| echo: false
 #| results: asis
-
 
 cat(as.character(
   tags$a(
@@ -123,14 +166,9 @@ cat(as.character(
 
 ```{r}
 #| results: asis
-# (YAML already has format: html: code-copy: true)
-
-#labs <- c("direct url")
 urls <- c(Apul_lncRNAloc_url)
 
 for (i in seq_along(urls)) {
-  #cat("**", labs[i], "**\n\n", sep = "")
-  # Use bash so Quarto shows a copy button for each block
   cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
 }
 ```
@@ -141,4 +179,134 @@ Apul_lncRNAloc |>
   gt()
 ```
 
+# Porites evermanni
 
+Genes
+
+```{r}
+#| echo: false
+#| results: asis
+
+cat(as.character(
+  tags$a(
+    href = Peve_gff_url,
+    class = "btn btn-primary",
+    target = "_blank",
+    download = "Peve_gene_only.gff",
+    "Download Gene GFF"
+  )
+))
+```
+
+```{r}
+#| results: asis
+urls <- c(Peve_gff_url)
+
+for (i in seq_along(urls)) {
+  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+}
+```
+
+```{r}
+Peve_gff |>
+  slice_head(n = 4) |>
+  gt()
+```
+
+lncRNAs
+
+```{r}
+#| echo: false
+#| results: asis
+
+cat(as.character(
+  tags$a(
+    href = Peve_lncRNAloc_url,
+    class = "btn btn-primary",
+    target = "_blank",
+    download = "Peve_lncRNA.gtf",
+    "Download lncRNA GTF"
+  )
+))
+```
+
+```{r}
+#| results: asis
+urls <- c(Peve_lncRNAloc_url)
+
+for (i in seq_along(urls)) {
+  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+}
+```
+
+```{r}
+Peve_lncRNAloc |>
+  slice_head(n = 4) |>
+  gt()
+```
+
+# Pocillopora tuahiniensis (DISCLAIMER)
+
+Genes
+
+```{r}
+#| echo: false
+#| results: asis
+
+cat(as.character(
+  tags$a(
+    href = Ptuh_gff_url,
+    class = "btn btn-primary",
+    target = "_blank",
+    download = "Ptuh_gene_only.gff",
+    "Download Gene GFF"
+  )
+))
+```
+
+```{r}
+#| results: asis
+urls <- c(Ptuh_gff_url)
+
+for (i in seq_along(urls)) {
+  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+}
+```
+
+```{r}
+Ptuh_gff |>
+  slice_head(n = 4) |>
+  gt()
+```
+
+lncRNAs
+
+```{r}
+#| echo: false
+#| results: asis
+
+cat(as.character(
+  tags$a(
+    href = Ptuh_lncRNAloc_url,
+    class = "btn btn-primary",
+    target = "_blank",
+    download = "Ptuh_lncRNA.gtf",
+    "Download lncRNA GTF"
+  )
+))
+```
+
+```{r}
+#| results: asis
+urls <- c(Ptuh_lncRNAloc_url)
+
+for (i in seq_along(urls)) {
+  cat("``` bash\n", urls[i], "\n```\n\n", sep = "")
+}
+```
+
+```{r}
+Ptuh_lncRNAloc |>
+  slice_head(n = 4) |>
+  gt()
+```
