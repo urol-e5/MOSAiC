@@ -3,20 +3,211 @@ title: "E5 - Monitoring of Species Across Intervals & Colonies"
 #description: "E5 Monitoring of Species Across Intervals & Colonies"
 ---
 
-This portal serves complementary purposes of direct data delivery and offering a mutlit-specis genome browser. This project encompasses a time-series study of three coral species— *Acropora pulchra*, *Pocillopora tuahiniensis*, and *Porites evermanni* —sampled from reef sites in Moorea, French Polynesia.
+::: {.hero-section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4rem 2rem; margin: -2rem -2rem 3rem -2rem; border-radius: 0 0 2rem 2rem; text-align: center;"}
 
-![E5-MOSAiC project logo](img/sm_logo.png){fig-align="center" width="400" style="max-width: 100%; height: auto;" loading="lazy"}
+::: {.hero-content style="max-width: 800px; margin: 0 auto;"}
+# E5 - MOSAiC Portal {style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);"}
 
-For each species, five distinct colonies were selected at each site and sampling was conducted at two locations. Each colony was repeatedly sampled at four standardized intervals (TP1–TP4), capturing temporal variation within and across species. For each species we have 40 samples.
+## Monitoring of Species Across Intervals & Colonies {style="font-size: 1.4rem; font-weight: 300; margin-bottom: 2rem; opacity: 0.95;"}
 
-Collectively, the dataset provide a rich framework for investigating how environmental and biological factors shape marine invertebrate responses through space and time, while controlling for genetic and ecological heterogeneity.
-
-------------------------------------------------------------------------
-
-::: {style="display: flex; align-items: center; gap: 1em;"}
-[👉 <a href="jbrowse.html">Explore JBrowse Genome Browser</a>]{style="font-size: 1.1em;"}
-
-<a href="https://github.com/urol-e5/MOSAiC/releases"> <img src="https://img.shields.io/github/v/release/urol-e5/MOSAiC" alt="Latest release version" style="height: 1.4em;" loading="lazy"/> </a>
+::: {style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 1rem; backdrop-filter: blur(10px); margin-bottom: 2rem;"}
+A comprehensive **time-series study** of three coral species from Moorea, French Polynesia, providing genomic insights into marine invertebrate responses across space and time.
 :::
 
-For questions or feedback, [please submit an issue](https://github.com/urol-e5/MOSAiC/issues/new/choose) 🧬
+::: {.hero-buttons style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"}
+[🧬 Explore Genome Browser](jbrowse.html){.btn .btn-primary style="background: white; color: #667eea; border: none; padding: 0.8rem 2rem; border-radius: 2rem; font-weight: 600; text-decoration: none; display: inline-block; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"}
+
+[📊 View Data Files](counts.html){.btn .btn-outline style="background: transparent; color: white; border: 2px solid white; padding: 0.8rem 2rem; border-radius: 2rem; font-weight: 600; text-decoration: none; display: inline-block; transition: all 0.3s ease;"}
+:::
+
+:::
+
+:::
+
+::: {.container-fluid style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;"}
+
+::: {.row style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;"}
+
+::: {.col .project-overview style="background: linear-gradient(145deg, #f8f9fa, #e9ecef); padding: 2rem; border-radius: 1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 4px solid #667eea;"}
+### 🔬 Project Overview {style="color: #495057; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;"}
+
+This portal serves complementary purposes of **direct data delivery** and offering a **multi-species genome browser**. Our research encompasses a comprehensive time-series study of three coral species sampled from reef sites in Moorea, French Polynesia.
+
+::: {.logo-container style="text-align: center; margin: 1.5rem 0;"}
+![E5-MOSAiC project logo](img/sm_logo.png){width="300" style="max-width: 100%; height: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));" loading="lazy"}
+:::
+:::
+
+::: {.col .species-info style="background: linear-gradient(145deg, #fff3cd, #ffeaa7); padding: 2rem; border-radius: 1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 4px solid #f39c12;"}
+### 🐠 Species Study {style="color: #856404; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;"}
+
+Our research focuses on three coral species:
+
+::: {.species-list style="margin: 1rem 0;"}
+- **🪸 *Acropora pulchra***
+- **🪸 *Pocillopora tuahiniensis***  
+- **🪸 *Porites evermanni***
+:::
+
+**Study Design:**
+- 🏝️ **2 locations** in Moorea
+- 🪸 **5 colonies** per species per site
+- 📅 **4 time intervals** (TP1–TP4)
+- 🧬 **40 samples** per species
+:::
+
+:::
+
+::: {.methodology-section style="background: linear-gradient(145deg, #d1ecf1, #bee5eb); padding: 2rem; border-radius: 1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin-bottom: 3rem; border-left: 4px solid #17a2b8;"}
+### 📈 Research Framework {style="color: #0c5460; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;"}
+
+This dataset provides a **rich framework** for investigating how environmental and biological factors shape marine invertebrate responses through space and time, while controlling for genetic and ecological heterogeneity.
+
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;"}
+
+::: {.stat-card style="background: white; padding: 1.5rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);"}
+**120** {style="font-size: 2rem; font-weight: 700; color: #17a2b8; display: block;"}
+Total Samples
+:::
+
+::: {.stat-card style="background: white; padding: 1.5rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);"}
+**3** {style="font-size: 2rem; font-weight: 700; color: #17a2b8; display: block;"}
+Coral Species
+:::
+
+::: {.stat-card style="background: white; padding: 1.5rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);"}
+**4** {style="font-size: 2rem; font-weight: 700; color: #17a2b8; display: block;"}
+Time Points
+:::
+
+:::
+
+:::
+
+::: {.cta-section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; border-radius: 1rem; text-align: center; margin-bottom: 3rem; box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);"}
+
+### 🚀 Explore the Data {style="margin-bottom: 2rem; font-size: 2rem;"}
+
+::: {.action-cards style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;"}
+
+::: {.action-card style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 1rem; backdrop-filter: blur(10px); transition: transform 0.3s ease;"}
+[🔬 **Genome Browser**](jbrowse.html){style="color: white; text-decoration: none; font-size: 1.1rem; font-weight: 600;"}
+
+Interactive visualization of genomic features and expression data
+:::
+
+::: {.action-card style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 1rem; backdrop-filter: blur(10px); transition: transform 0.3s ease;"}
+[📈 **Expression Data**](counts.html){style="color: white; text-decoration: none; font-size: 1.1rem; font-weight: 600;"}
+
+Access genomic expression values and download datasets
+:::
+
+::: {.action-card style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 1rem; backdrop-filter: blur(10px); transition: transform 0.3s ease;"}
+[🧬 **Genome Features**](features.html){style="color: white; text-decoration: none; font-size: 1.1rem; font-weight: 600;"}
+
+Explore annotated genomic features and metadata
+:::
+
+:::
+
+::: {.version-badge style="margin-top: 2rem;"}
+<a href="https://github.com/urol-e5/MOSAiC/releases" style="text-decoration: none;"> 
+<img src="https://img.shields.io/github/v/release/urol-e5/MOSAiC" alt="Latest release version" style="height: 2rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" loading="lazy"/> 
+</a>
+:::
+
+:::
+
+::: {.support-section style="background: #f8f9fa; padding: 2rem; border-radius: 1rem; text-align: center; border: 1px solid #dee2e6;"}
+### 💬 Questions or Feedback?
+
+Have questions about the data or found an issue? We'd love to hear from you!
+
+[🐛 Submit an Issue](https://github.com/urol-e5/MOSAiC/issues/new/choose){.btn .btn-outline-primary style="padding: 0.8rem 2rem; border-radius: 2rem; font-weight: 600; text-decoration: none; display: inline-block; margin-top: 1rem; transition: all 0.3s ease;"}
+:::
+
+:::
+
+<style>
+/* Custom CSS for enhanced interactivity and responsiveness */
+.hero-buttons .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.btn-outline:hover {
+  background: white;
+  color: #667eea;
+}
+
+.action-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.project-overview:hover,
+.species-info:hover,
+.methodology-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 1rem;
+    margin: -1rem -1rem 2rem -1rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem !important;
+  }
+  
+  .hero-content h2 {
+    font-size: 1.1rem !important;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container-fluid {
+    padding: 0 0.5rem;
+  }
+  
+  .row {
+    gap: 1rem;
+  }
+  
+  .project-overview,
+  .species-info,
+  .methodology-section,
+  .cta-section {
+    padding: 1.5rem;
+  }
+}
+
+/* Accessibility improvements */
+.btn:focus,
+.action-card:focus {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+</style>

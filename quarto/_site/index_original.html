@@ -170,213 +170,45 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<div class="hero-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4rem 2rem; margin: -2rem -2rem 3rem -2rem; border-radius: 0 0 2rem 2rem; text-align: center;">
-  <div class="hero-content" style="max-width: 800px; margin: 0 auto;">
-    <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">E5 - MOSAiC Portal</h1>
-    
-    <h2 style="font-size: 1.4rem; font-weight: 300; margin-bottom: 2rem; opacity: 0.95;">Monitoring of Species Across Intervals & Colonies</h2>
-    
-    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 1rem; backdrop-filter: blur(10px); margin-bottom: 2rem;">
-      A comprehensive <strong>time-series study</strong> of three coral species from Moorea, French Polynesia, providing genomic insights into marine invertebrate responses across space and time.
-    </div>
-    
-    <div class="hero-buttons" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <a href="jbrowse.html" class="btn btn-primary" style="background: white; color: #667eea; border: none; padding: 0.8rem 2rem; border-radius: 2rem; font-weight: 600; text-decoration: none; display: inline-block; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">🧬 Explore Genome Browser</a>
-      
-      <a href="counts.html" class="btn btn-outline" style="background: transparent; color: white; border: 2px solid white; padding: 0.8rem 2rem; border-radius: 2rem; font-weight: 600; text-decoration: none; display: inline-block; transition: all 0.3s ease;">📊 View Data Files</a>
-    </div>
-  </div>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">E5 - Monitoring of Species Across Intervals &amp; Colonies</h1>
 </div>
 
-<div class="container-fluid" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
 
-  <div class="row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-    
-    <div class="col project-overview" style="background: linear-gradient(145deg, #f8f9fa, #e9ecef); padding: 2rem; border-radius: 1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 4px solid #667eea;">
-      <h3 style="color: #495057; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">🔬 Project Overview</h3>
-      
-      <p>This portal serves complementary purposes of <strong>direct data delivery</strong> and offering a <strong>multi-species genome browser</strong>. Our research encompasses a comprehensive time-series study of three coral species sampled from reef sites in Moorea, French Polynesia.</p>
-      
-      <div class="logo-container" style="text-align: center; margin: 1.5rem 0;">
-        <img src="img/sm_logo.png" alt="E5-MOSAiC project logo" width="300" style="max-width: 100%; height: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));" loading="lazy"/>
-      </div>
-    </div>
-    
-    <div class="col species-info" style="background: linear-gradient(145deg, #fff3cd, #ffeaa7); padding: 2rem; border-radius: 1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 4px solid #f39c12;">
-      <h3 style="color: #856404; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">🐠 Species Study</h3>
-      
-      <p>Our research focuses on three coral species:</p>
-      
-      <div class="species-list" style="margin: 1rem 0;">
-        <ul>
-          <li><strong>🪸 <em>Acropora pulchra</em></strong></li>
-          <li><strong>🪸 <em>Pocillopora tuahiniensis</em></strong></li>
-          <li><strong>🪸 <em>Porites evermanni</em></strong></li>
-        </ul>
-      </div>
-      
-      <p><strong>Study Design:</strong></p>
-      <ul>
-        <li>🏝️ <strong>2 locations</strong> in Moorea</li>
-        <li>🪸 <strong>5 colonies</strong> per species per site</li>
-        <li>📅 <strong>4 time intervals</strong> (TP1–TP4)</li>
-        <li>🧬 <strong>40 samples</strong> per species</li>
-      </ul>
-    </div>
-    
-  </div>
-  
-  <div class="methodology-section" style="background: linear-gradient(145deg, #d1ecf1, #bee5eb); padding: 2rem; border-radius: 1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin-bottom: 3rem; border-left: 4px solid #17a2b8;">
-    <h3 style="color: #0c5460; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">📈 Research Framework</h3>
-    
-    <p>This dataset provides a <strong>rich framework</strong> for investigating how environmental and biological factors shape marine invertebrate responses through space and time, while controlling for genetic and ecological heterogeneity.</p>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-      
-      <div class="stat-card" style="background: white; padding: 1.5rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-        <div style="font-size: 2rem; font-weight: 700; color: #17a2b8; display: block;"><strong>120</strong></div>
-        <div>Total Samples</div>
-      </div>
-      
-      <div class="stat-card" style="background: white; padding: 1.5rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-        <div style="font-size: 2rem; font-weight: 700; color: #17a2b8; display: block;"><strong>3</strong></div>
-        <div>Coral Species</div>
-      </div>
-      
-      <div class="stat-card" style="background: white; padding: 1.5rem; border-radius: 0.8rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-        <div style="font-size: 2rem; font-weight: 700; color: #17a2b8; display: block;"><strong>4</strong></div>
-        <div>Time Points</div>
-      </div>
-      
-    </div>
-  </div>
-  
-  <div class="cta-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; border-radius: 1rem; text-align: center; margin-bottom: 3rem; box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);">
-    
-    <h3 style="margin-bottom: 2rem; font-size: 2rem;">🚀 Explore the Data</h3>
-    
-    <div class="action-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-      
-      <div class="action-card" style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 1rem; backdrop-filter: blur(10px); transition: transform 0.3s ease;">
-        <a href="jbrowse.html" style="color: white; text-decoration: none; font-size: 1.1rem; font-weight: 600;">🔬 <strong>Genome Browser</strong></a>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Interactive visualization of genomic features and expression data</p>
-      </div>
-      
-      <div class="action-card" style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 1rem; backdrop-filter: blur(10px); transition: transform 0.3s ease;">
-        <a href="counts.html" style="color: white; text-decoration: none; font-size: 1.1rem; font-weight: 600;">📈 <strong>Expression Data</strong></a>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Access genomic expression values and download datasets</p>
-      </div>
-      
-      <div class="action-card" style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 1rem; backdrop-filter: blur(10px); transition: transform 0.3s ease;">
-        <a href="features.html" style="color: white; text-decoration: none; font-size: 1.1rem; font-weight: 600;">🧬 <strong>Genome Features</strong></a>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Explore annotated genomic features and metadata</p>
-      </div>
-      
-    </div>
-    
-    <div class="version-badge" style="margin-top: 2rem;">
-      <a href="https://github.com/urol-e5/MOSAiC/releases" style="text-decoration: none;"> 
-        <img src="https://img.shields.io/github/v/release/urol-e5/MOSAiC" alt="Latest release version" style="height: 2rem; border-radius: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" loading="lazy"/> 
-      </a>
-    </div>
-    
-  </div>
-  
-  <div class="support-section" style="background: #f8f9fa; padding: 2rem; border-radius: 1rem; text-align: center; border: 1px solid #dee2e6;">
-    <h3>💬 Questions or Feedback?</h3>
-    
-    <p>Have questions about the data or found an issue? We'd love to hear from you!</p>
-    
-    <a href="https://github.com/urol-e5/MOSAiC/issues/new/choose" class="btn btn-outline-primary" style="padding: 0.8rem 2rem; border-radius: 2rem; font-weight: 600; text-decoration: none; display: inline-block; margin-top: 1rem; transition: all 0.3s ease; border: 2px solid #667eea; color: #667eea;">🐛 Submit an Issue</a>
-  </div>
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This portal serves complementary purposes of direct data delivery and offering a mutlit-specis genome browser. This project encompasses a time-series study of three coral species— <em>Acropora pulchra</em>, <em>Pocillopora tuahiniensis</em>, and <em>Porites evermanni</em> —sampled from reef sites in Moorea, French Polynesia.</p>
+<div class="quarto-figure quarto-figure-center" style="max-width: 100%; height: auto;">
+<figure class="figure">
+<p><img src="img/sm_logo.png" class="img-fluid figure-img" loading="lazy" width="400"></p>
+<figcaption>E5-MOSAiC project logo</figcaption>
+</figure>
 </div>
+<p>For each species, five distinct colonies were selected at each site and sampling was conducted at two locations. Each colony was repeatedly sampled at four standardized intervals (TP1–TP4), capturing temporal variation within and across species. For each species we have 40 samples.</p>
+<p>Collectively, the dataset provide a rich framework for investigating how environmental and biological factors shape marine invertebrate responses through space and time, while controlling for genetic and ecological heterogeneity.</p>
+<hr>
+<div style="display: flex; align-items: center; gap: 1em;">
+<p><span style="font-size: 1.1em;">👉 <a href="jbrowse.html">Explore JBrowse Genome Browser</a></span></p>
+<p><a href="https://github.com/urol-e5/MOSAiC/releases"> <img src="https://img.shields.io/github/v/release/urol-e5/MOSAiC" alt="Latest release version" style="height: 1.4em;" loading="lazy"> </a></p>
+</div>
+<p>For questions or feedback, <a href="https://github.com/urol-e5/MOSAiC/issues/new/choose">please submit an issue</a> 🧬</p>
 
-<style>
-/* Custom CSS for enhanced interactivity and responsiveness */
-.hero-buttons .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-}
 
-.btn-outline:hover {
-  background: white;
-  color: #667eea;
-}
 
-.action-card:hover {
-  transform: translateY(-5px);
-}
-
-.stat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.project-overview:hover,
-.species-info:hover,
-.methodology-section:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .hero-section {
-    padding: 2rem 1rem !important;
-    margin: -1rem -1rem 2rem -1rem !important;
-  }
-  
-  .hero-content h1 {
-    font-size: 2rem !important;
-  }
-  
-  .hero-content h2 {
-    font-size: 1.1rem !important;
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .hero-buttons .btn {
-    width: 100%;
-    max-width: 280px;
-  }
-}
-
-@media (max-width: 576px) {
-  .container-fluid {
-    padding: 0 0.5rem !important;
-  }
-  
-  .row {
-    gap: 1rem !important;
-  }
-  
-  .project-overview,
-  .species-info,
-  .methodology-section,
-  .cta-section {
-    padding: 1.5rem !important;
-  }
-}
-
-/* Accessibility improvements */
-.btn:focus,
-.action-card:focus {
-  outline: 3px solid #667eea;
-  outline-offset: 2px;
-}
-
-/* Smooth transitions for all interactive elements */
-* {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-</style>
-
-</main> <!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
