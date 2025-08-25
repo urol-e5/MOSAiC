@@ -111,8 +111,6 @@ Ptuh_lncRNAloc <- read_delim(
 | *Porites evermanni* | **`r nrow(Peve_gff)`** |  | **`r nrow(Peve_lncRNAloc)`** |  |
 | *Pocillopora tuahiniensis* | **`r nrow(Ptuh_gff)`** |  | **`r nrow(Ptuh_lncRNAloc)`** |  |
 
-
-
 # *Acropora pulchra*
 
 Genes

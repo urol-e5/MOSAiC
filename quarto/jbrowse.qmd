@@ -4,7 +4,6 @@ format: html
 editor: visual
 ---
 
-
 Open the genome browser directly: [Open JBrowse](https://gannet.fish.washington.edu/e5-mosaic){target="_blank"}.
 
 Embedded view below:
@@ -12,4 +11,3 @@ Embedded view below:
 <iframe src="https://gannet.fish.washington.edu/e5-mosaic" style="width:100%;height:700px;border:1px solid #ccc;border-radius:4px;" title="JBrowse">
 
 </iframe>
-
