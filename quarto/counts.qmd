@@ -267,6 +267,81 @@ For EM-seq analysis Bismark methylation coverage (.cov) files are unified into C
 Note currently we have some inconsistency in sample IDs across data types.
 :::
 
+## Sample Counts by Data Type
+
+```{r}
+#| echo: false
+#| results: asis
+# Create a table showing the number of samples for each data type
+sample_counts_data <- data.frame(
+  Species = character(),
+  Gene = integer(),
+  miRNA = integer(),
+  lncRNA = integer(),
+  mCpG = integer(),
+  stringsAsFactors = FALSE
+)
+
+# Calculate sample counts for each species and data type
+for (species_code in names(data_urls)) {
+  species_info <- data_urls[[species_code]]
+  species_name <- species_info$italic_name
+  
+  # Initialize counts
+  gene_count <- 0
+  mirna_count <- 0
+  lncrna_count <- 0
+  mcpg_count <- 0
+  
+  # Count samples for each data type
+  for (data_type in c("gene", "mirna", "lncRNA", "mCpG")) {
+    df <- all_data[[species_code]][[data_type]]
+    
+    if (!is.null(df) && nrow(df) > 0) {
+      # Count any columns that contain "TP"
+      sample_cols <- grep("TP", colnames(df), value = TRUE)
+      count <- length(sample_cols)
+      
+      # Assign to appropriate variable
+      switch(data_type,
+        "gene" = gene_count <- count,
+        "mirna" = mirna_count <- count,
+        "lncRNA" = lncrna_count <- count,
+        "mCpG" = mcpg_count <- count
+      )
+    }
+  }
+  
+  # Add row to data frame
+  sample_counts_data <- rbind(sample_counts_data, 
+    data.frame(
+      Species = species_name,
+      Gene = gene_count,
+      miRNA = mirna_count,
+      lncRNA = lncrna_count,
+      mCpG = mcpg_count,
+      stringsAsFactors = FALSE
+    )
+  )
+}
+
+# Display the sample counts table
+if (nrow(sample_counts_data) > 0) {
+  sample_counts_data |>
+    gt() |>
+    tab_header(title = "Sample Counts by Data Type") |>
+    fmt_number(columns = c("Gene", "miRNA", "lncRNA", "mCpG"), decimals = 0) |>
+    cols_align(align = "center", columns = c("Gene", "miRNA", "lncRNA", "mCpG")) |>
+    tab_style(
+      style = cell_text(weight = "bold"),
+      locations = cells_body(columns = c("Gene", "miRNA", "lncRNA", "mCpG"))
+    ) |>
+    print()
+} else {
+  cat("No sample count data available.")
+}
+```
+
 
 ```{r}
 #| echo: false

@@ -211,5 +211,16 @@
     "crumbs": [
       "About"
     ]
+  },
+  {
+    "objectID": "counts.html#sample-counts-by-data-type",
+    "href": "counts.html#sample-counts-by-data-type",
+    "title": "Expression Values",
+    "section": "Sample Counts by Data Type",
+    "text": "Sample Counts by Data Type\n\n\n\n\n\n\nSample Counts by Data Type\n\n\n\n\nSpecies\n\n\nGene\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\n\n\n\n\nAcropora pulchra\n\n\n80\n\n\n40\n\n\n40\n\n\n39\n\n\n\n\nPorites evermanni\n\n\n38\n\n\n37\n\n\n38\n\n\n37\n\n\n\n\nPocillopora tuahiniensis\n\n\n39\n\n\n39\n\n\n39\n\n\n32",
+    "crumbs": [
+      "Data Files",
+      "Genomic Expression Values"
+    ]
   }
 ]
