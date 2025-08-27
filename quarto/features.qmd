@@ -27,7 +27,7 @@ library(gt)
 library(htmltools)
 ```
 
-```{r, include=FALSE}
+```{r read_in}
 
 # Define key paths and tool directories
 
@@ -51,7 +51,7 @@ Ptuh_gff_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/
 
 
 
-Ptuh_lncRNAloc_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA.filtered.gtf"
+Ptuh_lncRNAloc_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA.filtered.gtf"
 
 
 

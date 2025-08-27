@@ -12,3 +12,47 @@ This project uses symbiotic, metabolically complex reef-building corals as a mod
   <source src="https://e5coral.org/wp-content/uploads/2020/11/e5_coral_reef_homepage_720p.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+
+
+## 🧬 Species and Reference Genomes
+
+This genome browser supports exploration of coral species included in our genomic analyses. For several species, direct reference genomes are not yet available. In these cases, we selected closely related species with high-quality assemblies as references, based on evolutionary proximity, morphological similarity, and assembly quality.
+
+::: {.panel-tabset}
+
+### 🔹 Acropora pulchra
+
+> **Reference Genome:** *Acropora millepora*  
+> **Source:** [NCBI PRJNA633778](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA633778)  
+> **Genome Size:** ~475 Mbp  
+> **N50:** 19.8 Mbp  
+> **Protein-Coding Genes:** 28,188  
+
+Although *A. pulchra* does not have a published genome, *A. millepora* is used as a reference due to their close evolutionary relationship and documented ability to interbreed (Van Oppen et al., 2001, 2002).
+
+---
+
+### 🔹 Pocillopora tuahiniensis
+
+> **Reference Genome:** *Pocillopora meandrina*  
+> **Source:** [Stephens et al., 2022](http://cyanophora.rutgers.edu/Pocillopora_meandrina/)  
+> **Genome Size:** ~377 Mbp  
+> **N50:** 10 Mbp  
+> **Protein-Coding Genes:** 31,840  
+
+*P. tuahiniensis* does not yet have a published genome. *P. meandrina* was selected as a reference because of its morphological similarity and close evolutionary relationship. Although *P. verrucosa* is more closely related phylogenetically, *P. meandrina* provides a higher-quality assembly (N50 = 10 Mbp vs. 0.334 Mbp) and more comprehensive annotation.
+
+---
+
+### 🔹 Porites evermanni
+
+> **Reference Genome:** *Porites evermanni*  
+> **Source:** [Genoscope Coral Genomes](https://www.genoscope.cns.fr/corals/genomes.html)  
+> **Genome Size:** ~497 Mbp  
+> **N50:** 0.17 Mbp  
+> **Protein-Coding Genes:** 40,389  
+
+This genome was assembled from a sample collected in Mo’orea and is used directly in analyses without substitution.
+
+:::

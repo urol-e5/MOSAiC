@@ -22,30 +22,6 @@ data_urls <- list(
 )
 ```
 
-### Adding New Species
-To add a new species:
-
-1. Add a new entry to the `data_urls` list:
-```r
-  NewSpecies = list(
-    species_name = "Full Species Name",
-    italic_name = "*Italicized Species Name*",
-    gene = "url-to-gene-data",
-    mirna = "url-to-mirna-data", 
-    lncRNA = "url-to-lncrna-data",
-    mCpG = "url-to-mcpg-data"
-  )
-```
-
-2. The page will automatically generate sections for the new species.
-
-### Adding New Data Types
-To add a new data type (e.g., "protein"):
-
-1. Add the new data type to each species in `data_urls`
-2. Update the `load_data_file()` function to handle the new data type
-3. Add the new data type to the loop in `generate_species_section()`
-4. Update the feature counts table generation if needed
 
 ## Key Benefits
 

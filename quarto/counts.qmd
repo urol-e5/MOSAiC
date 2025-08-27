@@ -46,7 +46,7 @@ data_urls <- list(
     italic_name = "*Acropora pulchra*",
     gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt",
-    lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/33-Apul-lncRNA-matrix/Apul_lncRNA_counts_filtered.txt",
+    lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
     mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv"
   ),
   Peve = list(
@@ -54,7 +54,7 @@ data_urls <- list(
     italic_name = "*Porites evermanni*",
     gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt",
-    lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/13-Peve-lncRNA-matrix/Peve_lncRNA_counts_filtered.txt",
+    lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
     mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv"
   ),
   Ptuh = list(
@@ -123,18 +123,8 @@ load_data_file <- function(url, data_type, species_code) {
         warning(paste("Empty data loaded for", data_type, "in", species_code))
       }
       return(result)
-    } else if (data_type == "mirna") {
+    } else if (data_type == "mirna" || data_type == "lncRNA") {
       result <- read_delim(url, delim = "\t", col_names = TRUE, show_col_types = FALSE)
-      if (nrow(result) == 0) {
-        warning(paste("Empty data loaded for", data_type, "in", species_code))
-      }
-      return(result)
-    } else if (data_type == "lncRNA") {
-      if (species_code %in% c("Apul", "Peve")) {
-        result <- read_delim(url, delim = "\t", col_names = TRUE, skip = 7, show_col_types = FALSE)
-      } else {
-        result <- read_delim(url, delim = "\t", col_names = TRUE, show_col_types = FALSE)
-      }
       if (nrow(result) == 0) {
         warning(paste("Empty data loaded for", data_type, "in", species_code))
       }
@@ -250,7 +240,7 @@ This workflow aligns trimmed RNA-seq reads to a reference genome using HISAT2, f
 
 ## miRNA
 
-ShortStack ? Kathleen
+Workflow processes sRNA-seq reads through quality control and adapter trimming with fastp, then performs miRNA discovery and quantification using ShortStack 4.1.0. ShortStack aligns trimmed reads to the species-specific genome reference and integrates a curated cnidarian miRBase database for known miRNA annotation. De novo miRNA identification is performed using the `--dn_mirna` parameter, which predicts novel miRNA loci based on hairpin structure and expression patterns. The pipeline generates comprehensive count matrices across all samples, with only confirmed miRNA loci (MIRNA="Y" in Results.txt) retained for downstream analysis.
 
 ## lncRNA
 
@@ -341,6 +331,14 @@ if (nrow(sample_counts_data) > 0) {
   cat("No sample count data available.")
 }
 ```
+
+::: callout-warning
+## Notes on sample counts
+
+For genes (and lncRNA) the sample counts reflects 3 samples were not of quality to sequence.
+:::
+
+
 
 
 ```{r}

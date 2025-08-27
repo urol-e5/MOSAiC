@@ -16,6 +16,40 @@
           }
         }
       }
+    },
+    {
+      "name": "Pever",
+      "displayName": "Porites evermanni",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "pever_refseq",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/data/Porites_evermanni_v1.fa"
+          },
+          "faiLocation": {
+            "uri": "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/data/Porites_evermanni_v1.fa.fai"
+          }
+        }
+      }
+    },
+    {
+      "name": "Pmea",
+      "displayName": "Pocillopora meandrina",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "pmea_refseq",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "data/Pmea/Pocillopora_meandrina_HIv1.assembly.fasta"
+          },
+          "faiLocation": {
+            "uri": "data/Pmea/Pocillopora_meandrina_HIv1.assembly.fasta.fai"
+          }
+        }
+      }
     }
   ],
   "tracks": [
@@ -28,6 +62,30 @@
         "type": "Gff3Adapter",
         "gffLocation": {
           "uri": "data/Apul/Apulchra-genome.sorted.gff"
+        }
+      }
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "pever_gff3_plain",
+      "name": "Porites evermanni Gene annotations (GFF3)",
+      "assemblyNames": ["Pever"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "data/Peve/Porites_evermanni_validated.gff3"
+        }
+      }
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "pmea_gff3_plain",
+      "name": "Pocillopora meandrina Gene annotations (GFF3)",
+      "assemblyNames": ["Pmea"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "data/Pmea/Pocillopora_meandrina_HIv1.genes-validated.gff3"
         }
       }
     }
