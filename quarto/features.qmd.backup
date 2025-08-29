@@ -47,11 +47,13 @@ Peve_lncRNAloc_url <- "https://gannet.fish.washington.edu/v1_web/owlshell/bu-git
 
 
 
-Ptuh_gff_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/00.01-Ptua-gene-gff/Pmea_gene_only.gff3"
+## Ptuh gene URL temporarily disabled (invalid/mismatched)
+# Ptuh_gff_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/00.01-Ptua-gene-gff/Pmea_gene_only.gff3"
 
 
 
-Ptuh_lncRNAloc_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA.filtered.gtf"
+## Ptuh lncRNA URL temporarily disabled (invalid/mismatched)
+# Ptuh_lncRNAloc_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA.filtered.gtf"
 
 
 
@@ -308,4 +310,3 @@ Ptuh_lncRNAloc |>
   slice_head(n = 4) |>
   gt()
 ```
-
