@@ -258,8 +258,9 @@
     "href": "temperature.html",
     "title": "Mo’orea Temperature Time Series",
     "section": "",
-    "text": "This page provides interactive visualization of in-situ temperature logger data from three Mo’orea reef sites.\n\n\n\n\n\n\n\n\n\n\n\nLatest 24 Hours (Hourly Means)\n\n\nsite\nhour\ntemp.C\ntemp_roll24\n\n\n\n\n\n\n\n\n\n\n\nRaw points aggregated to hourly means for performance.\n24h rolling mean computed per site to smooth diel variability.\nTimestamps are UTC.",
+    "text": "This page provides interactive visualization of in-situ temperature logger data from three Mo’orea reef sites.\n\n\n\n\n\n\n\n\n\n\n\n\nRaw points aggregated to hourly means for performance.\n24h rolling mean computed per site to smooth diel variability.\nTimestamps are UTC.",
     "crumbs": [
+      "Data Files",
       "Temperature"
     ]
   },
@@ -268,8 +269,9 @@
     "href": "temperature.html#interactive-temperature-explorer",
     "title": "Mo’orea Temperature Time Series",
     "section": "",
-    "text": "This page provides interactive visualization of in-situ temperature logger data from three Mo’orea reef sites.\n\n\n\n\n\n\n\n\n\n\n\nLatest 24 Hours (Hourly Means)\n\n\nsite\nhour\ntemp.C\ntemp_roll24\n\n\n\n\n\n\n\n\n\n\n\nRaw points aggregated to hourly means for performance.\n24h rolling mean computed per site to smooth diel variability.\nTimestamps are UTC.",
+    "text": "This page provides interactive visualization of in-situ temperature logger data from three Mo’orea reef sites.\n\n\n\n\n\n\n\n\n\n\n\n\nRaw points aggregated to hourly means for performance.\n24h rolling mean computed per site to smooth diel variability.\nTimestamps are UTC.",
     "crumbs": [
+      "Data Files",
       "Temperature"
     ]
   }

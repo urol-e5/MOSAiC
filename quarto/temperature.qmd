@@ -83,10 +83,10 @@ subplot(p_hourly, p_daily, nrows = 2, shareX = FALSE, titleY = TRUE)
 ```{r}
 #| echo: false
 # Provide a compact table of latest 24h (hourly means) for quick inspection
-latest_window_start <- max(hourly$hour) - hours(24)
-latest <- hourly |> filter(hour >= latest_window_start) |> select(site, hour, temp.C, temp_roll24)
+#latest_window_start <- max(hourly$hour) - hours(24)
+#latest <- hourly |> filter(hour >= latest_window_start) |> select(site, hour, temp.C, temp_roll24)
 
-knitr::kable(latest, caption = "Latest 24 Hours (Hourly Means)")
+#knitr::kable(latest, caption = "Latest 24 Hours (Hourly Means)")
 ```
 
 ```{r}
