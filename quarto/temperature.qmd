@@ -1,0 +1,103 @@
+---
+title: "Mo'orea Temperature Time Series"
+format: html
+---
+
+## Interactive Temperature Explorer
+
+This page provides interactive visualization of in-situ temperature logger data from three Mo'orea reef sites.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| cache: true
+pkgs <- c("vroom","dplyr","lubridate","plotly","here","zoo")
+new <- setdiff(pkgs, rownames(installed.packages()))
+if (length(new)) install.packages(new)
+
+library(vroom)
+library(dplyr)
+library(lubridate)
+library(plotly)
+library(here)
+library(zoo)
+
+# Read data (UTC timestamps)
+raw <- vroom::vroom(here("data","temperature_timeseries.csv"),
+                    col_types = "Tcd", progress = FALSE) |>
+  mutate(date.time = ymd_hms(date.time, tz = "UTC"))
+
+# Basic QC: drop impossible temps (<10 or >40 C) if any
+raw <- raw |> filter(between(temp.C, 10, 40))
+
+# Precompute aggregations
+hourly <- raw |>
+  mutate(hour = floor_date(date.time, "1 hour")) |>
+  group_by(site, hour) |>
+  summarise(temp.C = mean(temp.C), .groups = "drop")
+
+daily <- raw |>
+  mutate(day = as_date(date.time)) |>
+  group_by(site, day) |>
+  summarise(minT = min(temp.C), meanT = mean(temp.C), maxT = max(temp.C), .groups = "drop")
+
+# Rolling (24h) smooth on hourly means
+hourly <- hourly |>
+  arrange(site, hour) |>
+  group_by(site) |>
+  mutate(temp_roll24 = zoo::rollapply(temp.C, 24, mean, align = "right", fill = NA)) |>
+  ungroup()
+
+pal <- c(Manava = "#1b9e77", Hilton = "#d95f02", Mahana = "#7570b3")
+
+# Hourly line + optional rolling mean
+p_hourly <- plot_ly(type='scatter', mode='lines') |>
+  add_trace(data = hourly, x = ~hour, y = ~temp.C, color = ~site, colors = pal,
+            hovertemplate = "%{x|%Y-%m-%d %H:%M} UTC<br>%{y:.2f}°C<extra>%{legendgroup}</extra>",
+            name = ~site, legendgroup = ~site) |>
+  add_trace(data = hourly, x = ~hour, y = ~temp_roll24, color = ~site, colors = pal,
+            hovertemplate = "24h mean<br>%{x|%Y-%m-%d %H:%M} UTC<br>%{y:.2f}°C<extra>%{legendgroup}</extra>",
+            name = ~paste(site, "(24h mean)"), legendgroup = ~site, line = list(width = 2, dash = 'dash')) |>
+  layout(title = "Hourly Mean Temperature (with 24h Rolling Mean)",
+         xaxis = list(title = "Time (UTC)", rangeslider = list(visible = TRUE),
+                      rangeselector = list(buttons = list(
+                        list(count = 7, label = '7d', step = 'day', stepmode = 'backward'),
+                        list(count = 1, label = '1m', step = 'month', stepmode = 'backward'),
+                        list(step = 'all')))),
+         yaxis = list(title = "Temperature (°C)"))
+
+# Daily ribbons
+p_daily <- plot_ly(type='scatter', mode='lines') |>
+  add_ribbons(data = daily, x = ~day, ymin = ~minT, ymax = ~maxT, split = ~site, color = ~site, colors = pal,
+              opacity = 0.25, name = ~paste(site, 'Daily Range'), hovertemplate = "%{x|%Y-%m-%d}<br>Min %{y[0]:.2f}°C<br>Max %{y[1]:.2f}°C<extra>%{legendgroup}</extra>") |>
+  add_trace(data = daily, x = ~day, y = ~meanT, split = ~site, color = ~site, colors = pal,
+            name = ~paste(site, 'Daily Mean'), hovertemplate = "%{x|%Y-%m-%d}<br>Mean %{y:.2f}°C<extra>%{legendgroup}</extra>") |>
+  layout(title = "Daily Min/Mean/Max", yaxis = list(title = "Temperature (°C)"))
+
+subplot(p_hourly, p_daily, nrows = 2, shareX = FALSE, titleY = TRUE)
+```
+
+### Data Download
+
+```{r}
+#| echo: false
+# Provide a compact table of latest 24h (hourly means) for quick inspection
+latest_window_start <- max(hourly$hour) - hours(24)
+latest <- hourly |> filter(hour >= latest_window_start) |> select(site, hour, temp.C, temp_roll24)
+
+knitr::kable(latest, caption = "Latest 24 Hours (Hourly Means)")
+```
+
+```{r}
+#| echo: false
+#| eval: false
+# Optional example to write processed summaries (disabled by default)
+# write.csv(hourly, 'data/temperature_hourly.csv', row.names = FALSE)
+# write.csv(daily, 'data/temperature_daily.csv', row.names = FALSE)
+```
+
+### Notes
+- Raw points aggregated to hourly means for performance.
+- 24h rolling mean computed per site to smooth diel variability.
+- Timestamps are UTC.

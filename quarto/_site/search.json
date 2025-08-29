@@ -228,9 +228,49 @@
     "href": "about.html#species-and-reference-genomes",
     "title": "About",
     "section": "🧬 Species and Reference Genomes",
-    "text": "🧬 Species and Reference Genomes\nThis genome browser supports exploration of coral species included in our genomic analyses. For several species, direct reference genomes are not yet available. In these cases, we selected closely related species with high-quality assemblies as references, based on evolutionary proximity, morphological similarity, and assembly quality.\n\n🔹 Acropora pulchra🔹 Pocillopora tuahiniensis🔹 Porites evermanni\n\n\n\nReference Genome: Acropora pulchra\nSource: Genome Size: ~xx75 Mbp\nN50: xx.8 Mbp\nProtein-Coding Genes: xxx\n\n\n\n\n\nReference Genome: Pocillopora meandrina\nSource: Stephens et al., 2022\nGenome Size: ~377 Mbp\nN50: 10 Mbp\nProtein-Coding Genes: 31,840\n\nP. tuahiniensis does not yet have a published genome. P. meandrina was selected as a reference because of its morphological similarity and close evolutionary relationship. Although P. verrucosa is more closely related phylogenetically, P. meandrina provides a higher-quality assembly (N50 = 10 Mbp vs. 0.334 Mbp) and more comprehensive annotation.\n\n\n\n\nReference Genome: Porites evermanni\nSource: Genoscope Coral Genomes\nGenome Size: ~497 Mbp\nN50: 0.17 Mbp\nProtein-Coding Genes: 40,389\n\nThis genome was assembled from a sample collected in Mo’orea and is used directly in analyses without substitution.\n\n\n\n\n\nYour browser does not support the video tag.",
+    "text": "🧬 Species and Reference Genomes\nThis genome browser supports exploration of coral species included in our genomic analyses. For several species, direct reference genomes are not yet available. In these cases, we selected closely related species with high-quality assemblies as references, based on evolutionary proximity, morphological similarity, and assembly quality.\n\n🔹 Acropora pulchra🔹 Pocillopora tuahiniensis🔹 Porites evermanni\n\n\n\nReference Genome: Acropora pulchra\nSource: Genome Size: ~xx75 Mbp\nN50: xx.8 Mbp\nProtein-Coding Genes: xxx\n\n\n\n\n\nReference Genome: Pocillopora meandrina\nSource: Stephens et al., 2022\nGenome Size: ~377 Mbp\nN50: 10 Mbp\nProtein-Coding Genes: 31,840\n\nP. tuahiniensis does not yet have a published genome. P. meandrina was selected as a reference because of its morphological similarity and close evolutionary relationship. Although P. verrucosa is more closely related phylogenetically, P. meandrina provides a higher-quality assembly (N50 = 10 Mbp vs. 0.334 Mbp) and more comprehensive annotation.\n\n\n\n\nReference Genome: Porites evermanni\nSource: Genoscope Coral Genomes\nGenome Size: ~497 Mbp\nN50: 0.17 Mbp\nProtein-Coding Genes: 40,389\n\nThis genome was assembled from a sample collected in Mo’orea and is used directly in analyses without substitution.",
     "crumbs": [
       "About"
+    ]
+  },
+  {
+    "objectID": "about.html#moorea-field-sites",
+    "href": "about.html#moorea-field-sites",
+    "title": "About",
+    "section": "🌍 Mo’orea Field Sites",
+    "text": "🌍 Mo’orea Field Sites",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "about.html#coral-reef-video",
+    "href": "about.html#coral-reef-video",
+    "title": "About",
+    "section": "🎥 Coral Reef Video",
+    "text": "🎥 Coral Reef Video\n\n\nYour browser does not support the video tag.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "temperature.html",
+    "href": "temperature.html",
+    "title": "Mo’orea Temperature Time Series",
+    "section": "",
+    "text": "This page provides interactive visualization of in-situ temperature logger data from three Mo’orea reef sites.\n\n\n\n\n\n\n\n\n\n\n\nLatest 24 Hours (Hourly Means)\n\n\nsite\nhour\ntemp.C\ntemp_roll24\n\n\n\n\n\n\n\n\n\n\n\nRaw points aggregated to hourly means for performance.\n24h rolling mean computed per site to smooth diel variability.\nTimestamps are UTC.",
+    "crumbs": [
+      "Temperature"
+    ]
+  },
+  {
+    "objectID": "temperature.html#interactive-temperature-explorer",
+    "href": "temperature.html#interactive-temperature-explorer",
+    "title": "Mo’orea Temperature Time Series",
+    "section": "",
+    "text": "This page provides interactive visualization of in-situ temperature logger data from three Mo’orea reef sites.\n\n\n\n\n\n\n\n\n\n\n\nLatest 24 Hours (Hourly Means)\n\n\nsite\nhour\ntemp.C\ntemp_roll24\n\n\n\n\n\n\n\n\n\n\n\nRaw points aggregated to hourly means for performance.\n24h rolling mean computed per site to smooth diel variability.\nTimestamps are UTC.",
+    "crumbs": [
+      "Temperature"
     ]
   }
 ]

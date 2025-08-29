@@ -16,12 +16,9 @@ This genome browser supports exploration of coral species included in our genomi
 ### 🔹 Acropora pulchra
 
 > **Reference Genome:** *Acropora pulchra*\
-> **Source:** 
-> **Genome Size:** \~xx75 Mbp\
+> **Source:** **Genome Size:** \~xx75 Mbp\
 > **N50:** xx.8 Mbp\
 > **Protein-Coding Genes:** xxx
-
-
 
 ------------------------------------------------------------------------
 
@@ -48,10 +45,50 @@ This genome browser supports exploration of coral species included in our genomi
 This genome was assembled from a sample collected in Mo’orea and is used directly in analyses without substitution.
 :::
 
+## 🌍 Mo'orea Field Sites
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+if (!requireNamespace("leaflet", quietly = TRUE)) {
+	install.packages("leaflet")
+}
+library(leaflet)
+
+sites <- data.frame(
+	name = c("Manava", "Hilton", "Mahana"),
+	lat  = c(-17.47687203, -17.48137, -17.48763),
+	lng  = c(-149.805937, -149.84897, -149.88742)
+)
+
+leaflet(sites, options = leafletOptions(minZoom = 3, maxZoom = 18)) |>
+	# High-coverage basemaps that support deep zoom around Mo'orea
+	addProviderTiles(providers$OpenStreetMap, group = "Street") |>
+	addProviderTiles(providers$CartoDB.Positron, group = "Light") |>
+	addProviderTiles(providers$Esri.WorldImagery, group = "Imagery") |>
+	addLayersControl(baseGroups = c("Street", "Light", "Imagery"), position = "topleft") |>
+	setView(lng = -149.84, lat = -17.482, zoom = 13) |>
+	addScaleBar(position = "bottomleft") |>
+	addCircleMarkers(
+		~lng, ~lat,
+		radius = 6,
+		color = "#005f73",
+		fillColor = "#94d2bd",
+		weight = 2,
+		fillOpacity = 0.9,
+		label = ~name,
+		popup = ~paste0("<b>", name, "</b><br>Lat: ", lat, "<br>Lng: ", lng)
+	)
+```
+
+
+
+
+## 🎥 Coral Reef Video
 
 <video width="100%" autoplay muted>
 
 <source src="https://e5coral.org/wp-content/uploads/2020/11/e5_coral_reef_homepage_720p.mp4" type="video/mp4">
 
 Your browser does not support the video tag. </video>
-
