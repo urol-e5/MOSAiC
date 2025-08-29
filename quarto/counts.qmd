@@ -32,7 +32,7 @@ for (pkg in required_packages) {
 }
 ```
 
-```{r data-config, cache=TRUE, include=FALSE}
+```{r data-config, cache=FALSE, include=FALSE}
 
 # =============================================================================
 # EXTERNAL DATA URLS CONFIGURATION
@@ -201,7 +201,6 @@ for (species_code in names(data_urls)) {
 feature_counts_data <- feature_counts
 ```
 
-
 ## Summary of Available Data
 
 ```{r}
@@ -224,7 +223,6 @@ if (nrow(feature_counts_data) > 0) {
 }
 ```
 
-
 ::: callout-tip
 ## ConTra
 
@@ -236,7 +234,7 @@ If you are excited about analyzing this type of data in contextual manner check 
 ::: panel-tabset
 ## Genes
 
-This workflow aligns trimmed RNA-seq reads to a reference genome using HISAT2, followed by transcript assembly and quantification with StringTie, and culminates in the generation of count matrices for downstream expression analysis. Individual sample directories contain BAMs, indexes, GTFs, Ballgown-formatted tables, and alignment statistics, while a MultiQC report aggregates overall alignment quality. The workflow then merges sorted BAMs into a single dataset, compiles a unified transcript GTF from individual assemblies, and uses prepDE to produce gene- and transcript-level count matrices compatible with DESeq2. 
+This workflow aligns trimmed RNA-seq reads to a reference genome using HISAT2, followed by transcript assembly and quantification with StringTie, and culminates in the generation of count matrices for downstream expression analysis. Individual sample directories contain BAMs, indexes, GTFs, Ballgown-formatted tables, and alignment statistics, while a MultiQC report aggregates overall alignment quality. The workflow then merges sorted BAMs into a single dataset, compiles a unified transcript GTF from individual assemblies, and uses prepDE to produce gene- and transcript-level count matrices compatible with DESeq2.
 
 ## miRNA
 
@@ -244,11 +242,11 @@ Workflow processes sRNA-seq reads through quality control and adapter trimming w
 
 ## lncRNA
 
-Workflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites), and aligns all samples. Per-sample transcript assemblies are generated with StringTie and merged into a unified GTF, which is then annotated with gffcompare. Putative lncRNAs are filtered from the merged annotations by biotype/class codes (u/x/o/i) and minimum length (>200 nt), sequences are extracted with bedtools, and coding potential is screened with CPC2 to retain noncoding transcripts. The surviving transcripts are converted into a clean BED/GTF set with unique lncRNA_### IDs, deduplicated, sanity-checked (coordinates/lengths), and summarized. Finally, featureCounts quantifies lncRNA features across all BAMs, column names are cleaned, and a filtered count matrix is produced, removing features with <10 counts in >50% of samples.
+Workflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites), and aligns all samples. Per-sample transcript assemblies are generated with StringTie and merged into a unified GTF, which is then annotated with gffcompare. Putative lncRNAs are filtered from the merged annotations by biotype/class codes (u/x/o/i) and minimum length (\>200 nt), sequences are extracted with bedtools, and coding potential is screened with CPC2 to retain noncoding transcripts. The surviving transcripts are converted into a clean BED/GTF set with unique lncRNA\_### IDs, deduplicated, sanity-checked (coordinates/lengths), and summarized. Finally, featureCounts quantifies lncRNA features across all BAMs, column names are cleaned, and a filtered count matrix is produced, removing features with \<10 counts in \>50% of samples.
 
 ## mCpG
 
-For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filtered for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column _processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all _processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.
+For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filtered for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column \_processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all \_processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.
 :::
 
 ::: callout-warning
@@ -338,9 +336,6 @@ if (nrow(sample_counts_data) > 0) {
 For genes (and lncRNA) the sample counts reflects 3 samples were not of quality to sequence.
 :::
 
-
-
-
 ```{r}
 #| echo: false
 #| results: asis
@@ -412,5 +407,3 @@ for (species_code in names(data_urls)) {
   }
 }
 ```
-
-
