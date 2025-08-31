@@ -325,11 +325,6 @@ if (nrow(sample_counts_data) > 0) {
 }
 ```
 
-::: callout-warning
-## Notes on sample counts
-
-For genes (and lncRNA) the sample counts reflects 3 samples were not of quality to sequence.
-:::
 
 ```{r}
 #| echo: false
