@@ -1,0 +1,387 @@
+---
+title: "MOSAiC Physiology Data"
+format: html
+---
+
+## Interactive Physiology Data Explorer
+
+This page provides interactive visualization and exploration of physiology data from the MOSAiC timeseries study, including metabolomics, lipidomics, and physiological measurements across four timepoints.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| cache: true
+pkgs <- c("vroom", "dplyr", "tidyr", "plotly", "DT", "stringr")
+new <- setdiff(pkgs, rownames(installed.packages()))
+if (length(new)) install.packages(new)
+
+library(vroom)
+library(dplyr)
+library(tidyr)
+library(plotly)
+library(DT)
+library(stringr)
+
+# Read metabolomics data
+metabolomics_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/main/M-multi-species/output/metabolomics_count_matrix.csv"
+metabolomics <- vroom::vroom(metabolomics_url, col_types = cols(.default = "d", X1 = "c"), progress = FALSE)
+names(metabolomics)[1] <- "compound"
+
+# Read lipidomics data
+lipidomics_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/main/M-multi-species/output/lipid_count_matrix.csv"
+lipidomics <- vroom::vroom(lipidomics_url, col_types = cols(.default = "d", X1 = "c"), progress = FALSE)
+names(lipidomics)[1] <- "lipid"
+
+# Read physiology data
+physiology_url <- "https://raw.githubusercontent.com/urol-e5/timeseries/master/time_series_analysis/Output/master_timeseries.csv"
+physiology <- vroom::vroom(physiology_url, progress = FALSE)
+
+# Clean and process data
+# Extract sample information from column names for metabolomics
+metabolomics_long <- metabolomics %>%
+  pivot_longer(cols = -compound, names_to = "sample_id", values_to = "value") %>%
+  filter(!is.na(value)) %>%
+  mutate(
+    species = case_when(
+      str_detect(sample_id, "^ACR") ~ "Acropora pulchra",
+      str_detect(sample_id, "^POR") ~ "Porites evermanni", 
+      str_detect(sample_id, "^POC") ~ "Pocillopora tuahiniensis",
+      TRUE ~ "Unknown"
+    ),
+    timepoint = str_extract(sample_id, "TP[1-4]"),
+    colony_id = str_extract(sample_id, "^[A-Z]+-[0-9]+")
+  ) %>%
+  filter(species != "Unknown")
+
+# Extract sample information from column names for lipidomics
+lipidomics_long <- lipidomics %>%
+  pivot_longer(cols = -lipid, names_to = "sample_id", values_to = "value") %>%
+  filter(!is.na(value)) %>%
+  mutate(
+    species = case_when(
+      str_detect(sample_id, "^ACR") ~ "Acropora pulchra",
+      str_detect(sample_id, "^POR") ~ "Porites evermanni", 
+      str_detect(sample_id, "^POC") ~ "Pocillopora tuahiniensis",
+      TRUE ~ "Unknown"
+    ),
+    timepoint = str_extract(sample_id, "TP[1-4]"),
+    colony_id = str_extract(sample_id, "^[A-Z]+-[0-9]+")
+  ) %>%
+  filter(species != "Unknown")
+
+# Process physiology data
+physiology_clean <- physiology %>%
+  filter(!is.na(timepoint)) %>%
+  mutate(
+    timepoint = paste0("TP", timepoint),
+    species = case_when(
+      species == "Acropora" ~ "Acropora pulchra",
+      species == "Porites" ~ "Porites evermanni",
+      species == "Pocillopora" ~ "Pocillopora tuahiniensis",
+      TRUE ~ species
+    )
+  )
+```
+
+## Metabolomics Data
+
+### Interactive Metabolomics Table
+
+Explore metabolomics data with search and filtering capabilities:
+
+```{r}
+#| echo: false
+# Create summary table for metabolomics
+metabolomics_summary <- metabolomics_long %>%
+  group_by(compound, species, timepoint) %>%
+  summarise(
+    mean_value = round(mean(value, na.rm = TRUE), 2),
+    sd_value = round(sd(value, na.rm = TRUE), 2),
+    n_samples = n(),
+    .groups = "drop"
+  ) %>%
+  arrange(compound, species, timepoint)
+
+DT::datatable(
+  metabolomics_summary,
+  filter = "top",
+  extensions = c("Buttons", "Scroller"),
+  options = list(
+    dom = "Bfrtip",
+    buttons = c("copy", "csv", "excel"),
+    pageLength = 25,
+    deferRender = TRUE,
+    scrollY = 500,
+    scroller = TRUE,
+    autoWidth = TRUE
+  ),
+  caption = "Metabolomics data summary by compound, species, and timepoint"
+) %>%
+  DT::formatRound(columns = c("mean_value", "sd_value"), digits = 2)
+```
+
+### Metabolomics Time Series Plots
+
+Select compounds to visualize across timepoints:
+
+```{r}
+#| echo: false
+# Create interactive plot for top variable compounds
+top_compounds <- metabolomics_long %>%
+  group_by(compound) %>%
+  summarise(cv = sd(value, na.rm = TRUE) / mean(value, na.rm = TRUE), .groups = "drop") %>%
+  arrange(desc(cv)) %>%
+  slice_head(n = 5) %>%
+  pull(compound)
+
+metabolomics_plot_data <- metabolomics_long %>%
+  filter(compound %in% top_compounds) %>%
+  group_by(compound, species, timepoint) %>%
+  summarise(
+    mean_value = mean(value, na.rm = TRUE),
+    se_value = sd(value, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  ) %>%
+  mutate(timepoint_num = as.numeric(str_extract(timepoint, "[1-4]")))
+
+p_metabolomics <- plot_ly(data = metabolomics_plot_data, 
+                         x = ~timepoint_num, 
+                         y = ~mean_value,
+                         color = ~species,
+                         symbol = ~compound,
+                         type = "scatter",
+                         mode = "lines+markers",
+                         line = list(width = 2),
+                         marker = list(size = 8),
+                         error_y = list(array = ~se_value, color = 'rgba(0,0,0,0.3)'),
+                         hovertemplate = paste(
+                           "<b>%{fullData.name}</b><br>",
+                           "Timepoint: %{x}<br>",
+                           "Mean Value: %{y:.2f}<br>",
+                           "<extra></extra>"
+                         )) %>%
+  layout(
+    title = "Top 5 Most Variable Metabolomics Compounds Across Timepoints",
+    xaxis = list(title = "Timepoint", tickvals = 1:4, ticktext = paste0("TP", 1:4)),
+    yaxis = list(title = "Concentration"),
+    hovermode = "closest"
+  )
+
+p_metabolomics
+```
+
+## Lipidomics Data
+
+### Interactive Lipidomics Table
+
+```{r}
+#| echo: false
+# Create summary table for lipidomics
+lipidomics_summary <- lipidomics_long %>%
+  group_by(lipid, species, timepoint) %>%
+  summarise(
+    mean_value = round(mean(value, na.rm = TRUE), 2),
+    sd_value = round(sd(value, na.rm = TRUE), 2),
+    n_samples = n(),
+    .groups = "drop"
+  ) %>%
+  arrange(lipid, species, timepoint)
+
+DT::datatable(
+  lipidomics_summary,
+  filter = "top",
+  extensions = c("Buttons", "Scroller"),
+  options = list(
+    dom = "Bfrtip",
+    buttons = c("copy", "csv", "excel"),
+    pageLength = 25,
+    deferRender = TRUE,
+    scrollY = 500,
+    scroller = TRUE,
+    autoWidth = TRUE
+  ),
+  caption = "Lipidomics data summary by lipid, species, and timepoint"
+) %>%
+  DT::formatRound(columns = c("mean_value", "sd_value"), digits = 2)
+```
+
+### Lipidomics Time Series Plots
+
+```{r}
+#| echo: false
+# Create interactive plot for top variable lipids
+top_lipids <- lipidomics_long %>%
+  group_by(lipid) %>%
+  summarise(cv = sd(value, na.rm = TRUE) / mean(value, na.rm = TRUE), .groups = "drop") %>%
+  arrange(desc(cv)) %>%
+  slice_head(n = 5) %>%
+  pull(lipid)
+
+lipidomics_plot_data <- lipidomics_long %>%
+  filter(lipid %in% top_lipids) %>%
+  group_by(lipid, species, timepoint) %>%
+  summarise(
+    mean_value = mean(value, na.rm = TRUE),
+    se_value = sd(value, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  ) %>%
+  mutate(timepoint_num = as.numeric(str_extract(timepoint, "[1-4]")))
+
+p_lipidomics <- plot_ly(data = lipidomics_plot_data, 
+                       x = ~timepoint_num, 
+                       y = ~mean_value,
+                       color = ~species,
+                       symbol = ~lipid,
+                       type = "scatter",
+                       mode = "lines+markers",
+                       line = list(width = 2),
+                       marker = list(size = 8),
+                       error_y = list(array = ~se_value, color = 'rgba(0,0,0,0.3)'),
+                       hovertemplate = paste(
+                         "<b>%{fullData.name}</b><br>",
+                         "Timepoint: %{x}<br>",
+                         "Mean Value: %{y:.2f}<br>",
+                         "<extra></extra>"
+                       )) %>%
+  layout(
+    title = "Top 5 Most Variable Lipidomics Compounds Across Timepoints",
+    xaxis = list(title = "Timepoint", tickvals = 1:4, ticktext = paste0("TP", 1:4)),
+    yaxis = list(title = "Concentration"),
+    hovermode = "closest"
+  )
+
+p_lipidomics
+```
+
+## Physiology Data
+
+### Interactive Physiology Table
+
+```{r}
+#| echo: false
+# Create physiology data table with key measurements
+physiology_table <- physiology_clean %>%
+  select(
+    colony_id, species, timepoint, 
+    cre.umol.mgprot, Host_AFDW.mg.cm2, Sym_AFDW.mg.cm2,
+    chla.ug.cm2, chlc2.ug.cm2, prot_ug.cm2, 
+    cells.cm2, calc.umol.cm2.hr
+  ) %>%
+  arrange(species, colony_id, timepoint)
+
+DT::datatable(
+  physiology_table,
+  filter = "top",
+  extensions = c("Buttons", "Scroller"),
+  options = list(
+    dom = "Bfrtip",
+    buttons = c("copy", "csv", "excel"),
+    pageLength = 25,
+    deferRender = TRUE,
+    scrollY = 500,
+    scroller = TRUE,
+    autoWidth = TRUE,
+    scrollX = TRUE
+  ),
+  caption = "Physiology measurements by colony, species, and timepoint"
+) %>%
+  DT::formatRound(columns = 4:ncol(physiology_table), digits = 3)
+```
+
+### Physiology Time Series Plots
+
+```{r}
+#| echo: false
+# Key physiology parameters for plotting
+key_params <- c("cre.umol.mgprot", "chla.ug.cm2", "cells.cm2", "calc.umol.cm2.hr")
+param_labels <- c(
+  "cre.umol.mgprot" = "Respiration (μmol/mg protein)",
+  "chla.ug.cm2" = "Chlorophyll a (μg/cm²)",
+  "cells.cm2" = "Symbiont cells (cells/cm²)",
+  "calc.umol.cm2.hr" = "Calcification (μmol/cm²/hr)"
+)
+
+# Create plots for each parameter
+physiology_plots <- list()
+
+for (param in key_params) {
+  plot_data <- physiology_clean %>%
+    filter(!is.na(.data[[param]])) %>%
+    group_by(species, timepoint) %>%
+    summarise(
+      mean_value = mean(.data[[param]], na.rm = TRUE),
+      se_value = sd(.data[[param]], na.rm = TRUE) / sqrt(n()),
+      .groups = "drop"
+    ) %>%
+    mutate(timepoint_num = as.numeric(str_extract(timepoint, "[1-4]")))
+  
+  physiology_plots[[param]] <- plot_ly(
+    data = plot_data,
+    x = ~timepoint_num,
+    y = ~mean_value,
+    color = ~species,
+    type = "scatter",
+    mode = "lines+markers",
+    line = list(width = 3),
+    marker = list(size = 10),
+    error_y = list(array = ~se_value, color = 'rgba(0,0,0,0.3)'),
+    name = ~species,
+    hovertemplate = paste(
+      "<b>%{fullData.name}</b><br>",
+      "Timepoint: %{x}<br>",
+      "Mean: %{y:.3f}<br>",
+      "<extra></extra>"
+    )
+  ) %>%
+    layout(
+      title = param_labels[param],
+      xaxis = list(title = "Timepoint", tickvals = 1:4, ticktext = paste0("TP", 1:4)),
+      yaxis = list(title = param_labels[param]),
+      showlegend = TRUE
+    )
+}
+
+# Display plots in a subplot
+subplot(
+  physiology_plots, 
+  nrows = 2, 
+  ncols = 2,
+  subplot_titles = param_labels[key_params],
+  shareX = FALSE,
+  shareY = FALSE
+) %>%
+  layout(
+    title = list(text = "Key Physiology Parameters Across Timepoints", y = 0.98),
+    showlegend = TRUE
+  )
+```
+
+## Data Downloads
+
+### Download Raw Data Files
+
+- [Metabolomics Data (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries_molecular/main/M-multi-species/output/metabolomics_count_matrix.csv){download="metabolomics_count_matrix.csv"}
+- [Lipidomics Data (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries_molecular/main/M-multi-species/output/lipid_count_matrix.csv){download="lipid_count_matrix.csv"}
+- [Physiology Data (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries/master/time_series_analysis/Output/master_timeseries.csv){download="master_timeseries.csv"}
+
+### Data Summary
+
+```{r}
+#| echo: false
+cat("Data Overview:\n")
+cat("- Metabolomics: ", nrow(metabolomics), " compounds across ", length(unique(metabolomics_long$sample_id)), " samples\n")
+cat("- Lipidomics: ", nrow(lipidomics), " lipids across ", length(unique(lipidomics_long$sample_id)), " samples\n")
+cat("- Physiology: ", nrow(physiology_clean), " measurements across ", length(unique(physiology_clean$colony_id)), " colonies\n")
+cat("- Species: ", paste(unique(physiology_clean$species), collapse = ", "), "\n")
+cat("- Timepoints: ", paste(sort(unique(physiology_clean$timepoint)), collapse = ", "), "\n")
+```
+
+## Notes
+
+- Data represents measurements across four timepoints (TP1-TP4) for three coral species
+- Metabolomics and lipidomics data show compound/lipid concentrations
+- Physiology data includes key coral health metrics like respiration, chlorophyll, and calcification
+- Interactive tables allow filtering and searching across all parameters
+- Time series plots show trends and variability across timepoints
+- Error bars represent standard error of the mean across biological replicates
