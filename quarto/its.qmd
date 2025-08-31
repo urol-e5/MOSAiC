@@ -45,7 +45,7 @@ its_data_urls <- list(
     species_name = "Acropora pulchra",
     italic_name = "*Acropora pulchra*",
     its1 = "../data/sample_apul_its1.csv",
-    its2 = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/ITS2/apul-its2_counts.csv",
+    its2 = "../data/sample_apul_its2.csv",
     taxonomy = "../data/sample_apul_taxonomy.csv"
   ),
   Peve = list(
