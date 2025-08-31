@@ -1,289 +1,79 @@
 [
   {
-    "objectID": "counts.html",
-    "href": "counts.html",
-    "title": "Expression Values",
+    "objectID": "physiology.html",
+    "href": "physiology.html",
+    "title": "MOSAiC Physiology Data",
     "section": "",
-    "text": "Feature Counts\n\n\n\n\nSpecies\n\n\nGene\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\n\n\n\n\nAcropora pulchra\n\n\n44,371\n\n\n51\n\n\n15,559\n\n\n96,772\n\n\n\n\nPorites evermanni\n\n\n40,389\n\n\n48\n\n\n8,319\n\n\n242,100\n\n\n\n\nPocillopora tuahiniensis\n\n\n31,840\n\n\n40\n\n\n11,236\n\n\n1,991,606\n\n\n\n\n\n\n\n\n\n\n\nConTra\n\n\n\nIf you are excited about analyzing this type of data in contextual manner check out ConTra - Contextual Transcriptome Regulation Analysis",
+    "text": "This page provides interactive visualization and exploration of physiology data from the MOSAiC timeseries study, including metabolomics, lipidomics, and physiological measurements across four timepoints.",
     "crumbs": [
       "Data Files",
-      "Genomic Expression Values"
+      "Physiology Data"
     ]
   },
   {
-    "objectID": "counts.html#summary-of-available-data",
-    "href": "counts.html#summary-of-available-data",
-    "title": "Expression Values",
+    "objectID": "physiology.html#interactive-physiology-data-explorer",
+    "href": "physiology.html#interactive-physiology-data-explorer",
+    "title": "MOSAiC Physiology Data",
     "section": "",
-    "text": "Feature Counts\n\n\n\n\nSpecies\n\n\nGene\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\n\n\n\n\nAcropora pulchra\n\n\n44,371\n\n\n51\n\n\n15,559\n\n\n96,772\n\n\n\n\nPorites evermanni\n\n\n40,389\n\n\n48\n\n\n8,319\n\n\n242,100\n\n\n\n\nPocillopora tuahiniensis\n\n\n31,840\n\n\n40\n\n\n11,236\n\n\n1,991,606\n\n\n\n\n\n\n\n\n\n\n\nConTra\n\n\n\nIf you are excited about analyzing this type of data in contextual manner check out ConTra - Contextual Transcriptome Regulation Analysis",
+    "text": "This page provides interactive visualization and exploration of physiology data from the MOSAiC timeseries study, including metabolomics, lipidomics, and physiological measurements across four timepoints.",
     "crumbs": [
       "Data Files",
-      "Genomic Expression Values"
+      "Physiology Data"
     ]
   },
   {
-    "objectID": "counts.html#about-computational-pipelines",
-    "href": "counts.html#about-computational-pipelines",
-    "title": "Expression Values",
-    "section": "About Computational Pipelines",
-    "text": "About Computational Pipelines\n\nGenesmiRNAlncRNAmCpG\n\n\nThis workflow aligns trimmed RNA-seq reads to a reference genome using HISAT2, followed by transcript assembly and quantification with StringTie, and culminates in the generation of count matrices for downstream expression analysis. Individual sample directories contain BAMs, indexes, GTFs, Ballgown-formatted tables, and alignment statistics, while a MultiQC report aggregates overall alignment quality. The workflow then merges sorted BAMs into a single dataset, compiles a unified transcript GTF from individual assemblies, and uses prepDE to produce gene- and transcript-level count matrices compatible with DESeq2.\n\n\nWorkflow processes sRNA-seq reads through quality control and adapter trimming with fastp, then performs miRNA discovery and quantification using ShortStack 4.1.0. ShortStack aligns trimmed reads to the species-specific genome reference and integrates a curated cnidarian miRBase database for known miRNA annotation. De novo miRNA identification is performed using the --dn_mirna parameter, which predicts novel miRNA loci based on hairpin structure and expression patterns. The pipeline generates comprehensive count matrices across all samples, with only confirmed miRNA loci (MIRNA=“Y” in Results.txt) retained for downstream analysis.\n\n\nWorkflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites), and aligns all samples. Per-sample transcript assemblies are generated with StringTie and merged into a unified GTF, which is then annotated with gffcompare. Putative lncRNAs are filtered from the merged annotations by biotype/class codes (u/x/o/i) and minimum length (&gt;200 nt), sequences are extracted with bedtools, and coding potential is screened with CPC2 to retain noncoding transcripts. The surviving transcripts are converted into a clean BED/GTF set with unique lncRNA_### IDs, deduplicated, sanity-checked (coordinates/lengths), and summarized. Finally, featureCounts quantifies lncRNA features across all BAMs, column names are cleaned, and a filtered count matrix is produced, removing features with &lt;10 counts in &gt;50% of samples.\n\n\nFor EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filtered for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column _processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all _processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.",
+    "objectID": "physiology.html#metabolomics-data",
+    "href": "physiology.html#metabolomics-data",
+    "title": "MOSAiC Physiology Data",
+    "section": "Metabolomics Data",
+    "text": "Metabolomics Data\n\nInteractive Metabolomics Table\nExplore metabolomics data with search and filtering capabilities:\n\n\n\n\n\n\n\n\nMetabolomics Time Series Plots\nSelect compounds to visualize across timepoints:",
     "crumbs": [
       "Data Files",
-      "Genomic Expression Values"
+      "Physiology Data"
     ]
   },
   {
-    "objectID": "counts.html#sample-counts-by-data-type",
-    "href": "counts.html#sample-counts-by-data-type",
-    "title": "Expression Values",
-    "section": "Sample Counts by Data Type",
-    "text": "Sample Counts by Data Type\n\n\n\n\n\n\nSample Counts by Data Type\n\n\n\n\nSpecies\n\n\nGene\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\n\n\n\n\nAcropora pulchra\n\n\n40\n\n\n40\n\n\n40\n\n\n39\n\n\n\n\nPorites evermanni\n\n\n38\n\n\n37\n\n\n38\n\n\n37\n\n\n\n\nPocillopora tuahiniensis\n\n\n39\n\n\n39\n\n\n39\n\n\n32\n\n\n\n\n\n\n\n\n\n\n\nNotes on sample counts\n\n\n\nFor genes (and lncRNA) the sample counts reflects 3 samples were not of quality to sequence.",
+    "objectID": "physiology.html#lipidomics-data",
+    "href": "physiology.html#lipidomics-data",
+    "title": "MOSAiC Physiology Data",
+    "section": "Lipidomics Data",
+    "text": "Lipidomics Data\n\nInteractive Lipidomics Table\n\n\n\n\n\n\n\n\nLipidomics Time Series Plots",
     "crumbs": [
       "Data Files",
-      "Genomic Expression Values"
+      "Physiology Data"
     ]
   },
   {
-    "objectID": "counts.html#gene",
-    "href": "counts.html#gene",
-    "title": "Expression Values",
-    "section": "Gene",
-    "text": "Gene\nDownload Gene\n https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv \nApul_gene (first 4 rows)\n\n\n\n\n\n\ngene_id\n\n\nACR-139-TP1\n\n\nACR-139-TP2\n\n\nACR-139-TP3\n\n\nACR-139-TP4\n\n\nACR-145-TP1\n\n\nACR-145-TP2\n\n\nACR-145-TP3\n\n\nACR-145-TP4\n\n\nACR-150-TP1\n\n\nACR-150-TP2\n\n\nACR-150-TP3\n\n\nACR-150-TP4\n\n\nACR-173-TP1\n\n\nACR-173-TP2\n\n\nACR-173-TP3\n\n\nACR-173-TP4\n\n\nACR-186-TP1\n\n\nACR-186-TP2\n\n\nACR-186-TP3\n\n\nACR-186-TP4\n\n\nACR-225-TP1\n\n\nACR-225-TP2\n\n\nACR-225-TP3\n\n\nACR-225-TP4\n\n\nACR-229-TP1\n\n\nACR-229-TP2\n\n\nACR-229-TP3\n\n\nACR-229-TP4\n\n\nACR-237-TP1\n\n\nACR-237-TP2\n\n\nACR-237-TP3\n\n\nACR-237-TP4\n\n\nACR-244-TP1\n\n\nACR-244-TP2\n\n\nACR-244-TP3\n\n\nACR-244-TP4\n\n\nACR-265-TP1\n\n\nACR-265-TP2\n\n\nACR-265-TP3\n\n\nACR-265-TP4\n\n\n\n\n\n\nFUN_002326\n\n\n3\n\n\n2\n\n\n3\n\n\n4\n\n\n12\n\n\n7\n\n\n7\n\n\n16\n\n\n21\n\n\n3\n\n\n10\n\n\n11\n\n\n19\n\n\n6\n\n\n24\n\n\n17\n\n\n1\n\n\n2\n\n\n2\n\n\n3\n\n\n20\n\n\n15\n\n\n13\n\n\n11\n\n\n2\n\n\n1\n\n\n1\n\n\n0\n\n\n16\n\n\n16\n\n\n14\n\n\n24\n\n\n2\n\n\n1\n\n\n3\n\n\n1\n\n\n18\n\n\n9\n\n\n5\n\n\n12\n\n\n\n\nFUN_002315\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n1\n\n\n1\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n2\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n\n\nFUN_002316\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n2\n\n\n0\n\n\n0\n\n\n2\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n\n\n\n\nFUN_002303\n\n\n10\n\n\n5\n\n\n10\n\n\n10\n\n\n23\n\n\n18\n\n\n20\n\n\n38\n\n\n38\n\n\n6\n\n\n40\n\n\n30\n\n\n73\n\n\n18\n\n\n73\n\n\n31\n\n\n3\n\n\n5\n\n\n4\n\n\n9\n\n\n34\n\n\n54\n\n\n38\n\n\n21\n\n\n2\n\n\n2\n\n\n3\n\n\n1\n\n\n45\n\n\n37\n\n\n36\n\n\n51\n\n\n3\n\n\n4\n\n\n12\n\n\n3\n\n\n31\n\n\n29\n\n\n23\n\n\n23",
+    "objectID": "physiology.html#physiology-data",
+    "href": "physiology.html#physiology-data",
+    "title": "MOSAiC Physiology Data",
+    "section": "Physiology Data",
+    "text": "Physiology Data\n\nInteractive Physiology Table\n\n\n\n\n\n\n\n\nPhysiology Time Series Plots\n\n\n\n\n\nRespiration (μmol/mg protein)\n\n\n\n\nChlorophyll a (μg/cm²)\n\n\n\n\nSymbiont cells (cells/cm²)\n\n\n\n\nCalcification (μmol/cm²/hr)",
     "crumbs": [
       "Data Files",
-      "Genomic Expression Values"
+      "Physiology Data"
     ]
   },
   {
-    "objectID": "counts.html#mirna-1",
-    "href": "counts.html#mirna-1",
-    "title": "Expression Values",
-    "section": "miRNA",
-    "text": "miRNA\nDownload miRNA\n https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt \nApul_mirna (first 4 rows)\n\n\n\n\n\n\nName\n\n\n1A10_ACR-145_TP4\n\n\n1A12_ACR-237_TP3\n\n\n1A1_ACR-173_TP1\n\n\n1A2_ACR-244_TP4\n\n\n1A8_ACR-186_TP2\n\n\n1A9_ACR-244_TP2\n\n\n1B10_ACR-150_TP4\n\n\n1B1_ACR-225_TP3\n\n\n1B2_ACR-173_TP3\n\n\n1B5_ACR-229_TP1\n\n\n1B9_ACR-265_TP4\n\n\n1C10_ACR-173_TP4\n\n\n1C4_ACR-139_TP4\n\n\n1D10_ACR-265_TP2\n\n\n1D3_ACR-225_TP4\n\n\n1D4_ACR-237_TP4\n\n\n1D6_ACR-229_TP2\n\n\n1D8_ACR-237_TP2\n\n\n1D9_ACR-229_TP4\n\n\n1E1_ACR-265_TP3\n\n\n1E3_ACR-150_TP2\n\n\n1E5_ACR-139_TP3\n\n\n1E9_ACR-237_TP1\n\n\n1F11_ACR-173_TP2\n\n\n1F4_ACR-150_TP3\n\n\n1F8_ACR-145_TP3\n\n\n1G5_ACR-244_TP3\n\n\n1H11_ACR-225_TP1\n\n\n1H12_ACR-186_TP3\n\n\n1H6_ACR-225_TP2\n\n\n1H7_ACR-229_TP3\n\n\n1H8_ACR-186_TP4\n\n\n2B2_ACR-145_TP1\n\n\n2B3_ACR-139_TP2\n\n\n2C1_ACR-244_TP1\n\n\n2C2_ACR-139_TP1\n\n\n2D2_ACR-150_TP1\n\n\n2E2_ACR-186_TP1\n\n\n2F1_ACR-265_TP1\n\n\n2G1_ACR-145_TP2\n\n\n\n\n\n\nCluster_1819\n\n\n37\n\n\n35\n\n\n102\n\n\n77\n\n\n84\n\n\n340\n\n\n14\n\n\n19\n\n\n36\n\n\n204\n\n\n25\n\n\n18\n\n\n10\n\n\n96\n\n\n66\n\n\n41\n\n\n195\n\n\n81\n\n\n66\n\n\n19\n\n\n177\n\n\n2\n\n\n19\n\n\n88\n\n\n56\n\n\n23\n\n\n95\n\n\n18\n\n\n33\n\n\n47\n\n\n50\n\n\n28\n\n\n44\n\n\n68\n\n\n57\n\n\n50\n\n\n22\n\n\n24\n\n\n16\n\n\n62\n\n\n\n\nCluster_1832\n\n\n325\n\n\n435\n\n\n1826\n\n\n947\n\n\n1238\n\n\n2174\n\n\n219\n\n\n580\n\n\n547\n\n\n3544\n\n\n223\n\n\n235\n\n\n211\n\n\n618\n\n\n2897\n\n\n978\n\n\n2836\n\n\n645\n\n\n1098\n\n\n265\n\n\n1326\n\n\n45\n\n\n288\n\n\n1527\n\n\n757\n\n\n214\n\n\n2749\n\n\n610\n\n\n439\n\n\n1714\n\n\n805\n\n\n873\n\n\n232\n\n\n1769\n\n\n788\n\n\n1115\n\n\n144\n\n\n211\n\n\n171\n\n\n1032\n\n\n\n\nCluster_1833\n\n\n16\n\n\n52\n\n\n40\n\n\n30\n\n\n6\n\n\n0\n\n\n6\n\n\n27\n\n\n30\n\n\n145\n\n\n6\n\n\n3\n\n\n13\n\n\n0\n\n\n82\n\n\n94\n\n\n30\n\n\n57\n\n\n12\n\n\n21\n\n\n0\n\n\n0\n\n\n19\n\n\n24\n\n\n12\n\n\n7\n\n\n0\n\n\n20\n\n\n11\n\n\n38\n\n\n11\n\n\n42\n\n\n0\n\n\n18\n\n\n53\n\n\n24\n\n\n4\n\n\n0\n\n\n0\n\n\n27\n\n\n\n\nCluster_1836\n\n\n1071\n\n\n2048\n\n\n2334\n\n\n6240\n\n\n8001\n\n\n11364\n\n\n1614\n\n\n2024\n\n\n1577\n\n\n5523\n\n\n1993\n\n\n885\n\n\n1073\n\n\n2737\n\n\n14727\n\n\n10196\n\n\n8094\n\n\n4832\n\n\n4571\n\n\n1210\n\n\n5111\n\n\n747\n\n\n1425\n\n\n4717\n\n\n3174\n\n\n1026\n\n\n4302\n\n\n1059\n\n\n1636\n\n\n6727\n\n\n2155\n\n\n1625\n\n\n1266\n\n\n5844\n\n\n2033\n\n\n2926\n\n\n1267\n\n\n1729\n\n\n656\n\n\n8817",
+    "objectID": "physiology.html#data-downloads",
+    "href": "physiology.html#data-downloads",
+    "title": "MOSAiC Physiology Data",
+    "section": "Data Downloads",
+    "text": "Data Downloads\n\nDownload Raw Data Files\n\nMetabolomics Data (CSV)\nLipidomics Data (CSV)\nPhysiology Data (CSV)\n\n\n\nData Summary\n\n\nData Overview:\n\n\n- Metabolomics:  141  compounds across  96  samples\n\n\n- Lipidomics:  371  lipids across  96  samples\n\n\n- Physiology:  448  measurements across  141  colonies\n\n\n- Species:  Acropora pulchra, Pocillopora tuahiniensis, Porites evermanni \n\n\n- Timepoints:  TP1, TP2, TP3, TP4",
     "crumbs": [
       "Data Files",
-      "Genomic Expression Values"
+      "Physiology Data"
     ]
   },
   {
-    "objectID": "counts.html#lncrna-1",
-    "href": "counts.html#lncrna-1",
-    "title": "Expression Values",
-    "section": "lncRNA",
-    "text": "lncRNA\nDownload lncRNA\n https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt \nApul_lncRNA (first 4 rows)\n\n\n\n\n\n\nGeneid\n\n\nChr\n\n\nStart\n\n\nEnd\n\n\nStrand\n\n\nLength\n\n\nACR-139-TP1\n\n\nACR-139-TP2\n\n\nACR-139-TP3\n\n\nACR-139-TP4\n\n\nACR-145-TP1\n\n\nACR-145-TP2\n\n\nACR-145-TP3\n\n\nACR-145-TP4\n\n\nACR-150-TP1\n\n\nACR-150-TP2\n\n\nACR-150-TP3\n\n\nACR-150-TP4\n\n\nACR-173-TP1\n\n\nACR-173-TP2\n\n\nACR-173-TP3\n\n\nACR-173-TP4\n\n\nACR-186-TP1\n\n\nACR-186-TP2\n\n\nACR-186-TP3\n\n\nACR-186-TP4\n\n\nACR-225-TP1\n\n\nACR-225-TP2\n\n\nACR-225-TP3\n\n\nACR-225-TP4\n\n\nACR-229-TP1\n\n\nACR-229-TP2\n\n\nACR-229-TP3\n\n\nACR-229-TP4\n\n\nACR-237-TP1\n\n\nACR-237-TP2\n\n\nACR-237-TP3\n\n\nACR-237-TP4\n\n\nACR-244-TP1\n\n\nACR-244-TP2\n\n\nACR-244-TP3\n\n\nACR-244-TP4\n\n\nACR-265-TP1\n\n\nACR-265-TP2\n\n\nACR-265-TP3\n\n\nACR-265-TP4\n\n\n\n\n\n\nlncRNA_015\n\n\nntLink_2\n\n\n327086\n\n\n329262\n\n\n+\n\n\n2177\n\n\n113.00\n\n\n2.00\n\n\n2.0\n\n\n114.00\n\n\n154.00\n\n\n20.00\n\n\n90.00\n\n\n106\n\n\n268.0\n\n\n37.00\n\n\n108.00\n\n\n26.00\n\n\n430.00\n\n\n36.00\n\n\n16\n\n\n99.0\n\n\n32\n\n\n7.00\n\n\n29.0\n\n\n37.0\n\n\n15.00\n\n\n267.0\n\n\n43.00\n\n\n8.0\n\n\n4.00\n\n\n45.0\n\n\n107.00\n\n\n66\n\n\n22.00\n\n\n58.0\n\n\n29.00\n\n\n104.0\n\n\n6.0\n\n\n32.0\n\n\n181\n\n\n38.00\n\n\n5.0\n\n\n76.00\n\n\n254\n\n\n43.00\n\n\n\n\nlncRNA_076\n\n\nntLink_6\n\n\n48577\n\n\n50741\n\n\n+\n\n\n2165\n\n\n48.00\n\n\n19.00\n\n\n23.0\n\n\n10.00\n\n\n50.00\n\n\n11.00\n\n\n49.00\n\n\n72\n\n\n33.0\n\n\n44.00\n\n\n19.00\n\n\n0.00\n\n\n13.00\n\n\n38.00\n\n\n24\n\n\n6.0\n\n\n54\n\n\n122.00\n\n\n40.0\n\n\n69.0\n\n\n66.00\n\n\n47.0\n\n\n26.00\n\n\n5.0\n\n\n59.00\n\n\n68.0\n\n\n96.00\n\n\n178\n\n\n42.00\n\n\n60.0\n\n\n23.00\n\n\n4.0\n\n\n116.0\n\n\n109.0\n\n\n58\n\n\n67.00\n\n\n147.0\n\n\n106.00\n\n\n109\n\n\n28.00\n\n\n\n\nlncRNA_077\n\n\nntLink_6\n\n\n191068\n\n\n194203\n\n\n+\n\n\n3136\n\n\n648.25\n\n\n694.75\n\n\n958.5\n\n\n764.75\n\n\n846.25\n\n\n488.75\n\n\n1035.25\n\n\n585\n\n\n719.5\n\n\n590.75\n\n\n671.25\n\n\n839.75\n\n\n622.75\n\n\n417.75\n\n\n1084\n\n\n848.5\n\n\n625\n\n\n932.08\n\n\n1325.5\n\n\n888.5\n\n\n870.75\n\n\n711.5\n\n\n947.75\n\n\n782.5\n\n\n929.25\n\n\n914.5\n\n\n837.25\n\n\n786\n\n\n1060.75\n\n\n680.2\n\n\n672.75\n\n\n1327.5\n\n\n697.5\n\n\n834.5\n\n\n823\n\n\n1132.75\n\n\n1188.5\n\n\n812.25\n\n\n735\n\n\n982.25\n\n\n\n\nlncRNA_078\n\n\nntLink_6\n\n\n191227\n\n\n194203\n\n\n+\n\n\n2977\n\n\n648.25\n\n\n694.75\n\n\n958.5\n\n\n764.75\n\n\n846.25\n\n\n488.75\n\n\n1035.25\n\n\n585\n\n\n719.5\n\n\n590.75\n\n\n671.25\n\n\n839.75\n\n\n622.75\n\n\n417.75\n\n\n1084\n\n\n848.5\n\n\n625\n\n\n931.08\n\n\n1325.5\n\n\n888.5\n\n\n870.75\n\n\n711.5\n\n\n947.75\n\n\n782.5\n\n\n929.25\n\n\n914.5\n\n\n837.25\n\n\n786\n\n\n1060.75\n\n\n680.2\n\n\n672.75\n\n\n1327.5\n\n\n697.5\n\n\n834.5\n\n\n823\n\n\n1132.75\n\n\n1188.5\n\n\n812.25\n\n\n735\n\n\n982.25",
+    "objectID": "physiology.html#notes",
+    "href": "physiology.html#notes",
+    "title": "MOSAiC Physiology Data",
+    "section": "Notes",
+    "text": "Notes\n\nData represents measurements across four timepoints (TP1-TP4) for three coral species\nMetabolomics and lipidomics data show compound/lipid concentrations\nPhysiology data includes key coral health metrics like respiration, chlorophyll, and calcification\nInteractive tables allow filtering and searching across all parameters\nTime series plots show trends and variability across timepoints\nError bars represent standard error of the mean across biological replicates",
     "crumbs": [
       "Data Files",
-      "Genomic Expression Values"
-    ]
-  },
-  {
-    "objectID": "counts.html#mcpg-percentage",
-    "href": "counts.html#mcpg-percentage",
-    "title": "Expression Values",
-    "section": "mCpG Percentage",
-    "text": "mCpG Percentage\nDownload mCpG Percentage\n https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv \nApul_mCpG (first 4 rows)\n\n\n\n\n\n\nCpG\n\n\nACR-145-TP3\n\n\nACR-265-TP4\n\n\nACR-139-TP3\n\n\nACR-244-TP1\n\n\nACR-237-TP1\n\n\nACR-265-TP3\n\n\nACR-186-TP4\n\n\nACR-186-TP2\n\n\nACR-244-TP4\n\n\nACR-225-TP3\n\n\nACR-139-TP2\n\n\nACR-186-TP1\n\n\nACR-145-TP1\n\n\nACR-145-TP4\n\n\nACR-225-TP4\n\n\nACR-173-TP3\n\n\nACR-150-TP4\n\n\nACR-173-TP1\n\n\nACR-173-TP2\n\n\nACR-237-TP3\n\n\nACR-265-TP1\n\n\nACR-186-TP3\n\n\nACR-229-TP1\n\n\nACR-229-TP2\n\n\nACR-150-TP3\n\n\nACR-173-TP4\n\n\nACR-225-TP2\n\n\nACR-244-TP2\n\n\nACR-150-TP2\n\n\nACR-237-TP2\n\n\nACR-265-TP2\n\n\nACR-229-TP4\n\n\nACR-244-TP3\n\n\nACR-150-TP1\n\n\nACR-139-TP1\n\n\nACR-145-TP2\n\n\nACR-139-TP4\n\n\nACR-229-TP3\n\n\nACR-237-TP4\n\n\n\n\n\n\nCpG_ntLink_1_116302\n\n\n31.428571\n\n\n37.209302\n\n\n33.92857\n\n\n68.96552\n\n\n33.75000\n\n\n36.84210\n\n\n28.00000\n\n\n19.04762\n\n\n49.39759\n\n\n41.11111\n\n\n31.34328\n\n\n7.692308\n\n\n28.37838\n\n\n22.36842\n\n\n44.59459\n\n\n30.0000\n\n\n30.90909\n\n\n28.57143\n\n\n24.13793\n\n\n40.84507\n\n\n22.58065\n\n\n10.526316\n\n\n14.04959\n\n\n15.95745\n\n\n32.69231\n\n\n6.060606\n\n\n48.48485\n\n\n61.11111\n\n\n36.58537\n\n\n38.46154\n\n\n34.883721\n\n\n19.696970\n\n\n55.26316\n\n\n32.63158\n\n\n29.88506\n\n\n22.78481\n\n\n38.59649\n\n\n24.07407\n\n\n44.30380\n\n\n\n\nCpG_ntLink_1_116382\n\n\n10.204082\n\n\n10.869565\n\n\n22.22222\n\n\n43.75000\n\n\n36.15385\n\n\n29.72973\n\n\n22.09302\n\n\n12.14953\n\n\n42.46575\n\n\n29.12088\n\n\n23.77049\n\n\n9.259259\n\n\n14.45087\n\n\n21.47651\n\n\n34.75610\n\n\n13.7931\n\n\n26.43678\n\n\n22.41379\n\n\n27.77778\n\n\n32.38095\n\n\n15.00000\n\n\n22.857143\n\n\n10.69519\n\n\n13.46154\n\n\n30.48781\n\n\n8.510638\n\n\n35.55556\n\n\n46.21849\n\n\n38.97059\n\n\n32.91139\n\n\n9.302326\n\n\n13.178295\n\n\n52.38095\n\n\n28.35821\n\n\n21.87500\n\n\n18.18182\n\n\n16.86747\n\n\n18.47826\n\n\n33.33333\n\n\n\n\nCpG_ntLink_1_116388\n\n\n6.818182\n\n\n8.333333\n\n\n19.65812\n\n\n44.14414\n\n\n33.62832\n\n\n26.47059\n\n\n17.28395\n\n\n11.53846\n\n\n40.00000\n\n\n26.06061\n\n\n23.68421\n\n\n8.256881\n\n\n11.04294\n\n\n19.58042\n\n\n30.62500\n\n\n17.5000\n\n\n23.07692\n\n\n21.49533\n\n\n20.68965\n\n\n31.91489\n\n\n10.52632\n\n\n13.333333\n\n\n10.91954\n\n\n11.25828\n\n\n29.22078\n\n\n5.747126\n\n\n30.95238\n\n\n37.83784\n\n\n36.97479\n\n\n31.97279\n\n\n7.792208\n\n\n9.322034\n\n\n30.55556\n\n\n24.30939\n\n\n15.92920\n\n\n11.57025\n\n\n16.88312\n\n\n14.11765\n\n\n27.27273\n\n\n\n\nCpG_ntLink_1_116391\n\n\n9.523810\n\n\n11.764706\n\n\n17.39130\n\n\n39.81482\n\n\n32.14286\n\n\n29.29293\n\n\n13.75000\n\n\n15.00000\n\n\n35.03650\n\n\n27.32919\n\n\n21.92983\n\n\n7.547170\n\n\n11.04294\n\n\n18.18182\n\n\n31.67702\n\n\n15.0000\n\n\n26.31579\n\n\n17.92453\n\n\n21.42857\n\n\n31.52174\n\n\n13.15789\n\n\n3.571429\n\n\n10.52632\n\n\n14.00000\n\n\n29.80132\n\n\n11.764706\n\n\n32.50000\n\n\n35.77982\n\n\n37.81513\n\n\n31.50685\n\n\n9.090909\n\n\n9.565217\n\n\n42.85714\n\n\n23.59551\n\n\n19.81982\n\n\n10.74380\n\n\n14.28571\n\n\n10.58823\n\n\n26.44628",
-    "crumbs": [
-      "Data Files",
-      "Genomic Expression Values"
-    ]
-  },
-  {
-    "objectID": "counts.html#gene-1",
-    "href": "counts.html#gene-1",
-    "title": "Expression Values",
-    "section": "Gene",
-    "text": "Gene\nDownload Gene\n https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv \nPeve_gene (first 4 rows)\n\n\n\n\n\n\ngene_id\n\n\nPOR-216-TP1\n\n\nPOR-216-TP2\n\n\nPOR-216-TP3\n\n\nPOR-216-TP4\n\n\nPOR-236-TP1\n\n\nPOR-236-TP2\n\n\nPOR-245-TP1\n\n\nPOR-245-TP2\n\n\nPOR-245-TP3\n\n\nPOR-245-TP4\n\n\nPOR-260-TP1\n\n\nPOR-260-TP2\n\n\nPOR-260-TP3\n\n\nPOR-260-TP4\n\n\nPOR-262-TP1\n\n\nPOR-262-TP2\n\n\nPOR-262-TP3\n\n\nPOR-262-TP4\n\n\nPOR-69-TP1\n\n\nPOR-69-TP2\n\n\nPOR-69-TP3\n\n\nPOR-69-TP4\n\n\nPOR-72-TP1\n\n\nPOR-72-TP2\n\n\nPOR-72-TP3\n\n\nPOR-72-TP4\n\n\nPOR-73-TP1\n\n\nPOR-73-TP2\n\n\nPOR-73-TP3\n\n\nPOR-73-TP4\n\n\nPOR-74-TP1\n\n\nPOR-74-TP2\n\n\nPOR-74-TP3\n\n\nPOR-74-TP4\n\n\nPOR-83-TP1\n\n\nPOR-83-TP2\n\n\nPOR-83-TP3\n\n\nPOR-83-TP4\n\n\n\n\n\n\ngene-Peve_00000032\n\n\n29\n\n\n75\n\n\n63\n\n\n25\n\n\n82\n\n\n39\n\n\n25\n\n\n23\n\n\n7\n\n\n44\n\n\n42\n\n\n20\n\n\n13\n\n\n28\n\n\n35\n\n\n78\n\n\n108\n\n\n67\n\n\n43\n\n\n25\n\n\n30\n\n\n19\n\n\n38\n\n\n30\n\n\n34\n\n\n65\n\n\n21\n\n\n9\n\n\n23\n\n\n27\n\n\n14\n\n\n28\n\n\n15\n\n\n9\n\n\n63\n\n\n11\n\n\n33\n\n\n27\n\n\n\n\ngene-Peve_00000122\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n\n\n1\n\n\n1\n\n\n0\n\n\n1\n\n\n1\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n1\n\n\n1\n\n\n0\n\n\n0\n\n\n1\n\n\n1\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n1\n\n\n0\n\n\n0\n\n\n2\n\n\n1\n\n\n1\n\n\n1\n\n\n\n\ngene-Peve_00000008\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n19\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n4\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n\n\ngene-Peve_00000117\n\n\n13\n\n\n13\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n2\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n5\n\n\n0",
-    "crumbs": [
-      "Data Files",
-      "Genomic Expression Values"
-    ]
-  },
-  {
-    "objectID": "counts.html#mirna-2",
-    "href": "counts.html#mirna-2",
-    "title": "Expression Values",
-    "section": "miRNA",
-    "text": "miRNA\nDownload miRNA\n https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt \nPeve_mirna (first 4 rows)\n\n\n\n\n\n\nName\n\n\n1A11_POR-216_TP2\n\n\n1A7_POR-73_TP1\n\n\n1B3_POR-83_TP3\n\n\n1B4_POR-72_TP1\n\n\n1B6_POR-260_TP4\n\n\n1B7_POR-245_TP2\n\n\n1C11_POR-74_TP4\n\n\n1C12_POR-72_TP3\n\n\n1C5_POR-73_TP3\n\n\n1C6_POR-262_TP2\n\n\n1D12_POR-260_TP2\n\n\n1D1_POR-245_TP4\n\n\n1D2_POR-245_TP1\n\n\n1D5_POR-260_TP1\n\n\n1D7_POR-74_TP1\n\n\n1E7_POR-69_TP4\n\n\n1F10_POR-260_TP3\n\n\n1F12_POR-72_TP4\n\n\n1F1_POR-73_TP2\n\n\n1F3_POR-83_TP2\n\n\n1F6_POR-69_TP1\n\n\n1F7_POR-83_TP4\n\n\n1G10_POR-74_TP2\n\n\n1G1_POR-262_TP1\n\n\n1G3_POR-74_TP3\n\n\n1H1_POR-245_TP3\n\n\n1H2_POR-73_TP4\n\n\n1H3_POR-83_TP1\n\n\n2A3_POR-262_TP4\n\n\n2B1_POR-72_TP2\n\n\n2D1_POR-236_TP1\n\n\n2D3_POR-262_TP3\n\n\n2E1_POR-216_TP3\n\n\n2E3_POR-236_TP2\n\n\n2F2_POR-216_TP4\n\n\n2H1_POR-69_TP2\n\n\n2H2_POR-216_TP1\n\n\n\n\n\n\nCluster_27\n\n\n456\n\n\n1436\n\n\n1\n\n\n301\n\n\n163\n\n\n21\n\n\n0\n\n\n95\n\n\n4904\n\n\n1\n\n\n70\n\n\n119\n\n\n2590\n\n\n1391\n\n\n759\n\n\n8\n\n\n484\n\n\n3162\n\n\n41\n\n\n5934\n\n\n3894\n\n\n285\n\n\n664\n\n\n3862\n\n\n37\n\n\n139\n\n\n31\n\n\n62\n\n\n0\n\n\n1125\n\n\n2249\n\n\n0\n\n\n990\n\n\n0\n\n\n1\n\n\n0\n\n\n1459\n\n\n\n\nCluster_491\n\n\n90\n\n\n301\n\n\n0\n\n\n565\n\n\n50\n\n\n5\n\n\n0\n\n\n55\n\n\n1507\n\n\n0\n\n\n12\n\n\n124\n\n\n2370\n\n\n429\n\n\n660\n\n\n6\n\n\n300\n\n\n1416\n\n\n19\n\n\n1653\n\n\n869\n\n\n107\n\n\n264\n\n\n1452\n\n\n17\n\n\n86\n\n\n21\n\n\n45\n\n\n0\n\n\n1104\n\n\n766\n\n\n0\n\n\n1177\n\n\n0\n\n\n2\n\n\n0\n\n\n1243\n\n\n\n\nCluster_661\n\n\n7577\n\n\n5129\n\n\n4\n\n\n4481\n\n\n1440\n\n\n113\n\n\n0\n\n\n3805\n\n\n72664\n\n\n5\n\n\n173\n\n\n239\n\n\n98732\n\n\n6002\n\n\n5436\n\n\n43\n\n\n9308\n\n\n194341\n\n\n388\n\n\n56469\n\n\n21428\n\n\n2500\n\n\n67803\n\n\n58565\n\n\n754\n\n\n2059\n\n\n712\n\n\n564\n\n\n1\n\n\n13887\n\n\n23588\n\n\n0\n\n\n6607\n\n\n0\n\n\n3\n\n\n0\n\n\n11450\n\n\n\n\nCluster_670\n\n\n21\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n7\n\n\n72\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n3\n\n\n25\n\n\n0\n\n\n30\n\n\n0\n\n\n0\n\n\n354\n\n\n0\n\n\n2\n\n\n0\n\n\n178\n\n\n0\n\n\n16\n\n\n6\n\n\n10\n\n\n0\n\n\n21\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n18",
-    "crumbs": [
-      "Data Files",
-      "Genomic Expression Values"
-    ]
-  },
-  {
-    "objectID": "counts.html#lncrna-2",
-    "href": "counts.html#lncrna-2",
-    "title": "Expression Values",
-    "section": "lncRNA",
-    "text": "lncRNA\nDownload lncRNA\n https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA_counts.clean.filtered.txt \nPeve_lncRNA (first 4 rows)\n\n\n\n\n\n\nGeneid\n\n\nChr\n\n\nStart\n\n\nEnd\n\n\nStrand\n\n\nLength\n\n\nPOR-216-TP1\n\n\nPOR-216-TP2\n\n\nPOR-216-TP3\n\n\nPOR-216-TP4\n\n\nPOR-236-TP1\n\n\nPOR-236-TP2\n\n\nPOR-245-TP1\n\n\nPOR-245-TP2\n\n\nPOR-245-TP3\n\n\nPOR-245-TP4\n\n\nPOR-260-TP1\n\n\nPOR-260-TP2\n\n\nPOR-260-TP3\n\n\nPOR-260-TP4\n\n\nPOR-262-TP1\n\n\nPOR-262-TP2\n\n\nPOR-262-TP3\n\n\nPOR-262-TP4\n\n\nPOR-69-TP1\n\n\nPOR-69-TP2\n\n\nPOR-69-TP3\n\n\nPOR-69-TP4\n\n\nPOR-72-TP1\n\n\nPOR-72-TP2\n\n\nPOR-72-TP3\n\n\nPOR-72-TP4\n\n\nPOR-73-TP1\n\n\nPOR-73-TP2\n\n\nPOR-73-TP3\n\n\nPOR-73-TP4\n\n\nPOR-74-TP1\n\n\nPOR-74-TP2\n\n\nPOR-74-TP3\n\n\nPOR-74-TP4\n\n\nPOR-83-TP1\n\n\nPOR-83-TP2\n\n\nPOR-83-TP3\n\n\nPOR-83-TP4\n\n\n\n\n\n\nlncRNA_008\n\n\nPorites_evermani_scaffold_1\n\n\n673926\n\n\n676113\n\n\n+\n\n\n2188\n\n\n57\n\n\n44.0\n\n\n55\n\n\n24\n\n\n81\n\n\n20\n\n\n62.25\n\n\n37.75\n\n\n6.5\n\n\n94.5\n\n\n38.92\n\n\n11.0\n\n\n21.5\n\n\n28.75\n\n\n56.5\n\n\n100.5\n\n\n62.75\n\n\n72.25\n\n\n59.25\n\n\n27.25\n\n\n25.25\n\n\n29.0\n\n\n155.25\n\n\n64.75\n\n\n63.75\n\n\n77.5\n\n\n42\n\n\n27\n\n\n14.5\n\n\n22.75\n\n\n34.33\n\n\n15.0\n\n\n31.75\n\n\n14.75\n\n\n101.5\n\n\n13.25\n\n\n21.75\n\n\n48.75\n\n\n\n\nlncRNA_009\n\n\nPorites_evermani_scaffold_1\n\n\n673941\n\n\n676113\n\n\n+\n\n\n2173\n\n\n57\n\n\n44.0\n\n\n55\n\n\n24\n\n\n81\n\n\n20\n\n\n62.25\n\n\n37.75\n\n\n6.5\n\n\n94.5\n\n\n38.92\n\n\n11.0\n\n\n21.5\n\n\n28.75\n\n\n56.5\n\n\n100.5\n\n\n62.75\n\n\n71.75\n\n\n59.25\n\n\n27.25\n\n\n25.25\n\n\n29.0\n\n\n155.25\n\n\n64.75\n\n\n63.75\n\n\n77.5\n\n\n42\n\n\n27\n\n\n14.5\n\n\n22.75\n\n\n34.33\n\n\n15.0\n\n\n31.75\n\n\n14.75\n\n\n101.5\n\n\n13.25\n\n\n21.75\n\n\n48.75\n\n\n\n\nlncRNA_010\n\n\nPorites_evermani_scaffold_1\n\n\n673950\n\n\n676113\n\n\n+\n\n\n2164\n\n\n57\n\n\n44.0\n\n\n55\n\n\n24\n\n\n81\n\n\n20\n\n\n62.25\n\n\n37.75\n\n\n6.5\n\n\n94.5\n\n\n38.92\n\n\n11.0\n\n\n21.5\n\n\n28.75\n\n\n56.5\n\n\n100.5\n\n\n62.75\n\n\n71.75\n\n\n59.25\n\n\n27.25\n\n\n25.25\n\n\n29.0\n\n\n155.25\n\n\n64.75\n\n\n63.75\n\n\n77.5\n\n\n42\n\n\n27\n\n\n14.5\n\n\n22.75\n\n\n34.33\n\n\n15.0\n\n\n31.75\n\n\n14.75\n\n\n101.5\n\n\n13.25\n\n\n21.75\n\n\n48.75\n\n\n\n\nlncRNA_011\n\n\nPorites_evermani_scaffold_1\n\n\n703501\n\n\n725784\n\n\n+\n\n\n22284\n\n\n9435\n\n\n1153.5\n\n\n369\n\n\n690\n\n\n833\n\n\n362\n\n\n4372.50\n\n\n346.50\n\n\n249.5\n\n\n306.0\n\n\n2273.17\n\n\n243.5\n\n\n1397.0\n\n\n1631.50\n\n\n1419.0\n\n\n596.5\n\n\n852.00\n\n\n682.00\n\n\n5023.00\n\n\n828.00\n\n\n103.50\n\n\n1254.5\n\n\n973.00\n\n\n4401.50\n\n\n526.50\n\n\n7395.0\n\n\n74\n\n\n1307\n\n\n203.5\n\n\n3759.50\n\n\n3442.83\n\n\n1018.5\n\n\n744.00\n\n\n4214.50\n\n\n995.5\n\n\n8153.00\n\n\n69.50\n\n\n4554.50",
-    "crumbs": [
-      "Data Files",
-      "Genomic Expression Values"
-    ]
-  },
-  {
-    "objectID": "counts.html#mcpg-percentage-1",
-    "href": "counts.html#mcpg-percentage-1",
-    "title": "Expression Values",
-    "section": "mCpG Percentage",
-    "text": "mCpG Percentage\nDownload mCpG Percentage\n https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv \nPeve_mCpG (first 4 rows)\n\n\n\n\n\n\nCpG\n\n\nPOR-216-TP4\n\n\nPOR-245-TP2\n\n\nPOR-73-TP3\n\n\nPOR-69-TP1\n\n\nPOR-216-TP3\n\n\nPOR-74-TP3\n\n\nPOR-69-TP2\n\n\nPOR-83-TP2\n\n\nPOR-73-TP4\n\n\nPOR-260-TP2\n\n\nPOR-216-TP2\n\n\nPOR-72-TP2\n\n\nPOR-236-TP2\n\n\nPOR-260-TP3\n\n\nPOR-72-TP1\n\n\nPOR-262-TP2\n\n\nPOR-236-TP1\n\n\nPOR-72-TP4\n\n\nPOR-262-TP1\n\n\nPOR-245-TP1\n\n\nPOR-69-TP4\n\n\nPOR-83-TP4\n\n\nPOR-83-TP3\n\n\nPOR-216-TP1\n\n\nPOR-72-TP3\n\n\nPOR-245-TP3\n\n\nPOR-260-TP4\n\n\nPOR-74-TP2\n\n\nPOR-260-TP1\n\n\nPOR-74-TP4\n\n\nPOR-245-TP4\n\n\nPOR-69-TP3\n\n\nPOR-74-TP1\n\n\nPOR-73-TP1\n\n\nPOR-83-TP1\n\n\nPOR-262-TP3\n\n\nPOR-262-TP4\n\n\n\n\n\n\nCpG_Porites_evermani_scaffold_1000_19265\n\n\n47.72727\n\n\n31.25000\n\n\n36.363636\n\n\n33.33333\n\n\n59.090909\n\n\n40.909091\n\n\n37.5\n\n\n40.000000\n\n\n54.761905\n\n\n55\n\n\n62.96296\n\n\n60.869565\n\n\n47.058824\n\n\n52.380952\n\n\n50.00000\n\n\n62.96296\n\n\n58.33333\n\n\n67.647059\n\n\n47.826087\n\n\n58.82353\n\n\n47.61905\n\n\n50.000000\n\n\n54.54545\n\n\n50.00000\n\n\n51.724138\n\n\n45.00000\n\n\n54.54545\n\n\n55.555556\n\n\n64.285714\n\n\n20.000000\n\n\n58.333333\n\n\n43.24324\n\n\n61.111111\n\n\n57.692308\n\n\n48.484848\n\n\n69.696970\n\n\n60.00000\n\n\n\n\nCpG_Porites_evermani_scaffold_1000_19482\n\n\n48.00000\n\n\n40.00000\n\n\n29.166667\n\n\n62.50000\n\n\n52.631579\n\n\n10.000000\n\n\n50.0\n\n\n33.333333\n\n\n32.500000\n\n\n20\n\n\n17.64706\n\n\n62.500000\n\n\n41.176471\n\n\n30.769231\n\n\n33.33333\n\n\n60.00000\n\n\n60.00000\n\n\n28.000000\n\n\n46.666667\n\n\n30.43478\n\n\n57.14286\n\n\n43.750000\n\n\n47.82609\n\n\n46.15385\n\n\n42.105263\n\n\n44.44444\n\n\n25.00000\n\n\n50.000000\n\n\n45.833333\n\n\n45.454545\n\n\n32.142857\n\n\n45.16129\n\n\n30.769231\n\n\n29.166667\n\n\n50.000000\n\n\n48.484848\n\n\n46.42857\n\n\n\n\nCpG_Porites_evermani_scaffold_1000_62732\n\n\n0.00000\n\n\n0.00000\n\n\n0.000000\n\n\n0.00000\n\n\n0.000000\n\n\n0.000000\n\n\n0.0\n\n\n0.000000\n\n\n0.000000\n\n\n0\n\n\n0.00000\n\n\n0.000000\n\n\n0.000000\n\n\n5.555556\n\n\n0.00000\n\n\n0.00000\n\n\n0.00000\n\n\n3.333333\n\n\n2.941176\n\n\n0.00000\n\n\n0.00000\n\n\n3.571429\n\n\n0.00000\n\n\n0.00000\n\n\n0.000000\n\n\n0.00000\n\n\n0.00000\n\n\n4.166667\n\n\n0.000000\n\n\n3.571429\n\n\n6.666667\n\n\n0.00000\n\n\n5.263158\n\n\n0.000000\n\n\n0.000000\n\n\n0.000000\n\n\n0.00000\n\n\n\n\nCpG_Porites_evermani_scaffold_1000_62767\n\n\n10.20408\n\n\n10.52632\n\n\n5.882353\n\n\n0.00000\n\n\n2.222222\n\n\n5.714286\n\n\n0.0\n\n\n6.818182\n\n\n2.631579\n\n\n4\n\n\n5.00000\n\n\n2.631579\n\n\n5.714286\n\n\n0.000000\n\n\n6.25000\n\n\n0.00000\n\n\n21.73913\n\n\n5.555556\n\n\n5.263158\n\n\n11.11111\n\n\n0.00000\n\n\n2.777778\n\n\n7.50000\n\n\n13.51351\n\n\n8.571429\n\n\n13.63636\n\n\n12.12121\n\n\n4.166667\n\n\n5.405405\n\n\n3.225806\n\n\n0.000000\n\n\n0.00000\n\n\n8.695652\n\n\n8.695652\n\n\n6.666667\n\n\n9.302326\n\n\n0.00000",
-    "crumbs": [
-      "Data Files",
-      "Genomic Expression Values"
-    ]
-  },
-  {
-    "objectID": "counts.html#gene-2",
-    "href": "counts.html#gene-2",
-    "title": "Expression Values",
-    "section": "Gene",
-    "text": "Gene\nDownload Gene\n https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv \nPtuh_gene (first 4 rows)\n\n\n\n\n\n\ngene_id\n\n\nPOC-201-TP1\n\n\nPOC-201-TP2\n\n\nPOC-201-TP3\n\n\nPOC-219-TP1\n\n\nPOC-219-TP2\n\n\nPOC-219-TP3\n\n\nPOC-219-TP4\n\n\nPOC-222-TP1\n\n\nPOC-222-TP2\n\n\nPOC-222-TP3\n\n\nPOC-222-TP4\n\n\nPOC-255-TP1\n\n\nPOC-255-TP2\n\n\nPOC-255-TP3\n\n\nPOC-255-TP4\n\n\nPOC-259-TP1\n\n\nPOC-259-TP2\n\n\nPOC-259-TP3\n\n\nPOC-259-TP4\n\n\nPOC-40-TP1\n\n\nPOC-40-TP2\n\n\nPOC-40-TP3\n\n\nPOC-40-TP4\n\n\nPOC-42-TP1\n\n\nPOC-42-TP2\n\n\nPOC-42-TP3\n\n\nPOC-42-TP4\n\n\nPOC-52-TP1\n\n\nPOC-52-TP2\n\n\nPOC-52-TP3\n\n\nPOC-52-TP4\n\n\nPOC-53-TP1\n\n\nPOC-53-TP2\n\n\nPOC-53-TP3\n\n\nPOC-53-TP4\n\n\nPOC-57-TP1\n\n\nPOC-57-TP2\n\n\nPOC-57-TP3\n\n\nPOC-57-TP4\n\n\n\n\n\n\ngene-Pocillopora_meandrina_HIv1___RNAseq.g20905.t1\n\n\n54\n\n\n170\n\n\n18\n\n\n168\n\n\n31\n\n\n11\n\n\n70\n\n\n296\n\n\n51\n\n\n388\n\n\n33\n\n\n72\n\n\n84\n\n\n36\n\n\n65\n\n\n294\n\n\n226\n\n\n47\n\n\n140\n\n\n60\n\n\n7\n\n\n56\n\n\n47\n\n\n42\n\n\n31\n\n\n28\n\n\n0\n\n\n0\n\n\n52\n\n\n99\n\n\n157\n\n\n84\n\n\n39\n\n\n162\n\n\n61\n\n\n17\n\n\n51\n\n\n177\n\n\n206\n\n\n\n\ngene-Pocillopora_meandrina_HIv1___RNAseq.g20902.t1\n\n\n957\n\n\n759\n\n\n143\n\n\n757\n\n\n446\n\n\n96\n\n\n399\n\n\n664\n\n\n304\n\n\n1627\n\n\n521\n\n\n385\n\n\n432\n\n\n248\n\n\n847\n\n\n722\n\n\n969\n\n\n559\n\n\n900\n\n\n384\n\n\n323\n\n\n715\n\n\n473\n\n\n537\n\n\n519\n\n\n338\n\n\n43\n\n\n61\n\n\n517\n\n\n835\n\n\n1374\n\n\n831\n\n\n439\n\n\n1084\n\n\n481\n\n\n545\n\n\n234\n\n\n921\n\n\n899\n\n\n\n\ngene-Pocillopora_meandrina_HIv1___RNAseq.g20903.t1\n\n\n249\n\n\n452\n\n\n381\n\n\n501\n\n\n218\n\n\n120\n\n\n289\n\n\n240\n\n\n229\n\n\n482\n\n\n223\n\n\n106\n\n\n250\n\n\n811\n\n\n506\n\n\n571\n\n\n341\n\n\n603\n\n\n446\n\n\n150\n\n\n120\n\n\n273\n\n\n166\n\n\n185\n\n\n107\n\n\n115\n\n\n249\n\n\n284\n\n\n167\n\n\n341\n\n\n467\n\n\n320\n\n\n154\n\n\n393\n\n\n209\n\n\n287\n\n\n235\n\n\n502\n\n\n415\n\n\n\n\ngene-Pocillopora_meandrina_HIv1___TS.g25664.t1\n\n\n365\n\n\n191\n\n\n13\n\n\n73\n\n\n64\n\n\n0\n\n\n110\n\n\n719\n\n\n186\n\n\n215\n\n\n111\n\n\n489\n\n\n118\n\n\n0\n\n\n98\n\n\n109\n\n\n287\n\n\n91\n\n\n109\n\n\n259\n\n\n215\n\n\n114\n\n\n420\n\n\n370\n\n\n521\n\n\n275\n\n\n23\n\n\n46\n\n\n216\n\n\n76\n\n\n100\n\n\n111\n\n\n180\n\n\n183\n\n\n139\n\n\n305\n\n\n96\n\n\n88\n\n\n274",
-    "crumbs": [
-      "Data Files",
-      "Genomic Expression Values"
-    ]
-  },
-  {
-    "objectID": "counts.html#mirna-3",
-    "href": "counts.html#mirna-3",
-    "title": "Expression Values",
-    "section": "miRNA",
-    "text": "miRNA\nDownload miRNA\n https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt \nPtuh_mirna (first 4 rows)\n\n\n\n\n\n\nName\n\n\n1A3_POC-255_TP1\n\n\n1A4_POC-52_TP1\n\n\n1A5_POC-53_TP3\n\n\n1A6_POC-52_TP3\n\n\n1B11_POC-40_TP1\n\n\n1B12_POC-222_TP2\n\n\n1B8_POC-201_TP1\n\n\n1C1_POC-57_TP2\n\n\n1C2_POC-222_TP4\n\n\n1C3_POC-222_TP3\n\n\n1C7_POC-52_TP4\n\n\n1C8_POC-42_TP1\n\n\n1C9_POC-222_TP1\n\n\n1D11_POC-255_TP3\n\n\n1E10_POC-40_TP2\n\n\n1E11_POC-219_TP1\n\n\n1E12_POC-255_TP4\n\n\n1E4_POC-259_TP2\n\n\n1E6_POC-40_TP3\n\n\n1E8_POC-42_TP3\n\n\n1F2_POC-259_TP4\n\n\n1F5_POC-40_TP4\n\n\n1F9_POC-52_TP2\n\n\n1G11_POC-53_TP1\n\n\n1G12_POC-219_TP4\n\n\n1G2_POC-219_TP3\n\n\n1G4_POC-57_TP3\n\n\n1G6_POC-53_TP2\n\n\n1G7_POC-42_TP4\n\n\n1G8_POC-259_TP3\n\n\n1G9_POC-259_TP1\n\n\n1H10_POC-201_TP2\n\n\n1H4_POC-42_TP2\n\n\n1H5_POC-201_TP3\n\n\n1H9_POC-53_TP4\n\n\n2A1_POC-219_TP2\n\n\n2A2_POC-255_TP2\n\n\n2C3_POC-57_TP1\n\n\n2G2_POC-57_TP4\n\n\n\n\n\n\nCluster_4\n\n\n337\n\n\n0\n\n\n7\n\n\n32\n\n\n45\n\n\n150\n\n\n20\n\n\n120\n\n\n6\n\n\n61\n\n\n27\n\n\n10\n\n\n110\n\n\n4\n\n\n202\n\n\n8\n\n\n26\n\n\n151\n\n\n84\n\n\n27\n\n\n93\n\n\n180\n\n\n164\n\n\n28\n\n\n2\n\n\n2\n\n\n43\n\n\n216\n\n\n111\n\n\n5\n\n\n99\n\n\n70\n\n\n101\n\n\n2\n\n\n3\n\n\n44\n\n\n177\n\n\n46\n\n\n13\n\n\n\n\nCluster_20\n\n\n7176\n\n\n3\n\n\n236\n\n\n588\n\n\n273\n\n\n1068\n\n\n538\n\n\n279\n\n\n57\n\n\n283\n\n\n705\n\n\n158\n\n\n497\n\n\n74\n\n\n2069\n\n\n50\n\n\n526\n\n\n3183\n\n\n1046\n\n\n254\n\n\n1269\n\n\n2788\n\n\n2038\n\n\n134\n\n\n33\n\n\n10\n\n\n438\n\n\n1186\n\n\n804\n\n\n96\n\n\n2313\n\n\n1182\n\n\n743\n\n\n80\n\n\n48\n\n\n200\n\n\n2244\n\n\n453\n\n\n304\n\n\n\n\nCluster_321\n\n\n5942\n\n\n2\n\n\n240\n\n\n1321\n\n\n363\n\n\n2868\n\n\n409\n\n\n241\n\n\n145\n\n\n1080\n\n\n1113\n\n\n540\n\n\n1101\n\n\n57\n\n\n2924\n\n\n26\n\n\n433\n\n\n2402\n\n\n1237\n\n\n1543\n\n\n1699\n\n\n3449\n\n\n2527\n\n\n131\n\n\n33\n\n\n8\n\n\n495\n\n\n1801\n\n\n2954\n\n\n43\n\n\n2438\n\n\n675\n\n\n2335\n\n\n112\n\n\n83\n\n\n133\n\n\n1611\n\n\n440\n\n\n336\n\n\n\n\nCluster_372\n\n\n95668\n\n\n26\n\n\n1418\n\n\n10524\n\n\n3534\n\n\n25828\n\n\n3490\n\n\n1867\n\n\n1619\n\n\n7821\n\n\n9029\n\n\n4128\n\n\n20138\n\n\n474\n\n\n31324\n\n\n507\n\n\n5391\n\n\n20852\n\n\n12483\n\n\n6715\n\n\n8709\n\n\n46907\n\n\n22344\n\n\n2315\n\n\n186\n\n\n47\n\n\n5764\n\n\n8602\n\n\n34435\n\n\n576\n\n\n20214\n\n\n6451\n\n\n30983\n\n\n712\n\n\n293\n\n\n2291\n\n\n28434\n\n\n8040\n\n\n3467",
-    "crumbs": [
-      "Data Files",
-      "Genomic Expression Values"
-    ]
-  },
-  {
-    "objectID": "counts.html#lncrna-3",
-    "href": "counts.html#lncrna-3",
-    "title": "Expression Values",
-    "section": "lncRNA",
-    "text": "lncRNA\nDownload lncRNA\n https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt \nPtuh_lncRNA (first 4 rows)\n\n\n\n\n\n\nGeneid\n\n\nChr\n\n\nStart\n\n\nEnd\n\n\nStrand\n\n\nLength\n\n\nPOC-201-TP1\n\n\nPOC-201-TP2\n\n\nPOC-201-TP3\n\n\nPOC-219-TP1\n\n\nPOC-219-TP2\n\n\nPOC-219-TP3\n\n\nPOC-219-TP4\n\n\nPOC-222-TP1\n\n\nPOC-222-TP2\n\n\nPOC-222-TP3\n\n\nPOC-222-TP4\n\n\nPOC-255-TP1\n\n\nPOC-255-TP2\n\n\nPOC-255-TP3\n\n\nPOC-255-TP4\n\n\nPOC-259-TP1\n\n\nPOC-259-TP2\n\n\nPOC-259-TP3\n\n\nPOC-259-TP4\n\n\nPOC-40-TP1\n\n\nPOC-40-TP2\n\n\nPOC-40-TP3\n\n\nPOC-40-TP4\n\n\nPOC-42-TP1\n\n\nPOC-42-TP2\n\n\nPOC-42-TP3\n\n\nPOC-42-TP4\n\n\nPOC-52-TP1\n\n\nPOC-52-TP2\n\n\nPOC-52-TP3\n\n\nPOC-52-TP4\n\n\nPOC-53-TP1\n\n\nPOC-53-TP2\n\n\nPOC-53-TP3\n\n\nPOC-53-TP4\n\n\nPOC-57-TP1\n\n\nPOC-57-TP2\n\n\nPOC-57-TP3\n\n\nPOC-57-TP4\n\n\n\n\n\n\nlncRNA_001\n\n\nPocillopora_meandrina_HIv1___Sc0000000\n\n\n130008\n\n\n130966\n\n\n+\n\n\n959\n\n\n115.00\n\n\n241.0\n\n\n118.0\n\n\n230.0\n\n\n154.0\n\n\n22.0\n\n\n118.0\n\n\n175.0\n\n\n122\n\n\n209.0\n\n\n176.0\n\n\n86.0\n\n\n191.00\n\n\n207.0\n\n\n217.00\n\n\n225.00\n\n\n199.00\n\n\n171\n\n\n215.0\n\n\n58\n\n\n94.0\n\n\n168.0\n\n\n55.00\n\n\n145.0\n\n\n93.0\n\n\n108.0\n\n\n41.0\n\n\n12.0\n\n\n106.0\n\n\n150.0\n\n\n170.00\n\n\n195.00\n\n\n117.00\n\n\n196.0\n\n\n109.00\n\n\n186.00\n\n\n112.0\n\n\n230.00\n\n\n136\n\n\n\n\nlncRNA_003\n\n\nPocillopora_meandrina_HIv1___Sc0000000\n\n\n163979\n\n\n165466\n\n\n+\n\n\n1488\n\n\n134.25\n\n\n137.5\n\n\n26.0\n\n\n68.5\n\n\n36.5\n\n\n3.5\n\n\n79.0\n\n\n185.0\n\n\n182\n\n\n125.5\n\n\n82.5\n\n\n183.5\n\n\n56.50\n\n\n49.0\n\n\n44.50\n\n\n66.50\n\n\n98.50\n\n\n65\n\n\n60.5\n\n\n254\n\n\n295.0\n\n\n31.0\n\n\n266.00\n\n\n150.5\n\n\n237.0\n\n\n232.5\n\n\n71.5\n\n\n21.5\n\n\n219.5\n\n\n40.5\n\n\n74.50\n\n\n53.50\n\n\n155.00\n\n\n57.0\n\n\n208.50\n\n\n148.50\n\n\n121.5\n\n\n76.50\n\n\n251\n\n\n\n\nlncRNA_004\n\n\nPocillopora_meandrina_HIv1___Sc0000000\n\n\n164651\n\n\n165466\n\n\n+\n\n\n816\n\n\n68.25\n\n\n71.5\n\n\n23.0\n\n\n42.5\n\n\n22.5\n\n\n3.5\n\n\n29.0\n\n\n94.0\n\n\n76\n\n\n65.5\n\n\n25.5\n\n\n76.5\n\n\n16.50\n\n\n37.0\n\n\n23.50\n\n\n42.50\n\n\n57.50\n\n\n41\n\n\n46.5\n\n\n118\n\n\n108.0\n\n\n22.0\n\n\n146.00\n\n\n47.5\n\n\n103.0\n\n\n105.5\n\n\n63.5\n\n\n5.5\n\n\n100.5\n\n\n30.5\n\n\n37.50\n\n\n33.50\n\n\n79.00\n\n\n43.0\n\n\n93.50\n\n\n75.50\n\n\n46.5\n\n\n49.50\n\n\n86\n\n\n\n\nlncRNA_005\n\n\nPocillopora_meandrina_HIv1___Sc0000000\n\n\n168862\n\n\n182546\n\n\n+\n\n\n13685\n\n\n107.75\n\n\n141.0\n\n\n57.5\n\n\n80.5\n\n\n55.5\n\n\n8.5\n\n\n44.5\n\n\n111.5\n\n\n115\n\n\n100.0\n\n\n122.0\n\n\n171.0\n\n\n115.33\n\n\n76.5\n\n\n144.33\n\n\n231.33\n\n\n184.83\n\n\n96\n\n\n124.0\n\n\n59\n\n\n36.5\n\n\n78.5\n\n\n80.83\n\n\n26.0\n\n\n51.5\n\n\n41.0\n\n\n39.0\n\n\n11.5\n\n\n75.5\n\n\n75.0\n\n\n148.33\n\n\n159.67\n\n\n113.17\n\n\n100.5\n\n\n100.33\n\n\n78.67\n\n\n89.5\n\n\n92.33\n\n\n209",
-    "crumbs": [
-      "Data Files",
-      "Genomic Expression Values"
-    ]
-  },
-  {
-    "objectID": "counts.html#mcpg-percentage-2",
-    "href": "counts.html#mcpg-percentage-2",
-    "title": "Expression Values",
-    "section": "mCpG Percentage",
-    "text": "mCpG Percentage\nDownload mCpG Percentage\n https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv \nPtuh_mCpG (first 4 rows)\n\n\n\n\n\n\nCpG\n\n\nPOC-259-TP1\n\n\nPOC-53-TP1\n\n\nPOC-222-TP1\n\n\nPOC-42-TP2\n\n\nPOC-40-TP4\n\n\nPOC-52-TP4\n\n\nPOC-40-TP3\n\n\nPOC-53-TP3\n\n\nPOC-52-TP1\n\n\nPOC-219-TP3\n\n\nPOC-222-TP3\n\n\nPOC-219-TP4\n\n\nPOC-53-TP2\n\n\nPOC-222-TP4\n\n\nPOC-40-TP2\n\n\nPOC-57-TP3\n\n\nPOC-57-TP2\n\n\nPOC-40-TP1\n\n\nPOC-201-TP1\n\n\nPOC-42-TP4\n\n\nPOC-52-TP3\n\n\nPOC-52-TP2\n\n\nPOC-201-TP2\n\n\nPOC-255-TP1\n\n\nPOC-255-TP3\n\n\nPOC-259-TP2\n\n\nPOC-57-TP4\n\n\nPOC-255-TP2\n\n\nPOC-219-TP2\n\n\nPOC-219-TP1\n\n\nPOC-53-TP4\n\n\nPOC-57-TP1\n\n\n\n\n\n\nCpG_Pocillopora_meandrina_HIv1___Sc0000000_10002826\n\n\n0\n\n\n5.405405\n\n\n0\n\n\n0\n\n\n6.250000\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n1.515152\n\n\n0\n\n\n0\n\n\n2.631579\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\n0\n\n\n\n\nCpG_Pocillopora_meandrina_HIv1___Sc0000000_10002839\n\n\n0\n\n\n5.128205\n\n\n0\n\n\n0\n\n\n5.882353\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n2.439024\n\n\n1.492537\n\n\n0\n\n\n0\n\n\n2.083333\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\n0\n\n\n\n\nCpG_Pocillopora_meandrina_HIv1___Sc0000000_10002847\n\n\n0\n\n\n2.380952\n\n\n0\n\n\n0\n\n\n5.882353\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n1.515152\n\n\n0\n\n\n0\n\n\n2.000000\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\n0\n\n\n\n\nCpG_Pocillopora_meandrina_HIv1___Sc0000000_10002849\n\n\n0\n\n\n2.500000\n\n\n0\n\n\n0\n\n\n6.250000\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n1.587302\n\n\n0\n\n\n0\n\n\n1.960784\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n2.857143\n\n\n0\n\n\n0",
-    "crumbs": [
-      "Data Files",
-      "Genomic Expression Values"
-    ]
-  },
-  {
-    "objectID": "disclaimer.html",
-    "href": "disclaimer.html",
-    "title": "disclaimer",
-    "section": "",
-    "text": "NSF DISCLAIMER\nThis material is based upon work supported by the National Science Foundation under Grant No. [insert grant number, e.g., 1234567].\n1921465, 1921149, 1921425, 1921356, 1921402\nAny opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation."
-  },
-  {
-    "objectID": "jbrowse.html",
-    "href": "jbrowse.html",
-    "title": "JBrowse",
-    "section": "",
-    "text": "Open the genome browser directly: Open JBrowse.\nEmbedded view below:",
-    "crumbs": [
-      "Genome Browser"
-    ]
-  },
-  {
-    "objectID": "temperature.html",
-    "href": "temperature.html",
-    "title": "Mo’orea Temperature Time Series",
-    "section": "",
-    "text": "The temperature data was collected across four key sampling timepoints during the MOSAiC project:\n\n\n\nTimepoint\nDate\nSeason\n\n\n\n\nTP1\nJanuary 2020\nAustral Summer\n\n\nTP2\nMarch 2020\nAustral Summer/Autumn\n\n\nTP3\nSeptember 2020\nAustral Winter/Spring\n\n\nTP4\nNovember 2020\nAustral Spring",
-    "crumbs": [
-      "Data Files",
-      "Temperature"
-    ]
-  },
-  {
-    "objectID": "temperature.html#sampling-timepoints",
-    "href": "temperature.html#sampling-timepoints",
-    "title": "Mo’orea Temperature Time Series",
-    "section": "",
-    "text": "The temperature data was collected across four key sampling timepoints during the MOSAiC project:\n\n\n\nTimepoint\nDate\nSeason\n\n\n\n\nTP1\nJanuary 2020\nAustral Summer\n\n\nTP2\nMarch 2020\nAustral Summer/Autumn\n\n\nTP3\nSeptember 2020\nAustral Winter/Spring\n\n\nTP4\nNovember 2020\nAustral Spring",
-    "crumbs": [
-      "Data Files",
-      "Temperature"
-    ]
-  },
-  {
-    "objectID": "temperature.html#interactive-temperature-explorer",
-    "href": "temperature.html#interactive-temperature-explorer",
-    "title": "Mo’orea Temperature Time Series",
-    "section": "Interactive Temperature Explorer",
-    "text": "Interactive Temperature Explorer\nThis page provides interactive visualization of in-situ temperature logger data from three Mo’orea reef sites.\n\n\n\n\n\n\n\nData Download\n\n\nNotes\n\nRaw points aggregated to hourly means for performance.\n24h rolling mean computed per site to smooth diel variability.\nTimestamps are UTC.\nY-axis Features:\n\nDefault range set to 20-32°C for optimal viewing of temperature fluctuations\nUsers can manually zoom and pan the y-axis by dragging or using the mouse wheel\nDouble-click to reset to default view\n\nSampling Timepoints: Red dotted lines mark TP1-TP4 sampling events for correlation with temperature patterns",
-    "crumbs": [
-      "Data Files",
-      "Temperature"
-    ]
-  },
-  {
-    "objectID": "features.html",
-    "href": "features.html",
-    "title": "Genome Features",
-    "section": "",
-    "text": "Species\nGene\nmiRNA\nlncRNA\nmCpG\n\n\n\n\nAcropora pulchra\n44371\n\n56050\n\n\n\nPorites evermanni\n40389\n\n23683\n\n\n\nPocillopora tuahiniensis\n31840\n\n8319\n\n\n\n\n\nAcropora pulchra\nGenes\nDownload Gene GFF\nhttps://raw.githubusercontent.com/urol-e5/MOSAiC/refs/heads/main/data/Apul/Apul_gene_only.gff\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nntLink_0\nfunannotate\ngene\n1105\n7056\n.\n+\n.\nID=FUN_000001;\n\n\nntLink_0\nfunannotate\ngene\n10215\n15286\n.\n+\n.\nID=FUN_000002;\n\n\nntLink_0\nfunannotate\ngene\n32057\n33275\n.\n+\n.\nID=FUN_000003;\n\n\nntLink_0\nfunannotate\ngene\n34824\n42794\n.\n+\n.\nID=FUN_000004;\n\n\n\n\n\n\n\nlncRNAs\nDownload lncRNA GTF\nhttps://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31-Apul-lncRNA-discovery/lncRNA.gtf\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nntLink_0\n.\nlncRNA\n25230\n29895\n.\n+\n.\ngene_id \"lncRNA_001\";\n\n\nntLink_0\n.\nlncRNA\n25230\n31053\n.\n+\n.\ngene_id \"lncRNA_002\";\n\n\nntLink_0\n.\nlncRNA\n25236\n31053\n.\n+\n.\ngene_id \"lncRNA_003\";\n\n\nntLink_0\n.\nlncRNA\n25236\n31053\n.\n+\n.\ngene_id \"lncRNA_004\";\n\n\n\n\n\n\n\n\n\nPorites evermanni\nGenes\nDownload Gene GFF\nhttps://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/E-Peve/output/00.01-Peve-gene-gff/Peve_gene_only.gff3\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n3107\n4488\n.\n-\n.\nID=gene-Peve_00000001\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n8492\n11026\n.\n+\n.\nID=gene-Peve_00000039\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n26134\n26404\n.\n+\n.\nID=gene-Peve_00000112\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n30313\n42225\n.\n+\n.\nID=gene-Peve_00000117\n\n\n\n\n\n\n\nlncRNAs\nDownload lncRNA GTF\nhttps://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA.gtf\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n12624\n14154\n.\n+\n.\ngene_id \"lncRNA_001\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n12624\n15539\n.\n+\n.\ngene_id \"lncRNA_002\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n182981\n183851\n.\n+\n.\ngene_id \"lncRNA_004\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n208153\n208859\n.\n+\n.\ngene_id \"lncRNA_005\";\n\n\n\n\n\n\n\n\n\nPocillopora tuahiniensis (DISCLAIMER)\nGenes\nDownload Gene GFF\nhttps://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/00.01-Ptua-gene-gff/Pmea_gene_only.gff3\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n887\n6811\n.\n-\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29951.t1\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n7305\n12239\n.\n+\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29952.t1\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n21622\n23112\n.\n-\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29953.t1\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n25313\n26016\n.\n-\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29954.t1\n\n\n\n\n\n\n\nlncRNAs\nDownload lncRNA GTF\nhttps://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA.filtered.gtf\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n673926\n676113\n.\n+\n.\ngene_id \"lncRNA_008\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n673941\n676113\n.\n+\n.\ngene_id \"lncRNA_009\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n673950\n676113\n.\n+\n.\ngene_id \"lncRNA_010\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n703501\n725784\n.\n+\n.\ngene_id \"lncRNA_011\";",
-    "crumbs": [
-      "Data Files",
-      "Genome Features"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "E5-MOSAiC Project",
-    "section": "",
-    "text": "This portal serves complementary purposes of direct data delivery and offering a mutlit-specis genome browser. This project encompasses a time-series study of three coral species— Acropora pulchra, Pocillopora tuahiniensis, and Porites evermanni —sampled from reef sites in Moorea, French Polynesia.\n\n\n\nE5-MOSAiC project logo\n\n\nFor each species, five distinct colonies were selected at each site and sampling was conducted at two locations. Each colony was repeatedly sampled at four standardized intervals (TP1–TP4), capturing temporal variation within and across species.\nCollectively, the dataset provide a rich framework for investigating how environmental and biological factors shape marine invertebrate responses through space and time, while controlling for genetic and ecological heterogeneity.\n\n\n👉 Explore JBrowse Genome Browser\n  \n\nFor questions or feedback, please submit an issue 🧬",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "E5 Coral is a team formed by six research labs from top public U.S. universities that work together to predict phenotypic and eco-evolutionary consequences of environmental energetic epigenetic linkages.\nThis project uses symbiotic, metabolically complex reef-building corals as a model system to test the connections between physiological, epigenetic, and metabolic states, and predict how population and community dynamics are influenced by epigenetically-modulated phenotypes.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#species-and-reference-genomes",
-    "href": "about.html#species-and-reference-genomes",
-    "title": "About",
-    "section": "🧬 Species and Reference Genomes",
-    "text": "🧬 Species and Reference Genomes\nThis genome browser supports exploration of coral species included in our genomic analyses. For several species, direct reference genomes are not yet available. In these cases, we selected closely related species with high-quality assemblies as references, based on evolutionary proximity, morphological similarity, and assembly quality.\n\n🔹 Acropora pulchra🔹 Pocillopora tuahiniensis🔹 Porites evermanni\n\n\n\nReference Genome: Acropora pulchra\nSource: Conn et al., 2025\nGenome Size: 518 Mbp\nN50: 17 Mbp\nProtein-Coding Genes: 40,518\n\n\n\n\n\nReference Genome: Pocillopora meandrina\nSource: Stephens et al., 2022\nGenome Size: ~377 Mbp\nN50: 10 Mbp\nProtein-Coding Genes: 31,840\n\nP. tuahiniensis does not yet have a published genome. P. meandrina was selected as a reference because of its morphological similarity and close evolutionary relationship. Although P. verrucosa is more closely related phylogenetically, P. meandrina provides a higher-quality assembly (N50 = 10 Mbp vs. 0.334 Mbp) and more comprehensive annotation.\n\n\n\n\nReference Genome: Porites evermanni\nSource: Genoscope Coral Genomes\nGenome Size: ~497 Mbp\nN50: 0.17 Mbp\nProtein-Coding Genes: 40,389\n\nThis genome was assembled from a sample collected in Mo’orea and is used directly in analyses without substitution.",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#moorea-field-sites",
-    "href": "about.html#moorea-field-sites",
-    "title": "About",
-    "section": "🌍 Mo’orea Field Sites",
-    "text": "🌍 Mo’orea Field Sites",
-    "crumbs": [
-      "About"
-    ]
-  },
-  {
-    "objectID": "about.html#coral-reef-video",
-    "href": "about.html#coral-reef-video",
-    "title": "About",
-    "section": "🎥 Coral Reef Video",
-    "text": "🎥 Coral Reef Video\n\n\nYour browser does not support the video tag.",
-    "crumbs": [
-      "About"
+      "Physiology Data"
     ]
   }
 ]

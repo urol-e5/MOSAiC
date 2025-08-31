@@ -1,28 +1,30 @@
 ---
 title: "MOSAiC Physiology Data"
 format: html
+execute:
+  warning: false
+  message: false
 ---
 
 ## Interactive Physiology Data Explorer
 
 This page provides interactive visualization and exploration of physiology data from the MOSAiC timeseries study, including metabolomics, lipidomics, and physiological measurements across four timepoints.
 
-```{r}
+```{r setup}
 #| echo: false
 #| message: false
 #| warning: false
-#| cache: true
-pkgs <- c("vroom", "dplyr", "tidyr", "plotly", "DT", "stringr", "readr")
+#| cache: false
+# Ensure required packages are installed & loaded. Labeling this chunk 'setup' guarantees
+# it's executed before other chunks so that %>% (from magrittr/dplyr) is available.
+pkgs <- c("vroom", "dplyr", "tidyr", "plotly", "DT", "stringr", "readr", "magrittr", "htmltools")
 new <- setdiff(pkgs, rownames(installed.packages()))
 if (length(new)) install.packages(new)
 
-library(vroom)
-library(dplyr)
-library(tidyr)
-library(plotly)
-library(DT)
-library(stringr)
-library(readr)
+invisible(lapply(pkgs, require, character.only = TRUE))
+
+# Explicitly attach magrittr to avoid '%>%' not found errors in some rendering contexts
+library(magrittr)
 
 # Read metabolomics data
 metabolomics_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/main/M-multi-species/output/metabolomics_count_matrix.csv"
@@ -300,6 +302,7 @@ DT::datatable(
 
 ```{r}
 #| echo: false
+#| eval: true
 # Key physiology parameters for plotting
 key_params <- c("cre.umol.mgprot", "chla.ug.cm2", "cells.cm2", "calc.umol.cm2.hr")
 param_labels <- c(
@@ -322,7 +325,12 @@ for (param in key_params) {
       .groups = "drop"
     ) %>%
     mutate(timepoint_num = as.numeric(str_extract(timepoint, "[1-4]")))
-  
+
+  if (nrow(plot_data) == 0) {
+    physiology_plots[[param]] <- NULL
+    next
+  }
+
   physiology_plots[[param]] <- plot_ly(
     data = plot_data,
     x = ~timepoint_num,
@@ -349,19 +357,32 @@ for (param in key_params) {
     )
 }
 
-# Display plots in a subplot
-subplot(
-  physiology_plots, 
-  nrows = 2, 
-  ncols = 2,
-  subplot_titles = param_labels[key_params],
-  shareX = FALSE,
-  shareY = FALSE
-) %>%
-  layout(
-    title = list(text = "Key Physiology Parameters Across Timepoints", y = 0.98),
-    showlegend = TRUE
+# Keep only non-null plots
+valid_plots <- physiology_plots[!vapply(physiology_plots, is.null, logical(1))]
+
+if (length(valid_plots) > 0) {
+  # Build a responsive CSS grid to display plots in up to 2x2 layout
+  grid_div <- htmltools::tags$div(
+    class = "physiology-grid",
+    lapply(names(valid_plots), function(nm) {
+      htmltools::tags$div(
+        class = "physiology-cell",
+        htmltools::tags$h4(param_labels[nm]),
+        valid_plots[[nm]]
+      )
+    })
   )
+  # Inject lightweight CSS (scoped by class names to avoid site-wide impact)
+  css <- htmltools::tags$style(HTML('
+  .physiology-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1rem; align-items: start;}
+  .physiology-cell {background: #f8f9fa; padding: 0.6rem 0.8rem; border: 1px solid #dee2e6; border-radius: 6px;}
+  body.quarto-dark .physiology-cell {background: #1e1e1e; border-color: #444;}
+  .physiology-cell h4 {margin-top: 0; font-size: 1.05rem;}
+  '))
+  htmltools::tagList(css, grid_div)
+} else {
+  htmltools::p("No physiology data available for plotting.")
+}
 ```
 
 ## Data Downloads
@@ -372,7 +393,6 @@ subplot(
 - [Lipidomics Data (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries_molecular/main/M-multi-species/output/lipid_count_matrix.csv){download="lipid_count_matrix.csv"}
 - [Physiology Data (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries/master/time_series_analysis/Output/master_timeseries.csv){download="master_timeseries.csv"}
 
-### Data Summary
 
 ```{r}
 #| echo: false
@@ -384,11 +404,3 @@ cat("- Species: ", paste(unique(physiology_clean$species), collapse = ", "), "\n
 cat("- Timepoints: ", paste(sort(unique(physiology_clean$timepoint)), collapse = ", "), "\n")
 ```
 
-## Notes
-
-- Data represents measurements across four timepoints (TP1-TP4) for three coral species
-- Metabolomics and lipidomics data show compound/lipid concentrations
-- Physiology data includes key coral health metrics like respiration, chlorophyll, and calcification
-- Interactive tables allow filtering and searching across all parameters
-- Time series plots show trends and variability across timepoints
-- Error bars represent standard error of the mean across biological replicates
