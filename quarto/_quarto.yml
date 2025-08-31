@@ -31,12 +31,10 @@ website:
             href: counts.qmd
           - text: "Genome Features"
             href: features.qmd
-          - text: Temperature 
+          - text: Temperature Profiles
             file: temperature.qmd  
       - text: Genome Browser
         file: jbrowse.qmd
-      - text: Temperature
-        file: temperature.qmd
 
     tools:
       - icon: github

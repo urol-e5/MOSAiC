@@ -249,11 +249,6 @@ Workflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites),
 For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filtered for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column \_processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all \_processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.
 :::
 
-::: callout-warning
-## Sample ID formatting
-
-Note currently we have some inconsistency in sample IDs across data types.
-:::
 
 ## Sample Counts by Data Type
 

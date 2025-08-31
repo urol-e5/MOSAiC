@@ -10,7 +10,6 @@ This repository provides:
 
 Currently the Genome Browser is being coded in this repo and being mirrored (rsync) to gannet and hosted there. This is also where most large files are hosted. Within the quarto site the browser is embedded and there is also a link that takes you to the Genome Browser on gannet (https://gannet.fish.washington.edu/e5-mosaic).
 
-Currently on _A. pulchra_ genome is loaded. 
 
 
 ## Contributing

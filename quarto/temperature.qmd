@@ -3,6 +3,17 @@ title: "Mo'orea Temperature Time Series"
 format: html
 ---
 
+## Sampling Timepoints
+
+The temperature data was collected across four key sampling timepoints during the MOSAiC project:
+
+| Timepoint | Date | Season |
+|-----------|------|---------|
+| TP1 | January 2020 | Austral Summer |
+| TP2 | March 2020 | Austral Summer/Autumn |
+| TP3 | September 2020 | Austral Winter/Spring |
+| TP4 | November 2020 | Austral Spring |
+
 ## Interactive Temperature Explorer
 
 This page provides interactive visualization of in-situ temperature logger data from three Mo'orea reef sites.
@@ -49,6 +60,14 @@ hourly <- hourly |>
   mutate(temp_roll24 = zoo::rollapply(temp.C, 24, mean, align = "right", fill = NA)) |>
   ungroup()
 
+# Define sampling timepoints
+timepoints <- data.frame(
+  timepoint = c("TP1", "TP2", "TP3", "TP4"),
+  date = c("2020-01-15", "2020-03-15", "2020-09-15", "2020-11-15"),
+  season = c("Austral Summer", "Austral Summer/Autumn", "Austral Winter/Spring", "Austral Spring")
+) |>
+  mutate(date = ymd(date))
+
 pal <- c(Manava = "#1b9e77", Hilton = "#d95f02", Mahana = "#7570b3")
 
 # Hourly line + optional rolling mean
@@ -59,13 +78,23 @@ p_hourly <- plot_ly(type='scatter', mode='lines') |>
   add_trace(data = hourly, x = ~hour, y = ~temp_roll24, color = ~site, colors = pal,
             hovertemplate = "24h mean<br>%{x|%Y-%m-%d %H:%M} UTC<br>%{y:.2f}°C<extra>%{legendgroup}</extra>",
             name = ~paste(site, "(24h mean)"), legendgroup = ~site, line = list(width = 2, dash = 'dash')) |>
+  # Add timepoint reference lines
+  add_segments(x = ~date, xend = ~date, y = 10, yend = 40, 
+               data = timepoints, line = list(color = "red", width = 2, dash = "dot"),
+               name = "Sampling Timepoints", showlegend = TRUE) |>
+  # Add timepoint labels
+  add_annotations(x = ~date, y = 41, text = ~timepoint, 
+                  data = timepoints, showarrow = FALSE, 
+                  font = list(color = "red", size = 12)) |>
   layout(title = "Hourly Mean Temperature (with 24h Rolling Mean)",
          xaxis = list(title = "Time (UTC)", rangeslider = list(visible = TRUE),
                       rangeselector = list(buttons = list(
                         list(count = 7, label = '7d', step = 'day', stepmode = 'backward'),
                         list(count = 1, label = '1m', step = 'month', stepmode = 'backward'),
                         list(step = 'all')))),
-         yaxis = list(title = "Temperature (°C)"))
+         yaxis = list(title = "Temperature (°C)", 
+                     range = c(20, 32),  # Expanded range to show fluctuations better
+                     fixedrange = FALSE))  # Allow user to zoom/pan y-axis
 
 # Daily ribbons
 p_daily <- plot_ly(type='scatter', mode='lines') |>
@@ -73,7 +102,18 @@ p_daily <- plot_ly(type='scatter', mode='lines') |>
               opacity = 0.25, name = ~paste(site, 'Daily Range'), hovertemplate = "%{x|%Y-%m-%d}<br>Min %{y[0]:.2f}°C<br>Max %{y[1]:.2f}°C<extra>%{legendgroup}</extra>") |>
   add_trace(data = daily, x = ~day, y = ~meanT, split = ~site, color = ~site, colors = pal,
             name = ~paste(site, 'Daily Mean'), hovertemplate = "%{x|%Y-%m-%d}<br>Mean %{y:.2f}°C<extra>%{legendgroup}</extra>") |>
-  layout(title = "Daily Min/Mean/Max", yaxis = list(title = "Temperature (°C)"))
+  # Add timepoint reference lines
+  add_segments(x = ~date, xend = ~date, y = 10, yend = 40, 
+               data = timepoints, line = list(color = "red", width = 2, dash = "dot"),
+               name = "Sampling Timepoints", showlegend = TRUE) |>
+  # Add timepoint labels
+  add_annotations(x = ~date, y = 41, text = ~timepoint, 
+                  data = timepoints, showarrow = FALSE, 
+                  font = list(color = "red", size = 12)) |>
+  layout(title = "Daily Min/Mean/Max", 
+         yaxis = list(title = "Temperature (°C)", 
+                     range = c(20, 32),  # Expanded range to show fluctuations better
+                     fixedrange = FALSE))  # Allow user to zoom/pan y-axis
 
 subplot(p_hourly, p_daily, nrows = 2, shareX = FALSE, titleY = TRUE)
 ```
@@ -101,3 +141,8 @@ subplot(p_hourly, p_daily, nrows = 2, shareX = FALSE, titleY = TRUE)
 - Raw points aggregated to hourly means for performance.
 - 24h rolling mean computed per site to smooth diel variability.
 - Timestamps are UTC.
+- **Y-axis Features**: 
+  - Default range set to 20-32°C for optimal viewing of temperature fluctuations
+  - Users can manually zoom and pan the y-axis by dragging or using the mouse wheel
+  - Double-click to reset to default view
+- **Sampling Timepoints**: Red dotted lines mark TP1-TP4 sampling events for correlation with temperature patterns
