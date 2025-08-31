@@ -37,8 +37,6 @@ website:
             file: temperature.qmd  
       - text: Genome Browser
         file: jbrowse.qmd
-      - text: Temperature
-        file: temperature.qmd
 
     tools:
       - icon: github

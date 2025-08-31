@@ -12,7 +12,7 @@ This page provides interactive visualization and exploration of physiology data 
 #| message: false
 #| warning: false
 #| cache: true
-pkgs <- c("vroom", "dplyr", "tidyr", "plotly", "DT", "stringr")
+pkgs <- c("vroom", "dplyr", "tidyr", "plotly", "DT", "stringr", "readr")
 new <- setdiff(pkgs, rownames(installed.packages()))
 if (length(new)) install.packages(new)
 
@@ -22,6 +22,7 @@ library(tidyr)
 library(plotly)
 library(DT)
 library(stringr)
+library(readr)
 
 # Read metabolomics data
 metabolomics_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/main/M-multi-species/output/metabolomics_count_matrix.csv"
@@ -74,7 +75,13 @@ lipidomics_long <- lipidomics %>%
 physiology_clean <- physiology %>%
   filter(!is.na(timepoint)) %>%
   mutate(
-    timepoint = paste0("TP", timepoint),
+    timepoint = case_when(
+      timepoint == "timepoint1" ~ "TP1",
+      timepoint == "timepoint2" ~ "TP2", 
+      timepoint == "timepoint3" ~ "TP3",
+      timepoint == "timepoint4" ~ "TP4",
+      TRUE ~ timepoint
+    ),
     species = case_when(
       species == "Acropora" ~ "Acropora pulchra",
       species == "Porites" ~ "Porites evermanni",
