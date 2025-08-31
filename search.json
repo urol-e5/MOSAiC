@@ -176,77 +176,6 @@
     ]
   },
   {
-    "objectID": "disclaimer.html",
-    "href": "disclaimer.html",
-    "title": "disclaimer",
-    "section": "",
-    "text": "NSF DISCLAIMER\nThis material is based upon work supported by the National Science Foundation under Grant No. [insert grant number, e.g., 1234567].\n1921465, 1921149, 1921425, 1921356, 1921402\nAny opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation."
-  },
-  {
-    "objectID": "jbrowse.html",
-    "href": "jbrowse.html",
-    "title": "JBrowse",
-    "section": "",
-    "text": "Open the genome browser directly: Open JBrowse.\nEmbedded view below:",
-    "crumbs": [
-      "Genome Browser"
-    ]
-  },
-  {
-    "objectID": "temperature.html",
-    "href": "temperature.html",
-    "title": "Mo’orea Temperature Time Series",
-    "section": "",
-    "text": "The temperature data was collected across four key sampling timepoints during the MOSAiC project:\n\n\n\nTimepoint\nDate\nSeason\n\n\n\n\nTP1\nJanuary 2020\nAustral Summer\n\n\nTP2\nMarch 2020\nAustral Summer/Autumn\n\n\nTP3\nSeptember 2020\nAustral Winter/Spring\n\n\nTP4\nNovember 2020\nAustral Spring",
-    "crumbs": [
-      "Data Files",
-      "Temperature"
-    ]
-  },
-  {
-    "objectID": "temperature.html#sampling-timepoints",
-    "href": "temperature.html#sampling-timepoints",
-    "title": "Mo’orea Temperature Time Series",
-    "section": "",
-    "text": "The temperature data was collected across four key sampling timepoints during the MOSAiC project:\n\n\n\nTimepoint\nDate\nSeason\n\n\n\n\nTP1\nJanuary 2020\nAustral Summer\n\n\nTP2\nMarch 2020\nAustral Summer/Autumn\n\n\nTP3\nSeptember 2020\nAustral Winter/Spring\n\n\nTP4\nNovember 2020\nAustral Spring",
-    "crumbs": [
-      "Data Files",
-      "Temperature"
-    ]
-  },
-  {
-    "objectID": "temperature.html#interactive-temperature-explorer",
-    "href": "temperature.html#interactive-temperature-explorer",
-    "title": "Mo’orea Temperature Time Series",
-    "section": "Interactive Temperature Explorer",
-    "text": "Interactive Temperature Explorer\nThis page provides interactive visualization of in-situ temperature logger data from three Mo’orea reef sites.\n\n\n\n\n\n\n\nData Download\n\n\nNotes\n\nRaw points aggregated to hourly means for performance.\n24h rolling mean computed per site to smooth diel variability.\nTimestamps are UTC.\nY-axis Features:\n\nDefault range set to 20-32°C for optimal viewing of temperature fluctuations\nUsers can manually zoom and pan the y-axis by dragging or using the mouse wheel\nDouble-click to reset to default view\n\nSampling Timepoints: Red dotted lines mark TP1-TP4 sampling events for correlation with temperature patterns",
-    "crumbs": [
-      "Data Files",
-      "Temperature"
-    ]
-  },
-  {
-    "objectID": "features.html",
-    "href": "features.html",
-    "title": "Genome Features",
-    "section": "",
-    "text": "Species\nGene\nmiRNA\nlncRNA\nmCpG\n\n\n\n\nAcropora pulchra\n44371\n\n56050\n\n\n\nPorites evermanni\n40389\n\n23683\n\n\n\nPocillopora tuahiniensis\n31840\n\n8319\n\n\n\n\n\nAcropora pulchra\nGenes\nDownload Gene GFF\nhttps://raw.githubusercontent.com/urol-e5/MOSAiC/refs/heads/main/data/Apul/Apul_gene_only.gff\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nntLink_0\nfunannotate\ngene\n1105\n7056\n.\n+\n.\nID=FUN_000001;\n\n\nntLink_0\nfunannotate\ngene\n10215\n15286\n.\n+\n.\nID=FUN_000002;\n\n\nntLink_0\nfunannotate\ngene\n32057\n33275\n.\n+\n.\nID=FUN_000003;\n\n\nntLink_0\nfunannotate\ngene\n34824\n42794\n.\n+\n.\nID=FUN_000004;\n\n\n\n\n\n\n\nlncRNAs\nDownload lncRNA GTF\nhttps://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31-Apul-lncRNA-discovery/lncRNA.gtf\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nntLink_0\n.\nlncRNA\n25230\n29895\n.\n+\n.\ngene_id \"lncRNA_001\";\n\n\nntLink_0\n.\nlncRNA\n25230\n31053\n.\n+\n.\ngene_id \"lncRNA_002\";\n\n\nntLink_0\n.\nlncRNA\n25236\n31053\n.\n+\n.\ngene_id \"lncRNA_003\";\n\n\nntLink_0\n.\nlncRNA\n25236\n31053\n.\n+\n.\ngene_id \"lncRNA_004\";\n\n\n\n\n\n\n\n\n\nPorites evermanni\nGenes\nDownload Gene GFF\nhttps://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/E-Peve/output/00.01-Peve-gene-gff/Peve_gene_only.gff3\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n3107\n4488\n.\n-\n.\nID=gene-Peve_00000001\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n8492\n11026\n.\n+\n.\nID=gene-Peve_00000039\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n26134\n26404\n.\n+\n.\nID=gene-Peve_00000112\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n30313\n42225\n.\n+\n.\nID=gene-Peve_00000117\n\n\n\n\n\n\n\nlncRNAs\nDownload lncRNA GTF\nhttps://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA.gtf\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n12624\n14154\n.\n+\n.\ngene_id \"lncRNA_001\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n12624\n15539\n.\n+\n.\ngene_id \"lncRNA_002\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n182981\n183851\n.\n+\n.\ngene_id \"lncRNA_004\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n208153\n208859\n.\n+\n.\ngene_id \"lncRNA_005\";\n\n\n\n\n\n\n\n\n\nPocillopora tuahiniensis (DISCLAIMER)\nGenes\nDownload Gene GFF\nhttps://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/00.01-Ptua-gene-gff/Pmea_gene_only.gff3\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n887\n6811\n.\n-\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29951.t1\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n7305\n12239\n.\n+\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29952.t1\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n21622\n23112\n.\n-\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29953.t1\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n25313\n26016\n.\n-\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29954.t1\n\n\n\n\n\n\n\nlncRNAs\nDownload lncRNA GTF\nhttps://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA.filtered.gtf\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n673926\n676113\n.\n+\n.\ngene_id \"lncRNA_008\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n673941\n676113\n.\n+\n.\ngene_id \"lncRNA_009\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n673950\n676113\n.\n+\n.\ngene_id \"lncRNA_010\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n703501\n725784\n.\n+\n.\ngene_id \"lncRNA_011\";",
-    "crumbs": [
-      "Data Files",
-      "Genome Features"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "E5-MOSAiC Project",
-    "section": "",
-    "text": "This portal serves complementary purposes of direct data delivery and offering a mutlit-specis genome browser. This project encompasses a time-series study of three coral species— Acropora pulchra, Pocillopora tuahiniensis, and Porites evermanni —sampled from reef sites in Moorea, French Polynesia.\n\n\n\nE5-MOSAiC project logo\n\n\nFor each species, five distinct colonies were selected at each site and sampling was conducted at two locations. Each colony was repeatedly sampled at four standardized intervals (TP1–TP4), capturing temporal variation within and across species.\nCollectively, the dataset provide a rich framework for investigating how environmental and biological factors shape marine invertebrate responses through space and time, while controlling for genetic and ecological heterogeneity.\n\n\n👉 Explore JBrowse Genome Browser\n  \n\nFor questions or feedback, please submit an issue 🧬",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -284,6 +213,174 @@
     "text": "🎥 Coral Reef Video\n\n\nYour browser does not support the video tag.",
     "crumbs": [
       "About"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "E5-MOSAiC Project",
+    "section": "",
+    "text": "This portal serves complementary purposes of direct data delivery and offering a mutlit-specis genome browser. This project encompasses a time-series study of three coral species— Acropora pulchra, Pocillopora tuahiniensis, and Porites evermanni —sampled from reef sites in Moorea, French Polynesia.\n\n\n\nE5-MOSAiC project logo\n\n\nFor each species, five distinct colonies were selected at each site and sampling was conducted at two locations. Each colony was repeatedly sampled at four standardized intervals (TP1–TP4), capturing temporal variation within and across species.\nCollectively, the dataset provide a rich framework for investigating how environmental and biological factors shape marine invertebrate responses through space and time, while controlling for genetic and ecological heterogeneity.\n\n\n👉 Explore JBrowse Genome Browser\n  \n\nFor questions or feedback, please submit an issue 🧬",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "features.html",
+    "href": "features.html",
+    "title": "Genome Features",
+    "section": "",
+    "text": "Species\nGene\nmiRNA\nlncRNA\nmCpG\n\n\n\n\nAcropora pulchra\n44371\n\n56050\n\n\n\nPorites evermanni\n40389\n\n23683\n\n\n\nPocillopora tuahiniensis\n31840\n\n8319\n\n\n\n\n\nAcropora pulchra\nGenes\nDownload Gene GFF\nhttps://raw.githubusercontent.com/urol-e5/MOSAiC/refs/heads/main/data/Apul/Apul_gene_only.gff\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nntLink_0\nfunannotate\ngene\n1105\n7056\n.\n+\n.\nID=FUN_000001;\n\n\nntLink_0\nfunannotate\ngene\n10215\n15286\n.\n+\n.\nID=FUN_000002;\n\n\nntLink_0\nfunannotate\ngene\n32057\n33275\n.\n+\n.\nID=FUN_000003;\n\n\nntLink_0\nfunannotate\ngene\n34824\n42794\n.\n+\n.\nID=FUN_000004;\n\n\n\n\n\n\n\nlncRNAs\nDownload lncRNA GTF\nhttps://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31-Apul-lncRNA-discovery/lncRNA.gtf\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nntLink_0\n.\nlncRNA\n25230\n29895\n.\n+\n.\ngene_id \"lncRNA_001\";\n\n\nntLink_0\n.\nlncRNA\n25230\n31053\n.\n+\n.\ngene_id \"lncRNA_002\";\n\n\nntLink_0\n.\nlncRNA\n25236\n31053\n.\n+\n.\ngene_id \"lncRNA_003\";\n\n\nntLink_0\n.\nlncRNA\n25236\n31053\n.\n+\n.\ngene_id \"lncRNA_004\";\n\n\n\n\n\n\n\n\n\nPorites evermanni\nGenes\nDownload Gene GFF\nhttps://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/E-Peve/output/00.01-Peve-gene-gff/Peve_gene_only.gff3\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n3107\n4488\n.\n-\n.\nID=gene-Peve_00000001\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n8492\n11026\n.\n+\n.\nID=gene-Peve_00000039\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n26134\n26404\n.\n+\n.\nID=gene-Peve_00000112\n\n\nPorites_evermani_scaffold_1\nGmove\ngene\n30313\n42225\n.\n+\n.\nID=gene-Peve_00000117\n\n\n\n\n\n\n\nlncRNAs\nDownload lncRNA GTF\nhttps://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA.gtf\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n12624\n14154\n.\n+\n.\ngene_id \"lncRNA_001\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n12624\n15539\n.\n+\n.\ngene_id \"lncRNA_002\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n182981\n183851\n.\n+\n.\ngene_id \"lncRNA_004\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n208153\n208859\n.\n+\n.\ngene_id \"lncRNA_005\";\n\n\n\n\n\n\n\n\n\nPocillopora tuahiniensis (DISCLAIMER)\nGenes\nDownload Gene GFF\nhttps://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/00.01-Ptua-gene-gff/Pmea_gene_only.gff3\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n887\n6811\n.\n-\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29951.t1\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n7305\n12239\n.\n+\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29952.t1\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n21622\n23112\n.\n-\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29953.t1\n\n\nPocillopora_meandrina_HIv1___xfSc0000716\nAUGUSTUS\ngene\n25313\n26016\n.\n-\n.\nID=gene-Pocillopora_meandrina_HIv1___RNAseq.g29954.t1\n\n\n\n\n\n\n\nlncRNAs\nDownload lncRNA GTF\nhttps://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA.filtered.gtf\n\n\n\n\n\n\n\n\nseqid\nsource\ntype\nstart\nend\nscore\nstrand\nphase\nattributes\n\n\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n673926\n676113\n.\n+\n.\ngene_id \"lncRNA_008\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n673941\n676113\n.\n+\n.\ngene_id \"lncRNA_009\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n673950\n676113\n.\n+\n.\ngene_id \"lncRNA_010\";\n\n\nPorites_evermani_scaffold_1\n.\nlncRNA\n703501\n725784\n.\n+\n.\ngene_id \"lncRNA_011\";"
+  },
+  {
+    "objectID": "temperature.html",
+    "href": "temperature.html",
+    "title": "Mo’orea Temperature Time Series",
+    "section": "",
+    "text": "The temperature data was collected across four key sampling timepoints during the MOSAiC project:\n\n\n\nTimepoint\nDate\nSeason\n\n\n\n\nTP1\nJanuary 2020\nAustral Summer\n\n\nTP2\nMarch 2020\nAustral Summer/Autumn\n\n\nTP3\nSeptember 2020\nAustral Winter/Spring\n\n\nTP4\nNovember 2020\nAustral Spring",
+    "crumbs": [
+      "Data Files",
+      "Temperature Profiles"
+    ]
+  },
+  {
+    "objectID": "temperature.html#sampling-timepoints",
+    "href": "temperature.html#sampling-timepoints",
+    "title": "Mo’orea Temperature Time Series",
+    "section": "",
+    "text": "The temperature data was collected across four key sampling timepoints during the MOSAiC project:\n\n\n\nTimepoint\nDate\nSeason\n\n\n\n\nTP1\nJanuary 2020\nAustral Summer\n\n\nTP2\nMarch 2020\nAustral Summer/Autumn\n\n\nTP3\nSeptember 2020\nAustral Winter/Spring\n\n\nTP4\nNovember 2020\nAustral Spring",
+    "crumbs": [
+      "Data Files",
+      "Temperature Profiles"
+    ]
+  },
+  {
+    "objectID": "temperature.html#interactive-temperature-explorer",
+    "href": "temperature.html#interactive-temperature-explorer",
+    "title": "Mo’orea Temperature Time Series",
+    "section": "Interactive Temperature Explorer",
+    "text": "Interactive Temperature Explorer\nThis page provides interactive visualization of in-situ temperature logger data from three Mo’orea reef sites.\n\n\n\n\n\n\n\nData Download\n\n\nNotes\n\nRaw points aggregated to hourly means for performance.\n24h rolling mean computed per site to smooth diel variability.\nTimestamps are UTC.\nY-axis Features:\n\nDefault range set to 20-32°C for optimal viewing of temperature fluctuations\nUsers can manually zoom and pan the y-axis by dragging or using the mouse wheel\nDouble-click to reset to default view\n\nSampling Timepoints: Red dotted lines mark TP1-TP4 sampling events for correlation with temperature patterns\n\n\n\nRelated Environmental Data\nLong term Moorea monitoring data of other environmental characteristics on Moorea’s north shore:\nMoorea Coral Reef LTER, L. Washburn, A. Brooks, and H. Krumbholz. 2025. MCR LTER: Coral Reef: Gump Station Meteorological Data, ongoing since 2006 ver 53. Environmental Data Initiative. https://doi.org/10.6073/pasta/eccd196e1bf25c97fedb8bd48bfbb4a0",
+    "crumbs": [
+      "Data Files",
+      "Temperature Profiles"
+    ]
+  },
+  {
+    "objectID": "its.html#interactive-its-data-explorer",
+    "href": "its.html#interactive-its-data-explorer",
+    "title": "ITS Data",
+    "section": "Interactive ITS Data Explorer",
+    "text": "Interactive ITS Data Explorer\nThis page provides interactive visualization and searchable tables for Internal Transcribed Spacer (ITS) sequences across coral species and time points.\nITS sequences are important molecular markers used for species identification and phylogenetic analysis, particularly useful for studying coral symbiont communities."
+  },
+  {
+    "objectID": "its.html#species-overview",
+    "href": "its.html#species-overview",
+    "title": "ITS Data",
+    "section": "Species Overview",
+    "text": "Species Overview\n\n# Create species overview table\nspecies_overview &lt;- data.frame(\n  Species = sapply(its_data_urls, function(x) x$species_name),\n  `Scientific Name` = sapply(its_data_urls, function(x) x$italic_name),\n  `ITS1 Samples` = sapply(names(its_data_urls), function(sp) safe_nrow(all_its_data[[sp]][[\"its1\"]])),\n  `ITS2 Samples` = sapply(names(its_data_urls), function(sp) safe_nrow(all_its_data[[sp]][[\"its2\"]])),\n  `Taxonomy Records` = sapply(names(its_data_urls), function(sp) safe_nrow(all_its_data[[sp]][[\"taxonomy\"]])),\n  check.names = FALSE\n)\n\nspecies_overview %&gt;%\n  gt() %&gt;%\n  tab_header(title = \"ITS Data Summary by Species\") %&gt;%\n  cols_align(align = \"center\", columns = 3:5)\n\n\n\n\n\n\n\nITS Data Summary by Species\n\n\nSpecies\nScientific Name\nITS1 Samples\nITS2 Samples\nTaxonomy Records\n\n\n\n\nAcropora pulchra\n*Acropora pulchra*\n10\n10\n10\n\n\nPorites evermanni\n*Porites evermanni*\n0\n0\n0\n\n\nPocillopora tuahiniensis\n*Pocillopora tuahiniensis*\n0\n0\n0"
+  },
+  {
+    "objectID": "its.html#time-series-visualization",
+    "href": "its.html#time-series-visualization",
+    "title": "ITS Data",
+    "section": "Time Series Visualization",
+    "text": "Time Series Visualization\n\n# Combine all timepoint data for plotting\nall_timepoint_data &lt;- data.frame()\n\nfor (species_code in names(its_data_urls)) {\n  for (data_type in c(\"its1\", \"its2\")) {\n    df &lt;- all_its_data[[species_code]][[data_type]]\n    tp_data &lt;- extract_timepoint_data(df, species_code)\n    if (nrow(tp_data) &gt; 0) {\n      tp_data$data_type &lt;- data_type\n      all_timepoint_data &lt;- rbind(all_timepoint_data, tp_data)\n    }\n  }\n}\n\nif (nrow(all_timepoint_data) &gt; 0) {\n  # Create interactive plot\n  p &lt;- all_timepoint_data %&gt;%\n    group_by(species, data_type, timepoint) %&gt;%\n    summarise(\n      mean_count = mean(count, na.rm = TRUE),\n      median_count = median(count, na.rm = TRUE),\n      n_features = n(),\n      .groups = \"drop\"\n    ) %&gt;%\n    plot_ly(x = ~timepoint, y = ~mean_count, color = ~paste(species, data_type), \n            type = \"scatter\", mode = \"lines+markers\",\n            hovertemplate = \"Species: %{color}&lt;br&gt;Timepoint: %{x}&lt;br&gt;Mean Count: %{y:.2f}&lt;br&gt;Features: %{text}&lt;extra&gt;&lt;/extra&gt;\",\n            text = ~n_features) %&gt;%\n    layout(\n      title = \"ITS Sequence Counts Across Time Points\",\n      xaxis = list(title = \"Time Point\"),\n      yaxis = list(title = \"Mean Count\"),\n      hovermode = \"x unified\"\n    )\n  \n  p\n} else {\n  cat(\"No time series data available for visualization.\")\n}"
+  },
+  {
+    "objectID": "its.html#interactive-data-tables",
+    "href": "its.html#interactive-data-tables",
+    "title": "ITS Data",
+    "section": "Interactive Data Tables",
+    "text": "Interactive Data Tables\n\nAcropora pulchraPorites evermanniPocillopora tuahiniensis\n\n\nAcropora pulchra\n\nITS1\nDownload ITS1\n ../data/sample_apul_its1.csv \nInteractive Data Table\n\n\n\n\nApul_its1 (first 4 rows)\n\n\n\n\n\n\nOTU_ID\n\n\n1A1_ACR-173_TP1\n\n\n1A2_ACR-244_TP4\n\n\n1A8_ACR-186_TP2\n\n\n1A10_ACR-145_TP4\n\n\n1A12_ACR-237_TP3\n\n\n2A1_ACR-145_TP1\n\n\n2A2_ACR-255_TP2\n\n\n2C3_ACR-57_TP1\n\n\n2G2_ACR-57_TP4\n\n\n3B1_ACR-201_TP1\n\n\n3B2_ACR-201_TP2\n\n\n3B3_ACR-201_TP3\n\n\n3B4_ACR-201_TP4\n\n\n\n\n\n\nOTU_0001\n\n\n245\n\n\n189\n\n\n156\n\n\n203\n\n\n167\n\n\n198\n\n\n145\n\n\n234\n\n\n198\n\n\n201\n\n\n234\n\n\n189\n\n\n176\n\n\n\n\nOTU_0002\n\n\n156\n\n\n234\n\n\n189\n\n\n145\n\n\n234\n\n\n167\n\n\n203\n\n\n156\n\n\n145\n\n\n189\n\n\n167\n\n\n203\n\n\n189\n\n\n\n\nOTU_0003\n\n\n89\n\n\n156\n\n\n234\n\n\n89\n\n\n156\n\n\n234\n\n\n89\n\n\n156\n\n\n234\n\n\n134\n\n\n189\n\n\n145\n\n\n167\n\n\n\n\nOTU_0004\n\n\n234\n\n\n89\n\n\n167\n\n\n234\n\n\n89\n\n\n167\n\n\n234\n\n\n89\n\n\n167\n\n\n198\n\n\n123\n\n\n145\n\n\n189\n\n\n\n\n\n\n\nITS2\nDownload ITS2\n ../data/sample_apul_its2.csv \nInteractive Data Table\n\n\n\n\nApul_its2 (first 4 rows)\n\n\n\n\n\n\nOTU_ID\n\n\n1A1_ACR-173_TP1\n\n\n1A2_ACR-244_TP4\n\n\n1A8_ACR-186_TP2\n\n\n1A10_ACR-145_TP4\n\n\n1A12_ACR-237_TP3\n\n\n2A1_ACR-145_TP1\n\n\n2A2_ACR-255_TP2\n\n\n2C3_ACR-57_TP1\n\n\n2G2_ACR-57_TP4\n\n\n3B1_ACR-201_TP1\n\n\n3B2_ACR-201_TP2\n\n\n3B3_ACR-201_TP3\n\n\n3B4_ACR-201_TP4\n\n\n\n\n\n\nOTU_0001\n\n\n123\n\n\n145\n\n\n167\n\n\n189\n\n\n156\n\n\n134\n\n\n178\n\n\n201\n\n\n145\n\n\n167\n\n\n189\n\n\n156\n\n\n178\n\n\n\n\nOTU_0002\n\n\n167\n\n\n189\n\n\n134\n\n\n156\n\n\n201\n\n\n189\n\n\n145\n\n\n167\n\n\n189\n\n\n123\n\n\n156\n\n\n189\n\n\n145\n\n\n\n\nOTU_0003\n\n\n189\n\n\n123\n\n\n156\n\n\n167\n\n\n134\n\n\n156\n\n\n189\n\n\n123\n\n\n167\n\n\n189\n\n\n134\n\n\n145\n\n\n167\n\n\n\n\nOTU_0004\n\n\n145\n\n\n167\n\n\n189\n\n\n123\n\n\n156\n\n\n167\n\n\n134\n\n\n189\n\n\n123\n\n\n145\n\n\n167\n\n\n189\n\n\n134\n\n\n\n\n\n\n\nTaxonomy\nDownload Taxonomy\n ../data/sample_apul_taxonomy.csv \nInteractive Data Table\n\n\n\n\nApul_taxonomy (first 4 rows)\n\n\n\n\n\n\nOTU_ID\n\n\nTaxonomy\n\n\nKingdom\n\n\nPhylum\n\n\nClass\n\n\nOrder\n\n\nFamily\n\n\nGenus\n\n\nSpecies\n\n\n\n\n\n\nOTU_0001\n\n\nSymbiodiniaceae;Cladocopium;C1\n\n\nEukaryota\n\n\nDinoflagellata\n\n\nDinophyceae\n\n\nSuessiales\n\n\nSymbiodiniaceae\n\n\nCladocopium\n\n\nC1\n\n\n\n\nOTU_0002\n\n\nSymbiodiniaceae;Durusdinium;D1\n\n\nEukaryota\n\n\nDinoflagellata\n\n\nDinophyceae\n\n\nSuessiales\n\n\nSymbiodiniaceae\n\n\nDurusdinium\n\n\nD1\n\n\n\n\nOTU_0003\n\n\nSymbiodiniaceae;Breviolum;B1\n\n\nEukaryota\n\n\nDinoflagellata\n\n\nDinophyceae\n\n\nSuessiales\n\n\nSymbiodiniaceae\n\n\nBreviolum\n\n\nB1\n\n\n\n\nOTU_0004\n\n\nSymbiodiniaceae;Cladocopium;C3\n\n\nEukaryota\n\n\nDinoflagellata\n\n\nDinophyceae\n\n\nSuessiales\n\n\nSymbiodiniaceae\n\n\nCladocopium\n\n\nC3\n\n\n\n\n\n\n\n\nPorites evermanni\n\nITS1 - Data Not Available\nData could not be loaded for this section.\n\n\nITS2 - Data Not Available\nData could not be loaded for this section.\n\n\nTaxonomy - Data Not Available\nData could not be loaded for this section.\n\n\n\nPocillopora tuahiniensis\n\nITS1 - Data Not Available\nData could not be loaded for this section.\n\n\nITS2 - Data Not Available\nData could not be loaded for this section.\n\n\nTaxonomy - Data Not Available\nData could not be loaded for this section."
+  },
+  {
+    "objectID": "its.html#data-sources-and-methods",
+    "href": "its.html#data-sources-and-methods",
+    "title": "ITS Data",
+    "section": "Data Sources and Methods",
+    "text": "Data Sources and Methods\n\nITS Sequencing\nInternal Transcribed Spacer (ITS) regions are highly variable DNA sequences located between the conserved 18S, 5.8S, and 28S ribosomal RNA genes. These regions are commonly used for:\n\nSpecies identification and barcoding\nPhylogenetic analysis\nCommunity structure assessment\nSymbiont diversity studies\n\n\n\nTime Points\nData is collected across four time points (TP1-TP4) representing different experimental or temporal conditions in the MOSAiC time series study.\n\n\nData Processing\n\nQuality Control: Raw sequences underwent quality filtering and trimming\nTaxonomic Assignment: Sequences were assigned to taxonomic groups using reference databases\nAbundance Counting: Feature counts were generated for each sample and time point\nNormalization: Count data may be normalized for comparative analysis\n\n\n\nDownloads\nAll data files are available for download using the buttons provided in each section. Files are hosted on the UW Fish server and updated regularly."
+  },
+  {
+    "objectID": "jbrowse.html",
+    "href": "jbrowse.html",
+    "title": "JBrowse",
+    "section": "",
+    "text": "Open the genome browser directly: Open JBrowse.\nEmbedded view below:",
+    "crumbs": [
+      "Genome Browser"
+    ]
+  },
+  {
+    "objectID": "disclaimer.html",
+    "href": "disclaimer.html",
+    "title": "disclaimer",
+    "section": "",
+    "text": "NSF DISCLAIMER\nThis material is based upon work supported by the National Science Foundation under Grant No. [insert grant number, e.g., 1234567].\n1921465, 1921149, 1921425, 1921356, 1921402\nAny opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation."
+  },
+  {
+    "objectID": "physiology.html",
+    "href": "physiology.html",
+    "title": "MOSAiC Physiology Data",
+    "section": "",
+    "text": "This page provides interactive visualization and exploration of physiology data from the MOSAiC timeseries study, including metabolomics, lipidomics, and physiological measurements across four timepoints.",
+    "crumbs": [
+      "Data Files",
+      "Physiology Data"
+    ]
+  },
+  {
+    "objectID": "physiology.html#interactive-physiology-data-explorer",
+    "href": "physiology.html#interactive-physiology-data-explorer",
+    "title": "MOSAiC Physiology Data",
+    "section": "",
+    "text": "This page provides interactive visualization and exploration of physiology data from the MOSAiC timeseries study, including metabolomics, lipidomics, and physiological measurements across four timepoints.",
+    "crumbs": [
+      "Data Files",
+      "Physiology Data"
+    ]
+  },
+  {
+    "objectID": "physiology.html#metabolomics-data",
+    "href": "physiology.html#metabolomics-data",
+    "title": "MOSAiC Physiology Data",
+    "section": "Metabolomics Data",
+    "text": "Metabolomics Data\n\nInteractive Metabolomics Table\nExplore metabolomics data with search and filtering capabilities:\n\n\n\n\n\n\n\n\nMetabolomics Time Series Plots\nSelect compounds to visualize across timepoints:",
+    "crumbs": [
+      "Data Files",
+      "Physiology Data"
+    ]
+  },
+  {
+    "objectID": "physiology.html#lipidomics-data",
+    "href": "physiology.html#lipidomics-data",
+    "title": "MOSAiC Physiology Data",
+    "section": "Lipidomics Data",
+    "text": "Lipidomics Data\n\nInteractive Lipidomics Table\n\n\n\n\n\n\n\n\nLipidomics Time Series Plots",
+    "crumbs": [
+      "Data Files",
+      "Physiology Data"
+    ]
+  },
+  {
+    "objectID": "physiology.html#physiology-data",
+    "href": "physiology.html#physiology-data",
+    "title": "MOSAiC Physiology Data",
+    "section": "Physiology Data",
+    "text": "Physiology Data\n\nInteractive Physiology Table\n\n\n\n\n\n\n\n\nPhysiology Time Series Plots\n\n\n\n\n\nRespiration (μmol/mg protein)\n\n\n\n\nChlorophyll a (μg/cm²)\n\n\n\n\nSymbiont cells (cells/cm²)\n\n\n\n\nCalcification (μmol/cm²/hr)",
+    "crumbs": [
+      "Data Files",
+      "Physiology Data"
+    ]
+  },
+  {
+    "objectID": "physiology.html#data-downloads",
+    "href": "physiology.html#data-downloads",
+    "title": "MOSAiC Physiology Data",
+    "section": "Data Downloads",
+    "text": "Data Downloads\n\nDownload Raw Data Files\n\nMetabolomics Data (CSV)\nLipidomics Data (CSV)\nPhysiology Data (CSV)\n\n\n\nData Overview:\n\n\n- Metabolomics:  141  compounds across  96  samples\n\n\n- Lipidomics:  371  lipids across  96  samples\n\n\n- Physiology:  448  measurements across  141  colonies\n\n\n- Species:  Acropora pulchra, Pocillopora tuahiniensis, Porites evermanni \n\n\n- Timepoints:  TP1, TP2, TP3, TP4",
+    "crumbs": [
+      "Data Files",
+      "Physiology Data"
     ]
   }
 ]
