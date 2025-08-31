@@ -37,7 +37,7 @@
     "href": "counts.html#sample-counts-by-data-type",
     "title": "Expression Values",
     "section": "Sample Counts by Data Type",
-    "text": "Sample Counts by Data Type\n\n\n\n\n\n\nSample Counts by Data Type\n\n\n\n\nSpecies\n\n\nGene\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\n\n\n\n\nAcropora pulchra\n\n\n40\n\n\n40\n\n\n40\n\n\n39\n\n\n\n\nPorites evermanni\n\n\n38\n\n\n37\n\n\n38\n\n\n37\n\n\n\n\nPocillopora tuahiniensis\n\n\n39\n\n\n39\n\n\n39\n\n\n32\n\n\n\n\n\n\n\n\n\n\n\nNotes on sample counts\n\n\n\nFor genes (and lncRNA) the sample counts reflects 3 samples were not of quality to sequence.",
+    "text": "Sample Counts by Data Type\n\n\n\n\n\n\nSample Counts by Data Type\n\n\n\n\nSpecies\n\n\nGene\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\n\n\n\n\nAcropora pulchra\n\n\n40\n\n\n40\n\n\n40\n\n\n39\n\n\n\n\nPorites evermanni\n\n\n38\n\n\n37\n\n\n38\n\n\n37\n\n\n\n\nPocillopora tuahiniensis\n\n\n39\n\n\n39\n\n\n39\n\n\n32",
     "crumbs": [
       "Data Files",
       "Genomic Expression Values"
@@ -266,39 +266,70 @@
     ]
   },
   {
-    "objectID": "its.html#interactive-its-data-explorer",
-    "href": "its.html#interactive-its-data-explorer",
-    "title": "ITS Data",
-    "section": "Interactive ITS Data Explorer",
-    "text": "Interactive ITS Data Explorer\nThis page provides interactive visualization and searchable tables for Internal Transcribed Spacer (ITS) sequences across coral species and time points.\nITS sequences are important molecular markers used for species identification and phylogenetic analysis, particularly useful for studying coral symbiont communities."
+    "objectID": "its.html",
+    "href": "its.html",
+    "title": "ITS2 Data",
+    "section": "",
+    "text": "This page provides interactive visualization and searchable tables for Internal Transcribed Spacer 2 (ITS2) relative abundance data across coral species and time points.\nITS2 sequences are important molecular markers used for coral symbiont identification and community analysis, particularly useful for studying changes in symbiont communities over time.",
+    "crumbs": [
+      "Data Files",
+      "ITS Data"
+    ]
   },
   {
-    "objectID": "its.html#species-overview",
-    "href": "its.html#species-overview",
-    "title": "ITS Data",
-    "section": "Species Overview",
-    "text": "Species Overview\n\n# Create species overview table\nspecies_overview &lt;- data.frame(\n  Species = sapply(its_data_urls, function(x) x$species_name),\n  `Scientific Name` = sapply(its_data_urls, function(x) x$italic_name),\n  `ITS1 Samples` = sapply(names(its_data_urls), function(sp) safe_nrow(all_its_data[[sp]][[\"its1\"]])),\n  `ITS2 Samples` = sapply(names(its_data_urls), function(sp) safe_nrow(all_its_data[[sp]][[\"its2\"]])),\n  `Taxonomy Records` = sapply(names(its_data_urls), function(sp) safe_nrow(all_its_data[[sp]][[\"taxonomy\"]])),\n  check.names = FALSE\n)\n\nspecies_overview %&gt;%\n  gt() %&gt;%\n  tab_header(title = \"ITS Data Summary by Species\") %&gt;%\n  cols_align(align = \"center\", columns = 3:5)\n\n\n\n\n\n\n\nITS Data Summary by Species\n\n\nSpecies\nScientific Name\nITS1 Samples\nITS2 Samples\nTaxonomy Records\n\n\n\n\nAcropora pulchra\n*Acropora pulchra*\n10\n10\n10\n\n\nPorites evermanni\n*Porites evermanni*\n0\n0\n0\n\n\nPocillopora tuahiniensis\n*Pocillopora tuahiniensis*\n0\n0\n0"
+    "objectID": "its.html#interactive-its2-data-explorer",
+    "href": "its.html#interactive-its2-data-explorer",
+    "title": "ITS2 Data",
+    "section": "",
+    "text": "This page provides interactive visualization and searchable tables for Internal Transcribed Spacer 2 (ITS2) relative abundance data across coral species and time points.\nITS2 sequences are important molecular markers used for coral symbiont identification and community analysis, particularly useful for studying changes in symbiont communities over time.",
+    "crumbs": [
+      "Data Files",
+      "ITS Data"
+    ]
+  },
+  {
+    "objectID": "its.html#data-overview",
+    "href": "its.html#data-overview",
+    "title": "ITS2 Data",
+    "section": "Data Overview",
+    "text": "Data Overview\n\n\n**Dataset Summary:**\n- Total samples: 441 \n- Time points: 4 \n- Species: 3 \n- Sites: 3 \n- ITS2 types: 40 \n\n\n\n\n\n\n\n\nITS2 Data Summary by Species and Time Point\n\n\nSpecies\nTime Point\nSample Count\nSites\n\n\n\n\nAcropora\ntimepoint1\n42\nManava, Mahana, Hilton\n\n\nAcropora\ntimepoint2\n23\nManava, Mahana, Hilton\n\n\nAcropora\ntimepoint3\n21\nManava, Mahana, Hilton\n\n\nAcropora\ntimepoint4\n34\nManava, Mahana, Hilton\n\n\nPocillopora\ntimepoint1\n40\nMahana, Hilton, Manava\n\n\nPocillopora\ntimepoint2\n42\nMahana, Hilton, Manava\n\n\nPocillopora\ntimepoint3\n39\nMahana, Hilton, Manava\n\n\nPocillopora\ntimepoint4\n38\nMahana, Hilton, Manava\n\n\nPorites\ntimepoint1\n44\nMahana, Hilton, Manava\n\n\nPorites\ntimepoint2\n42\nMahana, Hilton, Manava\n\n\nPorites\ntimepoint3\n40\nMahana, Hilton, Manava\n\n\nPorites\ntimepoint4\n36\nMahana, Hilton, Manava",
+    "crumbs": [
+      "Data Files",
+      "ITS Data"
+    ]
   },
   {
     "objectID": "its.html#time-series-visualization",
     "href": "its.html#time-series-visualization",
-    "title": "ITS Data",
+    "title": "ITS2 Data",
     "section": "Time Series Visualization",
-    "text": "Time Series Visualization\n\n# Combine all timepoint data for plotting\nall_timepoint_data &lt;- data.frame()\n\nfor (species_code in names(its_data_urls)) {\n  for (data_type in c(\"its1\", \"its2\")) {\n    df &lt;- all_its_data[[species_code]][[data_type]]\n    tp_data &lt;- extract_timepoint_data(df, species_code)\n    if (nrow(tp_data) &gt; 0) {\n      tp_data$data_type &lt;- data_type\n      all_timepoint_data &lt;- rbind(all_timepoint_data, tp_data)\n    }\n  }\n}\n\nif (nrow(all_timepoint_data) &gt; 0) {\n  # Create interactive plot\n  p &lt;- all_timepoint_data %&gt;%\n    group_by(species, data_type, timepoint) %&gt;%\n    summarise(\n      mean_count = mean(count, na.rm = TRUE),\n      median_count = median(count, na.rm = TRUE),\n      n_features = n(),\n      .groups = \"drop\"\n    ) %&gt;%\n    plot_ly(x = ~timepoint, y = ~mean_count, color = ~paste(species, data_type), \n            type = \"scatter\", mode = \"lines+markers\",\n            hovertemplate = \"Species: %{color}&lt;br&gt;Timepoint: %{x}&lt;br&gt;Mean Count: %{y:.2f}&lt;br&gt;Features: %{text}&lt;extra&gt;&lt;/extra&gt;\",\n            text = ~n_features) %&gt;%\n    layout(\n      title = \"ITS Sequence Counts Across Time Points\",\n      xaxis = list(title = \"Time Point\"),\n      yaxis = list(title = \"Mean Count\"),\n      hovermode = \"x unified\"\n    )\n  \n  p\n} else {\n  cat(\"No time series data available for visualization.\")\n}"
+    "text": "Time Series Visualization",
+    "crumbs": [
+      "Data Files",
+      "ITS Data"
+    ]
   },
   {
     "objectID": "its.html#interactive-data-tables",
     "href": "its.html#interactive-data-tables",
-    "title": "ITS Data",
+    "title": "ITS2 Data",
     "section": "Interactive Data Tables",
-    "text": "Interactive Data Tables\n\nAcropora pulchraPorites evermanniPocillopora tuahiniensis\n\n\nAcropora pulchra\n\nITS1\nDownload ITS1\n ../data/sample_apul_its1.csv \nInteractive Data Table\n\n\n\n\nApul_its1 (first 4 rows)\n\n\n\n\n\n\nOTU_ID\n\n\n1A1_ACR-173_TP1\n\n\n1A2_ACR-244_TP4\n\n\n1A8_ACR-186_TP2\n\n\n1A10_ACR-145_TP4\n\n\n1A12_ACR-237_TP3\n\n\n2A1_ACR-145_TP1\n\n\n2A2_ACR-255_TP2\n\n\n2C3_ACR-57_TP1\n\n\n2G2_ACR-57_TP4\n\n\n3B1_ACR-201_TP1\n\n\n3B2_ACR-201_TP2\n\n\n3B3_ACR-201_TP3\n\n\n3B4_ACR-201_TP4\n\n\n\n\n\n\nOTU_0001\n\n\n245\n\n\n189\n\n\n156\n\n\n203\n\n\n167\n\n\n198\n\n\n145\n\n\n234\n\n\n198\n\n\n201\n\n\n234\n\n\n189\n\n\n176\n\n\n\n\nOTU_0002\n\n\n156\n\n\n234\n\n\n189\n\n\n145\n\n\n234\n\n\n167\n\n\n203\n\n\n156\n\n\n145\n\n\n189\n\n\n167\n\n\n203\n\n\n189\n\n\n\n\nOTU_0003\n\n\n89\n\n\n156\n\n\n234\n\n\n89\n\n\n156\n\n\n234\n\n\n89\n\n\n156\n\n\n234\n\n\n134\n\n\n189\n\n\n145\n\n\n167\n\n\n\n\nOTU_0004\n\n\n234\n\n\n89\n\n\n167\n\n\n234\n\n\n89\n\n\n167\n\n\n234\n\n\n89\n\n\n167\n\n\n198\n\n\n123\n\n\n145\n\n\n189\n\n\n\n\n\n\n\nITS2\nDownload ITS2\n ../data/sample_apul_its2.csv \nInteractive Data Table\n\n\n\n\nApul_its2 (first 4 rows)\n\n\n\n\n\n\nOTU_ID\n\n\n1A1_ACR-173_TP1\n\n\n1A2_ACR-244_TP4\n\n\n1A8_ACR-186_TP2\n\n\n1A10_ACR-145_TP4\n\n\n1A12_ACR-237_TP3\n\n\n2A1_ACR-145_TP1\n\n\n2A2_ACR-255_TP2\n\n\n2C3_ACR-57_TP1\n\n\n2G2_ACR-57_TP4\n\n\n3B1_ACR-201_TP1\n\n\n3B2_ACR-201_TP2\n\n\n3B3_ACR-201_TP3\n\n\n3B4_ACR-201_TP4\n\n\n\n\n\n\nOTU_0001\n\n\n123\n\n\n145\n\n\n167\n\n\n189\n\n\n156\n\n\n134\n\n\n178\n\n\n201\n\n\n145\n\n\n167\n\n\n189\n\n\n156\n\n\n178\n\n\n\n\nOTU_0002\n\n\n167\n\n\n189\n\n\n134\n\n\n156\n\n\n201\n\n\n189\n\n\n145\n\n\n167\n\n\n189\n\n\n123\n\n\n156\n\n\n189\n\n\n145\n\n\n\n\nOTU_0003\n\n\n189\n\n\n123\n\n\n156\n\n\n167\n\n\n134\n\n\n156\n\n\n189\n\n\n123\n\n\n167\n\n\n189\n\n\n134\n\n\n145\n\n\n167\n\n\n\n\nOTU_0004\n\n\n145\n\n\n167\n\n\n189\n\n\n123\n\n\n156\n\n\n167\n\n\n134\n\n\n189\n\n\n123\n\n\n145\n\n\n167\n\n\n189\n\n\n134\n\n\n\n\n\n\n\nTaxonomy\nDownload Taxonomy\n ../data/sample_apul_taxonomy.csv \nInteractive Data Table\n\n\n\n\nApul_taxonomy (first 4 rows)\n\n\n\n\n\n\nOTU_ID\n\n\nTaxonomy\n\n\nKingdom\n\n\nPhylum\n\n\nClass\n\n\nOrder\n\n\nFamily\n\n\nGenus\n\n\nSpecies\n\n\n\n\n\n\nOTU_0001\n\n\nSymbiodiniaceae;Cladocopium;C1\n\n\nEukaryota\n\n\nDinoflagellata\n\n\nDinophyceae\n\n\nSuessiales\n\n\nSymbiodiniaceae\n\n\nCladocopium\n\n\nC1\n\n\n\n\nOTU_0002\n\n\nSymbiodiniaceae;Durusdinium;D1\n\n\nEukaryota\n\n\nDinoflagellata\n\n\nDinophyceae\n\n\nSuessiales\n\n\nSymbiodiniaceae\n\n\nDurusdinium\n\n\nD1\n\n\n\n\nOTU_0003\n\n\nSymbiodiniaceae;Breviolum;B1\n\n\nEukaryota\n\n\nDinoflagellata\n\n\nDinophyceae\n\n\nSuessiales\n\n\nSymbiodiniaceae\n\n\nBreviolum\n\n\nB1\n\n\n\n\nOTU_0004\n\n\nSymbiodiniaceae;Cladocopium;C3\n\n\nEukaryota\n\n\nDinoflagellata\n\n\nDinophyceae\n\n\nSuessiales\n\n\nSymbiodiniaceae\n\n\nCladocopium\n\n\nC3\n\n\n\n\n\n\n\n\nPorites evermanni\n\nITS1 - Data Not Available\nData could not be loaded for this section.\n\n\nITS2 - Data Not Available\nData could not be loaded for this section.\n\n\nTaxonomy - Data Not Available\nData could not be loaded for this section.\n\n\n\nPocillopora tuahiniensis\n\nITS1 - Data Not Available\nData could not be loaded for this section.\n\n\nITS2 - Data Not Available\nData could not be loaded for this section.\n\n\nTaxonomy - Data Not Available\nData could not be loaded for this section."
+    "text": "Interactive Data Tables\nDownload ITS2 Data Data source: ITS2_rel_abund_matrix.csvInteractive Data Table",
+    "crumbs": [
+      "Data Files",
+      "ITS Data"
+    ]
   },
   {
     "objectID": "its.html#data-sources-and-methods",
     "href": "its.html#data-sources-and-methods",
-    "title": "ITS Data",
+    "title": "ITS2 Data",
     "section": "Data Sources and Methods",
-    "text": "Data Sources and Methods\n\nITS Sequencing\nInternal Transcribed Spacer (ITS) regions are highly variable DNA sequences located between the conserved 18S, 5.8S, and 28S ribosomal RNA genes. These regions are commonly used for:\n\nSpecies identification and barcoding\nPhylogenetic analysis\nCommunity structure assessment\nSymbiont diversity studies\n\n\n\nTime Points\nData is collected across four time points (TP1-TP4) representing different experimental or temporal conditions in the MOSAiC time series study.\n\n\nData Processing\n\nQuality Control: Raw sequences underwent quality filtering and trimming\nTaxonomic Assignment: Sequences were assigned to taxonomic groups using reference databases\nAbundance Counting: Feature counts were generated for each sample and time point\nNormalization: Count data may be normalized for comparative analysis\n\n\n\nDownloads\nAll data files are available for download using the buttons provided in each section. Files are hosted on the UW Fish server and updated regularly."
+    "text": "Data Sources and Methods\n\nITS2 Sequencing\nInternal Transcribed Spacer 2 (ITS2) is a highly variable DNA region located between the 5.8S and 28S ribosomal RNA genes. This region is commonly used for:\n\nCoral symbiont identification\nSymbiodiniaceae community analysis\nTemporal changes in symbiont communities\nResponse to environmental stressors\n\n\n\nData Structure\nThis dataset contains relative abundance values for different ITS2 types across:\n\nTimepoints: 4 time points (timepoint1-4) representing temporal sampling\nSites: Multiple reef sites with different environmental conditions\nNutrient Treatments: High and low nutrient conditions\nSpecies: Multiple coral species including Acropora and others\nITS2 Types: Relative abundance values for ~40 different ITS2 sequence variants\n\n\n\nData Processing\n\nSequence Quality Control: Raw ITS2 sequences underwent quality filtering\nTaxonomic Assignment: Sequences were assigned to ITS2 type profiles using SymPortal\nRelative Abundance: Count data was normalized to relative abundance within each sample\nMatrix Format: Data organized with samples as rows and ITS2 types as columns\n\n\n\nDownload\nThe complete dataset is available for download using the button provided above. The file contains: - Sample metadata (colony ID, timepoint, site, nutrient treatment, species) - Relative abundance values for all detected ITS2 types",
+    "crumbs": [
+      "Data Files",
+      "ITS Data"
+    ]
   },
   {
     "objectID": "jbrowse.html",
