@@ -16,9 +16,12 @@ This genome browser supports exploration of coral species included in our genomi
 ### 🔹 Acropora pulchra
 
 > **Reference Genome:** *Acropora pulchra*\
-> **Source:** **Genome Size:** \~xx75 Mbp\
-> **N50:** xx.8 Mbp\
-> **Protein-Coding Genes:** xxx
+> **Source:** [Conn et al., 2025](https://doi.org/10.46471/gigabyte.153)\
+> **Genome Size:** 518 Mbp\
+> **N50:** 17 Mbp\
+> **Protein-Coding Genes:** 40,518
+
+
 
 ------------------------------------------------------------------------
 

@@ -33,12 +33,12 @@ website:
             href: features.qmd
           - text: "ITS Data"
             href: its.qmd
-          - text: Temperature 
-            file: temperature.qmd  
+          - text: "Temperature Profiles"
+            file: temperature.qmd
+          - text: "Physiology Data"
+            file: physiology.qmd
       - text: Genome Browser
         file: jbrowse.qmd
-      - text: Temperature
-        file: temperature.qmd
 
     tools:
       - icon: github
