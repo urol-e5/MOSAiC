@@ -31,7 +31,7 @@ website:
             href: counts.qmd
           - text: "Genome Features"
             href: features.qmd
-          - text: "ITS Data"
+          - text: "ITS2 Data"
             href: its.qmd
           - text: "Temperature Profiles"
             file: temperature.qmd

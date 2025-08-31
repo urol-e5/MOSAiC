@@ -1,6 +1,6 @@
 ---
-title: "ITS Data"
-description: "Internal Transcribed Spacer sequences and analysis"
+title: "ITS2 Data"
+description: "Internal Transcribed Spacer 2 sequences and analysis"
 format:
   html:
     code-copy: true
