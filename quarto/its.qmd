@@ -1,0 +1,385 @@
+---
+title: "ITS Data"
+description: "Internal Transcribed Spacer sequences and analysis"
+format:
+  html:
+    code-copy: true
+    toc: true
+    toc-location: right
+    toc-expand: true
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup, include=FALSE}
+# Check and load required packages
+required_packages <- c("tidyverse", "DT", "readxl", "plotly", "readr", "dplyr", "tibble", "knitr", "gt", "htmltools")
+
+# Function to safely load packages
+safe_load_package <- function(pkg) {
+  if (!require(pkg, character.only = TRUE, quietly = TRUE)) {
+    install.packages(pkg, dependencies = TRUE)
+    library(pkg, character.only = TRUE)
+  }
+}
+
+# Load all required packages
+for (pkg in required_packages) {
+  safe_load_package(pkg)
+}
+```
+
+```{r data-config, cache=TRUE, include=FALSE}
+
+# =============================================================================
+# ITS DATA URLS CONFIGURATION
+# =============================================================================
+# All external URLs are centralized here for easy maintenance.
+# To update URLs, only modify this section.
+
+its_data_urls <- list(
+  Apul = list(
+    species_name = "Acropora pulchra",
+    italic_name = "*Acropora pulchra*",
+    its1 = "../data/sample_apul_its1.csv",
+    its2 = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/ITS2/apul-its2_counts.csv",
+    taxonomy = "../data/sample_apul_taxonomy.csv"
+  ),
+  Peve = list(
+    species_name = "Porites evermanni",
+    italic_name = "*Porites evermanni*",
+    its1 = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/ITS1/peve-its1_counts.csv",
+    its2 = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/ITS2/peve-its2_counts.csv",
+    taxonomy = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/ITS-taxonomy/peve-its_taxonomy.csv"
+  ),
+  Ptuh = list(
+    species_name = "Pocillopora tuahiniensis", 
+    italic_name = "*Pocillopora tuahiniensis*",
+    its1 = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/ITS1/ptuh-its1_counts.csv",
+    its2 = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/ITS2/ptuh-its2_counts.csv", 
+    taxonomy = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/ITS-taxonomy/ptuh-its_taxonomy.csv"
+  )
+)
+
+# =============================================================================
+# HELPER FUNCTIONS
+# =============================================================================
+
+# URL validation function
+validate_url <- function(url) {
+  if (is.null(url) || url == "" || !is.character(url)) {
+    return(FALSE)
+  }
+  return(grepl("^https?://", url, ignore.case = TRUE))
+}
+
+# Create download button
+create_download_button <- function(url, filename = NULL, button_text = NULL) {
+  if (is.null(url) || url == "") {
+    return("")
+  }
+  
+  if (is.null(filename) || length(filename) == 0) {
+    filename <- "download"
+  }
+  
+  if (is.null(button_text) || length(button_text) == 0) {
+    button_text <- "Download"
+  }
+  
+  # Return HTML as a string that can be directly output
+  paste0('<a href="', url, '" class="btn btn-primary" target="_blank" download="', filename, '">', button_text, '</a>')
+}
+
+# Function to safely get row count
+safe_nrow <- function(df) {
+  if (is.null(df) || !is.data.frame(df) || nrow(df) == 0) {
+    return(0)
+  }
+  return(nrow(df))
+}
+
+# Function to load data with appropriate parameters and better error handling
+load_its_data_file <- function(url, data_type, species_code) {
+  if (is.null(url) || url == "") {
+    warning(paste("No URL provided for", data_type, "data in", species_code))
+    return(data.frame())
+  }
+  
+  tryCatch({
+    if (grepl("^https?://", url)) {
+      # For external URLs
+      if (grepl("\\.csv$", url)) {
+        vroom::vroom(url, show_col_types = FALSE, progress = FALSE)
+      } else {
+        vroom::vroom(url, delim = "\t", show_col_types = FALSE, progress = FALSE)
+      }
+    } else {
+      # For local files
+      if (file.exists(url)) {
+        if (grepl("\\.csv$", url)) {
+          vroom::vroom(url, show_col_types = FALSE, progress = FALSE)
+        } else {
+          vroom::vroom(url, delim = "\t", show_col_types = FALSE, progress = FALSE)
+        }
+      } else {
+        warning(paste("Local file not found:", url))
+        return(data.frame())
+      }
+    }
+  }, error = function(e) {
+    warning(paste("Failed to load", data_type, "data for", species_code, ":", e$message))
+    return(data.frame())
+  })
+}
+
+# =============================================================================
+# DATA LOADING
+# =============================================================================
+
+all_its_data <- list()
+
+# Load all data for all species
+for (species_code in names(its_data_urls)) {
+  species_info <- its_data_urls[[species_code]]
+  all_its_data[[species_code]] <- list()
+  
+  for (data_type in c("its1", "its2", "taxonomy")) {
+    url <- species_info[[data_type]]
+    cat("Loading", data_type, "data for", species_code, "from:", url, "\n")
+    all_its_data[[species_code]][[data_type]] <- load_its_data_file(url, data_type, species_code)
+  }
+}
+
+# Function to extract time point data for plotting
+extract_timepoint_data <- function(df, species_code) {
+  if (is.null(df) || nrow(df) == 0) {
+    return(data.frame())
+  }
+  
+  # Look for columns that match TP1, TP2, TP3, TP4 pattern
+  tp_cols <- grep("_TP[1-4]$", names(df), value = TRUE)
+  
+  if (length(tp_cols) == 0) {
+    return(data.frame())
+  }
+  
+  # Get the feature identifier column (usually first column)
+  id_col <- names(df)[1]
+  
+  # Extract timepoint data
+  tp_data <- df %>%
+    select(all_of(c(id_col, tp_cols))) %>%
+    slice_head(n = 100) %>%  # Limit to first 100 features for visualization
+    pivot_longer(cols = all_of(tp_cols), names_to = "sample", values_to = "count") %>%
+    mutate(
+      timepoint = str_extract(sample, "TP[1-4]"),
+      species = species_code
+    ) %>%
+    filter(!is.na(count) & count > 0)
+  
+  return(tp_data)
+}
+
+```
+
+## Interactive ITS Data Explorer
+
+This page provides interactive visualization and searchable tables for Internal Transcribed Spacer (ITS) sequences across coral species and time points.
+
+ITS sequences are important molecular markers used for species identification and phylogenetic analysis, particularly useful for studying coral symbiont communities.
+
+## Species Overview
+
+```{r species-overview}
+# Create species overview table
+species_overview <- data.frame(
+  Species = sapply(its_data_urls, function(x) x$species_name),
+  `Scientific Name` = sapply(its_data_urls, function(x) x$italic_name),
+  `ITS1 Samples` = sapply(names(its_data_urls), function(sp) safe_nrow(all_its_data[[sp]][["its1"]])),
+  `ITS2 Samples` = sapply(names(its_data_urls), function(sp) safe_nrow(all_its_data[[sp]][["its2"]])),
+  `Taxonomy Records` = sapply(names(its_data_urls), function(sp) safe_nrow(all_its_data[[sp]][["taxonomy"]])),
+  check.names = FALSE
+)
+
+species_overview %>%
+  gt() %>%
+  tab_header(title = "ITS Data Summary by Species") %>%
+  cols_align(align = "center", columns = 3:5)
+```
+
+## Time Series Visualization
+
+```{r timeseries-plot}
+# Combine all timepoint data for plotting
+all_timepoint_data <- data.frame()
+
+for (species_code in names(its_data_urls)) {
+  for (data_type in c("its1", "its2")) {
+    df <- all_its_data[[species_code]][[data_type]]
+    tp_data <- extract_timepoint_data(df, species_code)
+    if (nrow(tp_data) > 0) {
+      tp_data$data_type <- data_type
+      all_timepoint_data <- rbind(all_timepoint_data, tp_data)
+    }
+  }
+}
+
+if (nrow(all_timepoint_data) > 0) {
+  # Create interactive plot
+  p <- all_timepoint_data %>%
+    group_by(species, data_type, timepoint) %>%
+    summarise(
+      mean_count = mean(count, na.rm = TRUE),
+      median_count = median(count, na.rm = TRUE),
+      n_features = n(),
+      .groups = "drop"
+    ) %>%
+    plot_ly(x = ~timepoint, y = ~mean_count, color = ~paste(species, data_type), 
+            type = "scatter", mode = "lines+markers",
+            hovertemplate = "Species: %{color}<br>Timepoint: %{x}<br>Mean Count: %{y:.2f}<br>Features: %{text}<extra></extra>",
+            text = ~n_features) %>%
+    layout(
+      title = "ITS Sequence Counts Across Time Points",
+      xaxis = list(title = "Time Point"),
+      yaxis = list(title = "Mean Count"),
+      hovermode = "x unified"
+    )
+  
+  p
+} else {
+  cat("No time series data available for visualization.")
+}
+```
+
+## Interactive Data Tables
+
+::: {.panel-tabset}
+
+```{r results='asis'}
+# Generate tabs for each species
+for (species_code in names(its_data_urls)) {
+  species_info <- its_data_urls[[species_code]]
+  
+  cat(paste0("### ", species_info$species_name, "\n\n"))
+  
+  cat(paste0("**", species_info$italic_name, "**\n\n"))
+  
+  # Loop through each data type
+  for (data_type in c("its1", "its2", "taxonomy")) {
+    url <- species_info[[data_type]]
+    df <- all_its_data[[species_code]][[data_type]]
+    
+    # Check if data was loaded successfully
+    if (is.null(df) || nrow(df) == 0) {
+      data_type_display <- switch(data_type,
+        "its1" = "ITS1",
+        "its2" = "ITS2", 
+        "taxonomy" = "Taxonomy",
+        data_type
+      )
+      cat(paste0("#### ", data_type_display, " - Data Not Available\n\n"))
+      cat("Data could not be loaded for this section.\n\n")
+      next
+    }
+    
+    # Label for section
+    data_type_display <- switch(data_type,
+      "its1" = "ITS1",
+      "its2" = "ITS2",
+      "taxonomy" = "Taxonomy", 
+      data_type
+    )
+    
+    # File name
+    file_extension <- ".csv"
+    filename <- paste0(species_code, "_", data_type, "_data", file_extension)
+    
+    # Section header
+    cat(paste0("#### ", data_type_display, "\n\n"))
+    
+    # Download button
+    download_btn <- create_download_button(url, filename, paste0("Download ", data_type_display))
+    if (download_btn != "") {
+      cat(download_btn, "\n\n")
+    }
+    
+    # URL display
+    cat("``` bash\n", url, "\n```\n\n")
+    
+    # Interactive table if data has reasonable size
+    if (nrow(df) <= 10000) {
+      cat("**Interactive Data Table**\n\n")
+      
+      # Create interactive table with DT
+      dt_table <- df %>%
+        slice_head(n = 1000) %>%  # Limit to first 1000 rows for performance
+        DT::datatable(
+          filter = "top",
+          extensions = c("Buttons", "Scroller"),
+          options = list(
+            dom = "Bfrtip",
+            buttons = c("copy", "csv", "excel"),
+            pageLength = 25,
+            deferRender = TRUE,
+            scrollY = 400,
+            scroller = TRUE,
+            scrollX = TRUE
+          ),
+          class = "display nowrap"
+        )
+      
+      print(htmltools::tagList(dt_table))
+    } else {
+      # For large datasets, just show summary
+      cat(paste0("**Dataset too large for interactive display (", nrow(df), " rows). Showing summary:**\n\n"))
+    }
+    
+    # Table summary/preview
+    cat(paste0("**", species_code, "_", data_type, " (first 4 rows)**\n\n"))
+    
+    # Display table preview
+    tryCatch({
+      df %>%
+        slice_head(n = 4) %>%
+        gt() %>% 
+        print()
+    }, error = function(e) {
+      cat("Error displaying table:", e$message, "\n")
+    })
+    
+    cat("\n\n")
+  }
+}
+```
+
+:::
+
+## Data Sources and Methods
+
+### ITS Sequencing
+
+Internal Transcribed Spacer (ITS) regions are highly variable DNA sequences located between the conserved 18S, 5.8S, and 28S ribosomal RNA genes. These regions are commonly used for:
+
+- Species identification and barcoding
+- Phylogenetic analysis
+- Community structure assessment
+- Symbiont diversity studies
+
+### Time Points
+
+Data is collected across four time points (TP1-TP4) representing different experimental or temporal conditions in the MOSAiC time series study.
+
+### Data Processing
+
+1. **Quality Control**: Raw sequences underwent quality filtering and trimming
+2. **Taxonomic Assignment**: Sequences were assigned to taxonomic groups using reference databases
+3. **Abundance Counting**: Feature counts were generated for each sample and time point
+4. **Normalization**: Count data may be normalized for comparative analysis
+
+### Downloads
+
+All data files are available for download using the buttons provided in each section. Files are hosted on the UW Fish server and updated regularly.
