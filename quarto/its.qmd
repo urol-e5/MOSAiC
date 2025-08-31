@@ -1,18 +1,26 @@
----
-title: "ITS Data"
-description: "Internal Transcribed Spacer sequences and analysis"
-format:
-  html:
-    code-copy: true
-    toc: true
-    toc-location: right
-    toc-expand: true
-editor: visual
-execute:
-  echo: false
-  warning: false
-  message: false
----
+1.  <div>
+
+    1.  <div>
+
+        ---
+        title: "ITS Data"
+        description: "Internal Transcribed Spacer sequences and analysis"
+        format:
+          html:
+            code-copy: true
+            toc: true
+            toc-location: right
+            toc-expand: true
+        editor: visual
+        execute:
+          echo: false
+          warning: false
+          message: false
+        ---
+
+        </div>
+
+    </div>
 
 ```{r setup, include=FALSE}
 # Check and load required packages
@@ -257,8 +265,7 @@ if (nrow(all_timepoint_data) > 0) {
 
 ## Interactive Data Tables
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ```{r results='asis'}
 # Generate tabs for each species
 for (species_code in names(its_data_urls)) {
@@ -355,7 +362,6 @@ for (species_code in names(its_data_urls)) {
   }
 }
 ```
-
 :::
 
 ## Data Sources and Methods
@@ -364,10 +370,10 @@ for (species_code in names(its_data_urls)) {
 
 Internal Transcribed Spacer (ITS) regions are highly variable DNA sequences located between the conserved 18S, 5.8S, and 28S ribosomal RNA genes. These regions are commonly used for:
 
-- Species identification and barcoding
-- Phylogenetic analysis
-- Community structure assessment
-- Symbiont diversity studies
+-   Species identification and barcoding
+-   Phylogenetic analysis
+-   Community structure assessment
+-   Symbiont diversity studies
 
 ### Time Points
 
@@ -375,10 +381,10 @@ Data is collected across four time points (TP1-TP4) representing different exper
 
 ### Data Processing
 
-1. **Quality Control**: Raw sequences underwent quality filtering and trimming
-2. **Taxonomic Assignment**: Sequences were assigned to taxonomic groups using reference databases
-3. **Abundance Counting**: Feature counts were generated for each sample and time point
-4. **Normalization**: Count data may be normalized for comparative analysis
+1.  **Quality Control**: Raw sequences underwent quality filtering and trimming
+2.  **Taxonomic Assignment**: Sequences were assigned to taxonomic groups using reference databases
+3.  **Abundance Counting**: Feature counts were generated for each sample and time point
+4.  **Normalization**: Count data may be normalized for comparative analysis
 
 ### Downloads
 
