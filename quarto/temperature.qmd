@@ -141,8 +141,17 @@ subplot(p_hourly, p_daily, nrows = 2, shareX = FALSE, titleY = TRUE)
 - Raw points aggregated to hourly means for performance.
 - 24h rolling mean computed per site to smooth diel variability.
 - Timestamps are UTC.
+
 - **Y-axis Features**: 
   - Default range set to 20-32°C for optimal viewing of temperature fluctuations
   - Users can manually zoom and pan the y-axis by dragging or using the mouse wheel
   - Double-click to reset to default view
 - **Sampling Timepoints**: Red dotted lines mark TP1-TP4 sampling events for correlation with temperature patterns
+
+
+### Related Environmental Data
+
+Long term Moorea monitoring data of other environmental characteristics on Moorea's north shore:
+
+Moorea Coral Reef LTER, L. Washburn, A. Brooks, and H. Krumbholz. 2025. MCR LTER: Coral Reef: Gump Station Meteorological Data, ongoing since 2006 ver 53. Environmental Data Initiative. https://doi.org/10.6073/pasta/eccd196e1bf25c97fedb8bd48bfbb4a0
+

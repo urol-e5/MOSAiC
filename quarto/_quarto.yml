@@ -32,7 +32,9 @@ website:
           - text: "Genome Features"
             href: features.qmd
           - text: Temperature Profiles
-            file: temperature.qmd  
+            file: temperature.qmd
+          - text: "Physiology Data"
+            file: physiology.qmd
       - text: Genome Browser
         file: jbrowse.qmd
 
