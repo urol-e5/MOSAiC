@@ -344,9 +344,16 @@
   {
     "objectID": "disclaimer.html",
     "href": "disclaimer.html",
-    "title": "disclaimer",
+    "title": "Disclaimer & Acknowledgment",
     "section": "",
-    "text": "NSF DISCLAIMER\nThis material is based upon work supported by the National Science Foundation under Grant No. [insert grant number, e.g., 1234567].\n1921465, 1921149, 1921425, 1921356, 1921402\nAny opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation."
+    "text": "This material is based upon work supported by the National Science Foundation under the following award numbers:\n\n\nNSF Award 1921465\n\n\nNSF Award 1921149\n\n\nNSF Award 1921425\n\n\nNSF Award 1921356\n\n\nNSF Award 1921402\n\n\nAny opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation."
+  },
+  {
+    "objectID": "disclaimer.html#national-science-foundation-nsf-acknowledgment",
+    "href": "disclaimer.html#national-science-foundation-nsf-acknowledgment",
+    "title": "Disclaimer & Acknowledgment",
+    "section": "",
+    "text": "This material is based upon work supported by the National Science Foundation under the following award numbers:\n\n\nNSF Award 1921465\n\n\nNSF Award 1921149\n\n\nNSF Award 1921425\n\n\nNSF Award 1921356\n\n\nNSF Award 1921402\n\n\nAny opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation."
   },
   {
     "objectID": "physiology.html",
