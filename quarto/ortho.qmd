@@ -59,6 +59,43 @@ aggregate_gene_counts <- function(df){
   list_rbind(rows)
 }
 
+calculate_z_scores <- function(df){
+  if (!nrow(df)) return(tibble())
+  tp_cols <- grep('TP[1-4]', names(df), value=TRUE)
+  if (!length(tp_cols)) return(tibble())
+  tp_map <- tibble(col=tp_cols, tp=as.integer(stringr::str_match(tp_cols,'TP([1-4])')[,2]))
+  rows <- lapply(seq_len(nrow(df)), function(i){
+    gene <- df$gene_id[i]
+    # Get all values for this gene across all time points
+    all_vals <- unlist(lapply(1:4, function(tp){
+      cols <- tp_map$col[tp_map$tp==tp]
+      if(!length(cols)) return(numeric())
+      as.numeric(df[i, cols])
+    }))
+    all_vals <- all_vals[!is.na(all_vals)]
+    
+    if(length(all_vals) == 0) {
+      z_scores <- rep(NA_real_, 4)
+    } else {
+      gene_mean <- mean(all_vals)
+      gene_sd <- if(length(all_vals) > 1) sd(all_vals) else 1
+      if(gene_sd == 0) gene_sd <- 1  # Avoid division by zero
+      
+      z_scores <- sapply(1:4, function(tp){
+        cols <- tp_map$col[tp_map$tp==tp]
+        if(!length(cols)) return(NA_real_)
+        vals <- as.numeric(df[i, cols])
+        tp_mean <- mean(vals, na.rm=TRUE)
+        (tp_mean - gene_mean) / gene_sd
+      })
+    }
+    
+    tibble(gene_id=gene,
+           TP1_zscore=z_scores[1], TP2_zscore=z_scores[2], TP3_zscore=z_scores[3], TP4_zscore=z_scores[4])
+  })
+  list_rbind(rows)
+}
+
 ortholog_path <- '../data/orthologs/ortholog_groups_three_way.csv'
 apul_counts_path <- '../data/orthologs/apul-gene_count_matrix.csv'
 peve_counts_path <- '../data/orthologs/peve-gene_count_matrix.csv'
@@ -85,6 +122,11 @@ apul_agg <- aggregate_gene_counts(apul_counts)
 peve_agg <- aggregate_gene_counts(peve_counts)
 ptua_agg <- aggregate_gene_counts(ptua_counts)
 
+# Calculate z-scores for normalized visualization
+apul_zscore <- calculate_z_scores(apul_counts)
+peve_zscore <- calculate_z_scores(peve_counts)
+ptua_zscore <- calculate_z_scores(ptua_counts)
+
 ortholog_groups <- if (nrow(ortholog_data)) ortholog_data$group_id else character()
 names(ortholog_groups) <- if (length(ortholog_groups)) paste0(ortholog_data$group_id, ifelse(!is.na(ortholog_data$protein_name) & ortholog_data$protein_name!='', paste0(' (', ortholog_data$protein_name, ')'), '')) else character()
 
@@ -104,6 +146,59 @@ counts_map <- lapply(species_list, function(df){
   }), df$gene_id)
 })
 counts_json <- jsonlite::toJSON(counts_map, auto_unbox=TRUE)
+
+# Data for visualization 2: Z-score plots with protein-identified filter
+ortholog_with_protein <- ortholog_data |>
+  filter(!is.na(protein_name) & protein_name != '')
+
+ortholog_protein_groups <- if (nrow(ortholog_with_protein)) ortholog_with_protein$group_id else character()
+names(ortholog_protein_groups) <- if (length(ortholog_protein_groups)) paste0(ortholog_with_protein$group_id, ' (', ortholog_with_protein$protein_name, ')') else character()
+
+ortholog_protein_json <- if (nrow(ortholog_with_protein)) ortholog_with_protein |>
+  select(group_id, apul, peve, ptua, apul_lookup, peve_lookup, ptua_lookup, protein_name) |>
+  jsonlite::toJSON(auto_unbox=TRUE) else '[]'
+
+# Create z-score data map
+species_zscore_list <- list(Apul=apul_zscore, Peve=peve_zscore, Ptua=ptua_zscore)
+zscore_map <- lapply(species_zscore_list, function(df){
+  if (!nrow(df)) return(list())
+  setNames(lapply(df$gene_id, function(g){
+    row <- df[df$gene_id==g,][1,]
+    unname(as.numeric(row[1,c('TP1_zscore','TP2_zscore','TP3_zscore','TP4_zscore')]))
+  }), df$gene_id)
+})
+zscore_json <- jsonlite::toJSON(zscore_map, auto_unbox=TRUE)
+
+# Data for visualization 3: GO slim biological process grouping
+go_slim_data <- ortholog_data |>
+  filter(!is.na(goslim_names) & goslim_names != '') |>
+  rowwise() |>
+  mutate(
+    go_terms = list(strsplit(goslim_names, ';')[[1]] |> trimws())
+  ) |>
+  ungroup()
+
+# Create GO term groups
+go_term_groups <- list()
+if (nrow(go_slim_data) > 0) {
+  all_go_terms <- unique(unlist(go_slim_data$go_terms))
+  all_go_terms <- all_go_terms[!is.na(all_go_terms) & all_go_terms != '']
+  
+  for (term in all_go_terms) {
+    matching_groups <- go_slim_data |>
+      filter(sapply(go_terms, function(x) term %in% x)) |>
+      pull(group_id)
+    
+    if (length(matching_groups) > 0) {
+      go_term_groups[[term]] <- matching_groups
+    }
+  }
+}
+
+go_terms_list <- names(go_term_groups)
+names(go_terms_list) <- paste0(go_terms_list, ' (', lengths(go_term_groups), ' groups)')
+
+go_term_json <- jsonlite::toJSON(go_term_groups, auto_unbox=TRUE)
 ```
 
 
@@ -142,5 +237,58 @@ if (length(ortholog_groups)) {
 
 ```{asis}
 <noscript><div class="alert alert-danger">JavaScript required for the interactive plot.</div></noscript>
+```
+
+## Z-Score Normalized Expression (Protein-Identified Orthologs Only)
+
+```{r}
+#| echo: false
+#| results: asis
+if (length(ortholog_protein_groups)) {
+  options_html2 <- paste0('<option value="">-- Select an ortholog group --</option>',
+    paste0('<option value="', ortholog_protein_groups, '">', htmltools::htmlEscape(names(ortholog_protein_groups)), '</option>', collapse=''))
+  html2 <- htmltools::HTML(paste0(
+    '<div class="card"><div class="card-body">',
+    '<h5 class="card-title">Select Ortholog Group (Z-Score Normalized)</h5>',
+    '<label for="ortholog-select-zscore" class="form-label">Group:</label>',
+    '<select id="ortholog-select-zscore" class="form-select" onchange="updateZscorePlot()">',options_html2,'</select>',
+    '<div id="ortholog-info-zscore" style="display:none;" class="mt-3"><div class="alert alert-info" id="group-details-zscore"></div></div>',
+    '<div id="plot-container-zscore" style="display:none;" class="mt-3"><div id="ortho-plot-zscore"></div></div>',
+    '<div id="no-data-zscore" style="display:none;" class="mt-3"><div class="alert alert-warning">No expression data for this group.</div></div>',
+    '<script>const orthologProteinData=', ortholog_protein_json, '; const zscoreData=', zscore_json, ';\n',
+    'function getZscoreSeries(info, speciesKey){const raw=info[speciesKey.toLowerCase()]||""; const lookup=info[speciesKey.toLowerCase()+"_lookup"]||raw; const spZscore=zscoreData[speciesKey]; if(!spZscore) return null; if(lookup && spZscore[lookup]) return spZscore[lookup]; if(raw && spZscore[raw]) return spZscore[raw]; return null;}\n',
+    'function updateZscorePlot(){const sel=document.getElementById("ortholog-select-zscore").value; if(!sel){["ortholog-info-zscore","plot-container-zscore","no-data-zscore"].forEach(id=>document.getElementById(id).style.display="none");return;} const info=orthologProteinData.find(o=>o.group_id===sel); const detailEl=document.getElementById("group-details-zscore"); if(info){detailEl.innerHTML=`<strong>Group:</strong> ${sel}<br><strong>Apul:</strong> ${info.apul||"N/A"}<br><strong>Peve:</strong> ${info.peve||"N/A"}<br><strong>Ptua:</strong> ${info.ptua||"N/A"}<br><strong>Protein:</strong> ${info.protein_name||"N/A"}<br><em>Values show Z-scores (normalized)</em>`; document.getElementById("ortholog-info-zscore").style.display="block";} const species=["Apul","Peve","Ptua"]; const names=["A. pulchra","P. evermanni","P. tuahiniensis"]; const colors=["#1f77b4","#2ca02c","#d62728"]; const traces=[]; let has=false; species.forEach((sp,i)=>{const s=getZscoreSeries(info, sp); if(s && s.length==4 && !s.every(v=>isNaN(v))){has=true; traces.push({x:[1,2,3,4], y:s, mode:"lines+markers", name:names[i], line:{width:3,color:colors[i]}, marker:{size:8}});} }); if(has){Plotly.newPlot("ortho-plot-zscore", traces,{title:`Z-Score Expression - ${sel}`,xaxis:{title:"Time Point", tickvals:[1,2,3,4], ticktext:["TP1","TP2","TP3","TP4"]}, yaxis:{title:"Z-Score"}, height:430}); document.getElementById("plot-container-zscore").style.display="block"; document.getElementById("no-data-zscore").style.display="none";} else {document.getElementById("plot-container-zscore").style.display="none"; document.getElementById("no-data-zscore").style.display="block";}}',
+    '</script></div></div>'
+  ))
+  print(html2)
+} else {
+  cat('**No ortholog groups with protein identification available.**')
+}
+```
+
+## GO Slim Biological Process Groups (Z-Score Normalized)
+
+```{r}
+#| echo: false
+#| results: asis
+if (length(go_terms_list)) {
+  options_html3 <- paste0('<option value="">-- Select a GO slim term --</option>',
+    paste0('<option value="', htmltools::htmlEscape(go_terms_list), '">', htmltools::htmlEscape(names(go_terms_list)), '</option>', collapse=''))
+  html3 <- htmltools::HTML(paste0(
+    '<div class="card"><div class="card-body">',
+    '<h5 class="card-title">Select GO Slim Biological Process Term</h5>',
+    '<label for="go-term-select" class="form-label">GO Term:</label>',
+    '<select id="go-term-select" class="form-select" onchange="updateGoTermPlot()">',options_html3,'</select>',
+    '<div id="go-term-info" style="display:none;" class="mt-3"><div class="alert alert-info" id="go-term-details"></div></div>',
+    '<div id="plot-container-go" style="display:none;" class="mt-3"><div id="ortho-plot-go"></div></div>',
+    '<div id="no-data-go" style="display:none;" class="mt-3"><div class="alert alert-warning">No expression data for this GO term.</div></div>',
+    '<script>const goTermGroups=', go_term_json, ';\n',
+    'function updateGoTermPlot(){const sel=document.getElementById("go-term-select").value; if(!sel){["go-term-info","plot-container-go","no-data-go"].forEach(id=>document.getElementById(id).style.display="none");return;} const groupIds=goTermGroups[sel]; if(!groupIds || !groupIds.length){document.getElementById("no-data-go").style.display="block"; return;} const detailEl=document.getElementById("go-term-details"); detailEl.innerHTML=`<strong>GO Term:</strong> ${sel}<br><strong>Number of Groups:</strong> ${groupIds.length}<br><em>Showing average Z-scores across all groups in this GO term</em>`; document.getElementById("go-term-info").style.display="block"; const species=["Apul","Peve","Ptua"]; const names=["A. pulchra","P. evermanni","P. tuahiniensis"]; const colors=["#1f77b4","#2ca02c","#d62728"]; const traces=[]; let hasData=false; species.forEach((sp,i)=>{const allValues=[[],[],[],[]]; groupIds.forEach(groupId=>{const info=orthologData.find(o=>o.group_id===groupId); if(info){const s=getZscoreSeries(info, sp); if(s && s.length==4){s.forEach((val,tp)=>{if(!isNaN(val)) allValues[tp].push(val);});}} }); const avgValues=allValues.map(vals=>vals.length>0 ? vals.reduce((a,b)=>a+b)/vals.length : NaN); if(avgValues.some(v=>!isNaN(v))){hasData=true; traces.push({x:[1,2,3,4], y:avgValues, mode:"lines+markers", name:names[i], line:{width:3,color:colors[i]}, marker:{size:8}});} }); if(hasData){Plotly.newPlot("ortho-plot-go", traces,{title:`Average Z-Score Expression - ${sel}`,xaxis:{title:"Time Point", tickvals:[1,2,3,4], ticktext:["TP1","TP2","TP3","TP4"]}, yaxis:{title:"Average Z-Score"}, height:430}); document.getElementById("plot-container-go").style.display="block"; document.getElementById("no-data-go").style.display="none";} else {document.getElementById("plot-container-go").style.display="none"; document.getElementById("no-data-go").style.display="block";}}',
+    '</script></div></div>'
+  ))
+  print(html3)
+} else {
+  cat('**No GO slim biological process terms available.**')
+}
 ```
 
