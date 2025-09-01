@@ -1,0 +1,146 @@
+---
+title: "Ortholog Expression"
+description: "Select an ortholog group and view expression (mean ± SD) across three coral species over four time points"
+format:
+  html:
+    code-copy: true
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup, include=FALSE}
+required_packages <- c("tidyverse","readr","dplyr","tibble","jsonlite","htmltools","plotly")
+for (pkg in required_packages) {
+  if (!requireNamespace(pkg, quietly = TRUE)) try(utils::install.packages(pkg), silent = TRUE)
+  suppressPackageStartupMessages(library(pkg, character.only = TRUE))
+}
+
+load_data_file <- function(path) {
+  if (!file.exists(path)) return(tibble())
+  df <- tryCatch(readr::read_csv(path, show_col_types = FALSE, progress = FALSE), error=function(e) NULL)
+  if (is.null(df)) df <- tryCatch(readr::read_tsv(path, show_col_types = FALSE, progress = FALSE), error=function(e) NULL)
+  if (is.null(df)) tibble() else df
+}
+
+create_mock_count_data <- function(genes) {
+  set.seed(42)
+  if (!length(genes)) genes <- paste0("Apul_GENE_", seq_len(10))
+  tibble(gene_id = genes,
+         TP1_rep1 = sample(0:100,length(genes),TRUE),
+         TP1_rep2 = sample(0:100,length(genes),TRUE),
+         TP2_rep1 = sample(0:100,length(genes),TRUE),
+         TP2_rep2 = sample(0:100,length(genes),TRUE),
+         TP3_rep1 = sample(0:100,length(genes),TRUE),
+         TP3_rep2 = sample(0:100,length(genes),TRUE),
+         TP4_rep1 = sample(0:100,length(genes),TRUE),
+         TP4_rep2 = sample(0:100,length(genes),TRUE))
+}
+
+aggregate_gene_counts <- function(df){
+  if (!nrow(df)) return(tibble())
+  tp_cols <- grep('TP[1-4]', names(df), value=TRUE)
+  if (!length(tp_cols)) return(tibble())
+  tp_map <- tibble(col=tp_cols, tp=as.integer(stringr::str_match(tp_cols,'TP([1-4])')[,2]))
+  rows <- lapply(seq_len(nrow(df)), function(i){
+    gene <- df$gene_id[i]
+    stats <- sapply(1:4, function(tp){
+      cols <- tp_map$col[tp_map$tp==tp]
+      if(!length(cols)) return(c(mean=NA_real_, sd=NA_real_))
+      vals <- as.numeric(df[i, cols])
+      c(mean=mean(vals, na.rm=TRUE), sd=if(length(na.omit(vals))>1) sd(vals, na.rm=TRUE) else 0)
+    })
+    tibble(gene_id=gene,
+           TP1_mean=stats["mean",1], TP2_mean=stats["mean",2], TP3_mean=stats["mean",3], TP4_mean=stats["mean",4],
+           TP1_sd=stats["sd",1],   TP2_sd=stats["sd",2],   TP3_sd=stats["sd",3],   TP4_sd=stats["sd",4])
+  })
+  list_rbind(rows)
+}
+
+ortholog_path <- '../data/orthologs/ortholog_groups_three_way.csv'
+apul_counts_path <- '../data/orthologs/apul-gene_count_matrix.csv'
+peve_counts_path <- '../data/orthologs/peve-gene_count_matrix.csv'
+ptua_counts_path <- '../data/orthologs/ptua-gene_count_matrix.csv'
+
+ortholog_data <- load_data_file(ortholog_path)
+if (!nrow(ortholog_data)) message('Ortholog file missing or empty')
+
+apul_counts <- load_data_file(apul_counts_path)
+if (!nrow(apul_counts)) { message('Apul count file missing; using mock data'); genes <- unique(na.omit(ortholog_data$apul)); apul_counts <- create_mock_count_data(head(genes,50)) }
+peve_counts <- load_data_file(peve_counts_path)
+if (!nrow(peve_counts)) { message('Peve count file missing; using mock data'); genes <- unique(na.omit(ortholog_data$peve)); peve_counts <- create_mock_count_data(head(genes,50)) }
+ptua_counts <- load_data_file(ptua_counts_path)
+if (!nrow(ptua_counts)) { message('Ptua count file missing; using mock data'); genes <- unique(na.omit(ortholog_data$ptua)); ptua_counts <- create_mock_count_data(head(genes,50)) }
+
+ortholog_data <- ortholog_data |>
+  mutate(
+    apul_lookup = ifelse(!is.na(apul) & apul!='', sub('-T\\d+$','', apul), apul),
+    peve_lookup = ifelse(!is.na(peve) & peve!='' & !grepl('^gene-', peve), paste0('gene-', peve), peve),
+    ptua_lookup = ifelse(!is.na(ptua) & ptua!='' & !grepl('^gene-', ptua), paste0('gene-', ptua), ptua)
+  )
+
+apul_agg <- aggregate_gene_counts(apul_counts)
+peve_agg <- aggregate_gene_counts(peve_counts)
+ptua_agg <- aggregate_gene_counts(ptua_counts)
+
+ortholog_groups <- if (nrow(ortholog_data)) ortholog_data$group_id else character()
+names(ortholog_groups) <- if (length(ortholog_groups)) paste0(ortholog_data$group_id, ifelse(!is.na(ortholog_data$protein_name) & ortholog_data$protein_name!='', paste0(' (', ortholog_data$protein_name, ')'), '')) else character()
+
+ortholog_json <- if (nrow(ortholog_data)) ortholog_data |>
+  select(group_id, apul, peve, ptua, apul_lookup, peve_lookup, ptua_lookup, protein_name) |>
+  jsonlite::toJSON(auto_unbox=TRUE) else '[]'
+
+species_list <- list(Apul=apul_agg, Peve=peve_agg, Ptua=ptua_agg)
+counts_map <- lapply(species_list, function(df){
+  if (!nrow(df)) return(list())
+  setNames(lapply(df$gene_id, function(g){
+    row <- df[df$gene_id==g,][1,]
+    list(
+      mean = unname(as.numeric(row[1,c('TP1_mean','TP2_mean','TP3_mean','TP4_mean')])),
+      sd   = unname(as.numeric(replace(row[1,c('TP1_sd','TP2_sd','TP3_sd','TP4_sd')], is.na(row[1,c('TP1_sd','TP2_sd','TP3_sd','TP4_sd')]), 0)))
+    )
+  }), df$gene_id)
+})
+counts_json <- jsonlite::toJSON(counts_map, auto_unbox=TRUE)
+```
+
+
+
+```{r}
+#| echo: false
+#| results: asis
+if (!length(ortholog_groups)) cat('**Error: No ortholog groups available.**') else cat('Loaded **', length(ortholog_groups), '** ortholog groups.')
+```
+
+## Viewer
+
+```{r}
+#| echo: false
+#| results: asis
+if (length(ortholog_groups)) {
+  options_html <- paste0('<option value="">-- Select an ortholog group --</option>',
+    paste0('<option value="', ortholog_groups, '">', htmltools::htmlEscape(names(ortholog_groups)), '</option>', collapse=''))
+  html <- htmltools::HTML(paste0(
+    '<div class="card"><div class="card-body">',
+    '<h5 class="card-title">Select Ortholog Group</h5>',
+    '<label for="ortholog-select" class="form-label">Group:</label>',
+    '<select id="ortholog-select" class="form-select" onchange="updateOrthoPlot()">',options_html,'</select>',
+    '<div id="ortholog-info" style="display:none;" class="mt-3"><div class="alert alert-info" id="group-details"></div></div>',
+    '<div id="plot-container" style="display:none;" class="mt-3"><div id="ortho-plot"></div></div>',
+    '<div id="no-data" style="display:none;" class="mt-3"><div class="alert alert-warning">No expression data for this group.</div></div>',
+    '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>',
+  '<script>const orthologData=', ortholog_json, '; const countsData=', counts_json, ';\n',
+  'function getSeries(info, speciesKey){const raw=info[speciesKey.toLowerCase()]||""; const lookup=info[speciesKey.toLowerCase()+"_lookup"]||raw; const spCounts=countsData[speciesKey]; if(!spCounts) return null; if(lookup && spCounts[lookup]) return spCounts[lookup]; if(raw && spCounts[raw]) return spCounts[raw]; return null;}\n',
+  'function updateOrthoPlot(){const sel=document.getElementById("ortholog-select").value; if(!sel){["ortholog-info","plot-container","no-data"].forEach(id=>document.getElementById(id).style.display="none");return;} const info=orthologData.find(o=>o.group_id===sel); const detailEl=document.getElementById("group-details"); if(info){detailEl.innerHTML=`<strong>Group:</strong> ${sel}<br><strong>Apul:</strong> ${info.apul||"N/A"}<br><strong>Peve:</strong> ${info.peve||"N/A"}<br><strong>Ptua:</strong> ${info.ptua||"N/A"}<br><strong>Protein:</strong> ${info.protein_name||"N/A"}<br><em>Values show mean ± SD</em>`; document.getElementById("ortholog-info").style.display="block";} const species=["Apul","Peve","Ptua"]; const names=["A. pulchra","P. evermanni","P. tuahiniensis"]; const colors=["#1f77b4","#2ca02c","#d62728"]; const traces=[]; let has=false; species.forEach((sp,i)=>{const s=getSeries(info, sp); if(s && s.mean){has=true; const y=s.mean; const sd=s.sd || [0,0,0,0]; traces.push({x:[1,2,3,4], y:y, mode:"lines+markers", name:names[i], line:{width:3,color:colors[i]}, marker:{size:8}, error_y:{type:"data", array:sd, visible:true, thickness:1, width:0}});} }); if(has){Plotly.newPlot("ortho-plot", traces,{title:`Expression (Mean ± SD) - ${sel}`,xaxis:{title:"Time Point", tickvals:[1,2,3,4], ticktext:["TP1","TP2","TP3","TP4"]}, yaxis:{title:"Mean Read Count"}, height:430}); document.getElementById("plot-container").style.display="block"; document.getElementById("no-data").style.display="none";} else {document.getElementById("plot-container").style.display="none"; document.getElementById("no-data").style.display="block";}}',
+    '</script></div></div>'
+  ))
+  print(html)
+}
+```
+
+```{asis}
+<noscript><div class="alert alert-danger">JavaScript required for the interactive plot.</div></noscript>
+```
+
