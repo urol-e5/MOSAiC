@@ -169,7 +169,7 @@ zscore_map <- lapply(species_zscore_list, function(df){
 })
 zscore_json <- jsonlite::toJSON(zscore_map, auto_unbox=TRUE)
 
-# Data for visualization 3: GO slim biological process grouping
+# Data for visualization 3: GO slim grouping
 go_slim_data <- ortholog_data |>
   filter(!is.na(goslim_names) & goslim_names != '') |>
   rowwise() |>
@@ -276,7 +276,7 @@ if (length(go_terms_list)) {
     paste0('<option value="', htmltools::htmlEscape(go_terms_list), '">', htmltools::htmlEscape(names(go_terms_list)), '</option>', collapse=''))
   html3 <- htmltools::HTML(paste0(
     '<div class="card"><div class="card-body">',
-    '<h5 class="card-title">Select GO Slim Biological Process Term</h5>',
+    '<h5 class="card-title">Select GO Slim Term</h5>',
     '<label for="go-term-select" class="form-label">GO Term:</label>',
     '<select id="go-term-select" class="form-select" onchange="updateGoTermPlot()">',options_html3,'</select>',
     '<div id="go-term-info" style="display:none;" class="mt-3"><div class="alert alert-info" id="go-term-details"></div></div>',
@@ -362,7 +362,7 @@ if (length(go_terms_list)) {
   ))
   print(html3)
 } else {
-  cat('**No GO slim biological process terms available.**')
+  cat('**No GO slim terms available.**')
 }
 ```
 
