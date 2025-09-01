@@ -14,6 +14,92 @@ execute:
   message: false
 ---
 
+<style>
+    .embed-responsive {
+        position:relative;
+        height:100%;
+    }
+    .embed-responsive iframe {
+        position:absolute;
+        height:100%;
+    }
+</style>
+```{=html}
+<div class="feature-file-viewer">
+  <p class="small text-muted" style="margin-bottom:0.25rem;">
+    Preview of Apul gene GFF (first 50 lines). Use buttons to view full file, download, or copy URL.
+  </p>
+  <div id="feature-embed" class="text-file-embed" style="border:1px solid #ccc;border-radius:4px; background:#f9f9f9; padding:.5rem;">
+    <div class="loading">Loading feature file...</div>
+    <pre id="feature-pre" style="display:none; max-height:600px; overflow:auto; font-size:0.7rem; line-height:1.05; white-space:pre; margin:0 0 .5rem 0;"></pre>
+    <div style="display:flex; gap:.5rem; flex-wrap:wrap; align-items:center;">
+      <button id="toggle-more" style="display:none;" class="btn btn-sm btn-secondary">Show full file</button>
+      <a id="download-link" class="btn btn-sm btn-primary" download="Apul_gene_only.gff">Download</a>
+      <div style="display:flex; align-items:center; gap:.25rem;">
+        <input id="raw-url" type="text" readonly style="font-size:0.65rem; padding:.2rem .3rem; width:320px;" />
+        <button id="copy-url" class="btn btn-sm btn-outline-secondary" title="Copy URL" aria-label="Copy URL">Copy</button>
+      </div>
+      <span id="copy-status" style="font-size:0.65rem; color:#198754; display:none;">Copied!</span>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    const RAW_URL = 'https://raw.githubusercontent.com/urol-e5/MOSAiC/refs/heads/main/data/Apul/Apul_gene_only.gff';
+    const MAX_HEAD = 50;
+    function init(){
+      const container = document.getElementById('feature-embed');
+      if(!container) return;
+      const pre = document.getElementById('feature-pre');
+      const btn = document.getElementById('toggle-more');
+      const dl = document.getElementById('download-link');
+      const urlInput = document.getElementById('raw-url');
+      const copyBtn = document.getElementById('copy-url');
+      const copyStatus = document.getElementById('copy-status');
+      const loading = container.querySelector('.loading');
+      // set URL related elements
+      dl.href = RAW_URL;
+      urlInput.value = RAW_URL;
+      copyBtn.addEventListener('click', function(){
+        urlInput.select();
+        try {
+          document.execCommand('copy');
+          copyStatus.style.display='inline';
+          setTimeout(()=> copyStatus.style.display='none', 1500);
+        } catch(e) {
+          copyStatus.style.display='none';
+        }
+      });
+      fetch(RAW_URL, {cache:'no-store'})
+        .then(r => { if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); })
+        .then(text => {
+          const lines = text.split(/\n/);
+          const head = lines.slice(0, MAX_HEAD).join('\n');
+          pre.textContent = head;
+          loading.style.display = 'none';
+          pre.style.display = 'block';
+          if (lines.length > MAX_HEAD) {
+            btn.style.display = 'inline-block';
+            let expanded = false;
+            btn.addEventListener('click', () => {
+              expanded = !expanded;
+              pre.textContent = expanded ? text : head;
+              btn.textContent = expanded ? 'Show first '+MAX_HEAD+' lines' : 'Show full file';
+            });
+          }
+        })
+        .catch(err => { loading.textContent = 'Failed to load file: '+ err.message; });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else { init(); }
+  })();
+</script>
+```
+
+
+
+
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(DT)
