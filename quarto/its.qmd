@@ -155,20 +155,63 @@ if (nrow(its2_data) > 0) {
     )
   
   if (nrow(timepoint_data) > 0) {
-    # Create interactive plot
-    p <- timepoint_data %>%
-      plot_ly(x = ~timepoint, y = ~mean_abundance, color = ~paste(species, its2_type), 
-              type = "scatter", mode = "lines+markers",
-              hovertemplate = "Species: %{color}<br>Timepoint: %{x}<br>Mean Abundance: %{y:.4f}<br>Samples: %{text}<extra></extra>",
-              text = ~n_samples) %>%
-      layout(
-        title = "ITS2 Relative Abundance Across Time Points",
-        xaxis = list(title = "Time Point"),
-        yaxis = list(title = "Mean Relative Abundance"),
-        hovermode = "x unified"
-      )
+    # Get unique species for faceting
+    species_list <- unique(timepoint_data$species)
     
-    p
+    # Create individual plots for each species
+    species_plots <- list()
+    
+    for (i in seq_along(species_list)) {
+      species_name <- species_list[i]
+      species_data <- timepoint_data %>% filter(species == species_name)
+      
+      if (nrow(species_data) > 0) {
+        species_plots[[i]] <- species_data %>%
+          plot_ly(x = ~timepoint, y = ~mean_abundance, color = ~its2_type, 
+                  type = "scatter", mode = "lines+markers",
+                  hovertemplate = paste0("ITS2 Type: %{fullData.name}<br>Timepoint: %{x}<br>Mean Abundance: %{y:.4f}<br>Samples: %{text}<extra></extra>"),
+                  text = ~n_samples, showlegend = (i == 1)) %>%
+          layout(
+            title = list(text = paste("Species:", species_name), font = list(size = 14)),
+            xaxis = list(title = "Time Point"),
+            yaxis = list(title = "Mean Relative Abundance"),
+            hovermode = "closest"
+          )
+      }
+    }
+    
+    # Remove any NULL plots
+    species_plots <- species_plots[!sapply(species_plots, is.null)]
+    
+    if (length(species_plots) > 0) {
+      # Combine plots into subplots - arrange vertically or in grid depending on number of species
+      if (length(species_plots) <= 3) {
+        # Arrange vertically for up to 3 species
+        p <- subplot(species_plots, nrows = length(species_plots), 
+                    shareX = TRUE, shareY = FALSE, margin = 0.08,
+                    titleY = TRUE, titleX = TRUE) %>%
+          layout(
+            title = list(text = "ITS2 Relative Abundance Across Time Points by Species", 
+                        font = list(size = 16)),
+            showlegend = TRUE
+          )
+      } else {
+        # Arrange in grid for more than 3 species  
+        ncols <- min(2, ceiling(sqrt(length(species_plots))))
+        nrows <- ceiling(length(species_plots) / ncols)
+        p <- subplot(species_plots, nrows = nrows, shareX = TRUE, shareY = FALSE, 
+                    margin = 0.08, titleY = TRUE, titleX = TRUE) %>%
+          layout(
+            title = list(text = "ITS2 Relative Abundance Across Time Points by Species", 
+                        font = list(size = 16)),
+            showlegend = TRUE
+          )
+      }
+      
+      p
+    } else {
+      cat("No valid species data available for visualization.")
+    }
   } else {
     cat("No abundance data available for visualization.")
   }
