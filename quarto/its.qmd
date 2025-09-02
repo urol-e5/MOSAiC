@@ -172,9 +172,11 @@ if (nrow(its2_data) > 0) {
                   hovertemplate = paste0("ITS2 Type: %{fullData.name}<br>Timepoint: %{x}<br>Mean Abundance: %{y:.4f}<br>Samples: %{text}<extra></extra>"),
                   text = ~n_samples, showlegend = (i == 1)) %>%
           layout(
-            title = list(text = paste("Species:", species_name), font = list(size = 14)),
-            xaxis = list(title = "Time Point"),
-            yaxis = list(title = "Mean Relative Abundance"),
+            title = list(text = paste("Species:", species_name), font = list(size = 16)),
+            xaxis = list(title = list(text = "Time Point", font = list(size = 12)), 
+                        tickfont = list(size = 11)),
+            yaxis = list(title = list(text = "Mean Relative Abundance", font = list(size = 12)), 
+                        tickfont = list(size = 11)),
             hovermode = "closest"
           )
       }
@@ -187,24 +189,32 @@ if (nrow(its2_data) > 0) {
       # Combine plots into subplots - arrange vertically or in grid depending on number of species
       if (length(species_plots) <= 3) {
         # Arrange vertically for up to 3 species
+        # Calculate height based on number of species to prevent compression
+        plot_height <- max(400, length(species_plots) * 350)
+        
         p <- subplot(species_plots, nrows = length(species_plots), 
-                    shareX = TRUE, shareY = FALSE, margin = 0.08,
+                    shareX = TRUE, shareY = FALSE, margin = 0.15,
                     titleY = TRUE, titleX = TRUE) %>%
           layout(
             title = list(text = "ITS2 Relative Abundance Across Time Points by Species", 
                         font = list(size = 16)),
-            showlegend = TRUE
+            showlegend = TRUE,
+            height = plot_height
           )
       } else {
         # Arrange in grid for more than 3 species  
         ncols <- min(2, ceiling(sqrt(length(species_plots))))
         nrows <- ceiling(length(species_plots) / ncols)
+        # Calculate height based on number of rows to prevent compression
+        plot_height <- max(400, nrows * 350)
+        
         p <- subplot(species_plots, nrows = nrows, shareX = TRUE, shareY = FALSE, 
-                    margin = 0.08, titleY = TRUE, titleX = TRUE) %>%
+                    margin = 0.12, titleY = TRUE, titleX = TRUE) %>%
           layout(
             title = list(text = "ITS2 Relative Abundance Across Time Points by Species", 
                         font = list(size = 16)),
-            showlegend = TRUE
+            showlegend = TRUE,
+            height = plot_height
           )
       }
       
