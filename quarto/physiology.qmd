@@ -709,6 +709,7 @@ if(exists("pca_result_lipid") && ncol(numeric_cols_lipid) > 1) {
 } else {
   cat("Insufficient lipidomics data for species-specific time PCA analysis")
 }
+```
 
 ## Data Downloads
 
