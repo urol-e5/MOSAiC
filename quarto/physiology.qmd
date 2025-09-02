@@ -26,19 +26,31 @@ invisible(lapply(pkgs, require, character.only = TRUE))
 # Explicitly attach magrittr to avoid '%>%' not found errors in some rendering contexts
 library(magrittr)
 
-# Read metabolomics data
+# Read metabolomics data with error handling
 metabolomics_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/main/M-multi-species/output/metabolomics_count_matrix.csv"
-metabolomics <- vroom::vroom(metabolomics_url, col_types = cols(.default = "d", X1 = "c"), progress = FALSE)
-names(metabolomics)[1] <- "compound"
+metabolomics <- tryCatch({
+  data <- vroom::vroom(metabolomics_url, col_types = cols(.default = "d", X1 = "c"), progress = FALSE)
+  names(data)[1] <- "compound"
+  data
+}, error = function(e) {
+  warning("Failed to load metabolomics data: ", e$message)
+  data.frame(compound = character(0))
+})
 
 # Ensure compound names are not empty or missing
 metabolomics <- metabolomics %>%
   filter(!is.na(compound) & compound != "" & compound != "NA")
 
-# Read lipidomics data
+# Read lipidomics data with error handling
 lipidomics_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/main/M-multi-species/output/lipid_count_matrix.csv"
-lipidomics <- vroom::vroom(lipidomics_url, col_types = cols(.default = "d", X1 = "c"), progress = FALSE)
-names(lipidomics)[1] <- "lipid"
+lipidomics <- tryCatch({
+  data <- vroom::vroom(lipidomics_url, col_types = cols(.default = "d", X1 = "c"), progress = FALSE)
+  names(data)[1] <- "lipid"
+  data
+}, error = function(e) {
+  warning("Failed to load lipidomics data: ", e$message)
+  data.frame(lipid = character(0))
+})
 
 # Ensure lipid names are not empty or missing
 lipidomics <- lipidomics %>%
@@ -50,36 +62,60 @@ physiology <- vroom::vroom(physiology_url, progress = FALSE)
 
 # Clean and process data
 # Extract sample information from column names for metabolomics
-metabolomics_long <- metabolomics %>%
-  pivot_longer(cols = -compound, names_to = "sample_id", values_to = "value") %>%
-  filter(!is.na(value)) %>%
-  mutate(
-    species = case_when(
-      str_detect(sample_id, "^ACR") ~ "Acropora pulchra",
-      str_detect(sample_id, "^POR") ~ "Porites evermanni", 
-      str_detect(sample_id, "^POC") ~ "Pocillopora tuahiniensis",
-      TRUE ~ "Unknown"
-    ),
-    timepoint = str_extract(sample_id, "TP[1-4]"),
-    colony_id = str_extract(sample_id, "^[A-Z]+-[0-9]+")
-  ) %>%
-  filter(species != "Unknown")
+metabolomics_long <- if (nrow(metabolomics) > 0) {
+  metabolomics %>%
+    pivot_longer(cols = -compound, names_to = "sample_id", values_to = "value") %>%
+    filter(!is.na(value)) %>%
+    mutate(
+      species = case_when(
+        str_detect(sample_id, "^ACR") ~ "Acropora pulchra",
+        str_detect(sample_id, "^POR") ~ "Porites evermanni", 
+        str_detect(sample_id, "^POC") ~ "Pocillopora tuahiniensis",
+        TRUE ~ "Unknown"
+      ),
+      timepoint = str_extract(sample_id, "TP[1-4]"),
+      colony_id = str_extract(sample_id, "^[A-Z]+-[0-9]+")
+    ) %>%
+    filter(species != "Unknown")
+} else {
+  # Create empty data frame with proper column structure
+  data.frame(
+    compound = character(0),
+    sample_id = character(0),
+    value = numeric(0),
+    species = character(0),
+    timepoint = character(0),
+    colony_id = character(0)
+  )
+}
 
 # Extract sample information from column names for lipidomics
-lipidomics_long <- lipidomics %>%
-  pivot_longer(cols = -lipid, names_to = "sample_id", values_to = "value") %>%
-  filter(!is.na(value)) %>%
-  mutate(
-    species = case_when(
-      str_detect(sample_id, "^ACR") ~ "Acropora pulchra",
-      str_detect(sample_id, "^POR") ~ "Porites evermanni", 
-      str_detect(sample_id, "^POC") ~ "Pocillopora tuahiniensis",
-      TRUE ~ "Unknown"
-    ),
-    timepoint = str_extract(sample_id, "TP[1-4]"),
-    colony_id = str_extract(sample_id, "^[A-Z]+-[0-9]+")
-  ) %>%
-  filter(species != "Unknown")
+lipidomics_long <- if (nrow(lipidomics) > 0) {
+  lipidomics %>%
+    pivot_longer(cols = -lipid, names_to = "sample_id", values_to = "value") %>%
+    filter(!is.na(value)) %>%
+    mutate(
+      species = case_when(
+        str_detect(sample_id, "^ACR") ~ "Acropora pulchra",
+        str_detect(sample_id, "^POR") ~ "Porites evermanni", 
+        str_detect(sample_id, "^POC") ~ "Pocillopora tuahiniensis",
+        TRUE ~ "Unknown"
+      ),
+      timepoint = str_extract(sample_id, "TP[1-4]"),
+      colony_id = str_extract(sample_id, "^[A-Z]+-[0-9]+")
+    ) %>%
+    filter(species != "Unknown")
+} else {
+  # Create empty data frame with proper column structure
+  data.frame(
+    lipid = character(0),
+    sample_id = character(0),
+    value = numeric(0),
+    species = character(0),
+    timepoint = character(0),
+    colony_id = character(0)
+  )
+}
 
 # Process physiology data
 physiology_clean <- physiology %>%
@@ -110,32 +146,40 @@ Explore metabolomics data with search and filtering capabilities:
 ```{r}
 #| echo: false
 # Create summary table for metabolomics
-metabolomics_summary <- metabolomics_long %>%
-  group_by(compound, species, timepoint) %>%
-  summarise(
-    mean_value = round(mean(value, na.rm = TRUE), 2),
-    sd_value = round(sd(value, na.rm = TRUE), 2),
-    n_samples = n(),
-    .groups = "drop"
-  ) %>%
-  arrange(compound, species, timepoint)
+if (nrow(metabolomics_long) > 0) {
+  metabolomics_summary <- metabolomics_long %>%
+    group_by(compound, species, timepoint) %>%
+    summarise(
+      mean_value = round(mean(value, na.rm = TRUE), 2),
+      sd_value = round(sd(value, na.rm = TRUE), 2),
+      n_samples = n(),
+      .groups = "drop"
+    ) %>%
+    arrange(compound, species, timepoint)
 
-DT::datatable(
-  metabolomics_summary,
-  filter = "top",
-  extensions = c("Buttons", "Scroller"),
-  options = list(
-    dom = "Bfrtip",
-    buttons = c("copy", "csv", "excel"),
-    pageLength = 25,
-    deferRender = TRUE,
-    scrollY = 500,
-    scroller = TRUE,
-    autoWidth = TRUE
-  ),
-  caption = "Metabolomics data summary by compound, species, and timepoint"
-) %>%
-  DT::formatRound(columns = c("mean_value", "sd_value"), digits = 2)
+  DT::datatable(
+    metabolomics_summary,
+    filter = "top",
+    extensions = c("Buttons", "Scroller"),
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      pageLength = 25,
+      deferRender = TRUE,
+      scrollY = 500,
+      scroller = TRUE,
+      autoWidth = TRUE
+    ),
+    caption = "Metabolomics data summary by compound, species, and timepoint"
+  ) %>%
+    DT::formatRound(columns = c("mean_value", "sd_value"), digits = 2)
+} else {
+  htmltools::div(
+    style = "padding: 20px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; margin: 10px 0;",
+    htmltools::h4("No Metabolomics Data Available", style = "color: #6c757d; margin-bottom: 10px;"),
+    htmltools::p("The metabolomics dataset could not be loaded or contains no valid data. Please check the data source or try again later.", style = "color: #6c757d; margin: 0;")
+  )
+}
 ```
 
 ### Metabolomics Time Series Plots
@@ -147,25 +191,35 @@ Select compounds to visualize across timepoints:
 # Get all available compounds sorted alphabetically  
 all_compounds <- sort(unique(metabolomics_long$compound))
 
-# Create a searchable dropdown for compound selection using DT
-compound_selector <- DT::datatable(
-  data.frame(
-    Compound = all_compounds,
-    Select = paste0('<input type="checkbox" id="compound_', seq_along(all_compounds), '" value="', all_compounds, '">')
-  ),
-  escape = FALSE,
-  filter = "top",
-  options = list(
-    pageLength = 10,
-    dom = "ftip",
-    columnDefs = list(
-      list(targets = 1, orderable = FALSE, width = "60px")
-    )
-  ),
-  caption = "Search and select compounds to plot (use the search box above)"
-)
-
-compound_selector
+# Check if compounds are available
+if (length(all_compounds) > 0) {
+  # Create a searchable dropdown for compound selection using DT
+  compound_selector <- DT::datatable(
+    data.frame(
+      Compound = all_compounds,
+      Select = paste0('<input type="checkbox" id="compound_', seq_along(all_compounds), '" value="', all_compounds, '">')
+    ),
+    escape = FALSE,
+    filter = "top",
+    options = list(
+      pageLength = 10,
+      dom = "ftip",
+      columnDefs = list(
+        list(targets = 1, orderable = FALSE, width = "60px")
+      )
+    ),
+    caption = "Search and select compounds to plot (use the search box above)"
+  )
+  
+  compound_selector
+} else {
+  # Display message when no compounds are available
+  htmltools::div(
+    style = "padding: 20px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; margin: 10px 0;",
+    htmltools::h4("No Metabolomics Data Available", style = "color: #6c757d; margin-bottom: 10px;"),
+    htmltools::p("The metabolomics dataset could not be loaded or contains no valid compounds. Please check the data source or try again later.", style = "color: #6c757d; margin: 0;")
+  )
+}
 ```
 
 #### Individual Compound Time Series Plot
@@ -223,32 +277,40 @@ p_metabolomics
 ```{r}
 #| echo: false
 # Create summary table for lipidomics
-lipidomics_summary <- lipidomics_long %>%
-  group_by(lipid, species, timepoint) %>%
-  summarise(
-    mean_value = round(mean(value, na.rm = TRUE), 2),
-    sd_value = round(sd(value, na.rm = TRUE), 2),
-    n_samples = n(),
-    .groups = "drop"
-  ) %>%
-  arrange(lipid, species, timepoint)
+if (nrow(lipidomics_long) > 0) {
+  lipidomics_summary <- lipidomics_long %>%
+    group_by(lipid, species, timepoint) %>%
+    summarise(
+      mean_value = round(mean(value, na.rm = TRUE), 2),
+      sd_value = round(sd(value, na.rm = TRUE), 2),
+      n_samples = n(),
+      .groups = "drop"
+    ) %>%
+    arrange(lipid, species, timepoint)
 
-DT::datatable(
-  lipidomics_summary,
-  filter = "top",
-  extensions = c("Buttons", "Scroller"),
-  options = list(
-    dom = "Bfrtip",
-    buttons = c("copy", "csv", "excel"),
-    pageLength = 25,
-    deferRender = TRUE,
-    scrollY = 500,
-    scroller = TRUE,
-    autoWidth = TRUE
-  ),
-  caption = "Lipidomics data summary by lipid, species, and timepoint"
-) %>%
-  DT::formatRound(columns = c("mean_value", "sd_value"), digits = 2)
+  DT::datatable(
+    lipidomics_summary,
+    filter = "top",
+    extensions = c("Buttons", "Scroller"),
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel"),
+      pageLength = 25,
+      deferRender = TRUE,
+      scrollY = 500,
+      scroller = TRUE,
+      autoWidth = TRUE
+    ),
+    caption = "Lipidomics data summary by lipid, species, and timepoint"
+  ) %>%
+    DT::formatRound(columns = c("mean_value", "sd_value"), digits = 2)
+} else {
+  htmltools::div(
+    style = "padding: 20px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; margin: 10px 0;",
+    htmltools::h4("No Lipidomics Data Available", style = "color: #6c757d; margin-bottom: 10px;"),
+    htmltools::p("The lipidomics dataset could not be loaded or contains no valid data. Please check the data source or try again later.", style = "color: #6c757d; margin: 0;")
+  )
+}
 ```
 
 ### Lipidomics Time Series Plots
@@ -258,25 +320,35 @@ DT::datatable(
 # Get all available lipids sorted alphabetically  
 all_lipids <- sort(unique(lipidomics_long$lipid))
 
-# Create a searchable dropdown for lipid selection using DT
-lipid_selector <- DT::datatable(
-  data.frame(
-    Lipid = all_lipids,
-    Select = paste0('<input type="checkbox" id="lipid_', seq_along(all_lipids), '" value="', all_lipids, '">')
-  ),
-  escape = FALSE,
-  filter = "top",
-  options = list(
-    pageLength = 10,
-    dom = "ftip",
-    columnDefs = list(
-      list(targets = 1, orderable = FALSE, width = "60px")
-    )
-  ),
-  caption = "Search and select lipids to plot (use the search box above)"
-)
-
-lipid_selector
+# Check if lipids are available
+if (length(all_lipids) > 0) {
+  # Create a searchable dropdown for lipid selection using DT
+  lipid_selector <- DT::datatable(
+    data.frame(
+      Lipid = all_lipids,
+      Select = paste0('<input type="checkbox" id="lipid_', seq_along(all_lipids), '" value="', all_lipids, '">')
+    ),
+    escape = FALSE,
+    filter = "top",
+    options = list(
+      pageLength = 10,
+      dom = "ftip",
+      columnDefs = list(
+        list(targets = 1, orderable = FALSE, width = "60px")
+      )
+    ),
+    caption = "Search and select lipids to plot (use the search box above)"
+  )
+  
+  lipid_selector
+} else {
+  # Display message when no lipids are available
+  htmltools::div(
+    style = "padding: 20px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; margin: 10px 0;",
+    htmltools::h4("No Lipidomics Data Available", style = "color: #6c757d; margin-bottom: 10px;"),
+    htmltools::p("The lipidomics dataset could not be loaded or contains no valid lipids. Please check the data source or try again later.", style = "color: #6c757d; margin: 0;")
+  )
+}
 ```
 
 #### Individual Lipid Time Series Plot
