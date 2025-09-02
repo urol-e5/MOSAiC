@@ -136,7 +136,35 @@ Select compounds to visualize across timepoints:
 
 ```{r}
 #| echo: false
-# Create interactive plot for top variable compounds
+# Get all available compounds sorted alphabetically  
+all_compounds <- sort(unique(metabolomics_long$compound))
+
+# Create a searchable dropdown for compound selection using DT
+compound_selector <- DT::datatable(
+  data.frame(
+    Compound = all_compounds,
+    Select = paste0('<input type="checkbox" id="compound_', seq_along(all_compounds), '" value="', all_compounds, '">')
+  ),
+  escape = FALSE,
+  filter = "top",
+  options = list(
+    pageLength = 10,
+    dom = "ftip",
+    columnDefs = list(
+      list(targets = 1, orderable = FALSE, width = "60px")
+    )
+  ),
+  caption = "Search and select compounds to plot (use the search box above)"
+)
+
+compound_selector
+```
+
+#### Individual Compound Time Series Plot
+
+```{r}
+#| echo: false
+# Create a plot for the top 5 most variable compounds as default
 top_compounds <- metabolomics_long %>%
   group_by(compound) %>%
   summarise(cv = sd(value, na.rm = TRUE) / mean(value, na.rm = TRUE), .groups = "drop") %>%
@@ -219,7 +247,35 @@ DT::datatable(
 
 ```{r}
 #| echo: false
-# Create interactive plot for top variable lipids
+# Get all available lipids sorted alphabetically  
+all_lipids <- sort(unique(lipidomics_long$lipid))
+
+# Create a searchable dropdown for lipid selection using DT
+lipid_selector <- DT::datatable(
+  data.frame(
+    Lipid = all_lipids,
+    Select = paste0('<input type="checkbox" id="lipid_', seq_along(all_lipids), '" value="', all_lipids, '">')
+  ),
+  escape = FALSE,
+  filter = "top",
+  options = list(
+    pageLength = 10,
+    dom = "ftip",
+    columnDefs = list(
+      list(targets = 1, orderable = FALSE, width = "60px")
+    )
+  ),
+  caption = "Search and select lipids to plot (use the search box above)"
+)
+
+lipid_selector
+```
+
+#### Individual Lipid Time Series Plot
+
+```{r}
+#| echo: false
+# Create interactive plot for top variable lipids as default
 top_lipids <- lipidomics_long %>%
   group_by(lipid) %>%
   summarise(cv = sd(value, na.rm = TRUE) / mean(value, na.rm = TRUE), .groups = "drop") %>%
@@ -272,12 +328,12 @@ p_lipidomics
 # Create physiology data table with key measurements
 physiology_table <- physiology_clean %>%
   select(
-    colony_id, species, timepoint, 
-    cre.umol.mgprot, Host_AFDW.mg.cm2, Sym_AFDW.mg.cm2,
-    chla.ug.cm2, chlc2.ug.cm2, prot_ug.cm2, 
-    cells.cm2, calc.umol.cm2.hr
+    colony_id_corr, timepoint, species, site, 
+    Host_AFDW.mg.cm2, Sym_AFDW.mg.cm2, Ratio_AFDW.mg.cm2, 
+    Total_Chl, Total_Chl_cell, prot_mg.mgafdw, cells.mgAFDW, 
+    cre.umol.mgafdw, Am, AQY, Rd, Ik, Ic, calc.umol.cm2.hr
   ) %>%
-  arrange(species, colony_id, timepoint)
+  arrange(species, colony_id_corr, timepoint)
 
 DT::datatable(
   physiology_table,
@@ -384,6 +440,195 @@ if (length(valid_plots) > 0) {
   htmltools::p("No physiology data available for plotting.")
 }
 ```
+
+## PCA Analysis
+
+### Metabolomics PCA by Species
+
+```{r}
+#| echo: false
+# Prepare data for PCA - wide format with compounds as columns
+metabolomics_pca_data <- metabolomics_long %>%
+  select(sample_id, compound, value, species, timepoint, colony_id) %>%
+  pivot_wider(names_from = compound, values_from = value, values_fill = 0) %>%
+  filter(!is.na(species))
+
+# Extract numeric data for PCA
+numeric_cols <- metabolomics_pca_data %>% 
+  select(-sample_id, -species, -timepoint, -colony_id) %>%
+  select_if(is.numeric)
+
+# Perform PCA (remove any columns with zero variance)
+zero_var_cols <- apply(numeric_cols, 2, var, na.rm = TRUE) == 0
+if(any(zero_var_cols)) {
+  numeric_cols <- numeric_cols[, !zero_var_cols]
+}
+
+if(ncol(numeric_cols) > 1) {
+  pca_result <- prcomp(numeric_cols, scale. = TRUE, center = TRUE)
+  
+  # Create PCA plot data
+  pca_plot_data <- data.frame(
+    PC1 = pca_result$x[,1],
+    PC2 = pca_result$x[,2],
+    species = metabolomics_pca_data$species,
+    timepoint = metabolomics_pca_data$timepoint,
+    sample_id = metabolomics_pca_data$sample_id
+  )
+  
+  # Calculate variance explained
+  var_explained <- round(100 * pca_result$sdev^2 / sum(pca_result$sdev^2), 1)
+  
+  # Create interactive PCA plot
+  p_metab_pca <- plot_ly(data = pca_plot_data,
+                        x = ~PC1, y = ~PC2,
+                        color = ~species,
+                        text = ~paste("Sample:", sample_id, "<br>Timepoint:", timepoint),
+                        type = "scatter", mode = "markers",
+                        marker = list(size = 8)) %>%
+    layout(
+      title = "Metabolomics PCA by Species",
+      xaxis = list(title = paste0("PC1 (", var_explained[1], "% variance)")),
+      yaxis = list(title = paste0("PC2 (", var_explained[2], "% variance)")),
+      hovermode = "closest"
+    )
+  
+  p_metab_pca
+} else {
+  cat("Insufficient data for PCA analysis")
+}
+```
+
+### Lipidomics PCA by Species
+
+```{r}
+#| echo: false
+# Prepare data for PCA - wide format with lipids as columns
+lipidomics_pca_data <- lipidomics_long %>%
+  select(sample_id, lipid, value, species, timepoint, colony_id) %>%
+  pivot_wider(names_from = lipid, values_from = value, values_fill = 0) %>%
+  filter(!is.na(species))
+
+# Extract numeric data for PCA
+numeric_cols_lipid <- lipidomics_pca_data %>% 
+  select(-sample_id, -species, -timepoint, -colony_id) %>%
+  select_if(is.numeric)
+
+# Perform PCA (remove any columns with zero variance)
+zero_var_cols_lipid <- apply(numeric_cols_lipid, 2, var, na.rm = TRUE) == 0
+if(any(zero_var_cols_lipid)) {
+  numeric_cols_lipid <- numeric_cols_lipid[, !zero_var_cols_lipid]
+}
+
+if(ncol(numeric_cols_lipid) > 1) {
+  pca_result_lipid <- prcomp(numeric_cols_lipid, scale. = TRUE, center = TRUE)
+  
+  # Create PCA plot data
+  pca_plot_data_lipid <- data.frame(
+    PC1 = pca_result_lipid$x[,1],
+    PC2 = pca_result_lipid$x[,2],
+    species = lipidomics_pca_data$species,
+    timepoint = lipidomics_pca_data$timepoint,
+    sample_id = lipidomics_pca_data$sample_id
+  )
+  
+  # Calculate variance explained
+  var_explained_lipid <- round(100 * pca_result_lipid$sdev^2 / sum(pca_result_lipid$sdev^2), 1)
+  
+  # Create interactive PCA plot
+  p_lipid_pca <- plot_ly(data = pca_plot_data_lipid,
+                        x = ~PC1, y = ~PC2,
+                        color = ~species,
+                        text = ~paste("Sample:", sample_id, "<br>Timepoint:", timepoint),
+                        type = "scatter", mode = "markers",
+                        marker = list(size = 8)) %>%
+    layout(
+      title = "Lipidomics PCA by Species",
+      xaxis = list(title = paste0("PC1 (", var_explained_lipid[1], "% variance)")),
+      yaxis = list(title = paste0("PC2 (", var_explained_lipid[2], "% variance)")),
+      hovermode = "closest"
+    )
+  
+  p_lipid_pca
+} else {
+  cat("Insufficient data for PCA analysis")
+}
+```
+
+### Metabolomics PCA by Time (Species-specific)
+
+```{r}
+#| echo: false
+if(exists("pca_result") && ncol(numeric_cols) > 1) {
+  # Create separate plots for each species
+  species_list <- unique(metabolomics_pca_data$species)
+  
+  metab_time_plots <- list()
+  
+  for(sp in species_list) {
+    species_data <- pca_plot_data[pca_plot_data$species == sp, ]
+    
+    if(nrow(species_data) > 0) {
+      metab_time_plots[[sp]] <- plot_ly(data = species_data,
+                                       x = ~PC1, y = ~PC2,
+                                       color = ~timepoint,
+                                       text = ~paste("Sample:", sample_id, "<br>Species:", sp),
+                                       type = "scatter", mode = "markers",
+                                       marker = list(size = 8)) %>%
+        layout(
+          title = paste("Metabolomics PCA -", sp),
+          xaxis = list(title = paste0("PC1 (", var_explained[1], "% variance)")),
+          yaxis = list(title = paste0("PC2 (", var_explained[2], "% variance)")),
+          hovermode = "closest"
+        )
+    }
+  }
+  
+  # Display plots
+  for(sp in names(metab_time_plots)) {
+    print(metab_time_plots[[sp]])
+  }
+} else {
+  cat("Insufficient metabolomics data for species-specific time PCA analysis")
+}
+```
+
+### Lipidomics PCA by Time (Species-specific)
+
+```{r}
+#| echo: false
+if(exists("pca_result_lipid") && ncol(numeric_cols_lipid) > 1) {
+  # Create separate plots for each species
+  species_list_lipid <- unique(lipidomics_pca_data$species)
+  
+  lipid_time_plots <- list()
+  
+  for(sp in species_list_lipid) {
+    species_data_lipid <- pca_plot_data_lipid[pca_plot_data_lipid$species == sp, ]
+    
+    if(nrow(species_data_lipid) > 0) {
+      lipid_time_plots[[sp]] <- plot_ly(data = species_data_lipid,
+                                       x = ~PC1, y = ~PC2,
+                                       color = ~timepoint,
+                                       text = ~paste("Sample:", sample_id, "<br>Species:", sp),
+                                       type = "scatter", mode = "markers",
+                                       marker = list(size = 8)) %>%
+        layout(
+          title = paste("Lipidomics PCA -", sp),
+          xaxis = list(title = paste0("PC1 (", var_explained_lipid[1], "% variance)")),
+          yaxis = list(title = paste0("PC2 (", var_explained_lipid[2], "% variance)")),
+          hovermode = "closest"
+        )
+    }
+  }
+  
+  # Display plots
+  for(sp in names(lipid_time_plots)) {
+    print(lipid_time_plots[[sp]])
+  }
+} else {
+  cat("Insufficient lipidomics data for species-specific time PCA analysis")
+}
 
 ## Data Downloads
 
