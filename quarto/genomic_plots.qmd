@@ -34,7 +34,13 @@ For each species, we have:
 
 ## Data Integration Overview
 
-```{r echo=TRUE}
+```{r setup, include=FALSE}
+# Load required packages
+library(tidyverse)
+library(knitr)
+```
+
+```{r species-info, echo=TRUE}
 # Species information
 species_info <- list(
   Apul = list(
@@ -60,6 +66,53 @@ for(species in names(species_info)) {
   cat("- Common name:", species_info[[species]]$common, "\n")
   cat("- Growth form:", species_info[[species]]$type, "\n\n")
 }
+```
+
+## Genomic Data Summary
+
+```{r data-urls, include=FALSE}
+# Data URLs configuration
+data_urls <- list(
+  Apul = list(
+    species_name = "Acropora pulchra",
+    gff = "https://raw.githubusercontent.com/urol-e5/MOSAiC/refs/heads/main/data/Apul/Apul_gene_only.gff",
+    gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv",
+    mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt",
+    lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv"
+  ),
+  Peve = list(
+    species_name = "Porites evermanni",
+    gff = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/E-Peve/output/00.01-Peve-gene-gff/Peve_gene_only.gff3",
+    gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv",
+    mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt",
+    lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv"
+  ),
+  Ptuh = list(
+    species_name = "Pocillopora tuahiniensis",
+    gff = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/00.01-Ptua-gene-gff/Pmea_gene_only.gff3",
+    gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv",
+    mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt",
+    lncRNA = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv"
+  )
+)
+```
+
+```{r data-summary, echo=FALSE}
+# Create a summary table of available data
+data_summary <- data.frame(
+  Species = c("*Acropora pulchra*", "*Porites evermanni*", "*Pocillopora tuahiniensis*"),
+  `Gene Annotations` = c("✓", "✓", "✓"),
+  `Gene Expression` = c("✓", "✓", "✓"),
+  `miRNA Data` = c("✓", "✓", "✓"),
+  `lncRNA Data` = c("✓", "✓", "✓"),
+  `DNA Methylation` = c("✓", "✓", "✓"),
+  check.names = FALSE
+)
+
+kable(data_summary, caption = "Available Genomic Data Types by Species")
 ```
 
 ## Genomic Data Types
@@ -105,6 +158,149 @@ EM-seq methylation analysis:
 - Tissue/condition-specific patterns
 - Hierarchical clustering of features
 
+## Example Visualizations
+
+### Sample Linear Genome Plot
+
+```{r example-linear-plot, fig.width=10, fig.height=6}
+# Create example data to demonstrate linear genome plot concept
+set.seed(123)
+
+# Simulate genomic features for demonstration
+example_contigs <- c("Scaffold_1", "Scaffold_2", "Scaffold_3", "Scaffold_4", "Scaffold_5")
+n_features <- 200
+
+example_genome_data <- data.frame(
+  contig = sample(example_contigs, n_features, replace = TRUE),
+  start = sample(1:1000000, n_features),
+  feature_type = sample(c("Gene", "lncRNA", "miRNA"), n_features, replace = TRUE, prob = c(0.7, 0.2, 0.1)),
+  expression_level = rnorm(n_features, mean = 5, sd = 2)
+) %>%
+  mutate(
+    end = start + sample(500:5000, n_features, replace = TRUE),
+    contig = factor(contig, levels = example_contigs)
+  ) %>%
+  arrange(contig, start)
+
+# Create linear genome plot
+ggplot(example_genome_data, aes(x = start/1000, xend = end/1000, y = contig, yend = contig)) +
+  geom_segment(aes(color = feature_type, alpha = pmax(0.3, expression_level/10)), size = 1.5) +
+  facet_wrap(~contig, scales = "free_x", ncol = 1, strip.position = "left") +
+  scale_color_manual(values = c("Gene" = "#2E8B57", "lncRNA" = "#FF6347", "miRNA" = "#4169E1")) +
+  scale_alpha_identity() +
+  labs(
+    title = "Example Linear Genome View",
+    subtitle = "Genomic features with expression levels (demonstration data)",
+    x = "Position (kb)",
+    y = "Chromosome/Contig",
+    color = "Feature Type"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(size = 12),
+    strip.text = element_text(size = 10),
+    legend.position = "bottom",
+    axis.text.y = element_text(size = 8),
+    panel.grid.minor = element_blank(),
+    strip.background = element_rect(fill = "lightgray", alpha = 0.7)
+  )
+```
+
+### Sample Expression Comparison
+
+```{r example-expression, fig.width=10, fig.height=6}
+# Create example expression data for comparison
+set.seed(456)
+
+# Simulate expression data across species
+expression_data <- expand.grid(
+  Species = c("A. pulchra", "P. evermanni", "P. tuahiniensis"),
+  Feature_Type = c("Genes", "lncRNAs", "miRNAs", "mCpG Sites"),
+  stringsAsFactors = FALSE
+) %>%
+  mutate(
+    Count = case_when(
+      Feature_Type == "Genes" ~ sample(15000:25000, n(), replace = TRUE),
+      Feature_Type == "lncRNAs" ~ sample(2000:5000, n(), replace = TRUE),
+      Feature_Type == "miRNAs" ~ sample(100:500, n(), replace = TRUE),
+      Feature_Type == "mCpG Sites" ~ sample(50000:150000, n(), replace = TRUE)
+    ),
+    Mean_Expression = case_when(
+      Feature_Type == "Genes" ~ rnorm(n(), mean = 100, sd = 30),
+      Feature_Type == "lncRNAs" ~ rnorm(n(), mean = 20, sd = 10),
+      Feature_Type == "miRNAs" ~ rnorm(n(), mean = 50, sd = 15),
+      Feature_Type == "mCpG Sites" ~ runif(n(), min = 0.1, max = 0.9)
+    )
+  )
+
+# Create comparison plot
+p1 <- ggplot(expression_data, aes(x = Species, y = Count, fill = Feature_Type)) +
+  geom_col(position = "dodge", alpha = 0.8) +
+  scale_fill_brewer(type = "qual", palette = "Set2") +
+  scale_y_log10(labels = scales::comma) +
+  labs(
+    title = "Genomic Feature Counts by Species",
+    subtitle = "Number of features detected in each species (example data)",
+    x = "Species",
+    y = "Feature Count (log scale)",
+    fill = "Feature Type"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1, face = "italic"),
+    legend.position = "bottom"
+  )
+
+print(p1)
+```
+
+### Sample Circular Plot Concept
+
+```{r example-circular, fig.width=8, fig.height=8}
+# Create a simple circular plot demonstration
+set.seed(789)
+
+# Simulate circular genome data
+n_segments <- 20
+circular_data <- data.frame(
+  segment = 1:n_segments,
+  start_angle = seq(0, 2*pi, length.out = n_segments + 1)[-(n_segments + 1)],
+  end_angle = seq(0, 2*pi, length.out = n_segments + 1)[-1],
+  gene_density = runif(n_segments, 0, 1),
+  expression_level = runif(n_segments, 0, 1)
+) %>%
+  mutate(
+    mid_angle = (start_angle + end_angle) / 2,
+    x_inner = cos(mid_angle) * 0.7,
+    y_inner = sin(mid_angle) * 0.7,
+    x_outer = cos(mid_angle) * 1.0,
+    y_outer = sin(mid_angle) * 1.0
+  )
+
+# Create circular representation
+ggplot(circular_data) +
+  # Inner ring - gene density
+  geom_rect(aes(xmin = cos(start_angle) * 0.5, xmax = cos(end_angle) * 0.5,
+                ymin = sin(start_angle) * 0.5, ymax = sin(end_angle) * 0.5,
+                fill = gene_density), alpha = 0.7) +
+  # Outer ring - expression level  
+  geom_segment(aes(x = x_inner, y = y_inner, xend = x_outer, yend = y_outer,
+                   color = expression_level), size = 3, alpha = 0.8) +
+  scale_fill_gradient(low = "lightblue", high = "darkblue", name = "Gene\nDensity") +
+  scale_color_gradient(low = "yellow", high = "red", name = "Expression\nLevel") +
+  coord_fixed() +
+  theme_void() +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    legend.position = "bottom"
+  ) +
+  labs(title = "Example Circular Genome Representation",
+       subtitle = "Inner ring: gene density, Outer spokes: expression levels") +
+  xlim(-1.3, 1.3) + ylim(-1.3, 1.3)
+```
+
 ## Data Sources and Methods
 
 ### Data Repository Links
@@ -131,15 +327,53 @@ All data files are hosted in the MOSAiC project repositories with standardized f
 
 ## Implementation Status
 
-🔄 **In Development**: Full genomic visualizations with expression data integration
+🔄 **Current Phase**: Framework and demonstration visualizations completed
 
-📊 **Data Available**: All required genomic annotation and expression files
+📊 **Data Available**: All required genomic annotation and expression files accessible via URLs
 
-🎯 **Next Steps**:
-1. Complete circular plot implementation with multi-track support
-2. Add interactive features for detailed exploration
-3. Implement cross-species comparison views
-4. Add statistical analysis components
+🎯 **Implementation Approach**:
+1. ✅ **Framework Setup**: Created page structure and navigation integration
+2. ✅ **Data Integration**: Configured access to all genomic data sources  
+3. ✅ **Example Visualizations**: Demonstrated plot types with simulated data
+4. 🔄 **Real Data Integration**: Next phase will load actual genomic data
+5. 📋 **Interactive Features**: Future enhancement for detailed exploration
+
+### Technical Implementation Notes
+
+The genomic plots are designed to handle:
+- **Multiple contigs/scaffolds**: Focus on largest genomic scaffolds for clarity
+- **Expression data integration**: Mean expression values across samples
+- **Feature overlays**: Genes, lncRNAs, miRNAs, and methylation in coordinated views
+- **Cross-species comparison**: Standardized visualization framework
+
+### Data Processing Pipeline
+
+```{r pipeline-info, echo=TRUE, eval=FALSE}
+# Example data loading approach (not executed in this demo)
+load_genomic_data <- function(species_code) {
+  # Load GFF annotations
+  gff_data <- read_delim(data_urls[[species_code]]$gff, delim = "\t")
+  
+  # Load expression matrices
+  gene_expr <- read_delim(data_urls[[species_code]]$gene)
+  mirna_expr <- read_delim(data_urls[[species_code]]$mirna)
+  lncrna_expr <- read_delim(data_urls[[species_code]]$lncRNA)
+  
+  # Load methylation data
+  meth_data <- read_delim(data_urls[[species_code]]$mCpG)
+  
+  # Process and integrate data...
+  return(integrated_data)
+}
+```
+
+### Next Development Steps
+
+1. **Real Data Loading**: Implement robust data loading with error handling
+2. **Genome Coordinate Integration**: Map expression data to genomic positions
+3. **Multi-track Visualization**: Combine all data types in unified plots
+4. **Interactive Components**: Add zoom, filter, and selection capabilities
+5. **Statistical Analysis**: Include expression comparisons and correlations
 
 ---
 
