@@ -1,0 +1,148 @@
+---
+title: "Comparative Genomic Plots"
+description: "Circular and linear genome visualizations showing gene expression, DNA methylation, lncRNA, and miRNA data"
+format:
+  html:
+    code-copy: true
+    toc: true
+    toc-location: right
+    toc-expand: true
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+# Comparative Genomic Analysis
+
+This page presents comparative genomic visualizations for three coral species showing the distribution and expression levels of genes, lncRNAs, miRNAs, and DNA methylation patterns across their genomes.
+
+## Species Overview
+
+The MOSAiC project includes genomic data for three coral species:
+
+- **Acropora pulchra** - Staghorn coral
+- **Porites evermanni** - Massive coral  
+- **Pocillopora tuahiniensis** - Cauliflower coral
+
+For each species, we have:
+- Gene annotations and expression data
+- Long non-coding RNA (lncRNA) data
+- MicroRNA (miRNA) expression profiles
+- DNA methylation (mCpG) patterns
+
+## Data Integration Overview
+
+```{r echo=TRUE}
+# Species information
+species_info <- list(
+  Apul = list(
+    name = "Acropora pulchra",
+    common = "Staghorn coral",
+    type = "Branching"
+  ),
+  Peve = list(
+    name = "Porites evermanni", 
+    common = "Massive coral",
+    type = "Massive"
+  ),
+  Ptuh = list(
+    name = "Pocillopora tuahiniensis",
+    common = "Cauliflower coral", 
+    type = "Branching"
+  )
+)
+
+# Print species information
+for(species in names(species_info)) {
+  cat("**", species_info[[species]]$name, "**\n")
+  cat("- Common name:", species_info[[species]]$common, "\n")
+  cat("- Growth form:", species_info[[species]]$type, "\n\n")
+}
+```
+
+## Genomic Data Types
+
+### Gene Expression Data
+RNA-seq data processed through HISAT2/StringTie pipeline providing:
+- Genome-wide gene expression profiles
+- Transcript abundance estimates
+- Alternative splicing information
+
+### MicroRNA Expression  
+Small RNA-seq data analyzed with ShortStack:
+- miRNA discovery and quantification
+- Novel miRNA prediction
+- Expression across developmental stages
+
+### Long Non-coding RNA (lncRNA)
+Computational prediction and quantification:
+- Novel lncRNA identification
+- Expression quantification
+- Functional annotation
+
+### DNA Methylation
+EM-seq methylation analysis:
+- Genome-wide CpG methylation patterns
+- Regulatory region methylation
+- Tissue-specific methylation differences
+
+## Planned Visualizations
+
+### Linear Genome Plots
+- Chromosome/contig-based feature distribution
+- Expression levels mapped to genomic coordinates
+- Multi-track views showing all data types
+
+### Circular Genome Plots  
+- Comprehensive circular genome representations
+- Concentric tracks for different feature types
+- Comparative views across species
+
+### Expression Heatmaps
+- Cross-species expression comparisons
+- Tissue/condition-specific patterns
+- Hierarchical clustering of features
+
+## Data Sources and Methods
+
+### Data Repository Links
+All data files are hosted in the MOSAiC project repositories with standardized formats:
+
+- **Gene GFF files**: Genome annotations with feature coordinates
+- **Expression matrices**: Normalized count data for genes, miRNAs, and lncRNAs  
+- **Methylation data**: CpG methylation percentages with coverage filters
+- **Annotation files**: GTF/GFF3 files for feature mapping
+
+### Processing Pipeline
+1. **Quality Control**: FastQC and MultiQC for read quality assessment
+2. **Alignment**: HISAT2 for RNA-seq, specialized aligners for other data types
+3. **Quantification**: StringTie for genes, ShortStack for miRNAs, custom pipelines for lncRNAs
+4. **Normalization**: DESeq2-compatible count matrices with appropriate scaling
+5. **Integration**: Genomic coordinate-based feature mapping
+
+### Visualization Framework
+- **R/Bioconductor**: Primary analysis and visualization platform
+- **ggplot2**: Linear plots and expression visualizations  
+- **circlize**: Circular genome representations
+- **plotly**: Interactive plot components
+- **Quarto**: Reproducible document generation
+
+## Implementation Status
+
+🔄 **In Development**: Full genomic visualizations with expression data integration
+
+📊 **Data Available**: All required genomic annotation and expression files
+
+🎯 **Next Steps**:
+1. Complete circular plot implementation with multi-track support
+2. Add interactive features for detailed exploration
+3. Implement cross-species comparison views
+4. Add statistical analysis components
+
+---
+
+*Last updated: `r Sys.Date()`*
+
+*For questions about data access or visualization requests, please open an issue in the [MOSAiC repository](https://github.com/urol-e5/MOSAiC/issues).*

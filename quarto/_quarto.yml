@@ -29,6 +29,8 @@ website:
         contents:
           - text: "Genomic Expression Values"
             href: counts.qmd
+          - text: "Comparative Genomic Plots"
+            href: genomic_plots.qmd
           - text: "Ortholog Expression Analysis"
             href: ortho.qmd
           #- text: "Genome Features"
