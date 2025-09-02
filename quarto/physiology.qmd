@@ -31,10 +31,18 @@ metabolomics_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecu
 metabolomics <- vroom::vroom(metabolomics_url, col_types = cols(.default = "d", X1 = "c"), progress = FALSE)
 names(metabolomics)[1] <- "compound"
 
+# Ensure compound names are not empty or missing
+metabolomics <- metabolomics %>%
+  filter(!is.na(compound) & compound != "" & compound != "NA")
+
 # Read lipidomics data
 lipidomics_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/main/M-multi-species/output/lipid_count_matrix.csv"
 lipidomics <- vroom::vroom(lipidomics_url, col_types = cols(.default = "d", X1 = "c"), progress = FALSE)
 names(lipidomics)[1] <- "lipid"
+
+# Ensure lipid names are not empty or missing
+lipidomics <- lipidomics %>%
+  filter(!is.na(lipid) & lipid != "" & lipid != "NA")
 
 # Read physiology data
 physiology_url <- "https://raw.githubusercontent.com/urol-e5/timeseries/master/time_series_analysis/Output/master_timeseries.csv"
@@ -327,12 +335,12 @@ p_lipidomics
 #| echo: false
 # Create physiology data table with key measurements
 physiology_table <- physiology_clean %>%
-  select(
-    colony_id_corr, timepoint, species, site, 
-    Host_AFDW.mg.cm2, Sym_AFDW.mg.cm2, Ratio_AFDW.mg.cm2, 
-    Total_Chl, Total_Chl_cell, prot_mg.mgafdw, cells.mgAFDW, 
-    cre.umol.mgafdw, Am, AQY, Rd, Ik, Ic, calc.umol.cm2.hr
-  ) %>%
+  select(any_of(c(
+    "colony_id_corr", "timepoint", "species", "site", 
+    "Host_AFDW.mg.cm2", "Sym_AFDW.mg.cm2", "Ratio_AFDW.mg.cm2", 
+    "Total_Chl", "Total_Chl_cell", "prot_mg.mgafdw", "cells.mgAFDW", 
+    "cre.umol.mgafdw", "Am", "AQY", "Rd", "Ik", "Ic", "calc.umol.cm2.hr"
+  ))) %>%
   arrange(species, colony_id_corr, timepoint)
 
 DT::datatable(
@@ -456,7 +464,7 @@ metabolomics_pca_data <- metabolomics_long %>%
 # Extract numeric data for PCA
 numeric_cols <- metabolomics_pca_data %>% 
   select(-sample_id, -species, -timepoint, -colony_id) %>%
-  select_if(is.numeric)
+  select(where(is.numeric))
 
 # Perform PCA (remove any columns with zero variance)
 zero_var_cols <- apply(numeric_cols, 2, var, na.rm = TRUE) == 0
@@ -512,7 +520,7 @@ lipidomics_pca_data <- lipidomics_long %>%
 # Extract numeric data for PCA
 numeric_cols_lipid <- lipidomics_pca_data %>% 
   select(-sample_id, -species, -timepoint, -colony_id) %>%
-  select_if(is.numeric)
+  select(where(is.numeric))
 
 # Perform PCA (remove any columns with zero variance)
 zero_var_cols_lipid <- apply(numeric_cols_lipid, 2, var, na.rm = TRUE) == 0
