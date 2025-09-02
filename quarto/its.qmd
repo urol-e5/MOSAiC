@@ -169,10 +169,9 @@ if (nrow(its2_data) > 0) {
         species_plots[[i]] <- species_data %>%
           plot_ly(x = ~timepoint, y = ~mean_abundance, color = ~its2_type, 
                   type = "scatter", mode = "lines+markers",
-                  hovertemplate = paste0("ITS2 Type: %{fullData.name}<br>Timepoint: %{x}<br>Mean Abundance: %{y:.4f}<br>Samples: %{text}<extra></extra>"),
+                  hovertemplate = paste0("Species: ", species_name, "<br>ITS2 Type: %{fullData.name}<br>Timepoint: %{x}<br>Mean Abundance: %{y:.4f}<br>Samples: %{text}<extra></extra>"),
                   text = ~n_samples, showlegend = (i == 1)) %>%
           layout(
-            title = list(text = paste("Species:", species_name), font = list(size = 16)),
             xaxis = list(title = list(text = "Time Point", font = list(size = 12)), 
                         tickfont = list(size = 11)),
             yaxis = list(title = list(text = "Mean Relative Abundance", font = list(size = 12)), 
@@ -189,11 +188,11 @@ if (nrow(its2_data) > 0) {
       # Combine plots into subplots - arrange vertically or in grid depending on number of species
       if (length(species_plots) <= 3) {
         # Arrange vertically for up to 3 species
-        # Calculate height based on number of species to prevent compression
-        plot_height <- max(400, length(species_plots) * 350)
+        # Reduced height calculation and margins to minimize white space
+        plot_height <- max(400, length(species_plots) * 280)
         
         p <- subplot(species_plots, nrows = length(species_plots), 
-                    shareX = TRUE, shareY = FALSE, margin = 0.15,
+                    shareX = TRUE, shareY = FALSE, margin = 0.08,
                     titleY = TRUE, titleX = TRUE) %>%
           layout(
             title = list(text = "ITS2 Relative Abundance Across Time Points by Species", 
@@ -201,21 +200,61 @@ if (nrow(its2_data) > 0) {
             showlegend = TRUE,
             height = plot_height
           )
+        
+        # Add species annotations to make labels more prominent
+        annotations <- list()
+        for (i in seq_along(species_list)) {
+          y_position <- 1 - (i - 1) / length(species_list) - 0.02
+          annotations[[i]] <- list(
+            text = paste("<b>", species_list[i], "</b>"),
+            x = 0.02, y = y_position,
+            xref = "paper", yref = "paper",
+            xanchor = "left", yanchor = "top",
+            showarrow = FALSE,
+            font = list(size = 14, color = "black"),
+            bgcolor = "rgba(255,255,255,0.8)",
+            bordercolor = "rgba(0,0,0,0.1)",
+            borderwidth = 1
+          )
+        }
+        p <- p %>% layout(annotations = annotations)
+        
       } else {
         # Arrange in grid for more than 3 species  
         ncols <- min(2, ceiling(sqrt(length(species_plots))))
         nrows <- ceiling(length(species_plots) / ncols)
-        # Calculate height based on number of rows to prevent compression
-        plot_height <- max(400, nrows * 350)
+        # Reduced height calculation and margins to minimize white space
+        plot_height <- max(400, nrows * 280)
         
         p <- subplot(species_plots, nrows = nrows, shareX = TRUE, shareY = FALSE, 
-                    margin = 0.12, titleY = TRUE, titleX = TRUE) %>%
+                    margin = 0.06, titleY = TRUE, titleX = TRUE) %>%
           layout(
             title = list(text = "ITS2 Relative Abundance Across Time Points by Species", 
                         font = list(size = 16)),
             showlegend = TRUE,
             height = plot_height
           )
+        
+        # Add species annotations for grid layout
+        annotations <- list()
+        for (i in seq_along(species_list)) {
+          row <- ceiling(i / ncols)
+          col <- ((i - 1) %% ncols) + 1
+          x_position <- (col - 1) / ncols + 0.02
+          y_position <- 1 - (row - 1) / nrows - 0.02
+          annotations[[i]] <- list(
+            text = paste("<b>", species_list[i], "</b>"),
+            x = x_position, y = y_position,
+            xref = "paper", yref = "paper",
+            xanchor = "left", yanchor = "top",
+            showarrow = FALSE,
+            font = list(size = 14, color = "black"),
+            bgcolor = "rgba(255,255,255,0.8)",
+            bordercolor = "rgba(0,0,0,0.1)",
+            borderwidth = 1
+          )
+        }
+        p <- p %>% layout(annotations = annotations)
       }
       
       p
