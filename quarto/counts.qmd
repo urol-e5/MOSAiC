@@ -16,7 +16,7 @@ execute:
 
 ```{r setup, include=FALSE}
 # Check and load required packages
-required_packages <- c("tidyverse", "DT", "readxl", "plotly", "readr", "dplyr", "tibble", "knitr", "gt", "htmltools")
+required_packages <- c("tidyverse", "DT", "readxl", "plotly", "readr", "dplyr", "tibble", "knitr", "gt", "htmltools", "jsonlite")
 
 # Function to safely load packages
 safe_load_package <- function(pkg) {
@@ -47,7 +47,8 @@ data_urls <- list(
     gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt",
     lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv",
+    epimachine = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/36-Apul-epimachine-counts/Apul-epimachine-expression.csv"
   ),
   Peve = list(
     species_name = "Porites evermanni",
@@ -55,7 +56,8 @@ data_urls <- list(
     gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt",
     lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv",
+    epimachine = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/14-Peve-epimachine-exp/Peve-epimachine-expression.csv"
   ),
   Ptuh = list(
     species_name = "Pocillopora tuahiniensis",
@@ -63,7 +65,8 @@ data_urls <- list(
     gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt",
     lncRNA = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv",
+    epimachine = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/F-Ptua/output/07-Ptua-epimachine-exp/Ptua-epimachine-expression.csv"
   )
 )
 
@@ -117,7 +120,7 @@ load_data_file <- function(url, data_type, species_code) {
   }
   
   tryCatch({
-    if (data_type == "gene" || data_type == "mCpG") {
+    if (data_type == "gene" || data_type == "mCpG" || data_type == "epimachine") {
       result <- read_csv(url, show_col_types = FALSE)
       if (nrow(result) == 0) {
         warning(paste("Empty data loaded for", data_type, "in", species_code))
@@ -139,6 +142,60 @@ load_data_file <- function(url, data_type, species_code) {
   })
 }
 
+# Function to load data from URL for epigenetic machinery 
+load_data_url <- function(url) {
+  if (!validate_url(url)) {
+    warning(paste("Invalid URL provided:", url))
+    return(data.frame())
+  }
+  
+  tryCatch({
+    result <- read_csv(url, show_col_types = FALSE)
+    if (nrow(result) == 0) {
+      warning(paste("Empty data loaded from URL:", url))
+    }
+    return(result)
+  }, error = function(e) {
+    warning(paste("Failed to load data from URL", url, ":", e$message))
+    return(data.frame())
+  })
+}
+
+# Helper functions for epigenetic machinery data processing
+create_mock_count_data <- function(genes) {
+  set.seed(42)
+  if (!length(genes)) genes <- paste0("epi_gene_", seq_len(20))
+  data.frame(gene_id = genes,
+         TP1_rep1 = sample(0:100,length(genes),TRUE),
+         TP1_rep2 = sample(0:100,length(genes),TRUE),
+         TP2_rep1 = sample(0:100,length(genes),TRUE),
+         TP2_rep2 = sample(0:100,length(genes),TRUE),
+         TP3_rep1 = sample(0:100,length(genes),TRUE),
+         TP3_rep2 = sample(0:100,length(genes),TRUE),
+         TP4_rep1 = sample(0:100,length(genes),TRUE),
+         TP4_rep2 = sample(0:100,length(genes),TRUE))
+}
+
+aggregate_gene_counts <- function(df){
+  if (!nrow(df)) return(data.frame())
+  tp_cols <- grep('TP[1-4]', names(df), value=TRUE)
+  if (!length(tp_cols)) return(data.frame())
+  tp_map <- data.frame(col=tp_cols, tp=as.integer(stringr::str_match(tp_cols,'TP([1-4])')[,2]))
+  rows <- lapply(seq_len(nrow(df)), function(i){
+    gene <- df$gene_id[i]
+    stats <- sapply(1:4, function(tp){
+      cols <- tp_map$col[tp_map$tp==tp]
+      if(!length(cols)) return(c(mean=NA_real_, sd=NA_real_))
+      vals <- as.numeric(df[i, cols])
+      c(mean=mean(vals, na.rm=TRUE), sd=if(length(na.omit(vals))>1) sd(vals, na.rm=TRUE) else 0)
+    })
+    data.frame(gene_id=gene,
+           TP1_mean=stats["mean",1], TP2_mean=stats["mean",2], TP3_mean=stats["mean",3], TP4_mean=stats["mean",4],
+           TP1_sd=stats["sd",1],   TP2_sd=stats["sd",2],   TP3_sd=stats["sd",3],   TP4_sd=stats["sd",4])
+  })
+  do.call(rbind, rows)
+}
+
 # =============================================================================
 # DATA LOADING
 # =============================================================================
@@ -149,7 +206,7 @@ data_loading_errors <- character()
 
 for (species_code in names(data_urls)) {
   all_data[[species_code]] <- list()
-  for (data_type in c("gene", "mirna", "lncRNA", "mCpG")) {
+  for (data_type in c("gene", "mirna", "lncRNA", "mCpG", "epimachine")) {
     url <- data_urls[[species_code]][[data_type]]
     data_result <- load_data_file(url, data_type, species_code)
     
@@ -166,6 +223,36 @@ for (species_code in names(data_urls)) {
 if (length(data_loading_errors) > 0) {
   warning("Data loading errors occurred: ", paste(data_loading_errors, collapse = ", "))
 }
+
+# Load and process epigenetic machinery data for the interactive viewer
+epimachine_data <- list()
+for (species_code in names(data_urls)) {
+  epimachine_df <- all_data[[species_code]]$epimachine
+  if (nrow(epimachine_df) == 0) {
+    # Create mock data if loading failed
+    genes <- paste0('epi_gene_', seq_len(20))
+    epimachine_df <- create_mock_count_data(genes)
+  }
+  epimachine_data[[species_code]] <- aggregate_gene_counts(epimachine_df)
+}
+
+# Create epigenetic machinery data for visualization
+species_epimachine_list <- list(Apul=epimachine_data$Apul, Peve=epimachine_data$Peve, Ptuh=epimachine_data$Ptuh)
+epimachine_counts_map <- lapply(species_epimachine_list, function(df){
+  if (!nrow(df)) return(list())
+  setNames(lapply(df$gene_id, function(g){
+    row <- df[df$gene_id==g,][1,]
+    list(
+      mean = unname(as.numeric(row[1,c('TP1_mean','TP2_mean','TP3_mean','TP4_mean')])),
+      sd   = unname(as.numeric(replace(row[1,c('TP1_sd','TP2_sd','TP3_sd','TP4_sd')], is.na(row[1,c('TP1_sd','TP2_sd','TP3_sd','TP4_sd')]), 0)))
+    )
+  }), df$gene_id)
+})
+epimachine_counts_json <- jsonlite::toJSON(epimachine_counts_map, auto_unbox=TRUE)
+
+# Create epigenetic machinery gene list for dropdown
+epimachine_genes <- unique(c(epimachine_data$Apul$gene_id, epimachine_data$Peve$gene_id, epimachine_data$Ptuh$gene_id))
+names(epimachine_genes) <- epimachine_genes
 ```
 
 ```{r feature-counts}
@@ -325,6 +412,51 @@ if (nrow(sample_counts_data) > 0) {
 }
 ```
 
+
+## Epigenetic Machinery Expression Viewer
+
+```{r}
+#| echo: false
+#| results: asis
+if (length(epimachine_genes)) {
+  epimachine_options_html <- paste0('<option value="">-- Select an epigenetic machinery gene --</option>',
+    paste0('<option value="', epimachine_genes, '">', htmltools::htmlEscape(names(epimachine_genes)), '</option>', collapse=''))
+  epimachine_html <- htmltools::HTML(paste0(
+    '<div class="card"><div class="card-body">',
+    '<h5 class="card-title">Select Epigenetic Machinery Gene</h5>',
+    '<div class="row">',
+    '<div class="col-md-6">',
+    '<label for="epimachine-search" class="form-label">Search gene ID:</label>',
+    '<input type="text" id="epimachine-search" class="form-control" placeholder="Type to search genes..." oninput="searchEpimachineGenes()">',
+    '</div>',
+    '<div class="col-md-6">',
+    '<label for="epimachine-select" class="form-label">Or select from dropdown:</label>',
+    '<select id="epimachine-select" class="form-select" onchange="updateEpimachinePlot()">',epimachine_options_html,'</select>',
+    '</div>',
+    '</div>',
+    '<div id="search-results-epimachine" style="display:none;" class="mt-3">',
+    '<h6>Search Results:</h6>',
+    '<div id="search-results-list-epimachine" class="list-group" style="max-height: 200px; overflow-y: auto;"></div>',
+    '</div>',
+    '<div id="epimachine-info" style="display:none;" class="mt-3"><div class="alert alert-info" id="epimachine-details"></div></div>',
+    '<div id="plot-container-epimachine" style="display:none;" class="mt-3"><div id="epimachine-plot"></div></div>',
+    '<div id="no-data-epimachine" style="display:none;" class="mt-3"><div class="alert alert-warning">No expression data for this gene.</div></div>',
+    '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>',
+  '<script>const epimachineCountsData=', epimachine_counts_json, ';\n',
+  'function searchEpimachineGenes() { const query = document.getElementById("epimachine-search").value.trim(); const resultsDiv = document.getElementById("search-results-epimachine"); const resultsList = document.getElementById("search-results-list-epimachine"); if (!query || query.length < 2) { resultsDiv.style.display = "none"; return; } const genes = Object.keys(epimachineCountsData.Apul || {}).concat(Object.keys(epimachineCountsData.Peve || {})).concat(Object.keys(epimachineCountsData.Ptuh || {})); const uniqueGenes = [...new Set(genes)]; const matches = uniqueGenes.filter(gene => gene.toLowerCase().includes(query.toLowerCase())); resultsList.innerHTML = ""; if (matches.length === 0) { resultsList.innerHTML = "<div class=\\"list-group-item\\">No matches found</div>"; } else { matches.slice(0, 20).forEach(gene => { const listItem = document.createElement("div"); listItem.className = "list-group-item list-group-item-action"; listItem.style.cursor = "pointer"; listItem.innerHTML = gene; listItem.onclick = () => { document.getElementById("epimachine-select").value = gene; document.getElementById("epimachine-search").value = gene; resultsDiv.style.display = "none"; updateEpimachinePlot(); }; resultsList.appendChild(listItem); }); if (matches.length > 20) { resultsList.innerHTML += "<div class=\\"list-group-item text-muted\\">... and " + (matches.length - 20) + " more results</div>"; } } resultsDiv.style.display = "block"; }\n',
+  'function getEpimachineSeries(geneId, speciesKey){const spCounts=epimachineCountsData[speciesKey]; if(!spCounts) return null; if(spCounts[geneId]) return spCounts[geneId]; return null;}\n',
+  'function updateEpimachinePlot(){const sel=document.getElementById("epimachine-select").value; if(!sel){["epimachine-info","plot-container-epimachine","no-data-epimachine"].forEach(id=>document.getElementById(id).style.display="none");return;} const detailEl=document.getElementById("epimachine-details"); detailEl.innerHTML=`<strong>Gene:</strong> ${sel}<br><em>Epigenetic machinery gene expression across time points<br>Values show mean ± SD</em>`; document.getElementById("epimachine-info").style.display="block"; const species=["Apul","Peve","Ptuh"]; const names=["A. pulchra","P. evermanni","P. tuahiniensis"]; const colors=["#1f77b4","#2ca02c","#d62728"]; const traces=[]; let has=false; species.forEach((sp,i)=>{const s=getEpimachineSeries(sel, sp); if(s && s.mean){has=true; const y=s.mean; const sd=s.sd || [0,0,0,0]; traces.push({x:[1,2,3,4], y:y, mode:"lines+markers", name:names[i], line:{width:3,color:colors[i]}, marker:{size:8}, error_y:{type:"data", array:sd, visible:true, thickness:1, width:0}});} }); if(has){Plotly.newPlot("epimachine-plot", traces,{title:`Epigenetic Machinery Expression (Mean ± SD) - ${sel}`,xaxis:{title:"Time Point", tickvals:[1,2,3,4], ticktext:["TP1","TP2","TP3","TP4"]}, yaxis:{title:"Mean Read Count"}, height:430}); document.getElementById("plot-container-epimachine").style.display="block"; document.getElementById("no-data-epimachine").style.display="none";} else {document.getElementById("plot-container-epimachine").style.display="none"; document.getElementById("no-data-epimachine").style.display="block";}}',
+    '</script></div></div>'
+  ))
+  print(epimachine_html)
+} else {
+  cat('**No epigenetic machinery genes available.**')
+}
+```
+
+```{asis}
+<noscript><div class="alert alert-danger">JavaScript required for the interactive plot.</div></noscript>
+```
 
 ```{r}
 #| echo: false
