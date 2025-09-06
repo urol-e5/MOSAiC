@@ -32,7 +32,7 @@ for (pkg in required_packages) {
 }
 ```
 
-```{r data-config, cache=TRUE, include=FALSE}
+```{r data-config, cache=FALSE, include=FALSE}
 
 # =============================================================================
 # EXTERNAL DATA URLS CONFIGURATION
@@ -45,25 +45,28 @@ data_urls <- list(
     species_name = "Acropora pulchra",
     italic_name = "*Acropora pulchra*",
     gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv",
+    epimachine = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/36-Apul-epimachine-counts/Apul-epimachine-expression.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt",
     lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250903_meth_Apul/merged-WGBS-CpG-counts_filtered_n20.csv"
   ),
   Peve = list(
     species_name = "Porites evermanni",
     italic_name = "*Porites evermanni*",
     gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/E-Peve/output/02.20-E-Peve-RNAseq-alignment-HiSat2/peve-gene_count_matrix.csv",
+    epimachine = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/14-Peve-epimachine-exp/Peve-epimachine-expression.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt",
     lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered_n20.csv"
   ),
   Ptuh = list(
     species_name = "Pocillopora tuahiniensis",
     italic_name = "*Pocillopora tuahiniensis*",
     gene = "https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/F-Ptua/output/02.20-F-Ptua-RNAseq-alignment-HiSat2/ptua-gene_count_matrix.csv",
+    epimachine = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/F-Ptua/output/07-Ptua-epimachine-exp/Ptua-epimachine-expression.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt",
     lncRNA = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered_n20.csv"
   )
 )
 
@@ -117,7 +120,7 @@ load_data_file <- function(url, data_type, species_code) {
   }
   
   tryCatch({
-    if (data_type == "gene" || data_type == "mCpG") {
+    if (data_type == "gene" || data_type == "mCpG" || data_type == "epimachine") {
       result <- read_csv(url, show_col_types = FALSE)
       if (nrow(result) == 0) {
         warning(paste("Empty data loaded for", data_type, "in", species_code))
@@ -149,7 +152,7 @@ data_loading_errors <- character()
 
 for (species_code in names(data_urls)) {
   all_data[[species_code]] <- list()
-  for (data_type in c("gene", "mirna", "lncRNA", "mCpG")) {
+  for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG")) {
     url <- data_urls[[species_code]][[data_type]]
     data_result <- load_data_file(url, data_type, species_code)
     
@@ -174,6 +177,7 @@ if (length(data_loading_errors) > 0) {
 feature_counts <- data.frame(
   Species = character(),
   Gene = integer(),
+  Epimachine = integer(),
   miRNA = integer(),
   lncRNA = integer(),
   mCpG = integer(),
@@ -183,6 +187,7 @@ feature_counts <- data.frame(
 for (species_code in names(data_urls)) {
   # Safely get row counts with error handling
   gene_count <- safe_nrow(all_data[[species_code]]$gene)
+  epimachine_count <- safe_nrow(all_data[[species_code]]$epimachine)
   mirna_count <- safe_nrow(all_data[[species_code]]$mirna)
   lncrna_count <- safe_nrow(all_data[[species_code]]$lncRNA)
   mcpg_count <- safe_nrow(all_data[[species_code]]$mCpG)
@@ -190,6 +195,7 @@ for (species_code in names(data_urls)) {
   feature_counts <- rbind(feature_counts, data.frame(
     Species = data_urls[[species_code]]$italic_name,
     Gene = gene_count,
+    Epimachine = epimachine_count,
     miRNA = mirna_count,
     lncRNA = lncrna_count,
     mCpG = mcpg_count,
@@ -211,11 +217,11 @@ if (nrow(feature_counts_data) > 0) {
   feature_counts_data |>
     gt() |>
     tab_header(title = "Feature Counts") |>
-    fmt_number(columns = c("Gene", "miRNA", "lncRNA", "mCpG"), decimals = 0) |>
-    cols_align(align = "center", columns = c("Gene", "miRNA", "lncRNA", "mCpG")) |>
+    fmt_number(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG"), decimals = 0) |>
+    cols_align(align = "center", columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG")) |>
     tab_style(
       style = cell_text(weight = "bold"),
-      locations = cells_body(columns = c("Gene", "miRNA", "lncRNA", "mCpG"))
+      locations = cells_body(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG"))
     ) |>
     print()
 } else {
@@ -249,7 +255,6 @@ Workflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites),
 For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filtered for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column \_processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all \_processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.
 :::
 
-
 ## Sample Counts by Data Type
 
 ```{r}
@@ -259,6 +264,7 @@ For EM-seq analysis Bismark methylation coverage (.cov) files are unified into C
 sample_counts_data <- data.frame(
   Species = character(),
   Gene = integer(),
+  Epimachine = integer(),
   miRNA = integer(),
   lncRNA = integer(),
   mCpG = integer(),
@@ -272,12 +278,13 @@ for (species_code in names(data_urls)) {
   
   # Initialize counts
   gene_count <- 0
+  epimachine_count <- 0
   mirna_count <- 0
   lncrna_count <- 0
   mcpg_count <- 0
   
   # Count samples for each data type
-  for (data_type in c("gene", "mirna", "lncRNA", "mCpG")) {
+  for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG")) {
     df <- all_data[[species_code]][[data_type]]
     
     if (!is.null(df) && nrow(df) > 0) {
@@ -288,6 +295,7 @@ for (species_code in names(data_urls)) {
       # Assign to appropriate variable
       switch(data_type,
         "gene" = gene_count <- count,
+        "epimachine" = epimachine_count <- count,
         "mirna" = mirna_count <- count,
         "lncRNA" = lncrna_count <- count,
         "mCpG" = mcpg_count <- count
@@ -300,6 +308,7 @@ for (species_code in names(data_urls)) {
     data.frame(
       Species = species_name,
       Gene = gene_count,
+      Epimachine = epimachine_count,
       miRNA = mirna_count,
       lncRNA = lncrna_count,
       mCpG = mcpg_count,
@@ -313,18 +322,17 @@ if (nrow(sample_counts_data) > 0) {
   sample_counts_data |>
     gt() |>
     tab_header(title = "Sample Counts by Data Type") |>
-    fmt_number(columns = c("Gene", "miRNA", "lncRNA", "mCpG"), decimals = 0) |>
-    cols_align(align = "center", columns = c("Gene", "miRNA", "lncRNA", "mCpG")) |>
+    fmt_number(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG"), decimals = 0) |>
+    cols_align(align = "center", columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG")) |>
     tab_style(
       style = cell_text(weight = "bold"),
-      locations = cells_body(columns = c("Gene", "miRNA", "lncRNA", "mCpG"))
+      locations = cells_body(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG"))
     ) |>
     print()
 } else {
   cat("No sample count data available.")
 }
 ```
-
 
 ```{r}
 #| echo: false
@@ -337,7 +345,7 @@ for (species_code in names(data_urls)) {
   cat(paste0("# ", species_info$italic_name, "\n\n"))
   
   # Generate each data type section
-  for (data_type in c("gene", "mirna", "lncRNA", "mCpG")) {
+  for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG")) {
     url <- species_info[[data_type]]
     df <- all_data[[species_code]][[data_type]]
     
@@ -345,6 +353,7 @@ for (species_code in names(data_urls)) {
     if (is.null(df) || nrow(df) == 0) {
       data_type_display <- switch(data_type,
         "gene"  = "Gene",
+        "epimachine" = "Epigenetic Machinery",
         "mirna" = "miRNA",
         "lncRNA"= "lncRNA",
         "mCpG"  = "mCpG Percentage",
@@ -358,6 +367,7 @@ for (species_code in names(data_urls)) {
     # Label for section
     data_type_display <- switch(data_type,
       "gene"  = "Gene",
+      "epimachine" = "Epigenetic Machinery",
       "mirna" = "miRNA",
       "lncRNA"= "lncRNA",
       "mCpG"  = "mCpG Percentage",
@@ -365,7 +375,7 @@ for (species_code in names(data_urls)) {
     )
     
     # File name
-    file_extension <- if (data_type %in% c("gene","mCpG")) ".csv" else ".txt"
+    file_extension <- if (data_type %in% c("gene","epimachine","mCpG")) ".csv" else ".txt"
     filename <- paste0(species_code, "_", data_type, "_counts", file_extension)
     
     # Section header
