@@ -1,5 +1,5 @@
 ---
-title: "Disclaimer & Acknowledgment"
+title: "Acknowledgment"
 format: html
 editor: visual
 ---
@@ -9,11 +9,17 @@ editor: visual
 This material is based upon work supported by the National Science Foundation under the following award numbers:
 
 <ul>
-	<li><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1921465" target="_blank" rel="noopener">NSF Award 1921465</a></li>
-	<li><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1921149" target="_blank" rel="noopener">NSF Award 1921149</a></li>
-	<li><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1921425" target="_blank" rel="noopener">NSF Award 1921425</a></li>
-	<li><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1921356" target="_blank" rel="noopener">NSF Award 1921356</a></li>
-	<li><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1921402" target="_blank" rel="noopener">NSF Award 1921402</a></li>
+
+<li><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1921465" target="_blank" rel="noopener">NSF Award 1921465</a></li>
+
+<li><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1921149" target="_blank" rel="noopener">NSF Award 1921149</a></li>
+
+<li><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1921425" target="_blank" rel="noopener">NSF Award 1921425</a></li>
+
+<li><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1921356" target="_blank" rel="noopener">NSF Award 1921356</a></li>
+
+<li><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1921402" target="_blank" rel="noopener">NSF Award 1921402</a></li>
+
 </ul>
 
 Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.

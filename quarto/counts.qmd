@@ -32,7 +32,7 @@ for (pkg in required_packages) {
 }
 ```
 
-```{r data-config, cache=TRUE, include=FALSE}
+```{r data-config, cache=FALSE, include=FALSE}
 
 # =============================================================================
 # EXTERNAL DATA URLS CONFIGURATION
@@ -48,7 +48,7 @@ data_urls <- list(
     epimachine = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/36-Apul-epimachine-counts/Apul-epimachine-expression.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt",
     lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250821_meth_Apul/merged-WGBS-CpG-counts_filtered.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250903_meth_Apul/merged-WGBS-CpG-counts_filtered_n20.csv"
   ),
   Peve = list(
     species_name = "Porites evermanni",
@@ -57,7 +57,7 @@ data_urls <- list(
     epimachine = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/14-Peve-epimachine-exp/Peve-epimachine-expression.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt",
     lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered_n20.csv"
   ),
   Ptuh = list(
     species_name = "Pocillopora tuahiniensis",
@@ -66,7 +66,7 @@ data_urls <- list(
     epimachine = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/F-Ptua/output/07-Ptua-epimachine-exp/Ptua-epimachine-expression.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt",
     lncRNA = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered_n20.csv"
   )
 )
 
@@ -255,7 +255,6 @@ Workflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites),
 For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filtered for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column \_processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all \_processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.
 :::
 
-
 ## Sample Counts by Data Type
 
 ```{r}
@@ -334,7 +333,6 @@ if (nrow(sample_counts_data) > 0) {
   cat("No sample count data available.")
 }
 ```
-
 
 ```{r}
 #| echo: false
