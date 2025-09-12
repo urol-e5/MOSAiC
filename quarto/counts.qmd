@@ -32,7 +32,7 @@ for (pkg in required_packages) {
 }
 ```
 
-```{r data-config, cache=FALSE, include=FALSE}
+```{r data-config, cache=TRUE, include=FALSE}
 
 # =============================================================================
 # EXTERNAL DATA URLS CONFIGURATION

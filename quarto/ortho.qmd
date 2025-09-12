@@ -201,12 +201,27 @@ names(go_terms_list) <- paste0(go_terms_list, ' (', lengths(go_term_groups), ' g
 go_term_json <- jsonlite::toJSON(go_term_groups, auto_unbox=TRUE)
 ```
 
-
-
 ```{r}
 #| echo: false
 #| results: asis
-if (!length(ortholog_groups)) cat('**Error: No ortholog groups available.**') else cat('Loaded **', length(ortholog_groups), '** ortholog groups.')
+
+# Status line
+if (!length(ortholog_groups)) {
+  cat('**Error: No ortholog groups available.**\n')
+} else {
+  cat('Loaded', length(ortholog_groups), 'ortholog groups.\n')
+}
+
+# ---- Download + Open buttons only ----
+csv_url <- "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/12-ortho-annot/ortholog_groups_annotated.csv"
+
+htmltools::HTML(sprintf('
+<div style="margin:1em 0;">
+  <a class="btn btn-primary" href="%s" download>⬇️ Download annotated ortholog groups (CSV)</a>
+  &nbsp;
+  <a class="btn btn-outline-secondary" href="%s" target="_blank" rel="noopener">🔎 Open raw file</a>
+</div>
+', csv_url, csv_url)) |> print()
 ```
 
 ## Viewer
@@ -332,4 +347,3 @@ if (length(go_terms_list)) {
   cat('**No GO slim terms available.**')
 }
 ```
-

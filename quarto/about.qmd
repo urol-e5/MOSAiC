@@ -21,8 +21,6 @@ This genome browser supports exploration of coral species included in our genomi
 > **N50:** 17 Mbp\
 > **Protein-Coding Genes:** 40,518
 
-
-
 ------------------------------------------------------------------------
 
 ### 🔹 Pocillopora tuahiniensis
@@ -85,13 +83,10 @@ leaflet(sites, options = leafletOptions(minZoom = 3, maxZoom = 18)) |>
 	)
 ```
 
-
-
-
 ## 🎥 Coral Reef Video
 
 <video width="100%" autoplay muted>
 
-<source src="https://e5coral.org/wp-content/uploads/2020/11/e5_coral_reef_homepage_720p.mp4" type="video/mp4">
+<source src="http://gannet.fish.washington.edu/seashell/snaps/MVI_5198.MP4" type="video/mp4">
 
 Your browser does not support the video tag. </video>
