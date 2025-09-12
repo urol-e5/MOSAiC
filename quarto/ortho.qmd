@@ -1,6 +1,6 @@
 ---
 title: "Ortholog Expression"
-description: "Select an ortholog group and view expression (mean ± SD) across three coral species over four time points"
+description: "Select an ortholog group and view expression across three coral species over four time points"
 format:
   html:
     code-copy: true
