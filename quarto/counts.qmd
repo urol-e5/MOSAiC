@@ -49,7 +49,7 @@ data_urls <- list(
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt",
     lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
     mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250903_meth_Apul/merged-WGBS-CpG-counts_filtered_n20.csv",
-    gene-meth = "https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation_75pct.tsv"
+    gene_meth = "https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation_75pct.tsv"
   ),
   Peve = list(
     species_name = "Porites evermanni",
@@ -59,7 +59,7 @@ data_urls <- list(
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt",
     lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
     mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered_n20.csv",
-    gene-meth = "https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/E-Peve/output/15-Peve-Gene-Methylation/Peve-gene-methylation_75pct.tsv"
+    gene_meth = "https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/E-Peve/output/15-Peve-Gene-Methylation/Peve-gene-methylation_75pct.tsv"
   ),
   Ptuh = list(
     species_name = "Pocillopora tuahiniensis",
@@ -69,7 +69,7 @@ data_urls <- list(
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt",
     lncRNA = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
     mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered_n20.csv",
-    gene-meth = "https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/F-Ptua/output/09-Ptua-Gene-Methylation/Ptua-gene-methylation_75pct.tsv"
+    gene_meth = "https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/F-Ptua/output/09-Ptua-Gene-Methylation/Ptua-gene-methylation_75pct.tsv"
   )
 )
 
@@ -123,22 +123,25 @@ load_data_file <- function(url, data_type, species_code) {
   }
   
   tryCatch({
-    if (data_type == "gene" || data_type == "mCpG" || data_type == "epimachine") {
+    # CSV-based
+    if (data_type %in% c("gene", "mCpG", "epimachine")) {
       result <- read_csv(url, show_col_types = FALSE)
-      if (nrow(result) == 0) {
-        warning(paste("Empty data loaded for", data_type, "in", species_code))
-      }
-      return(result)
-    } else if (data_type == "mirna" || data_type == "lncRNA") {
+    
+    # TSV-based
+    } else if (data_type %in% c("mirna", "lncRNA", "gene_meth")) {
       result <- read_delim(url, delim = "\t", col_names = TRUE, show_col_types = FALSE)
-      if (nrow(result) == 0) {
-        warning(paste("Empty data loaded for", data_type, "in", species_code))
-      }
-      return(result)
+
     } else {
       warning(paste("Unknown data type:", data_type))
       return(data.frame())
     }
+
+    if (nrow(result) == 0) {
+      warning(paste("Empty data for", data_type, "in", species_code))
+    }
+    
+    return(result)
+    
   }, error = function(e) {
     warning(paste("Failed to load", data_type, "data for", species_code, ":", e$message))
     return(data.frame())
@@ -155,7 +158,7 @@ data_loading_errors <- character()
 
 for (species_code in names(data_urls)) {
   all_data[[species_code]] <- list()
-  for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG", "gene-meth")) {
+  for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG", "gene_meth")) {
     url <- data_urls[[species_code]][[data_type]]
     data_result <- load_data_file(url, data_type, species_code)
     
