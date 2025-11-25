@@ -48,7 +48,8 @@ data_urls <- list(
     epimachine = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/D-Apul/output/36-Apul-epimachine-counts/Apul-epimachine-expression.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Apul_miRNA_counts_formatted.txt",
     lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250903_meth_Apul/merged-WGBS-CpG-counts_filtered_n20.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/20250903_meth_Apul/merged-WGBS-CpG-counts_filtered_n20.csv",
+    gene-meth = "https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation_75pct.tsv"
   ),
   Peve = list(
     species_name = "Porites evermanni",
@@ -57,7 +58,8 @@ data_urls <- list(
     epimachine = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/14-Peve-epimachine-exp/Peve-epimachine-expression.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Peve_miRNA_counts_formatted.txt",
     lncRNA = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/E-Peve/output/12-Peve-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered_n20.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered_n20.csv",
+    gene-meth = "https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/E-Peve/output/15-Peve-Gene-Methylation/Peve-gene-methylation_75pct.tsv"
   ),
   Ptuh = list(
     species_name = "Pocillopora tuahiniensis",
@@ -66,7 +68,8 @@ data_urls <- list(
     epimachine = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/F-Ptua/output/07-Ptua-epimachine-exp/Ptua-epimachine-expression.csv",
     mirna = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/10-format-miRNA-counts/Ptuh_miRNA_counts_formatted.txt",
     lncRNA = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt",
-    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered_n20.csv"
+    mCpG = "https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered_n20.csv",
+    gene-meth = "https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/F-Ptua/output/09-Ptua-Gene-Methylation/Ptua-gene-methylation_75pct.tsv"
   )
 )
 
@@ -152,7 +155,7 @@ data_loading_errors <- character()
 
 for (species_code in names(data_urls)) {
   all_data[[species_code]] <- list()
-  for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG")) {
+  for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG", "gene-meth")) {
     url <- data_urls[[species_code]][[data_type]]
     data_result <- load_data_file(url, data_type, species_code)
     
