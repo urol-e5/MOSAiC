@@ -4,7 +4,7 @@
     "href": "counts.html",
     "title": "Expression Values",
     "section": "",
-    "text": "Feature Counts\n\n\n\n\nSpecies\n\n\nGene\n\n\nEpimachine\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\nGene_Meth\n\n\n\n\n\n\nAcropora pulchra\n\n\n44,371\n\n\n326\n\n\n51\n\n\n15,559\n\n\n0\n\n\n21,621\n\n\n\n\nPorites evermanni\n\n\n40,389\n\n\n324\n\n\n48\n\n\n8,319\n\n\n0\n\n\n20,824\n\n\n\n\nPocillopora tuahiniensis\n\n\n31,840\n\n\n326\n\n\n40\n\n\n11,236\n\n\n6,020,191\n\n\n23,369\n\n\n\n\n\n\n\n\n\n\n\nConTra\n\n\n\nIf you are excited about analyzing this type of data in contextual manner check out ConTra - Contextual Transcriptome Regulation Analysis",
+    "text": "Feature Counts\n\n\n\n\nSpecies\n\n\nGene\n\n\nEpimachine\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\nGene_Meth\n\n\n\n\n\n\nAcropora pulchra\n\n\n44,371\n\n\n326\n\n\n51\n\n\n15,559\n\n\n6,566,306\n\n\n21,621\n\n\n\n\nPorites evermanni\n\n\n40,389\n\n\n324\n\n\n48\n\n\n8,319\n\n\n4,751,249\n\n\n20,824\n\n\n\n\nPocillopora tuahiniensis\n\n\n31,840\n\n\n326\n\n\n40\n\n\n11,236\n\n\n6,020,191\n\n\n23,369\n\n\n\n\n\n\n\n\n\n\n\nConTra\n\n\n\nIf you are excited about analyzing this type of data in contextual manner check out ConTra - Contextual Transcriptome Regulation Analysis",
     "crumbs": [
       "Data Files",
       "Genomic Expression Values"
@@ -15,7 +15,7 @@
     "href": "counts.html#summary-of-available-data",
     "title": "Expression Values",
     "section": "",
-    "text": "Feature Counts\n\n\n\n\nSpecies\n\n\nGene\n\n\nEpimachine\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\nGene_Meth\n\n\n\n\n\n\nAcropora pulchra\n\n\n44,371\n\n\n326\n\n\n51\n\n\n15,559\n\n\n0\n\n\n21,621\n\n\n\n\nPorites evermanni\n\n\n40,389\n\n\n324\n\n\n48\n\n\n8,319\n\n\n0\n\n\n20,824\n\n\n\n\nPocillopora tuahiniensis\n\n\n31,840\n\n\n326\n\n\n40\n\n\n11,236\n\n\n6,020,191\n\n\n23,369\n\n\n\n\n\n\n\n\n\n\n\nConTra\n\n\n\nIf you are excited about analyzing this type of data in contextual manner check out ConTra - Contextual Transcriptome Regulation Analysis",
+    "text": "Feature Counts\n\n\n\n\nSpecies\n\n\nGene\n\n\nEpimachine\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\nGene_Meth\n\n\n\n\n\n\nAcropora pulchra\n\n\n44,371\n\n\n326\n\n\n51\n\n\n15,559\n\n\n6,566,306\n\n\n21,621\n\n\n\n\nPorites evermanni\n\n\n40,389\n\n\n324\n\n\n48\n\n\n8,319\n\n\n4,751,249\n\n\n20,824\n\n\n\n\nPocillopora tuahiniensis\n\n\n31,840\n\n\n326\n\n\n40\n\n\n11,236\n\n\n6,020,191\n\n\n23,369\n\n\n\n\n\n\n\n\n\n\n\nConTra\n\n\n\nIf you are excited about analyzing this type of data in contextual manner check out ConTra - Contextual Transcriptome Regulation Analysis",
     "crumbs": [
       "Data Files",
       "Genomic Expression Values"
@@ -37,7 +37,7 @@
     "href": "counts.html#sample-counts-by-data-type",
     "title": "Expression Values",
     "section": "Sample Counts by Data Type",
-    "text": "Sample Counts by Data Type\n\n\n\n\n\n\nSample Counts by Data Type\n\n\n\n\nSpecies\n\n\nGene\n\n\nEpimachine\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\nGene_Meth\n\n\n\n\n\n\nAcropora pulchra\n\n\n40\n\n\n40\n\n\n40\n\n\n40\n\n\n0\n\n\n40\n\n\n\n\nPorites evermanni\n\n\n38\n\n\n38\n\n\n37\n\n\n38\n\n\n0\n\n\n37\n\n\n\n\nPocillopora tuahiniensis\n\n\n39\n\n\n39\n\n\n39\n\n\n39\n\n\n32\n\n\n32",
+    "text": "Sample Counts by Data Type\n\n\n\n\n\n\nSample Counts by Data Type\n\n\n\n\nSpecies\n\n\nGene\n\n\nEpimachine\n\n\nmiRNA\n\n\nlncRNA\n\n\nmCpG\n\n\nGene_Meth\n\n\n\n\n\n\nAcropora pulchra\n\n\n40\n\n\n40\n\n\n40\n\n\n40\n\n\n39\n\n\n40\n\n\n\n\nPorites evermanni\n\n\n38\n\n\n38\n\n\n37\n\n\n38\n\n\n37\n\n\n37\n\n\n\n\nPocillopora tuahiniensis\n\n\n39\n\n\n39\n\n\n39\n\n\n39\n\n\n32\n\n\n32",
     "crumbs": [
       "Data Files",
       "Genomic Expression Values"
@@ -88,11 +88,11 @@
     ]
   },
   {
-    "objectID": "counts.html#mcpg-percentage---data-not-available",
-    "href": "counts.html#mcpg-percentage---data-not-available",
+    "objectID": "counts.html#mcpg-percentage",
+    "href": "counts.html#mcpg-percentage",
     "title": "Expression Values",
-    "section": "mCpG Percentage - Data Not Available",
-    "text": "mCpG Percentage - Data Not Available\nData could not be loaded for this section.",
+    "section": "mCpG Percentage",
+    "text": "mCpG Percentage\nDownload mCpG Percentage\n https://gannet.fish.washington.edu/metacarcinus/E5/20250903_meth_Apul/merged-WGBS-CpG-counts_filtered_n20.csv \nApul_mCpG (first 4 rows)\n\n\n\n\n\n\nCpG\n\n\nACR-145-TP3\n\n\nACR-265-TP4\n\n\nACR-139-TP3\n\n\nACR-244-TP1\n\n\nACR-237-TP1\n\n\nACR-265-TP3\n\n\nACR-186-TP4\n\n\nACR-186-TP2\n\n\nACR-244-TP4\n\n\nACR-225-TP3\n\n\nACR-139-TP2\n\n\nACR-186-TP1\n\n\nACR-145-TP1\n\n\nACR-145-TP4\n\n\nACR-225-TP4\n\n\nACR-173-TP3\n\n\nACR-150-TP4\n\n\nACR-173-TP1\n\n\nACR-173-TP2\n\n\nACR-237-TP3\n\n\nACR-265-TP1\n\n\nACR-186-TP3\n\n\nACR-229-TP1\n\n\nACR-229-TP2\n\n\nACR-150-TP3\n\n\nACR-173-TP4\n\n\nACR-225-TP2\n\n\nACR-244-TP2\n\n\nACR-150-TP2\n\n\nACR-237-TP2\n\n\nACR-265-TP2\n\n\nACR-229-TP4\n\n\nACR-244-TP3\n\n\nACR-150-TP1\n\n\nACR-139-TP1\n\n\nACR-145-TP2\n\n\nACR-139-TP4\n\n\nACR-229-TP3\n\n\nACR-237-TP4\n\n\n\n\n\n\nCpG_ntLink_0_90500\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0.000000\n\n\n1.851852\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\nNA\n\n\nNA\n\n\nNA\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0.000000\n\n\nNA\n\n\nNA\n\n\nNA\n\n\n4.166667\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0.000000\n\n\n0.000000\n\n\n0\n\n\n0\n\n\nNA\n\n\n\n\nCpG_ntLink_0_90540\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0.000000\n\n\n2.985075\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n3.448276\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0.000000\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0.000000\n\n\n0\n\n\nNA\n\n\n0\n\n\n0.000000\n\n\n2.631579\n\n\n0\n\n\n0\n\n\nNA\n\n\n\n\nCpG_ntLink_0_90562\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0.000000\n\n\n1.428571\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0.000000\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0.000000\n\n\n0\n\n\nNA\n\n\n0\n\n\n0.000000\n\n\n2.439024\n\n\n0\n\n\n0\n\n\nNA\n\n\n\n\nCpG_ntLink_0_90633\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\n2.857143\n\n\n3.030303\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\nNA\n\n\nNA\n\n\nNA\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\n4.545455\n\n\n0\n\n\nNA\n\n\nNA\n\n\n8.333333\n\n\nNA\n\n\nNA\n\n\nNA\n\n\n0.000000\n\n\n0\n\n\nNA\n\n\nNA\n\n\n5.882353\n\n\n0.000000\n\n\n0\n\n\n0\n\n\nNA",
     "crumbs": [
       "Data Files",
       "Genomic Expression Values"
@@ -154,11 +154,11 @@
     ]
   },
   {
-    "objectID": "counts.html#mcpg-percentage---data-not-available-1",
-    "href": "counts.html#mcpg-percentage---data-not-available-1",
+    "objectID": "counts.html#mcpg-percentage-1",
+    "href": "counts.html#mcpg-percentage-1",
     "title": "Expression Values",
-    "section": "mCpG Percentage - Data Not Available",
-    "text": "mCpG Percentage - Data Not Available\nData could not be loaded for this section.",
+    "section": "mCpG Percentage",
+    "text": "mCpG Percentage\nDownload mCpG Percentage\n https://gannet.fish.washington.edu/metacarcinus/E5/Pevermanni/20250821_meth_Peve/merged-WGBS-CpG-counts_filtered_n20.csv \nPeve_mCpG (first 4 rows)\n\n\n\n\n\n\nCpG\n\n\nPOR-216-TP4\n\n\nPOR-245-TP2\n\n\nPOR-73-TP3\n\n\nPOR-69-TP1\n\n\nPOR-216-TP3\n\n\nPOR-74-TP3\n\n\nPOR-69-TP2\n\n\nPOR-83-TP2\n\n\nPOR-73-TP4\n\n\nPOR-260-TP2\n\n\nPOR-216-TP2\n\n\nPOR-72-TP2\n\n\nPOR-236-TP2\n\n\nPOR-260-TP3\n\n\nPOR-72-TP1\n\n\nPOR-262-TP2\n\n\nPOR-236-TP1\n\n\nPOR-72-TP4\n\n\nPOR-262-TP1\n\n\nPOR-245-TP1\n\n\nPOR-69-TP4\n\n\nPOR-83-TP4\n\n\nPOR-83-TP3\n\n\nPOR-216-TP1\n\n\nPOR-72-TP3\n\n\nPOR-245-TP3\n\n\nPOR-260-TP4\n\n\nPOR-74-TP2\n\n\nPOR-260-TP1\n\n\nPOR-74-TP4\n\n\nPOR-245-TP4\n\n\nPOR-69-TP3\n\n\nPOR-74-TP1\n\n\nPOR-73-TP1\n\n\nPOR-83-TP1\n\n\nPOR-262-TP3\n\n\nPOR-262-TP4\n\n\n\n\n\n\nCpG_Porites_evermani_scaffold_1000_100536\n\n\n0\n\n\nNA\n\n\nNA\n\n\nNA\n\n\n0.000000\n\n\nNA\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\n10\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n\n\nCpG_Porites_evermani_scaffold_1000_100742\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n0.000000\n\n\nNA\n\n\nNA\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n\n\nCpG_Porites_evermani_scaffold_1000_100744\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n0.000000\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n\n\nCpG_Porites_evermani_scaffold_1000_100776\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n6.666667\n\n\nNA\n\n\nNA\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\nNA\n\n\nNA\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\nNA\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\n0",
     "crumbs": [
       "Data Files",
       "Genomic Expression Values"
@@ -220,8 +220,8 @@
     ]
   },
   {
-    "objectID": "counts.html#mcpg-percentage",
-    "href": "counts.html#mcpg-percentage",
+    "objectID": "counts.html#mcpg-percentage-2",
+    "href": "counts.html#mcpg-percentage-2",
     "title": "Expression Values",
     "section": "mCpG Percentage",
     "text": "mCpG Percentage\nDownload mCpG Percentage\n https://gannet.fish.washington.edu/metacarcinus/E5/Ptuahiniensis/20250821_meth_Ptua/merged-WGBS-CpG-counts_filtered_n20.csv \nPtuh_mCpG (first 4 rows)\n\n\n\n\n\n\nCpG\n\n\nPOC-259-TP1\n\n\nPOC-53-TP1\n\n\nPOC-222-TP1\n\n\nPOC-42-TP2\n\n\nPOC-40-TP4\n\n\nPOC-52-TP4\n\n\nPOC-40-TP3\n\n\nPOC-53-TP3\n\n\nPOC-52-TP1\n\n\nPOC-219-TP3\n\n\nPOC-222-TP3\n\n\nPOC-219-TP4\n\n\nPOC-53-TP2\n\n\nPOC-222-TP4\n\n\nPOC-40-TP2\n\n\nPOC-57-TP3\n\n\nPOC-57-TP2\n\n\nPOC-40-TP1\n\n\nPOC-201-TP1\n\n\nPOC-42-TP4\n\n\nPOC-52-TP3\n\n\nPOC-52-TP2\n\n\nPOC-201-TP2\n\n\nPOC-255-TP1\n\n\nPOC-255-TP3\n\n\nPOC-259-TP2\n\n\nPOC-57-TP4\n\n\nPOC-255-TP2\n\n\nPOC-219-TP2\n\n\nPOC-219-TP1\n\n\nPOC-53-TP4\n\n\nPOC-57-TP1\n\n\n\n\n\n\nCpG_Pocillopora_meandrina_HIv1___Sc0000000_1000005\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\n0\n\n\n0\n\n\n0.00\n\n\n\n\nCpG_Pocillopora_meandrina_HIv1___Sc0000000_1000074\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\n0.000000\n\n\nNA\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\nNA\n\n\n0\n\n\n6.25\n\n\n\n\nCpG_Pocillopora_meandrina_HIv1___Sc0000000_1000090\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n10\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\n5.555556\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n7.142857\n\n\n0\n\n\n0\n\n\nNA\n\n\n0.00\n\n\n\n\nCpG_Pocillopora_meandrina_HIv1___Sc0000000_1000108\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\n0.000000\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\nNA\n\n\n0\n\n\n0\n\n\n0.000000\n\n\n0\n\n\n0\n\n\n0\n\n\n0.00",
