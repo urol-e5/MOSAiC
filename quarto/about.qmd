@@ -53,7 +53,7 @@ This genome was assembled from a sample collected in Mo’orea and is used direc
 #| message: false
 #| warning: false
 if (!requireNamespace("leaflet", quietly = TRUE)) {
-	install.packages("leaflet")
+	install.packages("leaflet", repos = "https://cran.rstudio.com/")
 }
 library(leaflet)
 

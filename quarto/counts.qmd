@@ -32,7 +32,10 @@ for (pkg in required_packages) {
 }
 ```
 
-```{r data-config, cache=TRUE, include=FALSE}
+```{r data-config, cache=TRUE, cache.lazy=FALSE, include=FALSE}
+
+# Set timeout for downloads (120 seconds)
+options(timeout = 120)
 
 # =============================================================================
 # EXTERNAL DATA URLS CONFIGURATION
@@ -116,48 +119,74 @@ safe_nrow <- function(df) {
 }
 
 # Function to load data with appropriate parameters and better error handling
-load_data_file <- function(url, data_type, species_code) {
+load_data_file <- function(url, data_type, species_code, max_retries = 3) {
   if (!validate_url(url)) {
     warning(paste("Invalid URL for", data_type, "data in", species_code))
     return(data.frame())
   }
   
-  tryCatch({
-    # CSV-based
-    if (data_type %in% c("gene", "mCpG", "epimachine")) {
-      result <- read_csv(url, show_col_types = FALSE)
-    
-    # TSV-based
-    } else if (data_type %in% c("mirna", "lncRNA", "gene_meth")) {
-      result <- read_delim(url, delim = "\t", col_names = TRUE, show_col_types = FALSE)
+  # Try loading with retries
+  for (attempt in 1:max_retries) {
+    result <- tryCatch({
+      # Show progress
+      if (attempt == 1) {
+        message(paste("Loading", data_type, "for", species_code, "..."))
+      } else {
+        message(paste("  Retry attempt", attempt, "for", data_type, species_code))
+      }
+      
+      # CSV-based
+      if (data_type %in% c("gene", "mCpG", "epimachine")) {
+        read_csv(url, show_col_types = FALSE, progress = FALSE)
+      
+      # TSV-based
+      } else if (data_type %in% c("mirna", "lncRNA", "gene_meth")) {
+        read_delim(url, delim = "\t", col_names = TRUE, show_col_types = FALSE, progress = FALSE)
 
-    } else {
-      warning(paste("Unknown data type:", data_type))
-      return(data.frame())
-    }
-
-    if (nrow(result) == 0) {
-      warning(paste("Empty data for", data_type, "in", species_code))
-    }
+      } else {
+        warning(paste("Unknown data type:", data_type))
+        return(data.frame())
+      }
+      
+    }, error = function(e) {
+      if (attempt < max_retries) {
+        Sys.sleep(2)  # Wait 2 seconds before retry
+        return(NULL)  # Signal to retry
+      } else {
+        warning(paste("Failed to load", data_type, "data for", species_code, "after", max_retries, "attempts:", e$message))
+        return(data.frame())
+      }
+    })
     
-    return(result)
-    
-  }, error = function(e) {
-    warning(paste("Failed to load", data_type, "data for", species_code, ":", e$message))
-    return(data.frame())
-  })
+    # If we got a valid result, check and return it
+    if (!is.null(result) && is.data.frame(result)) {
+      if (nrow(result) == 0) {
+        warning(paste("Empty data for", data_type, "in", species_code))
+      } else {
+        message(paste("  ✓ Loaded", nrow(result), "rows"))
+      }
+      return(result)
+    }
+  }
+  
+  # If all retries failed
+  return(data.frame())
 }
 
 # =============================================================================
 # DATA LOADING
 # =============================================================================
 
+message("Starting data load for all species...")
+
 # Load all data files with error handling
 all_data <- list()
 data_loading_errors <- character()
 
 for (species_code in names(data_urls)) {
+  message(paste("\n===", data_urls[[species_code]]$species_name, "==="))
   all_data[[species_code]] <- list()
+  
   for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG", "gene_meth")) {
     url <- data_urls[[species_code]][[data_type]]
     data_result <- load_data_file(url, data_type, species_code)
@@ -171,9 +200,13 @@ for (species_code in names(data_urls)) {
   }
 }
 
+message("\n=== Data loading complete ===")
+
 # Report any loading errors
 if (length(data_loading_errors) > 0) {
-  warning("Data loading errors occurred: ", paste(data_loading_errors, collapse = ", "))
+  warning("Data loading errors occurred:\n  ", paste(data_loading_errors, collapse = "\n  "))
+} else {
+  message("All data loaded successfully!")
 }
 ```
 
@@ -187,6 +220,7 @@ feature_counts <- data.frame(
   miRNA = integer(),
   lncRNA = integer(),
   mCpG = integer(),
+  Gene_Meth = integer(),
   stringsAsFactors = FALSE
 )
 
@@ -197,6 +231,7 @@ for (species_code in names(data_urls)) {
   mirna_count <- safe_nrow(all_data[[species_code]]$mirna)
   lncrna_count <- safe_nrow(all_data[[species_code]]$lncRNA)
   mcpg_count <- safe_nrow(all_data[[species_code]]$mCpG)
+  gene_meth_count <- safe_nrow(all_data[[species_code]]$gene_meth)
   
   feature_counts <- rbind(feature_counts, data.frame(
     Species = data_urls[[species_code]]$italic_name,
@@ -205,6 +240,7 @@ for (species_code in names(data_urls)) {
     miRNA = mirna_count,
     lncRNA = lncrna_count,
     mCpG = mcpg_count,
+    Gene_Meth = gene_meth_count,
     stringsAsFactors = FALSE
   ))
 }
@@ -223,17 +259,19 @@ if (nrow(feature_counts_data) > 0) {
   feature_counts_data |>
     gt() |>
     tab_header(title = "Feature Counts") |>
-    fmt_number(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG"), decimals = 0) |>
-    cols_align(align = "center", columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG")) |>
+    fmt_number(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG", "Gene_Meth"), decimals = 0) |>
+    cols_align(align = "center", columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG", "Gene_Meth")) |>
     tab_style(
       style = cell_text(weight = "bold"),
-      locations = cells_body(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG"))
+      locations = cells_body(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG", "Gene_Meth"))
     ) |>
     print()
 } else {
   cat("No feature count data available.")
 }
 ```
+
+
 
 ::: callout-tip
 ## ConTra
@@ -259,6 +297,10 @@ Workflow builds a splice-aware HISAT2 index from the GTF (exons + splice sites),
 ## mCpG
 
 For EM-seq analysis Bismark methylation coverage (.cov) files are unified into CpG methylation matrices. First, .cov.gz are filtered for CpG sites with ≥10× coverage and converts them into bedgraph files. Each bedgraph is reformatted into a simplified two-column \_processed.txt file containing unique CpG IDs and percent methylation values. A Python script then merges all \_processed.txt files into a single matrix, with CpG loci as rows and samples as columns. Only loci where 10x coverage is present in all samples are retained.
+
+## Gene Body Methylation
+
+Gene body methylation values are computed by overlapping EM-seq CpG methylation data with gene boundaries defined in the reference genome annotation. For each gene, all CpG sites falling within the gene body (transcription start to stop) are identified, and their methylation percentages are averaged across samples. Only genes with sufficient CpG coverage (≥75% of CpGs covered at 10× depth) are retained, ensuring robust methylation estimates. The resulting matrix provides a gene-level summary of methylation status, enabling integration with transcriptomic data for multi-omic analysis.
 :::
 
 ## Sample Counts by Data Type
@@ -274,6 +316,7 @@ sample_counts_data <- data.frame(
   miRNA = integer(),
   lncRNA = integer(),
   mCpG = integer(),
+  Gene_Meth = integer(),
   stringsAsFactors = FALSE
 )
 
@@ -288,9 +331,10 @@ for (species_code in names(data_urls)) {
   mirna_count <- 0
   lncrna_count <- 0
   mcpg_count <- 0
+  gene_meth_count <- 0
   
   # Count samples for each data type
-  for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG")) {
+  for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG", "gene_meth")) {
     df <- all_data[[species_code]][[data_type]]
     
     if (!is.null(df) && nrow(df) > 0) {
@@ -304,7 +348,8 @@ for (species_code in names(data_urls)) {
         "epimachine" = epimachine_count <- count,
         "mirna" = mirna_count <- count,
         "lncRNA" = lncrna_count <- count,
-        "mCpG" = mcpg_count <- count
+        "mCpG" = mcpg_count <- count,
+        "gene_meth" = gene_meth_count <- count
       )
     }
   }
@@ -318,6 +363,7 @@ for (species_code in names(data_urls)) {
       miRNA = mirna_count,
       lncRNA = lncrna_count,
       mCpG = mcpg_count,
+      Gene_Meth = gene_meth_count,
       stringsAsFactors = FALSE
     )
   )
@@ -328,11 +374,11 @@ if (nrow(sample_counts_data) > 0) {
   sample_counts_data |>
     gt() |>
     tab_header(title = "Sample Counts by Data Type") |>
-    fmt_number(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG"), decimals = 0) |>
-    cols_align(align = "center", columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG")) |>
+    fmt_number(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG", "Gene_Meth"), decimals = 0) |>
+    cols_align(align = "center", columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG", "Gene_Meth")) |>
     tab_style(
       style = cell_text(weight = "bold"),
-      locations = cells_body(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG"))
+      locations = cells_body(columns = c("Gene", "Epimachine", "miRNA", "lncRNA", "mCpG", "Gene_Meth"))
     ) |>
     print()
 } else {
@@ -351,7 +397,7 @@ for (species_code in names(data_urls)) {
   cat(paste0("# ", species_info$italic_name, "\n\n"))
   
   # Generate each data type section
-  for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG")) {
+  for (data_type in c("gene", "epimachine", "mirna", "lncRNA", "mCpG", "gene_meth")) {
     url <- species_info[[data_type]]
     df <- all_data[[species_code]][[data_type]]
     
@@ -363,6 +409,7 @@ for (species_code in names(data_urls)) {
         "mirna" = "miRNA",
         "lncRNA"= "lncRNA",
         "mCpG"  = "mCpG Percentage",
+        "gene_meth" = "Gene Body Methylation",
         data_type
       )
       cat(paste0("## ", data_type_display, " - Data Not Available\n\n"))
@@ -377,11 +424,12 @@ for (species_code in names(data_urls)) {
       "mirna" = "miRNA",
       "lncRNA"= "lncRNA",
       "mCpG"  = "mCpG Percentage",
+      "gene_meth" = "Gene Body Methylation",
       data_type
     )
     
     # File name
-    file_extension <- if (data_type %in% c("gene","epimachine","mCpG")) ".csv" else ".txt"
+    file_extension <- if (data_type %in% c("gene","epimachine","mCpG","gene_meth")) ".csv" else ".txt"
     filename <- paste0(species_code, "_", data_type, "_counts", file_extension)
     
     # Section header

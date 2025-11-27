@@ -11,7 +11,7 @@ execute:
   message: false
 ---
 
-```{r setup, include=FALSE}
+```{r setup, cache=TRUE, include=FALSE}
 required_packages <- c("tidyverse","readr","dplyr","tibble","jsonlite","htmltools","plotly")
 for (pkg in required_packages) {
   if (!requireNamespace(pkg, quietly = TRUE)) try(utils::install.packages(pkg), silent = TRUE)
@@ -223,6 +223,18 @@ htmltools::HTML(sprintf('
 </div>
 ', csv_url, csv_url)) |> print()
 ```
+
+::: callout-tip
+## Calification Pathway Gene Count Matrices
+
+Within the ortholog groups we have identified those genes that have sequence simlarity to known calification pathway genes. You can download the count matrices for these genes from the links below:
+
+- [A. pulchra calification-related gene counts (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv)
+
+- [P. evermanni calification-related gene counts (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/peve_biomin_counts.csv)
+
+- [P. tuahiniensis calification-related gene counts (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/ptua_biomin_counts.csv)
+:::
 
 ## Viewer
 

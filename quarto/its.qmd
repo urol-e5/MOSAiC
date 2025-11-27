@@ -132,8 +132,12 @@ if (nrow(its2_data) > 0) {
   metadata_cols <- c("colony_id", "colony_id_corr", "timepoint", "site", "nutrient", "site_code", "month", "haplotype", "species")
   its2_type_cols <- setdiff(names(its2_data), metadata_cols)
   
+  # Convert all ITS2 type columns to numeric to avoid type conflicts
+  its2_data_clean <- its2_data %>%
+    mutate(across(all_of(its2_type_cols), ~as.numeric(as.character(.))))
+  
   # Prepare data for plotting - select top abundant types for visualization
-  plot_data <- its2_data %>%
+  plot_data <- its2_data_clean %>%
     select(all_of(c(metadata_cols, its2_type_cols))) %>%
     pivot_longer(cols = all_of(its2_type_cols), names_to = "its2_type", values_to = "abundance") %>%
     filter(abundance > 0) %>%
@@ -143,7 +147,7 @@ if (nrow(its2_data) > 0) {
     pull(its2_type)
   
   # Create plot data
-  timepoint_data <- its2_data %>%
+  timepoint_data <- its2_data_clean %>%
     select(all_of(c(metadata_cols, plot_data))) %>%
     pivot_longer(cols = all_of(plot_data), names_to = "its2_type", values_to = "abundance") %>%
     filter(abundance > 0) %>%

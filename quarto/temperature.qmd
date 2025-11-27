@@ -35,7 +35,7 @@ library(here)
 library(zoo)
 
 # Read data (UTC timestamps)
-raw <- vroom::vroom(here("data","temperature_timeseries.csv"),
+raw <- vroom::vroom(here("..","data","temperature_timeseries.csv"),
                     col_types = "Tcd", progress = FALSE) |>
   mutate(date.time = ymd_hms(date.time, tz = "UTC"))
 
