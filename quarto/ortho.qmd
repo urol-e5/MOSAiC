@@ -225,15 +225,15 @@ htmltools::HTML(sprintf('
 ```
 
 ::: callout-tip
-## Calification Pathway Gene Count Matrices
+## Calcification Pathway Gene Count Matrices
 
-Within the ortholog groups we have identified those genes that have sequence simlarity to known calification pathway genes. You can download the count matrices for these genes from the links below:
+Within the ortholog groups we have identified those genes that have sequence similarity to known calcification pathway genes. You can download the count matrices for these genes from the links below:
 
-- [A. pulchra calification-related gene counts (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv)
+- [A. pulchra calcification-related gene counts (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv)
 
-- [P. evermanni calification-related gene counts (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/peve_biomin_counts.csv)
+- [P. evermanni calcification-related gene counts (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/peve_biomin_counts.csv)
 
-- [P. tuahiniensis calification-related gene counts (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/ptua_biomin_counts.csv)
+- [P. tuahiniensis calcification-related gene counts (CSV)](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/ptua_biomin_counts.csv)
 :::
 
 ## Viewer
