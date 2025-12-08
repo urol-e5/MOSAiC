@@ -29,6 +29,8 @@ website:
         contents:
           - text: "Genomic Expression Values"
             href: counts.qmd
+          - text: "Expression Plasticity"
+            href: plasticity.qmd
           - text: "Ortholog Expression Analysis"
             href: ortho.qmd
           #- text: "Genome Features"

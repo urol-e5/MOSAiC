@@ -1,0 +1,4617 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Coefficient of Variation Matrices">
+
+<title>Expression Plasticity – MOSAiC</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-1dd1c3079445e9292f047f008f609fb3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-09141908ef43cb928e0903ba3ecbdcec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-1dd1c3079445e9292f047f008f609fb3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./img/sm_logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">MOSAiC</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./counts.html">Data Files</a></li><li class="breadcrumb-item"><a href="./plasticity.html">Expression Plasticity</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+        <div class="sidebar-tools-collapse">
+    <a href="https://github.com/urol-e5/MOSAiC" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data Files</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./counts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Genomic Expression Values</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plasticity.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Expression Plasticity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ortho.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ortholog Expression Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./its.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ITS Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./temperature.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Temperature Profiles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./physiology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Physiology Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./jbrowse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Genome Browser</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#summary-of-available-data" id="toc-summary-of-available-data" class="nav-link active" data-scroll-target="#summary-of-available-data">Summary of Available Data</a></li>
+  <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link" data-scroll-target="#about-the-data">About the Data</a></li>
+  <li><a href="#acropora-pulchra" id="toc-acropora-pulchra" class="nav-link" data-scroll-target="#acropora-pulchra"><em>Acropora pulchra</em></a>
+  <ul class="collapse">
+  <li><a href="#exon-cv-1" id="toc-exon-cv-1" class="nav-link" data-scroll-target="#exon-cv-1">Exon CV</a></li>
+  </ul></li>
+  <li><a href="#porites-evermanni" id="toc-porites-evermanni" class="nav-link" data-scroll-target="#porites-evermanni"><em>Porites evermanni</em></a>
+  <ul class="collapse">
+  <li><a href="#exon-cv-2" id="toc-exon-cv-2" class="nav-link" data-scroll-target="#exon-cv-2">Exon CV</a></li>
+  </ul></li>
+  <li><a href="#pocillopora-tuahiniensis" id="toc-pocillopora-tuahiniensis" class="nav-link" data-scroll-target="#pocillopora-tuahiniensis"><em>Pocillopora tuahiniensis</em></a>
+  <ul class="collapse">
+  <li><a href="#exon-cv-3" id="toc-exon-cv-3" class="nav-link" data-scroll-target="#exon-cv-3">Exon CV</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./counts.html">Data Files</a></li><li class="breadcrumb-item"><a href="./plasticity.html">Expression Plasticity</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Expression Plasticity</h1>
+</div>
+
+<div>
+  <div class="description">
+    Coefficient of Variation Matrices
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="summary-of-available-data" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-available-data">Summary of Available Data</h2>
+<p>The coefficient of variation (CV) of exon expression per gene provides a measure of expression plasticity. Higher CV values indicate greater variability in exon usage across samples, which may reflect alternative splicing or differential exon utilization under varying conditions.</p>
+<div id="yvrxbkkwbv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yvrxbkkwbv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#yvrxbkkwbv thead, #yvrxbkkwbv tbody, #yvrxbkkwbv tfoot, #yvrxbkkwbv tr, #yvrxbkkwbv td, #yvrxbkkwbv th {
+  border-style: none;
+}
+
+#yvrxbkkwbv p {
+  margin: 0;
+  padding: 0;
+}
+
+#yvrxbkkwbv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#yvrxbkkwbv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#yvrxbkkwbv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#yvrxbkkwbv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#yvrxbkkwbv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yvrxbkkwbv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yvrxbkkwbv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yvrxbkkwbv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#yvrxbkkwbv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#yvrxbkkwbv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#yvrxbkkwbv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#yvrxbkkwbv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#yvrxbkkwbv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#yvrxbkkwbv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#yvrxbkkwbv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yvrxbkkwbv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#yvrxbkkwbv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#yvrxbkkwbv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#yvrxbkkwbv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yvrxbkkwbv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#yvrxbkkwbv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#yvrxbkkwbv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#yvrxbkkwbv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yvrxbkkwbv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#yvrxbkkwbv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#yvrxbkkwbv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yvrxbkkwbv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yvrxbkkwbv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#yvrxbkkwbv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yvrxbkkwbv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#yvrxbkkwbv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yvrxbkkwbv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yvrxbkkwbv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yvrxbkkwbv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yvrxbkkwbv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yvrxbkkwbv .gt_left {
+  text-align: left;
+}
+
+#yvrxbkkwbv .gt_center {
+  text-align: center;
+}
+
+#yvrxbkkwbv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#yvrxbkkwbv .gt_font_normal {
+  font-weight: normal;
+}
+
+#yvrxbkkwbv .gt_font_bold {
+  font-weight: bold;
+}
+
+#yvrxbkkwbv .gt_font_italic {
+  font-style: italic;
+}
+
+#yvrxbkkwbv .gt_super {
+  font-size: 65%;
+}
+
+#yvrxbkkwbv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#yvrxbkkwbv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#yvrxbkkwbv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#yvrxbkkwbv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#yvrxbkkwbv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#yvrxbkkwbv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#yvrxbkkwbv .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#yvrxbkkwbv .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#yvrxbkkwbv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading">
+<td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">
+Gene Counts with CV Data
+</td>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Species">
+Species
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Exon_CV">
+Exon CV Genes
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="Species" class="gt_row gt_left">
+<em>Acropora pulchra</em>
+</td>
+<td headers="Exon_CV" class="gt_row gt_center" style="font-weight: bold;">
+10,006
+</td>
+</tr>
+<tr>
+<td headers="Species" class="gt_row gt_left">
+<em>Porites evermanni</em>
+</td>
+<td headers="Exon_CV" class="gt_row gt_center" style="font-weight: bold;">
+12,174
+</td>
+</tr>
+<tr>
+<td headers="Species" class="gt_row gt_left">
+<em>Pocillopora tuahiniensis</em>
+</td>
+<td headers="Exon_CV" class="gt_row gt_center" style="font-weight: bold;">
+11,342
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="about-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-data">About the Data</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Exon CV</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>The coefficient of variation (CV) matrix represents the variability of exon expression within each gene across samples. For each gene, the CV is calculated as the standard deviation of exon-level expression divided by the mean, providing a normalized measure of expression variability. This metric captures expression plasticity at the exon level, which may reflect:</p>
+<ul>
+<li><strong>Alternative splicing events</strong>: Genes with high CV may utilize different exons under different conditions</li>
+<li><strong>Differential exon usage</strong>: Environmental or developmental changes may shift which exons are predominantly expressed</li>
+<li><strong>Regulatory complexity</strong>: Higher CV values may indicate more complex post-transcriptional regulation</li>
+</ul>
+<p>Genes with consistently low CV values show stable exon usage patterns, while those with high CV demonstrate greater plasticity in their transcript isoform composition.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="acropora-pulchra" class="level1">
+<h1><em>Acropora pulchra</em></h1>
+<section id="exon-cv-1" class="level2">
+<h2 class="anchored" data-anchor-id="exon-cv-1">Exon CV</h2>
+<p><a href="https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/apul-cv_matrix.tsv" class="btn btn-primary" target="_blank" download="Apul_exon_cv.tsv">Download Exon CV</a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/apul-cv_matrix.tsv</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Apul_exon_cv (first 4 rows)</strong></p>
+<div id="uqtzsgjaqa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uqtzsgjaqa table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#uqtzsgjaqa thead, #uqtzsgjaqa tbody, #uqtzsgjaqa tfoot, #uqtzsgjaqa tr, #uqtzsgjaqa td, #uqtzsgjaqa th {
+  border-style: none;
+}
+
+#uqtzsgjaqa p {
+  margin: 0;
+  padding: 0;
+}
+
+#uqtzsgjaqa .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uqtzsgjaqa .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#uqtzsgjaqa .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uqtzsgjaqa .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uqtzsgjaqa .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uqtzsgjaqa .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uqtzsgjaqa .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uqtzsgjaqa .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uqtzsgjaqa .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uqtzsgjaqa .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uqtzsgjaqa .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uqtzsgjaqa .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uqtzsgjaqa .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#uqtzsgjaqa .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#uqtzsgjaqa .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uqtzsgjaqa .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uqtzsgjaqa .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uqtzsgjaqa .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uqtzsgjaqa .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uqtzsgjaqa .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#uqtzsgjaqa .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uqtzsgjaqa .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#uqtzsgjaqa .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uqtzsgjaqa .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uqtzsgjaqa .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uqtzsgjaqa .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uqtzsgjaqa .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uqtzsgjaqa .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uqtzsgjaqa .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uqtzsgjaqa .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uqtzsgjaqa .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uqtzsgjaqa .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uqtzsgjaqa .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uqtzsgjaqa .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uqtzsgjaqa .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uqtzsgjaqa .gt_left {
+  text-align: left;
+}
+
+#uqtzsgjaqa .gt_center {
+  text-align: center;
+}
+
+#uqtzsgjaqa .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uqtzsgjaqa .gt_font_normal {
+  font-weight: normal;
+}
+
+#uqtzsgjaqa .gt_font_bold {
+  font-weight: bold;
+}
+
+#uqtzsgjaqa .gt_font_italic {
+  font-style: italic;
+}
+
+#uqtzsgjaqa .gt_super {
+  font-size: 65%;
+}
+
+#uqtzsgjaqa .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#uqtzsgjaqa .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uqtzsgjaqa .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#uqtzsgjaqa .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#uqtzsgjaqa .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#uqtzsgjaqa .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#uqtzsgjaqa .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#uqtzsgjaqa .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#uqtzsgjaqa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="gene_id">
+gene_id
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-139-TP1">
+ACR-139-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-139-TP2">
+ACR-139-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-139-TP3">
+ACR-139-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-139-TP4">
+ACR-139-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-145-TP1">
+ACR-145-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-145-TP2">
+ACR-145-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-145-TP3">
+ACR-145-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-145-TP4">
+ACR-145-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-150-TP1">
+ACR-150-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-150-TP2">
+ACR-150-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-150-TP3">
+ACR-150-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-150-TP4">
+ACR-150-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-173-TP1">
+ACR-173-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-173-TP2">
+ACR-173-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-173-TP3">
+ACR-173-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-173-TP4">
+ACR-173-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-186-TP1">
+ACR-186-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-186-TP2">
+ACR-186-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-186-TP3">
+ACR-186-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-186-TP4">
+ACR-186-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-225-TP1">
+ACR-225-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-225-TP2">
+ACR-225-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-225-TP3">
+ACR-225-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-225-TP4">
+ACR-225-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-229-TP1">
+ACR-229-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-229-TP2">
+ACR-229-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-229-TP3">
+ACR-229-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-229-TP4">
+ACR-229-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-237-TP1">
+ACR-237-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-237-TP2">
+ACR-237-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-237-TP3">
+ACR-237-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-237-TP4">
+ACR-237-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-244-TP1">
+ACR-244-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-244-TP2">
+ACR-244-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-244-TP3">
+ACR-244-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-244-TP4">
+ACR-244-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-265-TP1">
+ACR-265-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-265-TP2">
+ACR-265-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-265-TP3">
+ACR-265-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="ACR-265-TP4">
+ACR-265-TP4
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+FUN_000002
+</td>
+<td headers="ACR-139-TP1" class="gt_row gt_right">
+1.253149
+</td>
+<td headers="ACR-139-TP2" class="gt_row gt_right">
+1.459295
+</td>
+<td headers="ACR-139-TP3" class="gt_row gt_right">
+1.559335
+</td>
+<td headers="ACR-139-TP4" class="gt_row gt_right">
+1.501586
+</td>
+<td headers="ACR-145-TP1" class="gt_row gt_right">
+1.690242
+</td>
+<td headers="ACR-145-TP2" class="gt_row gt_right">
+1.561706
+</td>
+<td headers="ACR-145-TP3" class="gt_row gt_right">
+2.153062
+</td>
+<td headers="ACR-145-TP4" class="gt_row gt_right">
+1.8095480
+</td>
+<td headers="ACR-150-TP1" class="gt_row gt_right">
+1.603140
+</td>
+<td headers="ACR-150-TP2" class="gt_row gt_right">
+1.526080
+</td>
+<td headers="ACR-150-TP3" class="gt_row gt_right">
+1.561669
+</td>
+<td headers="ACR-150-TP4" class="gt_row gt_right">
+1.6144909
+</td>
+<td headers="ACR-173-TP1" class="gt_row gt_right">
+1.334518
+</td>
+<td headers="ACR-173-TP2" class="gt_row gt_right">
+1.4792108
+</td>
+<td headers="ACR-173-TP3" class="gt_row gt_right">
+1.8386216
+</td>
+<td headers="ACR-173-TP4" class="gt_row gt_right">
+1.8980180
+</td>
+<td headers="ACR-186-TP1" class="gt_row gt_right">
+1.670957
+</td>
+<td headers="ACR-186-TP2" class="gt_row gt_right">
+1.601578
+</td>
+<td headers="ACR-186-TP3" class="gt_row gt_right">
+1.907846
+</td>
+<td headers="ACR-186-TP4" class="gt_row gt_right">
+1.607626
+</td>
+<td headers="ACR-225-TP1" class="gt_row gt_right">
+2.171387
+</td>
+<td headers="ACR-225-TP2" class="gt_row gt_right">
+1.642301
+</td>
+<td headers="ACR-225-TP3" class="gt_row gt_right">
+1.6804043
+</td>
+<td headers="ACR-225-TP4" class="gt_row gt_right">
+2.098880
+</td>
+<td headers="ACR-229-TP1" class="gt_row gt_right">
+1.6461399
+</td>
+<td headers="ACR-229-TP2" class="gt_row gt_right">
+1.6087989
+</td>
+<td headers="ACR-229-TP3" class="gt_row gt_right">
+1.6154904
+</td>
+<td headers="ACR-229-TP4" class="gt_row gt_right">
+1.655420
+</td>
+<td headers="ACR-237-TP1" class="gt_row gt_right">
+1.8762816
+</td>
+<td headers="ACR-237-TP2" class="gt_row gt_right">
+1.5744080
+</td>
+<td headers="ACR-237-TP3" class="gt_row gt_right">
+1.6094628
+</td>
+<td headers="ACR-237-TP4" class="gt_row gt_right">
+1.759210
+</td>
+<td headers="ACR-244-TP1" class="gt_row gt_right">
+2.184346
+</td>
+<td headers="ACR-244-TP2" class="gt_row gt_right">
+1.4456277
+</td>
+<td headers="ACR-244-TP3" class="gt_row gt_right">
+1.580409
+</td>
+<td headers="ACR-244-TP4" class="gt_row gt_right">
+2.233075
+</td>
+<td headers="ACR-265-TP1" class="gt_row gt_right">
+2.114560
+</td>
+<td headers="ACR-265-TP2" class="gt_row gt_right">
+1.5391335
+</td>
+<td headers="ACR-265-TP3" class="gt_row gt_right">
+1.607415
+</td>
+<td headers="ACR-265-TP4" class="gt_row gt_right">
+1.895613
+</td>
+</tr>
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+FUN_000005
+</td>
+<td headers="ACR-139-TP1" class="gt_row gt_right">
+1.364166
+</td>
+<td headers="ACR-139-TP2" class="gt_row gt_right">
+1.418916
+</td>
+<td headers="ACR-139-TP3" class="gt_row gt_right">
+1.634594
+</td>
+<td headers="ACR-139-TP4" class="gt_row gt_right">
+1.518412
+</td>
+<td headers="ACR-145-TP1" class="gt_row gt_right">
+1.799408
+</td>
+<td headers="ACR-145-TP2" class="gt_row gt_right">
+1.652290
+</td>
+<td headers="ACR-145-TP3" class="gt_row gt_right">
+2.150598
+</td>
+<td headers="ACR-145-TP4" class="gt_row gt_right">
+1.8900941
+</td>
+<td headers="ACR-150-TP1" class="gt_row gt_right">
+1.563371
+</td>
+<td headers="ACR-150-TP2" class="gt_row gt_right">
+1.554354
+</td>
+<td headers="ACR-150-TP3" class="gt_row gt_right">
+1.685137
+</td>
+<td headers="ACR-150-TP4" class="gt_row gt_right">
+1.6186851
+</td>
+<td headers="ACR-173-TP1" class="gt_row gt_right">
+1.499007
+</td>
+<td headers="ACR-173-TP2" class="gt_row gt_right">
+1.4931012
+</td>
+<td headers="ACR-173-TP3" class="gt_row gt_right">
+1.9026906
+</td>
+<td headers="ACR-173-TP4" class="gt_row gt_right">
+1.9478704
+</td>
+<td headers="ACR-186-TP1" class="gt_row gt_right">
+1.735855
+</td>
+<td headers="ACR-186-TP2" class="gt_row gt_right">
+1.631352
+</td>
+<td headers="ACR-186-TP3" class="gt_row gt_right">
+2.158144
+</td>
+<td headers="ACR-186-TP4" class="gt_row gt_right">
+1.666442
+</td>
+<td headers="ACR-225-TP1" class="gt_row gt_right">
+2.021534
+</td>
+<td headers="ACR-225-TP2" class="gt_row gt_right">
+1.451915
+</td>
+<td headers="ACR-225-TP3" class="gt_row gt_right">
+1.5568422
+</td>
+<td headers="ACR-225-TP4" class="gt_row gt_right">
+1.992537
+</td>
+<td headers="ACR-229-TP1" class="gt_row gt_right">
+1.8062502
+</td>
+<td headers="ACR-229-TP2" class="gt_row gt_right">
+1.6430678
+</td>
+<td headers="ACR-229-TP3" class="gt_row gt_right">
+1.6921592
+</td>
+<td headers="ACR-229-TP4" class="gt_row gt_right">
+1.721603
+</td>
+<td headers="ACR-237-TP1" class="gt_row gt_right">
+1.7649171
+</td>
+<td headers="ACR-237-TP2" class="gt_row gt_right">
+1.5733031
+</td>
+<td headers="ACR-237-TP3" class="gt_row gt_right">
+1.5980004
+</td>
+<td headers="ACR-237-TP4" class="gt_row gt_right">
+1.575181
+</td>
+<td headers="ACR-244-TP1" class="gt_row gt_right">
+2.395592
+</td>
+<td headers="ACR-244-TP2" class="gt_row gt_right">
+1.3619640
+</td>
+<td headers="ACR-244-TP3" class="gt_row gt_right">
+1.448016
+</td>
+<td headers="ACR-244-TP4" class="gt_row gt_right">
+2.352075
+</td>
+<td headers="ACR-265-TP1" class="gt_row gt_right">
+2.281185
+</td>
+<td headers="ACR-265-TP2" class="gt_row gt_right">
+1.6267156
+</td>
+<td headers="ACR-265-TP3" class="gt_row gt_right">
+1.655660
+</td>
+<td headers="ACR-265-TP4" class="gt_row gt_right">
+2.036010
+</td>
+</tr>
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+FUN_000006
+</td>
+<td headers="ACR-139-TP1" class="gt_row gt_right">
+2.100386
+</td>
+<td headers="ACR-139-TP2" class="gt_row gt_right">
+2.667627
+</td>
+<td headers="ACR-139-TP3" class="gt_row gt_right">
+2.450932
+</td>
+<td headers="ACR-139-TP4" class="gt_row gt_right">
+2.375147
+</td>
+<td headers="ACR-145-TP1" class="gt_row gt_right">
+1.652450
+</td>
+<td headers="ACR-145-TP2" class="gt_row gt_right">
+2.118939
+</td>
+<td headers="ACR-145-TP3" class="gt_row gt_right">
+2.101496
+</td>
+<td headers="ACR-145-TP4" class="gt_row gt_right">
+2.1259688
+</td>
+<td headers="ACR-150-TP1" class="gt_row gt_right">
+1.739710
+</td>
+<td headers="ACR-150-TP2" class="gt_row gt_right">
+1.819126
+</td>
+<td headers="ACR-150-TP3" class="gt_row gt_right">
+2.054189
+</td>
+<td headers="ACR-150-TP4" class="gt_row gt_right">
+3.0402197
+</td>
+<td headers="ACR-173-TP1" class="gt_row gt_right">
+1.747776
+</td>
+<td headers="ACR-173-TP2" class="gt_row gt_right">
+1.8676316
+</td>
+<td headers="ACR-173-TP3" class="gt_row gt_right">
+2.8462572
+</td>
+<td headers="ACR-173-TP4" class="gt_row gt_right">
+1.8212509
+</td>
+<td headers="ACR-186-TP1" class="gt_row gt_right">
+2.151260
+</td>
+<td headers="ACR-186-TP2" class="gt_row gt_right">
+2.557701
+</td>
+<td headers="ACR-186-TP3" class="gt_row gt_right">
+2.458757
+</td>
+<td headers="ACR-186-TP4" class="gt_row gt_right">
+2.063010
+</td>
+<td headers="ACR-225-TP1" class="gt_row gt_right">
+2.024046
+</td>
+<td headers="ACR-225-TP2" class="gt_row gt_right">
+2.247349
+</td>
+<td headers="ACR-225-TP3" class="gt_row gt_right">
+1.9414914
+</td>
+<td headers="ACR-225-TP4" class="gt_row gt_right">
+2.028645
+</td>
+<td headers="ACR-229-TP1" class="gt_row gt_right">
+2.6606028
+</td>
+<td headers="ACR-229-TP2" class="gt_row gt_right">
+2.6490107
+</td>
+<td headers="ACR-229-TP3" class="gt_row gt_right">
+1.9779386
+</td>
+<td headers="ACR-229-TP4" class="gt_row gt_right">
+2.677791
+</td>
+<td headers="ACR-237-TP1" class="gt_row gt_right">
+3.0456633
+</td>
+<td headers="ACR-237-TP2" class="gt_row gt_right">
+1.8173096
+</td>
+<td headers="ACR-237-TP3" class="gt_row gt_right">
+1.7752594
+</td>
+<td headers="ACR-237-TP4" class="gt_row gt_right">
+3.158759
+</td>
+<td headers="ACR-244-TP1" class="gt_row gt_right">
+3.127497
+</td>
+<td headers="ACR-244-TP2" class="gt_row gt_right">
+2.1618006
+</td>
+<td headers="ACR-244-TP3" class="gt_row gt_right">
+2.174794
+</td>
+<td headers="ACR-244-TP4" class="gt_row gt_right">
+2.922029
+</td>
+<td headers="ACR-265-TP1" class="gt_row gt_right">
+2.285360
+</td>
+<td headers="ACR-265-TP2" class="gt_row gt_right">
+1.5691375
+</td>
+<td headers="ACR-265-TP3" class="gt_row gt_right">
+1.711227
+</td>
+<td headers="ACR-265-TP4" class="gt_row gt_right">
+2.424016
+</td>
+</tr>
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+FUN_000009
+</td>
+<td headers="ACR-139-TP1" class="gt_row gt_right">
+2.368079
+</td>
+<td headers="ACR-139-TP2" class="gt_row gt_right">
+1.621147
+</td>
+<td headers="ACR-139-TP3" class="gt_row gt_right">
+2.542691
+</td>
+<td headers="ACR-139-TP4" class="gt_row gt_right">
+2.594972
+</td>
+<td headers="ACR-145-TP1" class="gt_row gt_right">
+1.049064
+</td>
+<td headers="ACR-145-TP2" class="gt_row gt_right">
+1.313179
+</td>
+<td headers="ACR-145-TP3" class="gt_row gt_right">
+1.109247
+</td>
+<td headers="ACR-145-TP4" class="gt_row gt_right">
+0.9176943
+</td>
+<td headers="ACR-150-TP1" class="gt_row gt_right">
+2.629302
+</td>
+<td headers="ACR-150-TP2" class="gt_row gt_right">
+1.290731
+</td>
+<td headers="ACR-150-TP3" class="gt_row gt_right">
+1.110591
+</td>
+<td headers="ACR-150-TP4" class="gt_row gt_right">
+0.6511769
+</td>
+<td headers="ACR-173-TP1" class="gt_row gt_right">
+1.069634
+</td>
+<td headers="ACR-173-TP2" class="gt_row gt_right">
+0.8050166
+</td>
+<td headers="ACR-173-TP3" class="gt_row gt_right">
+0.7207455
+</td>
+<td headers="ACR-173-TP4" class="gt_row gt_right">
+0.9679521
+</td>
+<td headers="ACR-186-TP1" class="gt_row gt_right">
+3.288474
+</td>
+<td headers="ACR-186-TP2" class="gt_row gt_right">
+2.532419
+</td>
+<td headers="ACR-186-TP3" class="gt_row gt_right">
+3.061590
+</td>
+<td headers="ACR-186-TP4" class="gt_row gt_right">
+2.638272
+</td>
+<td headers="ACR-225-TP1" class="gt_row gt_right">
+1.321873
+</td>
+<td headers="ACR-225-TP2" class="gt_row gt_right">
+2.089061
+</td>
+<td headers="ACR-225-TP3" class="gt_row gt_right">
+0.7210482
+</td>
+<td headers="ACR-225-TP4" class="gt_row gt_right">
+1.669759
+</td>
+<td headers="ACR-229-TP1" class="gt_row gt_right">
+0.6665453
+</td>
+<td headers="ACR-229-TP2" class="gt_row gt_right">
+0.5551272
+</td>
+<td headers="ACR-229-TP3" class="gt_row gt_right">
+0.7052224
+</td>
+<td headers="ACR-229-TP4" class="gt_row gt_right">
+2.179525
+</td>
+<td headers="ACR-237-TP1" class="gt_row gt_right">
+0.9262514
+</td>
+<td headers="ACR-237-TP2" class="gt_row gt_right">
+0.6716475
+</td>
+<td headers="ACR-237-TP3" class="gt_row gt_right">
+0.5434841
+</td>
+<td headers="ACR-237-TP4" class="gt_row gt_right">
+1.131846
+</td>
+<td headers="ACR-244-TP1" class="gt_row gt_right">
+1.439875
+</td>
+<td headers="ACR-244-TP2" class="gt_row gt_right">
+0.9460971
+</td>
+<td headers="ACR-244-TP3" class="gt_row gt_right">
+1.577500
+</td>
+<td headers="ACR-244-TP4" class="gt_row gt_right">
+2.175344
+</td>
+<td headers="ACR-265-TP1" class="gt_row gt_right">
+1.389332
+</td>
+<td headers="ACR-265-TP2" class="gt_row gt_right">
+0.7378416
+</td>
+<td headers="ACR-265-TP3" class="gt_row gt_right">
+2.257088
+</td>
+<td headers="ACR-265-TP4" class="gt_row gt_right">
+1.513227
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="porites-evermanni" class="level1">
+<h1><em>Porites evermanni</em></h1>
+<section id="exon-cv-2" class="level2">
+<h2 class="anchored" data-anchor-id="exon-cv-2">Exon CV</h2>
+<p><a href="https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/peve-cv_matrix.tsv" class="btn btn-primary" target="_blank" download="Peve_exon_cv.tsv">Download Exon CV</a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/peve-cv_matrix.tsv</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Peve_exon_cv (first 4 rows)</strong></p>
+<div id="gaiyothbbv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gaiyothbbv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#gaiyothbbv thead, #gaiyothbbv tbody, #gaiyothbbv tfoot, #gaiyothbbv tr, #gaiyothbbv td, #gaiyothbbv th {
+  border-style: none;
+}
+
+#gaiyothbbv p {
+  margin: 0;
+  padding: 0;
+}
+
+#gaiyothbbv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gaiyothbbv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#gaiyothbbv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gaiyothbbv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gaiyothbbv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gaiyothbbv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gaiyothbbv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gaiyothbbv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gaiyothbbv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gaiyothbbv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gaiyothbbv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gaiyothbbv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gaiyothbbv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#gaiyothbbv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#gaiyothbbv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gaiyothbbv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gaiyothbbv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gaiyothbbv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gaiyothbbv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gaiyothbbv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#gaiyothbbv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#gaiyothbbv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#gaiyothbbv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gaiyothbbv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#gaiyothbbv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#gaiyothbbv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gaiyothbbv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gaiyothbbv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gaiyothbbv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gaiyothbbv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gaiyothbbv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gaiyothbbv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gaiyothbbv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gaiyothbbv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gaiyothbbv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gaiyothbbv .gt_left {
+  text-align: left;
+}
+
+#gaiyothbbv .gt_center {
+  text-align: center;
+}
+
+#gaiyothbbv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gaiyothbbv .gt_font_normal {
+  font-weight: normal;
+}
+
+#gaiyothbbv .gt_font_bold {
+  font-weight: bold;
+}
+
+#gaiyothbbv .gt_font_italic {
+  font-style: italic;
+}
+
+#gaiyothbbv .gt_super {
+  font-size: 65%;
+}
+
+#gaiyothbbv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#gaiyothbbv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#gaiyothbbv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#gaiyothbbv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#gaiyothbbv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#gaiyothbbv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#gaiyothbbv .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#gaiyothbbv .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#gaiyothbbv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="gene_id">
+gene_id
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-216-TP1">
+POR-216-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-216-TP2">
+POR-216-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-216-TP3">
+POR-216-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-216-TP4">
+POR-216-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-236-TP1">
+POR-236-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-236-TP2">
+POR-236-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-245-TP1">
+POR-245-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-245-TP2">
+POR-245-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-245-TP3">
+POR-245-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-245-TP4">
+POR-245-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-260-TP1">
+POR-260-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-260-TP2">
+POR-260-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-260-TP3">
+POR-260-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-260-TP4">
+POR-260-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-262-TP1">
+POR-262-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-262-TP2">
+POR-262-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-262-TP3">
+POR-262-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-262-TP4">
+POR-262-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-69-TP1">
+POR-69-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-69-TP2">
+POR-69-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-69-TP3">
+POR-69-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-69-TP4">
+POR-69-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-72-TP1">
+POR-72-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-72-TP2">
+POR-72-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-72-TP3">
+POR-72-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-72-TP4">
+POR-72-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-73-TP1">
+POR-73-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-73-TP2">
+POR-73-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-73-TP3">
+POR-73-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-73-TP4">
+POR-73-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-74-TP1">
+POR-74-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-74-TP2">
+POR-74-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-74-TP3">
+POR-74-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-74-TP4">
+POR-74-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-83-TP1">
+POR-83-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-83-TP2">
+POR-83-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-83-TP3">
+POR-83-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POR-83-TP4">
+POR-83-TP4
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+gene-Peve_00000003
+</td>
+<td headers="POR-216-TP1" class="gt_row gt_right">
+0.7251225
+</td>
+<td headers="POR-216-TP2" class="gt_row gt_right">
+0.3285807
+</td>
+<td headers="POR-216-TP3" class="gt_row gt_right">
+0.652629
+</td>
+<td headers="POR-216-TP4" class="gt_row gt_right">
+1.3065986
+</td>
+<td headers="POR-236-TP1" class="gt_row gt_right">
+0.5743412
+</td>
+<td headers="POR-236-TP2" class="gt_row gt_right">
+0.5686723
+</td>
+<td headers="POR-245-TP1" class="gt_row gt_right">
+0.7420303
+</td>
+<td headers="POR-245-TP2" class="gt_row gt_right">
+0.7187211
+</td>
+<td headers="POR-245-TP3" class="gt_row gt_right">
+0.5421080
+</td>
+<td headers="POR-245-TP4" class="gt_row gt_right">
+0.8165363
+</td>
+<td headers="POR-260-TP1" class="gt_row gt_right">
+0.4772009
+</td>
+<td headers="POR-260-TP2" class="gt_row gt_right">
+0.5671191
+</td>
+<td headers="POR-260-TP3" class="gt_row gt_right">
+0.7530678
+</td>
+<td headers="POR-260-TP4" class="gt_row gt_right">
+0.6670292
+</td>
+<td headers="POR-262-TP1" class="gt_row gt_right">
+0.8916005
+</td>
+<td headers="POR-262-TP2" class="gt_row gt_right">
+0.5896628
+</td>
+<td headers="POR-262-TP3" class="gt_row gt_right">
+0.4868017
+</td>
+<td headers="POR-262-TP4" class="gt_row gt_right">
+0.4329875
+</td>
+<td headers="POR-69-TP1" class="gt_row gt_right">
+0.8986076
+</td>
+<td headers="POR-69-TP2" class="gt_row gt_right">
+0.5575120
+</td>
+<td headers="POR-69-TP3" class="gt_row gt_right">
+0.5887590
+</td>
+<td headers="POR-69-TP4" class="gt_row gt_right">
+1.046623
+</td>
+<td headers="POR-72-TP1" class="gt_row gt_right">
+0.8814807
+</td>
+<td headers="POR-72-TP2" class="gt_row gt_right">
+1.7813274
+</td>
+<td headers="POR-72-TP3" class="gt_row gt_right">
+0.6817518
+</td>
+<td headers="POR-72-TP4" class="gt_row gt_right">
+0.8243460
+</td>
+<td headers="POR-73-TP1" class="gt_row gt_right">
+0.5275523
+</td>
+<td headers="POR-73-TP2" class="gt_row gt_right">
+1.3684533
+</td>
+<td headers="POR-73-TP3" class="gt_row gt_right">
+0.6164414
+</td>
+<td headers="POR-73-TP4" class="gt_row gt_right">
+0.9365791
+</td>
+<td headers="POR-74-TP1" class="gt_row gt_right">
+0.4046947
+</td>
+<td headers="POR-74-TP2" class="gt_row gt_right">
+0.9433881
+</td>
+<td headers="POR-74-TP3" class="gt_row gt_right">
+0.7996093
+</td>
+<td headers="POR-74-TP4" class="gt_row gt_right">
+1.2041595
+</td>
+<td headers="POR-83-TP1" class="gt_row gt_right">
+0.5622705
+</td>
+<td headers="POR-83-TP2" class="gt_row gt_right">
+1.2605114
+</td>
+<td headers="POR-83-TP3" class="gt_row gt_right">
+1.0063292
+</td>
+<td headers="POR-83-TP4" class="gt_row gt_right">
+1.0110501
+</td>
+</tr>
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+gene-Peve_00000005
+</td>
+<td headers="POR-216-TP1" class="gt_row gt_right">
+0.4334701
+</td>
+<td headers="POR-216-TP2" class="gt_row gt_right">
+0.2611595
+</td>
+<td headers="POR-216-TP3" class="gt_row gt_right">
+0.495975
+</td>
+<td headers="POR-216-TP4" class="gt_row gt_right">
+0.5291119
+</td>
+<td headers="POR-236-TP1" class="gt_row gt_right">
+0.2722373
+</td>
+<td headers="POR-236-TP2" class="gt_row gt_right">
+0.2966128
+</td>
+<td headers="POR-245-TP1" class="gt_row gt_right">
+0.3990823
+</td>
+<td headers="POR-245-TP2" class="gt_row gt_right">
+0.4204403
+</td>
+<td headers="POR-245-TP3" class="gt_row gt_right">
+0.4754908
+</td>
+<td headers="POR-245-TP4" class="gt_row gt_right">
+0.3295140
+</td>
+<td headers="POR-260-TP1" class="gt_row gt_right">
+0.3178972
+</td>
+<td headers="POR-260-TP2" class="gt_row gt_right">
+0.3423721
+</td>
+<td headers="POR-260-TP3" class="gt_row gt_right">
+0.2792689
+</td>
+<td headers="POR-260-TP4" class="gt_row gt_right">
+0.2846960
+</td>
+<td headers="POR-262-TP1" class="gt_row gt_right">
+0.4543079
+</td>
+<td headers="POR-262-TP2" class="gt_row gt_right">
+0.4274379
+</td>
+<td headers="POR-262-TP3" class="gt_row gt_right">
+0.4361719
+</td>
+<td headers="POR-262-TP4" class="gt_row gt_right">
+0.3285644
+</td>
+<td headers="POR-69-TP1" class="gt_row gt_right">
+0.4804610
+</td>
+<td headers="POR-69-TP2" class="gt_row gt_right">
+0.2735193
+</td>
+<td headers="POR-69-TP3" class="gt_row gt_right">
+0.3724631
+</td>
+<td headers="POR-69-TP4" class="gt_row gt_right">
+0.464555
+</td>
+<td headers="POR-72-TP1" class="gt_row gt_right">
+0.3105904
+</td>
+<td headers="POR-72-TP2" class="gt_row gt_right">
+0.4118095
+</td>
+<td headers="POR-72-TP3" class="gt_row gt_right">
+0.4278465
+</td>
+<td headers="POR-72-TP4" class="gt_row gt_right">
+0.2674142
+</td>
+<td headers="POR-73-TP1" class="gt_row gt_right">
+0.5008178
+</td>
+<td headers="POR-73-TP2" class="gt_row gt_right">
+0.3034831
+</td>
+<td headers="POR-73-TP3" class="gt_row gt_right">
+0.4442154
+</td>
+<td headers="POR-73-TP4" class="gt_row gt_right">
+0.4994993
+</td>
+<td headers="POR-74-TP1" class="gt_row gt_right">
+0.3730686
+</td>
+<td headers="POR-74-TP2" class="gt_row gt_right">
+0.5149440
+</td>
+<td headers="POR-74-TP3" class="gt_row gt_right">
+0.3879561
+</td>
+<td headers="POR-74-TP4" class="gt_row gt_right">
+0.4014665
+</td>
+<td headers="POR-83-TP1" class="gt_row gt_right">
+0.3323010
+</td>
+<td headers="POR-83-TP2" class="gt_row gt_right">
+0.4470925
+</td>
+<td headers="POR-83-TP3" class="gt_row gt_right">
+0.5444046
+</td>
+<td headers="POR-83-TP4" class="gt_row gt_right">
+0.4869954
+</td>
+</tr>
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+gene-Peve_00000006
+</td>
+<td headers="POR-216-TP1" class="gt_row gt_right">
+1.5002239
+</td>
+<td headers="POR-216-TP2" class="gt_row gt_right">
+1.1036268
+</td>
+<td headers="POR-216-TP3" class="gt_row gt_right">
+1.547238
+</td>
+<td headers="POR-216-TP4" class="gt_row gt_right">
+1.3214798
+</td>
+<td headers="POR-236-TP1" class="gt_row gt_right">
+1.3323737
+</td>
+<td headers="POR-236-TP2" class="gt_row gt_right">
+1.5290457
+</td>
+<td headers="POR-245-TP1" class="gt_row gt_right">
+1.1960948
+</td>
+<td headers="POR-245-TP2" class="gt_row gt_right">
+1.0385346
+</td>
+<td headers="POR-245-TP3" class="gt_row gt_right">
+0.8679452
+</td>
+<td headers="POR-245-TP4" class="gt_row gt_right">
+1.3464621
+</td>
+<td headers="POR-260-TP1" class="gt_row gt_right">
+1.0617324
+</td>
+<td headers="POR-260-TP2" class="gt_row gt_right">
+1.5606226
+</td>
+<td headers="POR-260-TP3" class="gt_row gt_right">
+1.3661480
+</td>
+<td headers="POR-260-TP4" class="gt_row gt_right">
+1.5424270
+</td>
+<td headers="POR-262-TP1" class="gt_row gt_right">
+1.3657299
+</td>
+<td headers="POR-262-TP2" class="gt_row gt_right">
+1.2951671
+</td>
+<td headers="POR-262-TP3" class="gt_row gt_right">
+1.2678090
+</td>
+<td headers="POR-262-TP4" class="gt_row gt_right">
+1.6016082
+</td>
+<td headers="POR-69-TP1" class="gt_row gt_right">
+1.2058552
+</td>
+<td headers="POR-69-TP2" class="gt_row gt_right">
+1.0845747
+</td>
+<td headers="POR-69-TP3" class="gt_row gt_right">
+1.1786042
+</td>
+<td headers="POR-69-TP4" class="gt_row gt_right">
+1.253465
+</td>
+<td headers="POR-72-TP1" class="gt_row gt_right">
+1.3801251
+</td>
+<td headers="POR-72-TP2" class="gt_row gt_right">
+1.0428375
+</td>
+<td headers="POR-72-TP3" class="gt_row gt_right">
+0.9158426
+</td>
+<td headers="POR-72-TP4" class="gt_row gt_right">
+1.1641570
+</td>
+<td headers="POR-73-TP1" class="gt_row gt_right">
+1.0119084
+</td>
+<td headers="POR-73-TP2" class="gt_row gt_right">
+1.0421836
+</td>
+<td headers="POR-73-TP3" class="gt_row gt_right">
+1.2049761
+</td>
+<td headers="POR-73-TP4" class="gt_row gt_right">
+0.9661609
+</td>
+<td headers="POR-74-TP1" class="gt_row gt_right">
+1.3326470
+</td>
+<td headers="POR-74-TP2" class="gt_row gt_right">
+1.2978268
+</td>
+<td headers="POR-74-TP3" class="gt_row gt_right">
+0.9565104
+</td>
+<td headers="POR-74-TP4" class="gt_row gt_right">
+1.4769892
+</td>
+<td headers="POR-83-TP1" class="gt_row gt_right">
+1.2212713
+</td>
+<td headers="POR-83-TP2" class="gt_row gt_right">
+1.2145063
+</td>
+<td headers="POR-83-TP3" class="gt_row gt_right">
+1.2502641
+</td>
+<td headers="POR-83-TP4" class="gt_row gt_right">
+1.7391760
+</td>
+</tr>
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+gene-Peve_00000011
+</td>
+<td headers="POR-216-TP1" class="gt_row gt_right">
+1.8914687
+</td>
+<td headers="POR-216-TP2" class="gt_row gt_right">
+1.7413367
+</td>
+<td headers="POR-216-TP3" class="gt_row gt_right">
+1.795797
+</td>
+<td headers="POR-216-TP4" class="gt_row gt_right">
+1.4704539
+</td>
+<td headers="POR-236-TP1" class="gt_row gt_right">
+1.7364989
+</td>
+<td headers="POR-236-TP2" class="gt_row gt_right">
+1.4336578
+</td>
+<td headers="POR-245-TP1" class="gt_row gt_right">
+1.6226317
+</td>
+<td headers="POR-245-TP2" class="gt_row gt_right">
+1.5241406
+</td>
+<td headers="POR-245-TP3" class="gt_row gt_right">
+1.8561528
+</td>
+<td headers="POR-245-TP4" class="gt_row gt_right">
+1.2682052
+</td>
+<td headers="POR-260-TP1" class="gt_row gt_right">
+1.1638589
+</td>
+<td headers="POR-260-TP2" class="gt_row gt_right">
+1.9786210
+</td>
+<td headers="POR-260-TP3" class="gt_row gt_right">
+1.3735379
+</td>
+<td headers="POR-260-TP4" class="gt_row gt_right">
+1.5757082
+</td>
+<td headers="POR-262-TP1" class="gt_row gt_right">
+1.6123622
+</td>
+<td headers="POR-262-TP2" class="gt_row gt_right">
+1.8872252
+</td>
+<td headers="POR-262-TP3" class="gt_row gt_right">
+1.4833932
+</td>
+<td headers="POR-262-TP4" class="gt_row gt_right">
+1.7912874
+</td>
+<td headers="POR-69-TP1" class="gt_row gt_right">
+2.2606958
+</td>
+<td headers="POR-69-TP2" class="gt_row gt_right">
+1.5186944
+</td>
+<td headers="POR-69-TP3" class="gt_row gt_right">
+1.8739032
+</td>
+<td headers="POR-69-TP4" class="gt_row gt_right">
+1.914781
+</td>
+<td headers="POR-72-TP1" class="gt_row gt_right">
+1.9840835
+</td>
+<td headers="POR-72-TP2" class="gt_row gt_right">
+2.0484726
+</td>
+<td headers="POR-72-TP3" class="gt_row gt_right">
+1.6848925
+</td>
+<td headers="POR-72-TP4" class="gt_row gt_right">
+1.8362528
+</td>
+<td headers="POR-73-TP1" class="gt_row gt_right">
+1.9929524
+</td>
+<td headers="POR-73-TP2" class="gt_row gt_right">
+1.3339537
+</td>
+<td headers="POR-73-TP3" class="gt_row gt_right">
+1.7366785
+</td>
+<td headers="POR-73-TP4" class="gt_row gt_right">
+1.5142116
+</td>
+<td headers="POR-74-TP1" class="gt_row gt_right">
+1.5896766
+</td>
+<td headers="POR-74-TP2" class="gt_row gt_right">
+1.3842698
+</td>
+<td headers="POR-74-TP3" class="gt_row gt_right">
+1.6548538
+</td>
+<td headers="POR-74-TP4" class="gt_row gt_right">
+1.4355729
+</td>
+<td headers="POR-83-TP1" class="gt_row gt_right">
+2.3132883
+</td>
+<td headers="POR-83-TP2" class="gt_row gt_right">
+2.2811223
+</td>
+<td headers="POR-83-TP3" class="gt_row gt_right">
+1.9783130
+</td>
+<td headers="POR-83-TP4" class="gt_row gt_right">
+2.3879403
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="pocillopora-tuahiniensis" class="level1">
+<h1><em>Pocillopora tuahiniensis</em></h1>
+<section id="exon-cv-3" class="level2">
+<h2 class="anchored" data-anchor-id="exon-cv-3">Exon CV</h2>
+<p><a href="https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/ptua-cv_matrix.tsv" class="btn btn-primary" target="_blank" download="Ptuh_exon_cv.tsv">Download Exon CV</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/ptua-cv_matrix.tsv</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Ptuh_exon_cv (first 4 rows)</strong></p>
+<div id="aeamgegrih" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aeamgegrih table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#aeamgegrih thead, #aeamgegrih tbody, #aeamgegrih tfoot, #aeamgegrih tr, #aeamgegrih td, #aeamgegrih th {
+  border-style: none;
+}
+
+#aeamgegrih p {
+  margin: 0;
+  padding: 0;
+}
+
+#aeamgegrih .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#aeamgegrih .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#aeamgegrih .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#aeamgegrih .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#aeamgegrih .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aeamgegrih .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aeamgegrih .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aeamgegrih .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#aeamgegrih .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#aeamgegrih .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#aeamgegrih .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#aeamgegrih .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#aeamgegrih .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#aeamgegrih .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#aeamgegrih .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#aeamgegrih .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#aeamgegrih .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#aeamgegrih .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#aeamgegrih .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aeamgegrih .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#aeamgegrih .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#aeamgegrih .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#aeamgegrih .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aeamgegrih .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#aeamgegrih .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#aeamgegrih .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aeamgegrih .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aeamgegrih .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#aeamgegrih .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aeamgegrih .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#aeamgegrih .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aeamgegrih .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aeamgegrih .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aeamgegrih .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aeamgegrih .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aeamgegrih .gt_left {
+  text-align: left;
+}
+
+#aeamgegrih .gt_center {
+  text-align: center;
+}
+
+#aeamgegrih .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#aeamgegrih .gt_font_normal {
+  font-weight: normal;
+}
+
+#aeamgegrih .gt_font_bold {
+  font-weight: bold;
+}
+
+#aeamgegrih .gt_font_italic {
+  font-style: italic;
+}
+
+#aeamgegrih .gt_super {
+  font-size: 65%;
+}
+
+#aeamgegrih .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#aeamgegrih .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#aeamgegrih .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#aeamgegrih .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#aeamgegrih .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#aeamgegrih .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#aeamgegrih .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#aeamgegrih .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#aeamgegrih div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="gene_id">
+gene_id
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-201-TP1">
+POC-201-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-201-TP2">
+POC-201-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-201-TP3">
+POC-201-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-219-TP1">
+POC-219-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-219-TP2">
+POC-219-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-219-TP3">
+POC-219-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-219-TP4">
+POC-219-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-222-TP1">
+POC-222-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-222-TP2">
+POC-222-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-222-TP3">
+POC-222-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-222-TP4">
+POC-222-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-255-TP1">
+POC-255-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-255-TP2">
+POC-255-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-255-TP3">
+POC-255-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-255-TP4">
+POC-255-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-259-TP1">
+POC-259-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-259-TP2">
+POC-259-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-259-TP3">
+POC-259-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-259-TP4">
+POC-259-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-40-TP1">
+POC-40-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-40-TP2">
+POC-40-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-40-TP3">
+POC-40-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-40-TP4">
+POC-40-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-42-TP1">
+POC-42-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-42-TP2">
+POC-42-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-42-TP3">
+POC-42-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-42-TP4">
+POC-42-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-52-TP1">
+POC-52-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-52-TP2">
+POC-52-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-52-TP3">
+POC-52-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-52-TP4">
+POC-52-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-53-TP1">
+POC-53-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-53-TP2">
+POC-53-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-53-TP3">
+POC-53-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-53-TP4">
+POC-53-TP4
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-57-TP1">
+POC-57-TP1
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-57-TP2">
+POC-57-TP2
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-57-TP3">
+POC-57-TP3
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="POC-57-TP4">
+POC-57-TP4
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+gene-Pocillopora_meandrina_HIv1___RNAseq.10483_t
+</td>
+<td headers="POC-201-TP1" class="gt_row gt_right">
+1.1841672
+</td>
+<td headers="POC-201-TP2" class="gt_row gt_right">
+1.3269516
+</td>
+<td headers="POC-201-TP3" class="gt_row gt_right">
+1.6877936
+</td>
+<td headers="POC-219-TP1" class="gt_row gt_right">
+1.8554407
+</td>
+<td headers="POC-219-TP2" class="gt_row gt_right">
+1.7983556
+</td>
+<td headers="POC-219-TP3" class="gt_row gt_right">
+2.2318398
+</td>
+<td headers="POC-219-TP4" class="gt_row gt_right">
+1.8589386
+</td>
+<td headers="POC-222-TP1" class="gt_row gt_right">
+1.3943541
+</td>
+<td headers="POC-222-TP2" class="gt_row gt_right">
+1.6355111
+</td>
+<td headers="POC-222-TP3" class="gt_row gt_right">
+1.5777909
+</td>
+<td headers="POC-222-TP4" class="gt_row gt_right">
+1.764030
+</td>
+<td headers="POC-255-TP1" class="gt_row gt_right">
+1.2791461
+</td>
+<td headers="POC-255-TP2" class="gt_row gt_right">
+1.4744748
+</td>
+<td headers="POC-255-TP3" class="gt_row gt_right">
+2.316067
+</td>
+<td headers="POC-255-TP4" class="gt_row gt_right">
+1.6647377
+</td>
+<td headers="POC-259-TP1" class="gt_row gt_right">
+1.5445964
+</td>
+<td headers="POC-259-TP2" class="gt_row gt_right">
+1.5322583
+</td>
+<td headers="POC-259-TP3" class="gt_row gt_right">
+2.072337
+</td>
+<td headers="POC-259-TP4" class="gt_row gt_right">
+1.5953003
+</td>
+<td headers="POC-40-TP1" class="gt_row gt_right">
+1.7658246
+</td>
+<td headers="POC-40-TP2" class="gt_row gt_right">
+1.7658383
+</td>
+<td headers="POC-40-TP3" class="gt_row gt_right">
+1.7232639
+</td>
+<td headers="POC-40-TP4" class="gt_row gt_right">
+1.7636723
+</td>
+<td headers="POC-42-TP1" class="gt_row gt_right">
+1.3184004
+</td>
+<td headers="POC-42-TP2" class="gt_row gt_right">
+1.2109251
+</td>
+<td headers="POC-42-TP3" class="gt_row gt_right">
+1.517936
+</td>
+<td headers="POC-42-TP4" class="gt_row gt_right">
+1.7924517
+</td>
+<td headers="POC-52-TP1" class="gt_row gt_right">
+1.562080
+</td>
+<td headers="POC-52-TP2" class="gt_row gt_right">
+1.4323375
+</td>
+<td headers="POC-52-TP3" class="gt_row gt_right">
+1.7130929
+</td>
+<td headers="POC-52-TP4" class="gt_row gt_right">
+1.3999404
+</td>
+<td headers="POC-53-TP1" class="gt_row gt_right">
+1.5500252
+</td>
+<td headers="POC-53-TP2" class="gt_row gt_right">
+1.5112416
+</td>
+<td headers="POC-53-TP3" class="gt_row gt_right">
+1.5672294
+</td>
+<td headers="POC-53-TP4" class="gt_row gt_right">
+1.6315441
+</td>
+<td headers="POC-57-TP1" class="gt_row gt_right">
+1.6506944
+</td>
+<td headers="POC-57-TP2" class="gt_row gt_right">
+1.8471856
+</td>
+<td headers="POC-57-TP3" class="gt_row gt_right">
+1.6496703
+</td>
+<td headers="POC-57-TP4" class="gt_row gt_right">
+1.4749355
+</td>
+</tr>
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+gene-Pocillopora_meandrina_HIv1___RNAseq.10568_t
+</td>
+<td headers="POC-201-TP1" class="gt_row gt_right">
+1.0356832
+</td>
+<td headers="POC-201-TP2" class="gt_row gt_right">
+0.9706955
+</td>
+<td headers="POC-201-TP3" class="gt_row gt_right">
+1.1549381
+</td>
+<td headers="POC-219-TP1" class="gt_row gt_right">
+1.0496114
+</td>
+<td headers="POC-219-TP2" class="gt_row gt_right">
+1.0569406
+</td>
+<td headers="POC-219-TP3" class="gt_row gt_right">
+0.5153544
+</td>
+<td headers="POC-219-TP4" class="gt_row gt_right">
+0.9179458
+</td>
+<td headers="POC-222-TP1" class="gt_row gt_right">
+0.8998666
+</td>
+<td headers="POC-222-TP2" class="gt_row gt_right">
+0.8229719
+</td>
+<td headers="POC-222-TP3" class="gt_row gt_right">
+0.6903098
+</td>
+<td headers="POC-222-TP4" class="gt_row gt_right">
+1.054898
+</td>
+<td headers="POC-255-TP1" class="gt_row gt_right">
+1.0398664
+</td>
+<td headers="POC-255-TP2" class="gt_row gt_right">
+0.7969656
+</td>
+<td headers="POC-255-TP3" class="gt_row gt_right">
+1.010574
+</td>
+<td headers="POC-255-TP4" class="gt_row gt_right">
+0.8008383
+</td>
+<td headers="POC-259-TP1" class="gt_row gt_right">
+0.8454713
+</td>
+<td headers="POC-259-TP2" class="gt_row gt_right">
+0.7068676
+</td>
+<td headers="POC-259-TP3" class="gt_row gt_right">
+1.407800
+</td>
+<td headers="POC-259-TP4" class="gt_row gt_right">
+0.8541763
+</td>
+<td headers="POC-40-TP1" class="gt_row gt_right">
+0.4773371
+</td>
+<td headers="POC-40-TP2" class="gt_row gt_right">
+0.7488051
+</td>
+<td headers="POC-40-TP3" class="gt_row gt_right">
+0.6397877
+</td>
+<td headers="POC-40-TP4" class="gt_row gt_right">
+0.8711997
+</td>
+<td headers="POC-42-TP1" class="gt_row gt_right">
+0.5607667
+</td>
+<td headers="POC-42-TP2" class="gt_row gt_right">
+0.8658617
+</td>
+<td headers="POC-42-TP3" class="gt_row gt_right">
+0.913606
+</td>
+<td headers="POC-42-TP4" class="gt_row gt_right">
+0.8842819
+</td>
+<td headers="POC-52-TP1" class="gt_row gt_right">
+0.895092
+</td>
+<td headers="POC-52-TP2" class="gt_row gt_right">
+0.7358446
+</td>
+<td headers="POC-52-TP3" class="gt_row gt_right">
+1.0185661
+</td>
+<td headers="POC-52-TP4" class="gt_row gt_right">
+0.6728081
+</td>
+<td headers="POC-53-TP1" class="gt_row gt_right">
+0.6615746
+</td>
+<td headers="POC-53-TP2" class="gt_row gt_right">
+0.7337614
+</td>
+<td headers="POC-53-TP3" class="gt_row gt_right">
+0.8288398
+</td>
+<td headers="POC-53-TP4" class="gt_row gt_right">
+1.0728251
+</td>
+<td headers="POC-57-TP1" class="gt_row gt_right">
+0.6071959
+</td>
+<td headers="POC-57-TP2" class="gt_row gt_right">
+0.5567480
+</td>
+<td headers="POC-57-TP3" class="gt_row gt_right">
+0.8799199
+</td>
+<td headers="POC-57-TP4" class="gt_row gt_right">
+0.7029411
+</td>
+</tr>
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+gene-Pocillopora_meandrina_HIv1___RNAseq.10925_t
+</td>
+<td headers="POC-201-TP1" class="gt_row gt_right">
+0.8530937
+</td>
+<td headers="POC-201-TP2" class="gt_row gt_right">
+0.9528856
+</td>
+<td headers="POC-201-TP3" class="gt_row gt_right">
+1.4518977
+</td>
+<td headers="POC-219-TP1" class="gt_row gt_right">
+1.4007211
+</td>
+<td headers="POC-219-TP2" class="gt_row gt_right">
+1.1199988
+</td>
+<td headers="POC-219-TP3" class="gt_row gt_right">
+1.0111900
+</td>
+<td headers="POC-219-TP4" class="gt_row gt_right">
+1.1572814
+</td>
+<td headers="POC-222-TP1" class="gt_row gt_right">
+0.7980886
+</td>
+<td headers="POC-222-TP2" class="gt_row gt_right">
+0.9468779
+</td>
+<td headers="POC-222-TP3" class="gt_row gt_right">
+0.6111506
+</td>
+<td headers="POC-222-TP4" class="gt_row gt_right">
+1.609263
+</td>
+<td headers="POC-255-TP1" class="gt_row gt_right">
+0.9500079
+</td>
+<td headers="POC-255-TP2" class="gt_row gt_right">
+0.9467207
+</td>
+<td headers="POC-255-TP3" class="gt_row gt_right">
+2.055312
+</td>
+<td headers="POC-255-TP4" class="gt_row gt_right">
+1.2671830
+</td>
+<td headers="POC-259-TP1" class="gt_row gt_right">
+1.2222371
+</td>
+<td headers="POC-259-TP2" class="gt_row gt_right">
+0.7966898
+</td>
+<td headers="POC-259-TP3" class="gt_row gt_right">
+1.098413
+</td>
+<td headers="POC-259-TP4" class="gt_row gt_right">
+1.0107124
+</td>
+<td headers="POC-40-TP1" class="gt_row gt_right">
+0.7920234
+</td>
+<td headers="POC-40-TP2" class="gt_row gt_right">
+0.8497980
+</td>
+<td headers="POC-40-TP3" class="gt_row gt_right">
+0.7740915
+</td>
+<td headers="POC-40-TP4" class="gt_row gt_right">
+1.0965619
+</td>
+<td headers="POC-42-TP1" class="gt_row gt_right">
+0.9151997
+</td>
+<td headers="POC-42-TP2" class="gt_row gt_right">
+0.9088216
+</td>
+<td headers="POC-42-TP3" class="gt_row gt_right">
+1.121206
+</td>
+<td headers="POC-42-TP4" class="gt_row gt_right">
+2.6095647
+</td>
+<td headers="POC-52-TP1" class="gt_row gt_right">
+1.757259
+</td>
+<td headers="POC-52-TP2" class="gt_row gt_right">
+0.8712718
+</td>
+<td headers="POC-52-TP3" class="gt_row gt_right">
+0.9514217
+</td>
+<td headers="POC-52-TP4" class="gt_row gt_right">
+0.7507119
+</td>
+<td headers="POC-53-TP1" class="gt_row gt_right">
+0.7162398
+</td>
+<td headers="POC-53-TP2" class="gt_row gt_right">
+0.7007008
+</td>
+<td headers="POC-53-TP3" class="gt_row gt_right">
+0.8197995
+</td>
+<td headers="POC-53-TP4" class="gt_row gt_right">
+1.1856193
+</td>
+<td headers="POC-57-TP1" class="gt_row gt_right">
+0.6662961
+</td>
+<td headers="POC-57-TP2" class="gt_row gt_right">
+1.3608879
+</td>
+<td headers="POC-57-TP3" class="gt_row gt_right">
+0.7830152
+</td>
+<td headers="POC-57-TP4" class="gt_row gt_right">
+0.9297172
+</td>
+</tr>
+<tr>
+<td headers="gene_id" class="gt_row gt_left">
+gene-Pocillopora_meandrina_HIv1___RNAseq.10949_t
+</td>
+<td headers="POC-201-TP1" class="gt_row gt_right">
+0.7478408
+</td>
+<td headers="POC-201-TP2" class="gt_row gt_right">
+0.7506053
+</td>
+<td headers="POC-201-TP3" class="gt_row gt_right">
+0.6922207
+</td>
+<td headers="POC-219-TP1" class="gt_row gt_right">
+0.9746087
+</td>
+<td headers="POC-219-TP2" class="gt_row gt_right">
+0.7253771
+</td>
+<td headers="POC-219-TP3" class="gt_row gt_right">
+0.3754997
+</td>
+<td headers="POC-219-TP4" class="gt_row gt_right">
+1.7653871
+</td>
+<td headers="POC-222-TP1" class="gt_row gt_right">
+0.8589661
+</td>
+<td headers="POC-222-TP2" class="gt_row gt_right">
+0.7786004
+</td>
+<td headers="POC-222-TP3" class="gt_row gt_right">
+0.9590317
+</td>
+<td headers="POC-222-TP4" class="gt_row gt_right">
+1.239245
+</td>
+<td headers="POC-255-TP1" class="gt_row gt_right">
+1.0200172
+</td>
+<td headers="POC-255-TP2" class="gt_row gt_right">
+1.9441172
+</td>
+<td headers="POC-255-TP3" class="gt_row gt_right">
+2.449490
+</td>
+<td headers="POC-255-TP4" class="gt_row gt_right">
+0.6669333
+</td>
+<td headers="POC-259-TP1" class="gt_row gt_right">
+1.0326187
+</td>
+<td headers="POC-259-TP2" class="gt_row gt_right">
+1.4338672
+</td>
+<td headers="POC-259-TP3" class="gt_row gt_right">
+1.549411
+</td>
+<td headers="POC-259-TP4" class="gt_row gt_right">
+0.6248311
+</td>
+<td headers="POC-40-TP1" class="gt_row gt_right">
+0.9508638
+</td>
+<td headers="POC-40-TP2" class="gt_row gt_right">
+1.2110383
+</td>
+<td headers="POC-40-TP3" class="gt_row gt_right">
+1.0186531
+</td>
+<td headers="POC-40-TP4" class="gt_row gt_right">
+0.9095838
+</td>
+<td headers="POC-42-TP1" class="gt_row gt_right">
+0.7874763
+</td>
+<td headers="POC-42-TP2" class="gt_row gt_right">
+0.7947567
+</td>
+<td headers="POC-42-TP3" class="gt_row gt_right">
+1.543611
+</td>
+<td headers="POC-42-TP4" class="gt_row gt_right">
+1.2186566
+</td>
+<td headers="POC-52-TP1" class="gt_row gt_right">
+1.673320
+</td>
+<td headers="POC-52-TP2" class="gt_row gt_right">
+0.8828938
+</td>
+<td headers="POC-52-TP3" class="gt_row gt_right">
+0.9070147
+</td>
+<td headers="POC-52-TP4" class="gt_row gt_right">
+0.7276373
+</td>
+<td headers="POC-53-TP1" class="gt_row gt_right">
+0.6618157
+</td>
+<td headers="POC-53-TP2" class="gt_row gt_right">
+0.8360622
+</td>
+<td headers="POC-53-TP3" class="gt_row gt_right">
+1.2694764
+</td>
+<td headers="POC-53-TP4" class="gt_row gt_right">
+0.3390862
+</td>
+<td headers="POC-57-TP1" class="gt_row gt_right">
+1.4050477
+</td>
+<td headers="POC-57-TP2" class="gt_row gt_right">
+0.9520747
+</td>
+<td headers="POC-57-TP3" class="gt_row gt_right">
+0.7801538
+</td>
+<td headers="POC-57-TP4" class="gt_row gt_right">
+1.0179186
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/urol-e5\.github\.io\/MOSAiC\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Supported by NSF <a href="./disclaimer.html">disclaimer</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

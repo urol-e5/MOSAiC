@@ -1,0 +1,330 @@
+---
+title: "Expression Plasticity"
+description: "Coefficient of Variation Matrices"
+format:
+  html:
+    code-copy: true
+    toc: true
+    toc-location: right
+    toc-expand: true
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup, include=FALSE}
+# Check and load required packages
+required_packages <- c("tidyverse", "DT", "readxl", "plotly", "readr", "dplyr", "tibble", "knitr", "gt", "htmltools")
+
+# Function to safely load packages
+safe_load_package <- function(pkg) {
+  if (!require(pkg, character.only = TRUE, quietly = TRUE)) {
+    install.packages(pkg, dependencies = TRUE)
+    library(pkg, character.only = TRUE)
+  }
+}
+
+# Load all required packages
+for (pkg in required_packages) {
+  safe_load_package(pkg)
+}
+```
+
+```{r data-config, cache=TRUE, cache.lazy=FALSE, include=FALSE}
+
+# Set timeout for downloads (120 seconds)
+options(timeout = 120)
+
+# =============================================================================
+# EXTERNAL DATA URLS CONFIGURATION
+# =============================================================================
+# All external URLs are centralized here for easy maintenance.
+# To add new datasets, add a new entry to the appropriate species list.
+# Supported data types: exon_cv (coefficient of variation matrices)
+
+data_urls <- list(
+  Apul = list(
+    species_name = "Acropora pulchra",
+    italic_name = "*Acropora pulchra*",
+    exon_cv = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/apul-cv_matrix.tsv"
+  ),
+  Peve = list(
+    species_name = "Porites evermanni",
+    italic_name = "*Porites evermanni*",
+    exon_cv = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/peve-cv_matrix.tsv"
+  ),
+  Ptuh = list(
+    species_name = "Pocillopora tuahiniensis",
+    italic_name = "*Pocillopora tuahiniensis*",
+    exon_cv = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/ptua-cv_matrix.tsv"
+  )
+)
+
+# =============================================================================
+# HELPER FUNCTIONS
+# =============================================================================
+
+# Function to validate URL
+validate_url <- function(url) {
+  if (is.null(url) || length(url) == 0 || !is.character(url)) {
+    return(FALSE)
+  }
+  if (grepl("^https?://", url)) {
+    return(TRUE)
+  }
+  return(FALSE)
+}
+
+# Function to create download button with validation
+create_download_button <- function(url, filename, button_text) {
+  if (!validate_url(url)) {
+    warning(paste("Invalid URL provided:", url))
+    return("")
+  }
+  
+  if (is.null(filename) || length(filename) == 0) {
+    filename <- "download"
+  }
+  
+  if (is.null(button_text) || length(button_text) == 0) {
+    button_text <- "Download"
+  }
+  
+  # Return HTML as a string that can be directly output
+  paste0('<a href="', url, '" class="btn btn-primary" target="_blank" download="', filename, '">', button_text, '</a>')
+}
+
+# Function to safely get row count
+safe_nrow <- function(df) {
+  if (is.null(df) || !is.data.frame(df) || nrow(df) == 0) {
+    return(0)
+  }
+  return(nrow(df))
+}
+
+# Function to load data with appropriate parameters and better error handling
+load_data_file <- function(url, data_type, species_code, max_retries = 3) {
+  if (!validate_url(url)) {
+    warning(paste("Invalid URL for", data_type, "data in", species_code))
+    return(data.frame())
+  }
+  
+  # Try loading with retries
+  for (attempt in 1:max_retries) {
+    result <- tryCatch({
+      # Show progress
+      if (attempt == 1) {
+        message(paste("Loading", data_type, "for", species_code, "..."))
+      } else {
+        message(paste("  Retry attempt", attempt, "for", data_type, species_code))
+      }
+      
+      # TSV-based files (CV matrices)
+      if (data_type %in% c("exon_cv")) {
+        read_delim(url, delim = "\t", col_names = TRUE, show_col_types = FALSE, progress = FALSE)
+
+      } else {
+        warning(paste("Unknown data type:", data_type))
+        return(data.frame())
+      }
+      
+    }, error = function(e) {
+      if (attempt < max_retries) {
+        Sys.sleep(2)  # Wait 2 seconds before retry
+        return(NULL)  # Signal to retry
+      } else {
+        warning(paste("Failed to load", data_type, "data for", species_code, "after", max_retries, "attempts:", e$message))
+        return(data.frame())
+      }
+    })
+    
+    # If we got a valid result, check and return it
+    if (!is.null(result) && is.data.frame(result)) {
+      if (nrow(result) == 0) {
+        warning(paste("Empty data for", data_type, "in", species_code))
+      } else {
+        message(paste("  ✓ Loaded", nrow(result), "rows"))
+      }
+      return(result)
+    }
+  }
+  
+  # If all retries failed
+  return(data.frame())
+}
+
+# =============================================================================
+# DATA LOADING
+# =============================================================================
+
+message("Starting data load for all species...")
+
+# Define available data types for plasticity analysis
+plasticity_data_types <- c("exon_cv")
+
+# Load all data files with error handling
+all_data <- list()
+data_loading_errors <- character()
+
+for (species_code in names(data_urls)) {
+  message(paste("\n===", data_urls[[species_code]]$species_name, "==="))
+  all_data[[species_code]] <- list()
+  
+  for (data_type in plasticity_data_types) {
+    url <- data_urls[[species_code]][[data_type]]
+    if (!is.null(url)) {
+      data_result <- load_data_file(url, data_type, species_code)
+      
+      if (nrow(data_result) == 0) {
+        data_loading_errors <- c(data_loading_errors, 
+                                 paste(species_code, data_type, "failed to load"))
+      }
+      
+      all_data[[species_code]][[data_type]] <- data_result
+    }
+  }
+}
+
+message("\n=== Data loading complete ===")
+
+# Report any loading errors
+if (length(data_loading_errors) > 0) {
+  warning("Data loading errors occurred:\n  ", paste(data_loading_errors, collapse = "\n  "))
+} else {
+  message("All data loaded successfully!")
+}
+```
+
+```{r feature-counts}
+#| echo: false
+# Generate feature counts table dynamically with error handling
+feature_counts <- data.frame(
+  Species = character(),
+  Exon_CV = integer(),
+  stringsAsFactors = FALSE
+)
+
+for (species_code in names(data_urls)) {
+  # Safely get row counts with error handling
+  exon_cv_count <- safe_nrow(all_data[[species_code]]$exon_cv)
+  
+  feature_counts <- rbind(feature_counts, data.frame(
+    Species = data_urls[[species_code]]$italic_name,
+    Exon_CV = exon_cv_count,
+    stringsAsFactors = FALSE
+  ))
+}
+
+# Store the feature counts for use in the main content
+feature_counts_data <- feature_counts
+```
+
+## Summary of Available Data
+
+The coefficient of variation (CV) of exon expression per gene provides a measure of expression plasticity. Higher CV values indicate greater variability in exon usage across samples, which may reflect alternative splicing or differential exon utilization under varying conditions.
+
+```{r}
+#| echo: false
+#| results: asis
+# Display the feature counts summary table
+if (nrow(feature_counts_data) > 0) {
+  feature_counts_data |>
+    gt() |>
+    tab_header(title = "Gene Counts with CV Data") |>
+    fmt_number(columns = c("Exon_CV"), decimals = 0) |>
+    cols_label(Exon_CV = "Exon CV Genes") |>
+    cols_align(align = "center", columns = c("Exon_CV")) |>
+    tab_style(
+      style = cell_text(weight = "bold"),
+      locations = cells_body(columns = c("Exon_CV"))
+    ) |>
+    print()
+} else {
+  cat("No feature count data available.")
+}
+```
+
+## About the Data
+
+::: panel-tabset
+## Exon CV
+
+The coefficient of variation (CV) matrix represents the variability of exon expression within each gene across samples. For each gene, the CV is calculated as the standard deviation of exon-level expression divided by the mean, providing a normalized measure of expression variability. This metric captures expression plasticity at the exon level, which may reflect:
+
+-   **Alternative splicing events**: Genes with high CV may utilize different exons under different conditions
+-   **Differential exon usage**: Environmental or developmental changes may shift which exons are predominantly expressed
+-   **Regulatory complexity**: Higher CV values may indicate more complex post-transcriptional regulation
+
+Genes with consistently low CV values show stable exon usage patterns, while those with high CV demonstrate greater plasticity in their transcript isoform composition.
+:::
+
+```{r}
+#| echo: false
+#| results: asis
+# Generate all species sections with proper HTML rendering
+for (species_code in names(data_urls)) {
+  species_info <- data_urls[[species_code]]
+  
+  # Output species header
+  cat(paste0("# ", species_info$italic_name, "\n\n"))
+  
+  # Generate each data type section
+  for (data_type in plasticity_data_types) {
+    url <- species_info[[data_type]]
+    
+    # Skip if no URL defined for this data type
+    if (is.null(url)) next
+    
+    df <- all_data[[species_code]][[data_type]]
+    
+    # Check if data was loaded successfully
+    if (is.null(df) || nrow(df) == 0) {
+      data_type_display <- switch(data_type,
+        "exon_cv" = "Exon CV",
+        data_type
+      )
+      cat(paste0("## ", data_type_display, " - Data Not Available\n\n"))
+      cat("Data could not be loaded for this section.\n\n")
+      next
+    }
+    
+    # Label for section
+    data_type_display <- switch(data_type,
+      "exon_cv" = "Exon CV",
+      data_type
+    )
+    
+    # File name
+    filename <- paste0(species_code, "_", data_type, ".tsv")
+    
+    # Section header
+    cat(paste0("## ", data_type_display, "\n\n"))
+    
+    # Download button - use HTML directly as a string
+    download_btn <- create_download_button(url, filename, paste0("Download ", data_type_display))
+    if (download_btn != "") {
+      cat(download_btn, "\n\n")
+    }
+    
+    # URL display
+    cat("``` bash\n", url, "\n```\n\n")
+    
+    # Table caption
+    cat(paste0("**", species_code, "_", data_type, " (first 4 rows)**\n\n"))
+    
+    # Display table
+    tryCatch({
+      df |>
+        slice_head(n = 4) |>
+        gt() |> 
+        print()
+    }, error = function(e) {
+      cat("Error displaying table:", e$message, "\n")
+    })
+    
+    cat("\n\n")
+  }
+}
+```
