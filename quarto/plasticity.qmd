@@ -48,17 +48,20 @@ data_urls <- list(
   Apul = list(
     species_name = "Acropora pulchra",
     italic_name = "*Acropora pulchra*",
-    exon_cv = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/apul-cv_matrix.tsv"
+    exon_cv = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/apul-cv_matrix.tsv",
+    exon_count = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/40-exon-count-matrix/apul-exon_gene_count_matrix.csv"
   ),
   Peve = list(
     species_name = "Porites evermanni",
     italic_name = "*Porites evermanni*",
-    exon_cv = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/peve-cv_matrix.tsv"
+    exon_cv = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/peve-cv_matrix.tsv",
+    exon_count = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/40-exon-count-matrix/peve-exon_gene_count_matrix.csv"
   ),
   Ptuh = list(
     species_name = "Pocillopora tuahiniensis",
     italic_name = "*Pocillopora tuahiniensis*",
-    exon_cv = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/ptua-cv_matrix.tsv"
+    exon_cv = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/ptua-cv_matrix.tsv",
+    exon_count = "https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/40-exon-count-matrix/ptua-exon_gene_count_matrix.csv"
   )
 )
 
@@ -124,6 +127,10 @@ load_data_file <- function(url, data_type, species_code, max_retries = 3) {
       # TSV-based files (CV matrices)
       if (data_type %in% c("exon_cv")) {
         read_delim(url, delim = "\t", col_names = TRUE, show_col_types = FALSE, progress = FALSE)
+      
+      # CSV-based files (exon count matrices)
+      } else if (data_type %in% c("exon_count")) {
+        read_csv(url, show_col_types = FALSE, progress = FALSE)
 
       } else {
         warning(paste("Unknown data type:", data_type))
@@ -162,7 +169,7 @@ load_data_file <- function(url, data_type, species_code, max_retries = 3) {
 message("Starting data load for all species...")
 
 # Define available data types for plasticity analysis
-plasticity_data_types <- c("exon_cv")
+plasticity_data_types <- c("exon_cv", "exon_count")
 
 # Load all data files with error handling
 all_data <- list()
@@ -203,16 +210,19 @@ if (length(data_loading_errors) > 0) {
 feature_counts <- data.frame(
   Species = character(),
   Exon_CV = integer(),
+  Exon_Count = integer(),
   stringsAsFactors = FALSE
 )
 
 for (species_code in names(data_urls)) {
   # Safely get row counts with error handling
   exon_cv_count <- safe_nrow(all_data[[species_code]]$exon_cv)
+  exon_count_count <- safe_nrow(all_data[[species_code]]$exon_count)
   
   feature_counts <- rbind(feature_counts, data.frame(
     Species = data_urls[[species_code]]$italic_name,
     Exon_CV = exon_cv_count,
+    Exon_Count = exon_count_count,
     stringsAsFactors = FALSE
   ))
 }
@@ -232,13 +242,13 @@ The coefficient of variation (CV) of exon expression per gene provides a measure
 if (nrow(feature_counts_data) > 0) {
   feature_counts_data |>
     gt() |>
-    tab_header(title = "Gene Counts with CV Data") |>
-    fmt_number(columns = c("Exon_CV"), decimals = 0) |>
-    cols_label(Exon_CV = "Exon CV Genes") |>
-    cols_align(align = "center", columns = c("Exon_CV")) |>
+    tab_header(title = "Gene/Exon Counts by Data Type") |>
+    fmt_number(columns = c("Exon_CV", "Exon_Count"), decimals = 0) |>
+    cols_label(Exon_CV = "Exon CV Genes", Exon_Count = "Exon Count Features") |>
+    cols_align(align = "center", columns = c("Exon_CV", "Exon_Count")) |>
     tab_style(
       style = cell_text(weight = "bold"),
-      locations = cells_body(columns = c("Exon_CV"))
+      locations = cells_body(columns = c("Exon_CV", "Exon_Count"))
     ) |>
     print()
 } else {
@@ -258,6 +268,17 @@ The coefficient of variation (CV) matrix represents the variability of exon expr
 -   **Regulatory complexity**: Higher CV values may indicate more complex post-transcriptional regulation
 
 Genes with consistently low CV values show stable exon usage patterns, while those with high CV demonstrate greater plasticity in their transcript isoform composition.
+
+## Exon Count Matrix
+
+The exon count matrix provides raw expression counts at the exon level for each gene across all samples. This data enables:
+
+-   **Differential exon usage analysis**: Compare exon expression patterns between conditions or time points
+-   **Alternative splicing detection**: Identify genes with variable exon inclusion/exclusion patterns
+-   **Isoform-level expression**: Understand transcript diversity within genes
+-   **Foundation for CV calculation**: The exon counts serve as the basis for computing the coefficient of variation metrics
+
+Each row represents a unique exon-gene combination, with columns containing sample-specific read counts. This granular data supports detailed investigation of post-transcriptional regulation mechanisms.
 :::
 
 ```{r}
@@ -283,6 +304,7 @@ for (species_code in names(data_urls)) {
     if (is.null(df) || nrow(df) == 0) {
       data_type_display <- switch(data_type,
         "exon_cv" = "Exon CV",
+        "exon_count" = "Exon Count Matrix",
         data_type
       )
       cat(paste0("## ", data_type_display, " - Data Not Available\n\n"))
@@ -293,11 +315,13 @@ for (species_code in names(data_urls)) {
     # Label for section
     data_type_display <- switch(data_type,
       "exon_cv" = "Exon CV",
+      "exon_count" = "Exon Count Matrix",
       data_type
     )
     
-    # File name
-    filename <- paste0(species_code, "_", data_type, ".tsv")
+    # File name with appropriate extension
+    file_extension <- if (data_type %in% c("exon_count")) ".csv" else ".tsv"
+    filename <- paste0(species_code, "_", data_type, file_extension)
     
     # Section header
     cat(paste0("## ", data_type_display, "\n\n"))
