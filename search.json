@@ -332,6 +332,72 @@
     ]
   },
   {
+    "objectID": "plasticity.html",
+    "href": "plasticity.html",
+    "title": "Expression Plasticity",
+    "section": "",
+    "text": "The coefficient of variation (CV) of exon expression per gene provides a measure of expression plasticity. Higher CV values indicate greater variability in exon usage across samples, which may reflect alternative splicing or differential exon utilization under varying conditions.\n\n\n\n\n\n\nGene Counts with CV Data\n\n\n\n\nSpecies\n\n\nExon CV Genes\n\n\n\n\n\n\nAcropora pulchra\n\n\n10,006\n\n\n\n\nPorites evermanni\n\n\n12,174\n\n\n\n\nPocillopora tuahiniensis\n\n\n11,342",
+    "crumbs": [
+      "Data Files",
+      "Expression Plasticity"
+    ]
+  },
+  {
+    "objectID": "plasticity.html#summary-of-available-data",
+    "href": "plasticity.html#summary-of-available-data",
+    "title": "Expression Plasticity",
+    "section": "",
+    "text": "The coefficient of variation (CV) of exon expression per gene provides a measure of expression plasticity. Higher CV values indicate greater variability in exon usage across samples, which may reflect alternative splicing or differential exon utilization under varying conditions.\n\n\n\n\n\n\nGene Counts with CV Data\n\n\n\n\nSpecies\n\n\nExon CV Genes\n\n\n\n\n\n\nAcropora pulchra\n\n\n10,006\n\n\n\n\nPorites evermanni\n\n\n12,174\n\n\n\n\nPocillopora tuahiniensis\n\n\n11,342",
+    "crumbs": [
+      "Data Files",
+      "Expression Plasticity"
+    ]
+  },
+  {
+    "objectID": "plasticity.html#about-the-data",
+    "href": "plasticity.html#about-the-data",
+    "title": "Expression Plasticity",
+    "section": "About the Data",
+    "text": "About the Data\n\nExon CV\n\n\nThe coefficient of variation (CV) matrix represents the variability of exon expression within each gene across samples. For each gene, the CV is calculated as the standard deviation of exon-level expression divided by the mean, providing a normalized measure of expression variability. This metric captures expression plasticity at the exon level, which may reflect:\n\nAlternative splicing events: Genes with high CV may utilize different exons under different conditions\nDifferential exon usage: Environmental or developmental changes may shift which exons are predominantly expressed\nRegulatory complexity: Higher CV values may indicate more complex post-transcriptional regulation\n\nGenes with consistently low CV values show stable exon usage patterns, while those with high CV demonstrate greater plasticity in their transcript isoform composition.",
+    "crumbs": [
+      "Data Files",
+      "Expression Plasticity"
+    ]
+  },
+  {
+    "objectID": "plasticity.html#exon-cv-1",
+    "href": "plasticity.html#exon-cv-1",
+    "title": "Expression Plasticity",
+    "section": "Exon CV",
+    "text": "Exon CV\nDownload Exon CV\n https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/apul-cv_matrix.tsv \nApul_exon_cv (first 4 rows)\n\n\n\n\n\n\ngene_id\n\n\nACR-139-TP1\n\n\nACR-139-TP2\n\n\nACR-139-TP3\n\n\nACR-139-TP4\n\n\nACR-145-TP1\n\n\nACR-145-TP2\n\n\nACR-145-TP3\n\n\nACR-145-TP4\n\n\nACR-150-TP1\n\n\nACR-150-TP2\n\n\nACR-150-TP3\n\n\nACR-150-TP4\n\n\nACR-173-TP1\n\n\nACR-173-TP2\n\n\nACR-173-TP3\n\n\nACR-173-TP4\n\n\nACR-186-TP1\n\n\nACR-186-TP2\n\n\nACR-186-TP3\n\n\nACR-186-TP4\n\n\nACR-225-TP1\n\n\nACR-225-TP2\n\n\nACR-225-TP3\n\n\nACR-225-TP4\n\n\nACR-229-TP1\n\n\nACR-229-TP2\n\n\nACR-229-TP3\n\n\nACR-229-TP4\n\n\nACR-237-TP1\n\n\nACR-237-TP2\n\n\nACR-237-TP3\n\n\nACR-237-TP4\n\n\nACR-244-TP1\n\n\nACR-244-TP2\n\n\nACR-244-TP3\n\n\nACR-244-TP4\n\n\nACR-265-TP1\n\n\nACR-265-TP2\n\n\nACR-265-TP3\n\n\nACR-265-TP4\n\n\n\n\n\n\nFUN_000002\n\n\n1.253149\n\n\n1.459295\n\n\n1.559335\n\n\n1.501586\n\n\n1.690242\n\n\n1.561706\n\n\n2.153062\n\n\n1.8095480\n\n\n1.603140\n\n\n1.526080\n\n\n1.561669\n\n\n1.6144909\n\n\n1.334518\n\n\n1.4792108\n\n\n1.8386216\n\n\n1.8980180\n\n\n1.670957\n\n\n1.601578\n\n\n1.907846\n\n\n1.607626\n\n\n2.171387\n\n\n1.642301\n\n\n1.6804043\n\n\n2.098880\n\n\n1.6461399\n\n\n1.6087989\n\n\n1.6154904\n\n\n1.655420\n\n\n1.8762816\n\n\n1.5744080\n\n\n1.6094628\n\n\n1.759210\n\n\n2.184346\n\n\n1.4456277\n\n\n1.580409\n\n\n2.233075\n\n\n2.114560\n\n\n1.5391335\n\n\n1.607415\n\n\n1.895613\n\n\n\n\nFUN_000005\n\n\n1.364166\n\n\n1.418916\n\n\n1.634594\n\n\n1.518412\n\n\n1.799408\n\n\n1.652290\n\n\n2.150598\n\n\n1.8900941\n\n\n1.563371\n\n\n1.554354\n\n\n1.685137\n\n\n1.6186851\n\n\n1.499007\n\n\n1.4931012\n\n\n1.9026906\n\n\n1.9478704\n\n\n1.735855\n\n\n1.631352\n\n\n2.158144\n\n\n1.666442\n\n\n2.021534\n\n\n1.451915\n\n\n1.5568422\n\n\n1.992537\n\n\n1.8062502\n\n\n1.6430678\n\n\n1.6921592\n\n\n1.721603\n\n\n1.7649171\n\n\n1.5733031\n\n\n1.5980004\n\n\n1.575181\n\n\n2.395592\n\n\n1.3619640\n\n\n1.448016\n\n\n2.352075\n\n\n2.281185\n\n\n1.6267156\n\n\n1.655660\n\n\n2.036010\n\n\n\n\nFUN_000006\n\n\n2.100386\n\n\n2.667627\n\n\n2.450932\n\n\n2.375147\n\n\n1.652450\n\n\n2.118939\n\n\n2.101496\n\n\n2.1259688\n\n\n1.739710\n\n\n1.819126\n\n\n2.054189\n\n\n3.0402197\n\n\n1.747776\n\n\n1.8676316\n\n\n2.8462572\n\n\n1.8212509\n\n\n2.151260\n\n\n2.557701\n\n\n2.458757\n\n\n2.063010\n\n\n2.024046\n\n\n2.247349\n\n\n1.9414914\n\n\n2.028645\n\n\n2.6606028\n\n\n2.6490107\n\n\n1.9779386\n\n\n2.677791\n\n\n3.0456633\n\n\n1.8173096\n\n\n1.7752594\n\n\n3.158759\n\n\n3.127497\n\n\n2.1618006\n\n\n2.174794\n\n\n2.922029\n\n\n2.285360\n\n\n1.5691375\n\n\n1.711227\n\n\n2.424016\n\n\n\n\nFUN_000009\n\n\n2.368079\n\n\n1.621147\n\n\n2.542691\n\n\n2.594972\n\n\n1.049064\n\n\n1.313179\n\n\n1.109247\n\n\n0.9176943\n\n\n2.629302\n\n\n1.290731\n\n\n1.110591\n\n\n0.6511769\n\n\n1.069634\n\n\n0.8050166\n\n\n0.7207455\n\n\n0.9679521\n\n\n3.288474\n\n\n2.532419\n\n\n3.061590\n\n\n2.638272\n\n\n1.321873\n\n\n2.089061\n\n\n0.7210482\n\n\n1.669759\n\n\n0.6665453\n\n\n0.5551272\n\n\n0.7052224\n\n\n2.179525\n\n\n0.9262514\n\n\n0.6716475\n\n\n0.5434841\n\n\n1.131846\n\n\n1.439875\n\n\n0.9460971\n\n\n1.577500\n\n\n2.175344\n\n\n1.389332\n\n\n0.7378416\n\n\n2.257088\n\n\n1.513227",
+    "crumbs": [
+      "Data Files",
+      "Expression Plasticity"
+    ]
+  },
+  {
+    "objectID": "plasticity.html#exon-cv-2",
+    "href": "plasticity.html#exon-cv-2",
+    "title": "Expression Plasticity",
+    "section": "Exon CV",
+    "text": "Exon CV\nDownload Exon CV\n https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/peve-cv_matrix.tsv \nPeve_exon_cv (first 4 rows)\n\n\n\n\n\n\ngene_id\n\n\nPOR-216-TP1\n\n\nPOR-216-TP2\n\n\nPOR-216-TP3\n\n\nPOR-216-TP4\n\n\nPOR-236-TP1\n\n\nPOR-236-TP2\n\n\nPOR-245-TP1\n\n\nPOR-245-TP2\n\n\nPOR-245-TP3\n\n\nPOR-245-TP4\n\n\nPOR-260-TP1\n\n\nPOR-260-TP2\n\n\nPOR-260-TP3\n\n\nPOR-260-TP4\n\n\nPOR-262-TP1\n\n\nPOR-262-TP2\n\n\nPOR-262-TP3\n\n\nPOR-262-TP4\n\n\nPOR-69-TP1\n\n\nPOR-69-TP2\n\n\nPOR-69-TP3\n\n\nPOR-69-TP4\n\n\nPOR-72-TP1\n\n\nPOR-72-TP2\n\n\nPOR-72-TP3\n\n\nPOR-72-TP4\n\n\nPOR-73-TP1\n\n\nPOR-73-TP2\n\n\nPOR-73-TP3\n\n\nPOR-73-TP4\n\n\nPOR-74-TP1\n\n\nPOR-74-TP2\n\n\nPOR-74-TP3\n\n\nPOR-74-TP4\n\n\nPOR-83-TP1\n\n\nPOR-83-TP2\n\n\nPOR-83-TP3\n\n\nPOR-83-TP4\n\n\n\n\n\n\ngene-Peve_00000003\n\n\n0.7251225\n\n\n0.3285807\n\n\n0.652629\n\n\n1.3065986\n\n\n0.5743412\n\n\n0.5686723\n\n\n0.7420303\n\n\n0.7187211\n\n\n0.5421080\n\n\n0.8165363\n\n\n0.4772009\n\n\n0.5671191\n\n\n0.7530678\n\n\n0.6670292\n\n\n0.8916005\n\n\n0.5896628\n\n\n0.4868017\n\n\n0.4329875\n\n\n0.8986076\n\n\n0.5575120\n\n\n0.5887590\n\n\n1.046623\n\n\n0.8814807\n\n\n1.7813274\n\n\n0.6817518\n\n\n0.8243460\n\n\n0.5275523\n\n\n1.3684533\n\n\n0.6164414\n\n\n0.9365791\n\n\n0.4046947\n\n\n0.9433881\n\n\n0.7996093\n\n\n1.2041595\n\n\n0.5622705\n\n\n1.2605114\n\n\n1.0063292\n\n\n1.0110501\n\n\n\n\ngene-Peve_00000005\n\n\n0.4334701\n\n\n0.2611595\n\n\n0.495975\n\n\n0.5291119\n\n\n0.2722373\n\n\n0.2966128\n\n\n0.3990823\n\n\n0.4204403\n\n\n0.4754908\n\n\n0.3295140\n\n\n0.3178972\n\n\n0.3423721\n\n\n0.2792689\n\n\n0.2846960\n\n\n0.4543079\n\n\n0.4274379\n\n\n0.4361719\n\n\n0.3285644\n\n\n0.4804610\n\n\n0.2735193\n\n\n0.3724631\n\n\n0.464555\n\n\n0.3105904\n\n\n0.4118095\n\n\n0.4278465\n\n\n0.2674142\n\n\n0.5008178\n\n\n0.3034831\n\n\n0.4442154\n\n\n0.4994993\n\n\n0.3730686\n\n\n0.5149440\n\n\n0.3879561\n\n\n0.4014665\n\n\n0.3323010\n\n\n0.4470925\n\n\n0.5444046\n\n\n0.4869954\n\n\n\n\ngene-Peve_00000006\n\n\n1.5002239\n\n\n1.1036268\n\n\n1.547238\n\n\n1.3214798\n\n\n1.3323737\n\n\n1.5290457\n\n\n1.1960948\n\n\n1.0385346\n\n\n0.8679452\n\n\n1.3464621\n\n\n1.0617324\n\n\n1.5606226\n\n\n1.3661480\n\n\n1.5424270\n\n\n1.3657299\n\n\n1.2951671\n\n\n1.2678090\n\n\n1.6016082\n\n\n1.2058552\n\n\n1.0845747\n\n\n1.1786042\n\n\n1.253465\n\n\n1.3801251\n\n\n1.0428375\n\n\n0.9158426\n\n\n1.1641570\n\n\n1.0119084\n\n\n1.0421836\n\n\n1.2049761\n\n\n0.9661609\n\n\n1.3326470\n\n\n1.2978268\n\n\n0.9565104\n\n\n1.4769892\n\n\n1.2212713\n\n\n1.2145063\n\n\n1.2502641\n\n\n1.7391760\n\n\n\n\ngene-Peve_00000011\n\n\n1.8914687\n\n\n1.7413367\n\n\n1.795797\n\n\n1.4704539\n\n\n1.7364989\n\n\n1.4336578\n\n\n1.6226317\n\n\n1.5241406\n\n\n1.8561528\n\n\n1.2682052\n\n\n1.1638589\n\n\n1.9786210\n\n\n1.3735379\n\n\n1.5757082\n\n\n1.6123622\n\n\n1.8872252\n\n\n1.4833932\n\n\n1.7912874\n\n\n2.2606958\n\n\n1.5186944\n\n\n1.8739032\n\n\n1.914781\n\n\n1.9840835\n\n\n2.0484726\n\n\n1.6848925\n\n\n1.8362528\n\n\n1.9929524\n\n\n1.3339537\n\n\n1.7366785\n\n\n1.5142116\n\n\n1.5896766\n\n\n1.3842698\n\n\n1.6548538\n\n\n1.4355729\n\n\n2.3132883\n\n\n2.2811223\n\n\n1.9783130\n\n\n2.3879403",
+    "crumbs": [
+      "Data Files",
+      "Expression Plasticity"
+    ]
+  },
+  {
+    "objectID": "plasticity.html#exon-cv-3",
+    "href": "plasticity.html#exon-cv-3",
+    "title": "Expression Plasticity",
+    "section": "Exon CV",
+    "text": "Exon CV\nDownload Exon CV\n https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries-molecular-calcification/M-multi-species/output/42-sample-exon-count/ptua-cv_matrix.tsv \nPtuh_exon_cv (first 4 rows)\n\n\n\n\n\n\ngene_id\n\n\nPOC-201-TP1\n\n\nPOC-201-TP2\n\n\nPOC-201-TP3\n\n\nPOC-219-TP1\n\n\nPOC-219-TP2\n\n\nPOC-219-TP3\n\n\nPOC-219-TP4\n\n\nPOC-222-TP1\n\n\nPOC-222-TP2\n\n\nPOC-222-TP3\n\n\nPOC-222-TP4\n\n\nPOC-255-TP1\n\n\nPOC-255-TP2\n\n\nPOC-255-TP3\n\n\nPOC-255-TP4\n\n\nPOC-259-TP1\n\n\nPOC-259-TP2\n\n\nPOC-259-TP3\n\n\nPOC-259-TP4\n\n\nPOC-40-TP1\n\n\nPOC-40-TP2\n\n\nPOC-40-TP3\n\n\nPOC-40-TP4\n\n\nPOC-42-TP1\n\n\nPOC-42-TP2\n\n\nPOC-42-TP3\n\n\nPOC-42-TP4\n\n\nPOC-52-TP1\n\n\nPOC-52-TP2\n\n\nPOC-52-TP3\n\n\nPOC-52-TP4\n\n\nPOC-53-TP1\n\n\nPOC-53-TP2\n\n\nPOC-53-TP3\n\n\nPOC-53-TP4\n\n\nPOC-57-TP1\n\n\nPOC-57-TP2\n\n\nPOC-57-TP3\n\n\nPOC-57-TP4\n\n\n\n\n\n\ngene-Pocillopora_meandrina_HIv1___RNAseq.10483_t\n\n\n1.1841672\n\n\n1.3269516\n\n\n1.6877936\n\n\n1.8554407\n\n\n1.7983556\n\n\n2.2318398\n\n\n1.8589386\n\n\n1.3943541\n\n\n1.6355111\n\n\n1.5777909\n\n\n1.764030\n\n\n1.2791461\n\n\n1.4744748\n\n\n2.316067\n\n\n1.6647377\n\n\n1.5445964\n\n\n1.5322583\n\n\n2.072337\n\n\n1.5953003\n\n\n1.7658246\n\n\n1.7658383\n\n\n1.7232639\n\n\n1.7636723\n\n\n1.3184004\n\n\n1.2109251\n\n\n1.517936\n\n\n1.7924517\n\n\n1.562080\n\n\n1.4323375\n\n\n1.7130929\n\n\n1.3999404\n\n\n1.5500252\n\n\n1.5112416\n\n\n1.5672294\n\n\n1.6315441\n\n\n1.6506944\n\n\n1.8471856\n\n\n1.6496703\n\n\n1.4749355\n\n\n\n\ngene-Pocillopora_meandrina_HIv1___RNAseq.10568_t\n\n\n1.0356832\n\n\n0.9706955\n\n\n1.1549381\n\n\n1.0496114\n\n\n1.0569406\n\n\n0.5153544\n\n\n0.9179458\n\n\n0.8998666\n\n\n0.8229719\n\n\n0.6903098\n\n\n1.054898\n\n\n1.0398664\n\n\n0.7969656\n\n\n1.010574\n\n\n0.8008383\n\n\n0.8454713\n\n\n0.7068676\n\n\n1.407800\n\n\n0.8541763\n\n\n0.4773371\n\n\n0.7488051\n\n\n0.6397877\n\n\n0.8711997\n\n\n0.5607667\n\n\n0.8658617\n\n\n0.913606\n\n\n0.8842819\n\n\n0.895092\n\n\n0.7358446\n\n\n1.0185661\n\n\n0.6728081\n\n\n0.6615746\n\n\n0.7337614\n\n\n0.8288398\n\n\n1.0728251\n\n\n0.6071959\n\n\n0.5567480\n\n\n0.8799199\n\n\n0.7029411\n\n\n\n\ngene-Pocillopora_meandrina_HIv1___RNAseq.10925_t\n\n\n0.8530937\n\n\n0.9528856\n\n\n1.4518977\n\n\n1.4007211\n\n\n1.1199988\n\n\n1.0111900\n\n\n1.1572814\n\n\n0.7980886\n\n\n0.9468779\n\n\n0.6111506\n\n\n1.609263\n\n\n0.9500079\n\n\n0.9467207\n\n\n2.055312\n\n\n1.2671830\n\n\n1.2222371\n\n\n0.7966898\n\n\n1.098413\n\n\n1.0107124\n\n\n0.7920234\n\n\n0.8497980\n\n\n0.7740915\n\n\n1.0965619\n\n\n0.9151997\n\n\n0.9088216\n\n\n1.121206\n\n\n2.6095647\n\n\n1.757259\n\n\n0.8712718\n\n\n0.9514217\n\n\n0.7507119\n\n\n0.7162398\n\n\n0.7007008\n\n\n0.8197995\n\n\n1.1856193\n\n\n0.6662961\n\n\n1.3608879\n\n\n0.7830152\n\n\n0.9297172\n\n\n\n\ngene-Pocillopora_meandrina_HIv1___RNAseq.10949_t\n\n\n0.7478408\n\n\n0.7506053\n\n\n0.6922207\n\n\n0.9746087\n\n\n0.7253771\n\n\n0.3754997\n\n\n1.7653871\n\n\n0.8589661\n\n\n0.7786004\n\n\n0.9590317\n\n\n1.239245\n\n\n1.0200172\n\n\n1.9441172\n\n\n2.449490\n\n\n0.6669333\n\n\n1.0326187\n\n\n1.4338672\n\n\n1.549411\n\n\n0.6248311\n\n\n0.9508638\n\n\n1.2110383\n\n\n1.0186531\n\n\n0.9095838\n\n\n0.7874763\n\n\n0.7947567\n\n\n1.543611\n\n\n1.2186566\n\n\n1.673320\n\n\n0.8828938\n\n\n0.9070147\n\n\n0.7276373\n\n\n0.6618157\n\n\n0.8360622\n\n\n1.2694764\n\n\n0.3390862\n\n\n1.4050477\n\n\n0.9520747\n\n\n0.7801538\n\n\n1.0179186",
+    "crumbs": [
+      "Data Files",
+      "Expression Plasticity"
+    ]
+  },
+  {
     "objectID": "ortho.html",
     "href": "ortho.html",
     "title": "Ortholog Expression",
